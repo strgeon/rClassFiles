@@ -1,0 +1,308 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,710
+In this lecture, we'll be using analytical models
+
+2
+00:00:03,710 --> 00:00:05,900
+to prevent heart disease.
+
+3
+00:00:05,900 --> 00:00:09,050
+The first step is to identify risk factors,
+
+4
+00:00:09,050 --> 00:00:13,350
+or the independent variables, that we will use in our model.
+
+5
+00:00:13,350 --> 00:00:17,490
+Then, using data, we'll create a logistic regression model
+
+6
+00:00:17,490 --> 00:00:19,800
+to predict heart disease.
+
+7
+00:00:19,800 --> 00:00:22,570
+Using more data, we'll validate our model
+
+8
+00:00:22,570 --> 00:00:25,520
+to make sure it performs well out of sample
+
+9
+00:00:25,520 --> 00:00:28,340
+and on different populations than the training set
+
+10
+00:00:28,340 --> 00:00:30,310
+population.
+
+11
+00:00:30,310 --> 00:00:33,260
+Lastly, we'll discuss how medical interventions
+
+12
+00:00:33,260 --> 00:00:35,350
+can be defined using the model.
+
+13
+00:00:35,350 --> 00:00:37,930
+
+
+14
+00:00:37,930 --> 00:00:40,040
+We'll be predicting the 10-year risk
+
+15
+00:00:40,040 --> 00:00:43,670
+of coronary heart disease or CHD.
+
+16
+00:00:43,670 --> 00:00:47,600
+This was the subject of an important 1998 paper
+
+17
+00:00:47,600 --> 00:00:51,420
+introducing what is known as the Framingham Risk Score.
+
+18
+00:00:51,420 --> 00:00:54,210
+This is one of the most influential applications
+
+19
+00:00:54,210 --> 00:00:56,890
+of the Framingham Heart Study data.
+
+20
+00:00:56,890 --> 00:01:01,630
+We'll use logistic regression to create a similar model.
+
+21
+00:01:01,630 --> 00:01:06,170
+CHD is a disease of the blood vessels supplying the heart.
+
+22
+00:01:06,170 --> 00:01:08,320
+This is one type of heart disease, which
+
+23
+00:01:08,320 --> 00:01:13,510
+has been the leading cause of death worldwide since 1921.
+
+24
+00:01:13,510 --> 00:01:19,230
+In 2008, 7.3 million people died from CHD.
+
+25
+00:01:19,230 --> 00:01:23,500
+Even though the number of deaths due to CHD is still very high,
+
+26
+00:01:23,500 --> 00:01:25,480
+age-adjusted death rates have actually
+
+27
+00:01:25,480 --> 00:01:29,860
+declined 60% since 1950.
+
+28
+00:01:29,860 --> 00:01:34,140
+This is in part due to earlier detection and monitoring partly
+
+29
+00:01:34,140 --> 00:01:36,210
+because of the Framingham Heart Study.
+
+30
+00:01:36,210 --> 00:01:39,050
+
+
+31
+00:01:39,050 --> 00:01:41,920
+Before building a logistic regression model,
+
+32
+00:01:41,920 --> 00:01:44,570
+we need to identify the independent variables
+
+33
+00:01:44,570 --> 00:01:46,510
+we want to use.
+
+34
+00:01:46,510 --> 00:01:48,530
+When predicting the risk of a disease,
+
+35
+00:01:48,530 --> 00:01:53,070
+we want to identify what are known as risk factors.
+
+36
+00:01:53,070 --> 00:01:55,020
+These are the variables that increase
+
+37
+00:01:55,020 --> 00:01:58,340
+the chances of developing a disease.
+
+38
+00:01:58,340 --> 00:02:00,480
+The term risk factors was actually
+
+39
+00:02:00,480 --> 00:02:03,140
+coined by William Kannell and Roy Dawber
+
+40
+00:02:03,140 --> 00:02:06,020
+from the Framingham Heart Study.
+
+41
+00:02:06,020 --> 00:02:08,050
+Identifying these risk factors is
+
+42
+00:02:08,050 --> 00:02:10,455
+the key to successful prediction of CHD.
+
+43
+00:02:10,455 --> 00:02:13,220
+
+
+44
+00:02:13,220 --> 00:02:16,140
+In this lecture, we'll focus on the risk factors
+
+45
+00:02:16,140 --> 00:02:19,060
+that they collected data for in the original data
+
+46
+00:02:19,060 --> 00:02:22,100
+collection for the Framingham Heart Study.
+
+47
+00:02:22,100 --> 00:02:24,320
+We'll be using an anonymized version
+
+48
+00:02:24,320 --> 00:02:27,690
+of the original data that was collected.
+
+49
+00:02:27,690 --> 00:02:31,490
+This data set includes several demographic risk factors--
+
+50
+00:02:31,490 --> 00:02:34,690
+the sex of the patient, male or female;
+
+51
+00:02:34,690 --> 00:02:39,200
+the age of the patient in years; the education level coded
+
+52
+00:02:39,200 --> 00:02:41,590
+as either 1 for some high school,
+
+53
+00:02:41,590 --> 00:02:44,900
+2 for a high school diploma or GED,
+
+54
+00:02:44,900 --> 00:02:47,920
+3 for some college or vocational school,
+
+55
+00:02:47,920 --> 00:02:51,700
+and 4 for a college degree.
+
+56
+00:02:51,700 --> 00:02:54,680
+The data set also includes behavioral risk factors
+
+57
+00:02:54,680 --> 00:02:58,060
+associated with smoking-- whether or not
+
+58
+00:02:58,060 --> 00:03:02,120
+the patient is a current smoker and the number of cigarettes
+
+59
+00:03:02,120 --> 00:03:05,510
+that the person smoked on average in one day.
+
+60
+00:03:05,510 --> 00:03:08,930
+While it is now widely known that smoking increases
+
+61
+00:03:08,930 --> 00:03:10,985
+the risk of heart disease, the idea
+
+62
+00:03:10,985 --> 00:03:16,580
+of smoking being bad for you was a novel idea in the 1940s.
+
+63
+00:03:16,580 --> 00:03:20,232
+Medical history risk factors were also included.
+
+64
+00:03:20,232 --> 00:03:21,940
+These were whether or not the patient was
+
+65
+00:03:21,940 --> 00:03:25,660
+on blood pressure medication, whether or not the patient had
+
+66
+00:03:25,660 --> 00:03:29,260
+previously had a stroke, whether or not the patient was
+
+67
+00:03:29,260 --> 00:03:32,720
+hypertensive, and whether or not the patient had diabetes.
+
+68
+00:03:32,720 --> 00:03:35,650
+
+
+69
+00:03:35,650 --> 00:03:38,220
+Lastly, the data set includes risk factors
+
+70
+00:03:38,220 --> 00:03:41,740
+from the first physical examination of the patient.
+
+71
+00:03:41,740 --> 00:03:45,720
+The total cholesterol level, systolic blood pressure,
+
+72
+00:03:45,720 --> 00:03:51,370
+diastolic blood pressure, Body Mass Index, or BMI, heart rate,
+
+73
+00:03:51,370 --> 00:03:55,260
+and blood glucose level of the patient were measured.
+
+74
+00:03:55,260 --> 00:03:58,480
+In the next video, we'll use these risk factors
+
+75
+00:03:58,480 --> 00:04:02,450
+to see if we can predict the 10-year risk CHD.
+
+76
+00:04:02,450 --> 00:04:03,088
+
+

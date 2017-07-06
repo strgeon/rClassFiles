@@ -1,0 +1,68 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:01,490
+Hello.
+
+2
+00:00:01,490 --> 00:00:04,760
+This week we'll be discussing the application of analytics
+
+3
+00:00:04,760 --> 00:00:07,820
+into very different areas-- the Supreme Court
+
+4
+00:00:07,820 --> 00:00:09,740
+and health care cost prediction.
+
+5
+00:00:09,740 --> 00:00:11,850
+In the first lecture, we'll discuss
+
+6
+00:00:11,850 --> 00:00:14,960
+how the decisions of the United States Supreme Court
+
+7
+00:00:14,960 --> 00:00:19,510
+can be predicted before the case even gets to the court.
+
+8
+00:00:19,510 --> 00:00:22,060
+In the second lecture, we'll discuss the story
+
+9
+00:00:22,060 --> 00:00:26,500
+of D2Hawkeye, a medical data-mining company I have been
+
+10
+00:00:26,500 --> 00:00:29,000
+involved with for several years that
+
+11
+00:00:29,000 --> 00:00:31,320
+use analytics to gain an edge.
+
+12
+00:00:31,320 --> 00:00:33,990
+Through these examples, we'll introduce the method
+
+13
+00:00:33,990 --> 00:00:37,260
+of classification and regression trees, a very interpretable
+
+14
+00:00:37,260 --> 00:00:38,700
+analytics method.
+
+15
+00:00:38,700 --> 00:00:40,717
+Let's get started.
+
+16
+00:00:40,717 --> 00:00:41,216
+
+

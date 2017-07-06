@@ -1,0 +1,676 @@
+0
+00:00:00,000 --> 00:00:00,600
+
+
+1
+00:00:00,600 --> 00:00:04,210
+Now, as we start to think about building regression models
+
+2
+00:00:04,210 --> 00:00:07,080
+with this data set, we need to consider the possibility
+
+3
+00:00:07,080 --> 00:00:09,880
+that there is multicollinearity within
+
+4
+00:00:09,880 --> 00:00:11,080
+the independent variables.
+
+5
+00:00:11,080 --> 00:00:12,580
+And there's a good reason to suspect
+
+6
+00:00:12,580 --> 00:00:15,060
+that there would be multicollinearity amongst
+
+7
+00:00:15,060 --> 00:00:16,790
+the variables, because in some sense,
+
+8
+00:00:16,790 --> 00:00:19,030
+they're all measuring the same thing, which
+
+9
+00:00:19,030 --> 00:00:22,620
+is how strong the Republican candidate is performing
+
+10
+00:00:22,620 --> 00:00:24,620
+in the particular state.
+
+11
+00:00:24,620 --> 00:00:28,010
+So while normally, we would run the correlation function
+
+12
+00:00:28,010 --> 00:00:31,380
+on the training set, in this case, it doesn't work.
+
+13
+00:00:31,380 --> 00:00:34,060
+It says, x must be numeric.
+
+14
+00:00:34,060 --> 00:00:37,750
+And if we go back and look at the structure of the training
+
+15
+00:00:37,750 --> 00:00:40,855
+set, it jumps out why we're getting this issue.
+
+16
+00:00:40,855 --> 00:00:42,230
+It's because we're trying to take
+
+17
+00:00:42,230 --> 00:00:44,150
+the correlations of the names of states,
+
+18
+00:00:44,150 --> 00:00:46,040
+which doesn't make any sense.
+
+19
+00:00:46,040 --> 00:00:47,950
+So to compute the correlation, we're
+
+20
+00:00:47,950 --> 00:00:50,581
+going to want to take the correlation amongst just
+
+21
+00:00:50,581 --> 00:00:52,080
+the independent variables that we're
+
+22
+00:00:52,080 --> 00:00:54,820
+going to be using to predict, and we can also
+
+23
+00:00:54,820 --> 00:00:58,400
+add in the dependent variable to this correlation matrix.
+
+24
+00:00:58,400 --> 00:01:01,550
+So I'll take cor of the training set
+
+25
+00:01:01,550 --> 00:01:05,830
+but just limit it to the independent variables--
+
+26
+00:01:05,830 --> 00:01:13,640
+Rasmussen, SurveyUSA, PropR, and DiffCount.
+
+27
+00:01:13,640 --> 00:01:16,945
+And then also, we'll add in the dependent variable, Republican.
+
+28
+00:01:16,945 --> 00:01:22,450
+
+
+29
+00:01:22,450 --> 00:01:23,320
+So there we go.
+
+30
+00:01:23,320 --> 00:01:26,260
+We're seeing a lot of big values here.
+
+31
+00:01:26,260 --> 00:01:29,680
+For instance, SurveyUSA and Rasmussen
+
+32
+00:01:29,680 --> 00:01:33,460
+are independent variables that have a correlation of 0.94,
+
+33
+00:01:33,460 --> 00:01:35,580
+which is very, very large and something
+
+34
+00:01:35,580 --> 00:01:36,870
+that would be concerning.
+
+35
+00:01:36,870 --> 00:01:38,440
+It means that probably combining them
+
+36
+00:01:38,440 --> 00:01:41,800
+together isn't going to do much to produce a working regression
+
+37
+00:01:41,800 --> 00:01:43,670
+model.
+
+38
+00:01:43,670 --> 00:01:46,400
+So let's first consider the case where
+
+39
+00:01:46,400 --> 00:01:50,170
+we want to build a logistic regression model with just one
+
+40
+00:01:50,170 --> 00:01:51,250
+variable.
+
+41
+00:01:51,250 --> 00:01:53,580
+So in this case, it stands to reason
+
+42
+00:01:53,580 --> 00:01:55,330
+that the variable we'd want to add
+
+43
+00:01:55,330 --> 00:01:56,830
+would be the one that is most highly
+
+44
+00:01:56,830 --> 00:02:00,410
+correlated with the outcome, Republican.
+
+45
+00:02:00,410 --> 00:02:02,270
+So if we read the bottom row, which
+
+46
+00:02:02,270 --> 00:02:04,830
+is the correlation of each variable to Republican,
+
+47
+00:02:04,830 --> 00:02:08,220
+we see that PropR is probably the best candidate
+
+48
+00:02:08,220 --> 00:02:10,620
+to include in our single-variable model,
+
+49
+00:02:10,620 --> 00:02:12,490
+because it's so highly correlated,
+
+50
+00:02:12,490 --> 00:02:14,840
+meaning it's going to do a good job of predicting
+
+51
+00:02:14,840 --> 00:02:17,500
+the Republican status.
+
+52
+00:02:17,500 --> 00:02:19,680
+So let's build a model.
+
+53
+00:02:19,680 --> 00:02:22,290
+We can call it mod1.
+
+54
+00:02:22,290 --> 00:02:27,190
+So we'll call the glm function, predicting Republican,
+
+55
+00:02:27,190 --> 00:02:30,880
+using PropR alone.
+
+56
+00:02:30,880 --> 00:02:32,940
+As always, we'll pass along the data
+
+57
+00:02:32,940 --> 00:02:35,300
+to train with as our training set.
+
+58
+00:02:35,300 --> 00:02:37,720
+And because we have logistic regression,
+
+59
+00:02:37,720 --> 00:02:39,180
+we need family = "binomial".
+
+60
+00:02:39,180 --> 00:02:42,670
+
+
+61
+00:02:42,670 --> 00:02:47,170
+And we can take a look at this model using the summary
+
+62
+00:02:47,170 --> 00:02:48,490
+function.
+
+63
+00:02:48,490 --> 00:02:50,820
+And we can see that it looks pretty
+
+64
+00:02:50,820 --> 00:02:52,910
+nice in terms of its significance
+
+65
+00:02:52,910 --> 00:02:55,920
+and the sign of the coefficients.
+
+66
+00:02:55,920 --> 00:02:58,500
+We have a lot of stars over here.
+
+67
+00:02:58,500 --> 00:03:01,380
+PropR is the proportion of the polls
+
+68
+00:03:01,380 --> 00:03:02,700
+that said the Republican won.
+
+69
+00:03:02,700 --> 00:03:06,370
+We see that that has a very high coefficient in terms
+
+70
+00:03:06,370 --> 00:03:08,120
+of predicting that the Republican will win
+
+71
+00:03:08,120 --> 00:03:10,850
+in the state, which makes a lot of sense.
+
+72
+00:03:10,850 --> 00:03:12,930
+And we'll note down that the AIC measuring
+
+73
+00:03:12,930 --> 00:03:16,230
+the strength of the model is 19.8.
+
+74
+00:03:16,230 --> 00:03:18,160
+So this seems like a very reasonable model.
+
+75
+00:03:18,160 --> 00:03:21,030
+Let's see how it does in terms of actually predicting
+
+76
+00:03:21,030 --> 00:03:24,440
+the Republican outcome on the training set.
+
+77
+00:03:24,440 --> 00:03:26,890
+So first, we want to compute the predictions,
+
+78
+00:03:26,890 --> 00:03:29,130
+the predicted probabilities that the Republican
+
+79
+00:03:29,130 --> 00:03:31,380
+is going to win on the training set.
+
+80
+00:03:31,380 --> 00:03:37,210
+So we'll create a vector called pred1, prediction one,
+
+81
+00:03:37,210 --> 00:03:39,630
+then we'll call the predict function.
+
+82
+00:03:39,630 --> 00:03:42,300
+We'll pass it our model one.
+
+83
+00:03:42,300 --> 00:03:44,869
+And we're not going to pass it newdata,
+
+84
+00:03:44,869 --> 00:03:46,410
+because we're just making predictions
+
+85
+00:03:46,410 --> 00:03:47,760
+on the training set right now.
+
+86
+00:03:47,760 --> 00:03:49,810
+We're not looking at test set predictions.
+
+87
+00:03:49,810 --> 00:03:55,300
+But we do need to pass it type = "response" to get probabilities
+
+88
+00:03:55,300 --> 00:03:57,477
+out as the predictions.
+
+89
+00:03:57,477 --> 00:03:59,310
+And now, we want to see how well it's doing.
+
+90
+00:03:59,310 --> 00:04:01,650
+So if we used a threshold of 0.5,
+
+91
+00:04:01,650 --> 00:04:03,980
+where we said if the probability is at least 1/2,
+
+92
+00:04:03,980 --> 00:04:05,790
+we're going to predict Republican,
+
+93
+00:04:05,790 --> 00:04:07,860
+otherwise, we'll predict Democrat.
+
+94
+00:04:07,860 --> 00:04:10,600
+Let's see how that would do on the training set.
+
+95
+00:04:10,600 --> 00:04:13,270
+So we'll want to use the table function
+
+96
+00:04:13,270 --> 00:04:17,019
+and look at the training set Republican value
+
+97
+00:04:17,019 --> 00:04:21,120
+against the logical of whether pred1
+
+98
+00:04:21,120 --> 00:04:25,050
+is greater than or equal to 0.5.
+
+99
+00:04:25,050 --> 00:04:29,260
+So here, the rows, as usual, are the outcome -- 1 is Republican,
+
+100
+00:04:29,260 --> 00:04:30,950
+0 is Democrat.
+
+101
+00:04:30,950 --> 00:04:33,730
+And the columns-- TRUE means that we predicted
+
+102
+00:04:33,730 --> 00:04:36,580
+Republican, FALSE means we predicted Democrat.
+
+103
+00:04:36,580 --> 00:04:38,870
+So we see that on the training set,
+
+104
+00:04:38,870 --> 00:04:41,320
+this model with one variable as a prediction
+
+105
+00:04:41,320 --> 00:04:44,550
+makes four mistakes, which is just
+
+106
+00:04:44,550 --> 00:04:48,280
+about the same as our smart baseline model.
+
+107
+00:04:48,280 --> 00:04:51,440
+So now, let's see if we can improve on this performance
+
+108
+00:04:51,440 --> 00:04:53,760
+by adding in another variable.
+
+109
+00:04:53,760 --> 00:04:57,891
+So if we go back up to our correlations here,
+
+110
+00:04:57,891 --> 00:04:59,640
+we're going to be searching, since there's
+
+111
+00:04:59,640 --> 00:05:02,250
+so much multicollinearity, we might be searching
+
+112
+00:05:02,250 --> 00:05:06,020
+for a pair of variables that has a relatively lower correlation
+
+113
+00:05:06,020 --> 00:05:09,900
+with each other, because they might kind of work together
+
+114
+00:05:09,900 --> 00:05:11,970
+to improve the prediction overall
+
+115
+00:05:11,970 --> 00:05:13,250
+of the Republican outcome.
+
+116
+00:05:13,250 --> 00:05:16,020
+If two variables are highly, highly correlated,
+
+117
+00:05:16,020 --> 00:05:19,720
+they're less likely to improve predictions together,
+
+118
+00:05:19,720 --> 00:05:24,240
+since they're so similar in their correlation structure.
+
+119
+00:05:24,240 --> 00:05:27,760
+So it looks like, just looking at this top left four by four
+
+120
+00:05:27,760 --> 00:05:30,920
+matrix, which is the correlations between all
+
+121
+00:05:30,920 --> 00:05:34,260
+the independent variables, basically the least correlated
+
+122
+00:05:34,260 --> 00:05:38,530
+pairs of variables are either Rasmussen and DiffCount,
+
+123
+00:05:38,530 --> 00:05:41,480
+or SurveyUSA and DiffCount.
+
+124
+00:05:41,480 --> 00:05:43,800
+So the idea would be to try out one
+
+125
+00:05:43,800 --> 00:05:46,420
+of these pairs in our two-variable model.
+
+126
+00:05:46,420 --> 00:05:50,690
+So we'll go ahead and try out SurveyUSA and DiffCount
+
+127
+00:05:50,690 --> 00:05:53,520
+together in our second model.
+
+128
+00:05:53,520 --> 00:05:56,670
+So to save ourselves some typing,
+
+129
+00:05:56,670 --> 00:05:58,830
+we can hit up a few times until we
+
+130
+00:05:58,830 --> 00:06:01,740
+get to the model definition for model one.
+
+131
+00:06:01,740 --> 00:06:04,950
+And then we can just change the variables.
+
+132
+00:06:04,950 --> 00:06:11,420
+In this case, we're now using SurveyUSA plus DiffCount.
+
+133
+00:06:11,420 --> 00:06:14,210
+We'll also need to remember to change the name of our model
+
+134
+00:06:14,210 --> 00:06:15,560
+from mod1 to mod2.
+
+135
+00:06:15,560 --> 00:06:18,430
+
+
+136
+00:06:18,430 --> 00:06:20,160
+And now, just like before, we're going
+
+137
+00:06:20,160 --> 00:06:23,190
+to want to compute out our predictions.
+
+138
+00:06:23,190 --> 00:06:29,020
+So we'll say pred2 is equal to the predict of our model 2,
+
+139
+00:06:29,020 --> 00:06:30,927
+again, with type = "response", because we
+
+140
+00:06:30,927 --> 00:06:32,260
+need to get those probabilities.
+
+141
+00:06:32,260 --> 00:06:34,239
+Again, we're not passing in newdata.
+
+142
+00:06:34,239 --> 00:06:35,655
+This is a training set prediction.
+
+143
+00:06:35,655 --> 00:06:38,180
+
+
+144
+00:06:38,180 --> 00:06:42,570
+And finally, we can use the up arrows
+
+145
+00:06:42,570 --> 00:06:45,570
+to see how our second model's predictions are doing
+
+146
+00:06:45,570 --> 00:06:49,890
+at predicting the Republican outcome in the training set.
+
+147
+00:06:49,890 --> 00:06:52,920
+And we can see that we made one less mistake.
+
+148
+00:06:52,920 --> 00:06:55,840
+We made three mistakes instead of four on the training
+
+149
+00:06:55,840 --> 00:06:58,990
+set-- so a little better than the smart baseline
+
+150
+00:06:58,990 --> 00:07:00,477
+but nothing too impressive.
+
+151
+00:07:00,477 --> 00:07:02,310
+And the last thing we're going to want to do
+
+152
+00:07:02,310 --> 00:07:05,380
+is to actually look at the model and see if it makes sense.
+
+153
+00:07:05,380 --> 00:07:10,250
+So we can run summary of our model two.
+
+154
+00:07:10,250 --> 00:07:13,160
+And we can see that there are some things that are pluses.
+
+155
+00:07:13,160 --> 00:07:15,760
+For instance, the AIC has a smaller value,
+
+156
+00:07:15,760 --> 00:07:18,460
+which suggests a stronger model.
+
+157
+00:07:18,460 --> 00:07:22,160
+And the estimates have, again, the sign we would expect.
+
+158
+00:07:22,160 --> 00:07:25,880
+So SurveyUSA and DiffCount both have positive coefficients
+
+159
+00:07:25,880 --> 00:07:27,780
+in predicting if the Republican wins
+
+160
+00:07:27,780 --> 00:07:29,770
+the state, which makes sense.
+
+161
+00:07:29,770 --> 00:07:34,080
+But a weakness of this model is that neither of these variables
+
+162
+00:07:34,080 --> 00:07:37,790
+has a significance of a star or better,
+
+163
+00:07:37,790 --> 00:07:42,400
+which means that they are less significant statistically.
+
+164
+00:07:42,400 --> 00:07:44,800
+So there are definitely some strengths and weaknesses
+
+165
+00:07:44,800 --> 00:07:47,850
+between the two-variable and the one-variable model.
+
+166
+00:07:47,850 --> 00:07:50,610
+We'll go ahead and use the two-variable model
+
+167
+00:07:50,610 --> 00:07:53,890
+when we make our predictions on the testing set.
+
+168
+00:07:53,890 --> 00:07:55,056
+
+

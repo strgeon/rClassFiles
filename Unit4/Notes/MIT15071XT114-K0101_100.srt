@@ -1,0 +1,368 @@
+0
+00:00:00,000 --> 00:00:00,930
+
+
+1
+00:00:00,930 --> 00:00:03,460
+In real estate, there is a famous saying
+
+2
+00:00:03,460 --> 00:00:07,500
+that the most important thing is location, location, location.
+
+3
+00:00:07,500 --> 00:00:10,590
+In this recitation, we will be looking at regression trees,
+
+4
+00:00:10,590 --> 00:00:12,360
+and applying them to data related
+
+5
+00:00:12,360 --> 00:00:16,160
+to house prices and locations.
+
+6
+00:00:16,160 --> 00:00:20,070
+Boston is the capital of the state of Massachusetts, USA.
+
+7
+00:00:20,070 --> 00:00:24,000
+It was first settled in 1630, and in the greater Boston area
+
+8
+00:00:24,000 --> 00:00:26,490
+there are about 5 million people.
+
+9
+00:00:26,490 --> 00:00:28,490
+The area features some of the highest population
+
+10
+00:00:28,490 --> 00:00:29,610
+densities in America.
+
+11
+00:00:29,610 --> 00:00:32,150
+
+
+12
+00:00:32,150 --> 00:00:34,960
+Here is a shot of Boston from above.
+
+13
+00:00:34,960 --> 00:00:38,220
+In the middle of the picture, we have the Charles River.
+
+14
+00:00:38,220 --> 00:00:42,390
+I'm talking to you from my office at MIT.
+
+15
+00:00:42,390 --> 00:00:43,470
+My office is here.
+
+16
+00:00:43,470 --> 00:00:45,540
+This is MIT here.
+
+17
+00:00:45,540 --> 00:00:49,310
+MIT lies in the city of Cambridge,
+
+18
+00:00:49,310 --> 00:00:52,036
+which is north of the river, and south of the river
+
+19
+00:00:52,036 --> 00:00:55,050
+is Boston city, itself.
+
+20
+00:00:55,050 --> 00:00:57,440
+In this recitation, we will be talking about Boston
+
+21
+00:00:57,440 --> 00:00:59,920
+in a sense of the greater Boston area.
+
+22
+00:00:59,920 --> 00:01:02,670
+However, if we look at the housing in Boston right now,
+
+23
+00:01:02,670 --> 00:01:06,730
+we can see that it is very dense.
+
+24
+00:01:06,730 --> 00:01:09,200
+Over the greater Boston area, the nature of the housing
+
+25
+00:01:09,200 --> 00:01:09,896
+varies widely.
+
+26
+00:01:09,896 --> 00:01:12,670
+
+
+27
+00:01:12,670 --> 00:01:15,780
+This data comes from a paper, "Hedonic Housing Prices
+
+28
+00:01:15,780 --> 00:01:17,440
+and the Demand for Clean Air," which
+
+29
+00:01:17,440 --> 00:01:20,420
+has been cited more than 1,000 times.
+
+30
+00:01:20,420 --> 00:01:23,210
+This paper was written on a relationship between house
+
+31
+00:01:23,210 --> 00:01:26,150
+prices and clean air in the late 1970s
+
+32
+00:01:26,150 --> 00:01:29,060
+by David Harrison of Harvard and Daniel Rubinfeld
+
+33
+00:01:29,060 --> 00:01:31,090
+of the University of Michigan.
+
+34
+00:01:31,090 --> 00:01:33,896
+The data set is widely used to evaluate algorithms
+
+35
+00:01:33,896 --> 00:01:35,520
+of a nature we discuss in this class.
+
+36
+00:01:35,520 --> 00:01:38,270
+
+
+37
+00:01:38,270 --> 00:01:40,280
+Now, in the lecture, we mostly
+
+38
+00:01:40,280 --> 00:01:42,740
+discuss classification trees with the output
+
+39
+00:01:42,740 --> 00:01:45,500
+as a factor or a category.
+
+40
+00:01:45,500 --> 00:01:48,210
+Trees can also be used for regression tasks.
+
+41
+00:01:48,210 --> 00:01:49,860
+The output at each leaf of a tree
+
+42
+00:01:49,860 --> 00:01:52,980
+is no longer a category, but a number.
+
+43
+00:01:52,980 --> 00:01:55,830
+Just like classification trees, regression trees can capture
+
+44
+00:01:55,830 --> 00:01:59,660
+nonlinearities that linear regression can't.
+
+45
+00:01:59,660 --> 00:02:01,780
+So what does that mean?
+
+46
+00:02:01,780 --> 00:02:05,780
+Well, with classification trees we report the average outcome
+
+47
+00:02:05,780 --> 00:02:07,430
+at each leaf of our tree.
+
+48
+00:02:07,430 --> 00:02:10,050
+For example, if the outcome is true 15 times,
+
+49
+00:02:10,050 --> 00:02:14,270
+and false 5 times, the value at that leaf of a tree would be
+
+50
+00:02:14,270 --> 00:02:21,660
+15/(15+5)=0.75.
+
+51
+00:02:21,660 --> 00:02:25,390
+Now, if we use the default threshold of 0.5,
+
+52
+00:02:25,390 --> 00:02:31,300
+we would say the value at this leaf is true.
+
+53
+00:02:31,300 --> 00:02:35,000
+With regression trees, we now have continuous variables.
+
+54
+00:02:35,000 --> 00:02:38,090
+So instead of-- we report the average
+
+55
+00:02:38,090 --> 00:02:39,840
+of the values at that leaf.
+
+56
+00:02:39,840 --> 00:02:45,720
+So suppose we had the values 3, 4, and 5
+
+57
+00:02:45,720 --> 00:02:47,840
+at one of the leaves of our trees.
+
+58
+00:02:47,840 --> 00:02:51,030
+Well, we just take the average of these numbers, which is 4,
+
+59
+00:02:51,030 --> 00:02:53,420
+and that is what we report.
+
+60
+00:02:53,420 --> 00:02:57,500
+That might be a bit confusing so let's look at a picture.
+
+61
+00:02:57,500 --> 00:03:01,070
+Here is some fake data that I made up in R.
+
+62
+00:03:01,070 --> 00:03:05,460
+We see x on the x-axis and y on the y-axis.
+
+63
+00:03:05,460 --> 00:03:11,030
+y is our variable we are trying to predict using x.
+
+64
+00:03:11,030 --> 00:03:14,220
+So if we fit a linear regression to this data set,
+
+65
+00:03:14,220 --> 00:03:16,420
+we obtain the following line.
+
+66
+00:03:16,420 --> 00:03:17,800
+As you can see, linear regression
+
+67
+00:03:17,800 --> 00:03:20,560
+does not do very well on this data set.
+
+68
+00:03:20,560 --> 00:03:23,140
+However, we can notice that the data
+
+69
+00:03:23,140 --> 00:03:26,870
+lies in three different groups.
+
+70
+00:03:26,870 --> 00:03:30,530
+If we draw these lines here, we see x is either less than 10,
+
+71
+00:03:30,530 --> 00:03:33,140
+between 10 and 20, or greater then 20,
+
+72
+00:03:33,140 --> 00:03:35,710
+and there is very different behavior in each group.
+
+73
+00:03:35,710 --> 00:03:38,760
+Regression trees can fit that kind of thing exactly.
+
+74
+00:03:38,760 --> 00:03:42,130
+So the splits would be x is less than or equal to 10,
+
+75
+00:03:42,130 --> 00:03:44,300
+take the average of those values.
+
+76
+00:03:44,300 --> 00:03:47,940
+x is between 10 and 20, take the average of those values.
+
+77
+00:03:47,940 --> 00:03:51,750
+x is between 20 and 30, take the average of those values.
+
+78
+00:03:51,750 --> 00:03:54,540
+We see that regression trees can fit some kinds of data
+
+79
+00:03:54,540 --> 00:03:58,250
+very well that linear regression completely fails on.
+
+80
+00:03:58,250 --> 00:04:02,080
+Of course, in reality nothing is ever so nice and simple,
+
+81
+00:04:02,080 --> 00:04:03,830
+but it gives us some idea why we might
+
+82
+00:04:03,830 --> 00:04:07,780
+be interested in regression trees.
+
+83
+00:04:07,780 --> 00:04:10,710
+So in this recitation, we will explore
+
+84
+00:04:10,710 --> 00:04:12,960
+the data set with the aid of trees.
+
+85
+00:04:12,960 --> 00:04:14,550
+We will compare linear regression
+
+86
+00:04:14,550 --> 00:04:16,420
+with regression trees.
+
+87
+00:04:16,420 --> 00:04:19,320
+We will discuss what the cp parameter means that we brought
+
+88
+00:04:19,320 --> 00:04:22,440
+up when we did cross-validation in the lecture,
+
+89
+00:04:22,440 --> 00:04:24,200
+and we will apply cross-validation
+
+90
+00:04:24,200 --> 00:04:26,440
+to regression trees.
+
+91
+00:04:26,440 --> 00:04:27,260
+
+

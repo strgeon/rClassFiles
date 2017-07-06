@@ -1,0 +1,204 @@
+0
+00:00:00,000 --> 00:00:00,730
+
+
+1
+00:00:00,730 --> 00:00:02,960
+In the previous video, we generated
+
+2
+00:00:02,960 --> 00:00:06,030
+a CART tree with three splits, but why
+
+3
+00:00:06,030 --> 00:00:09,980
+not two, or four, or even five?
+
+4
+00:00:09,980 --> 00:00:11,820
+There are different ways to control
+
+5
+00:00:11,820 --> 00:00:14,210
+how many splits are generated.
+
+6
+00:00:14,210 --> 00:00:17,510
+One way is by setting a lower bound for the number of data
+
+7
+00:00:17,510 --> 00:00:19,800
+points in each subset.
+
+8
+00:00:19,800 --> 00:00:23,460
+In R, this is called the minbucket parameter,
+
+9
+00:00:23,460 --> 00:00:25,910
+for the minimum number of observations
+
+10
+00:00:25,910 --> 00:00:28,570
+in each bucket or subset.
+
+11
+00:00:28,570 --> 00:00:32,369
+The smaller minbucket is, the more splits will be generated.
+
+12
+00:00:32,369 --> 00:00:36,880
+But if it's too small, overfitting will occur.
+
+13
+00:00:36,880 --> 00:00:39,210
+This means that CART will fit the training set
+
+14
+00:00:39,210 --> 00:00:41,330
+almost perfectly.
+
+15
+00:00:41,330 --> 00:00:44,440
+But this is bad because then the model will probably not
+
+16
+00:00:44,440 --> 00:00:48,260
+perform well on test set data or new data.
+
+17
+00:00:48,260 --> 00:00:50,850
+On the other hand, if the minbucket parameter
+
+18
+00:00:50,850 --> 00:00:53,900
+is too large, the model will be too simple
+
+19
+00:00:53,900 --> 00:00:56,520
+and the accuracy will be poor.
+
+20
+00:00:56,520 --> 00:00:59,250
+Later in the lecture, we will learn about a nice method
+
+21
+00:00:59,250 --> 00:01:00,885
+for selecting the stopping parameter.
+
+22
+00:01:00,885 --> 00:01:04,000
+
+
+23
+00:01:04,000 --> 00:01:06,240
+In each subset of a CART tree, we
+
+24
+00:01:06,240 --> 00:01:08,530
+have a bucket of observations, which
+
+25
+00:01:08,530 --> 00:01:11,860
+may contain both possible outcomes.
+
+26
+00:01:11,860 --> 00:01:15,190
+In the small example we showed in the previous video,
+
+27
+00:01:15,190 --> 00:01:18,550
+we have classified each subset as either red or gray
+
+28
+00:01:18,550 --> 00:01:21,750
+depending on the majority in that subset.
+
+29
+00:01:21,750 --> 00:01:25,220
+In the Supreme Court case, we'll be classifying observations
+
+30
+00:01:25,220 --> 00:01:28,470
+as either affirm or reverse.
+
+31
+00:01:28,470 --> 00:01:30,960
+Instead of just taking the majority outcome
+
+32
+00:01:30,960 --> 00:01:34,040
+to be the prediction, we can compute the percentage
+
+33
+00:01:34,040 --> 00:01:38,080
+of data in a subset of each type of outcome.
+
+34
+00:01:38,080 --> 00:01:40,690
+As an example, if we have a subset
+
+35
+00:01:40,690 --> 00:01:46,750
+with 10 affirms and two reverses, then 87% of the data
+
+36
+00:01:46,750 --> 00:01:48,650
+is affirm.
+
+37
+00:01:48,650 --> 00:01:51,690
+Then, just like in logistic regression,
+
+38
+00:01:51,690 --> 00:01:55,690
+we can use a threshold value to obtain our prediction.
+
+39
+00:01:55,690 --> 00:01:58,810
+For this example, we would predict affirm
+
+40
+00:01:58,810 --> 00:02:03,340
+with a threshold of 0.5 since the majority is affirm.
+
+41
+00:02:03,340 --> 00:02:06,510
+But if we increase that threshold to 0.9,
+
+42
+00:02:06,510 --> 00:02:08,939
+we would predict reverse for this example.
+
+43
+00:02:08,939 --> 00:02:11,860
+
+
+44
+00:02:11,860 --> 00:02:14,410
+Then by varying the threshold value,
+
+45
+00:02:14,410 --> 00:02:17,730
+we can compute an ROC curve and compute
+
+46
+00:02:17,730 --> 00:02:21,610
+an AUC value to evaluate our model.
+
+47
+00:02:21,610 --> 00:02:24,480
+In the next video, we'll build a CART tree in R
+
+48
+00:02:24,480 --> 00:02:27,390
+to predict the decisions of Justice Stevens
+
+49
+00:02:27,390 --> 00:02:31,335
+and evaluate our model using a ROC curve.
+
+50
+00:02:31,335 --> 00:02:31,834
+
+

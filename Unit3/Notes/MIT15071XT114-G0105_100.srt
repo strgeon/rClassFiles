@@ -1,0 +1,400 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,960
+The topic of this recitation is election forecasting,
+
+2
+00:00:03,960 --> 00:00:05,850
+which is the art and science of predicting
+
+3
+00:00:05,850 --> 00:00:08,690
+the winner of an election before any votes are actually
+
+4
+00:00:08,690 --> 00:00:13,910
+cast using polling data from likely voters.
+
+5
+00:00:13,910 --> 00:00:17,170
+In this recitation, we are going to look at the United States
+
+6
+00:00:17,170 --> 00:00:18,740
+presidential election.
+
+7
+00:00:18,740 --> 00:00:20,170
+In the United States, a president
+
+8
+00:00:20,170 --> 00:00:21,802
+is elected every four years.
+
+9
+00:00:21,802 --> 00:00:24,260
+And while there are a number of different political parties
+
+10
+00:00:24,260 --> 00:00:26,470
+in the US, generally there are only two
+
+11
+00:00:26,470 --> 00:00:28,260
+competitive candidates.
+
+12
+00:00:28,260 --> 00:00:29,720
+There's the Republican candidate,
+
+13
+00:00:29,720 --> 00:00:31,780
+who tends to be more conservative,
+
+14
+00:00:31,780 --> 00:00:34,550
+and the Democratic candidate, who's more liberal.
+
+15
+00:00:34,550 --> 00:00:37,290
+So for instance a recent Republican president
+
+16
+00:00:37,290 --> 00:00:40,575
+was George W. Bush, and a recent Democratic president
+
+17
+00:00:40,575 --> 00:00:43,406
+was Barack Obama.
+
+18
+00:00:43,406 --> 00:00:46,340
+Now while in many countries the leader of the country
+
+19
+00:00:46,340 --> 00:00:49,840
+is elected using the simple candidate who
+
+20
+00:00:49,840 --> 00:00:52,973
+receives the largest number of votes across the entire country
+
+21
+00:00:52,973 --> 00:00:55,540
+is elected, in the United States it's
+
+22
+00:00:55,540 --> 00:00:57,850
+significantly more complicated.
+
+23
+00:00:57,850 --> 00:00:59,860
+There are 50 states in the United States,
+
+24
+00:00:59,860 --> 00:01:02,730
+and each is assigned a number of electoral votes
+
+25
+00:01:02,730 --> 00:01:04,540
+based on its population.
+
+26
+00:01:04,540 --> 00:01:07,170
+So for instance, the most populous state, California,
+
+27
+00:01:07,170 --> 00:01:11,300
+in 2012 had nearly 20 times the number of electoral votes
+
+28
+00:01:11,300 --> 00:01:13,270
+as the least populous states.
+
+29
+00:01:13,270 --> 00:01:14,920
+And these number of electoral votes
+
+30
+00:01:14,920 --> 00:01:16,850
+are reassigned periodically based
+
+31
+00:01:16,850 --> 00:01:19,920
+on changes of populations between states.
+
+32
+00:01:19,920 --> 00:01:23,180
+Within a given state in general, the system
+
+33
+00:01:23,180 --> 00:01:25,960
+is winner take all in the sense that the candidate who receives
+
+34
+00:01:25,960 --> 00:01:29,430
+the most vote in that state gets all of its electoral votes.
+
+35
+00:01:29,430 --> 00:01:31,310
+And then across the entire country,
+
+36
+00:01:31,310 --> 00:01:34,520
+the candidate who receives the most electoral votes
+
+37
+00:01:34,520 --> 00:01:37,920
+wins the entire presidential election.
+
+38
+00:01:37,920 --> 00:01:40,700
+Now while it seems like a somewhat subtle distinction,
+
+39
+00:01:40,700 --> 00:01:44,265
+the electoral college versus the simple popular vote model,
+
+40
+00:01:44,265 --> 00:01:46,600
+it can have very significant consequences
+
+41
+00:01:46,600 --> 00:01:48,400
+on the outcome of the election.
+
+42
+00:01:48,400 --> 00:01:51,500
+As an example, let's look at the 2000 presidential election
+
+43
+00:01:51,500 --> 00:01:54,670
+between George W. Bush and Al Gore.
+
+44
+00:01:54,670 --> 00:01:57,340
+As we can see on the right here, Al Gore
+
+45
+00:01:57,340 --> 00:02:01,520
+received more than 500,000 more votes across the entire country
+
+46
+00:02:01,520 --> 00:02:05,060
+than George W. Bush in terms of the popular vote.
+
+47
+00:02:05,060 --> 00:02:06,820
+But in terms of the electoral vote,
+
+48
+00:02:06,820 --> 00:02:09,009
+because of how those votes were distributed,
+
+49
+00:02:09,009 --> 00:02:11,060
+George Bush actually won the election
+
+50
+00:02:11,060 --> 00:02:16,050
+because he received five more electoral votes than Al Gore.
+
+51
+00:02:16,050 --> 00:02:18,860
+So our goal will be to use polling data that's
+
+52
+00:02:18,860 --> 00:02:21,850
+collected from likely voters before the election
+
+53
+00:02:21,850 --> 00:02:23,960
+to predict the winner in each state,
+
+54
+00:02:23,960 --> 00:02:25,570
+and therefore to enable us to predict
+
+55
+00:02:25,570 --> 00:02:28,190
+the winner of the entire election
+
+56
+00:02:28,190 --> 00:02:30,730
+in the electoral college system.
+
+57
+00:02:30,730 --> 00:02:33,264
+While election prediction has long attracted some attention,
+
+58
+00:02:33,264 --> 00:02:34,680
+there's been a particular interest
+
+59
+00:02:34,680 --> 00:02:37,540
+in the problem for the 2012 presidential election,
+
+60
+00:02:37,540 --> 00:02:39,550
+when then-New York Times columnist Nate
+
+61
+00:02:39,550 --> 00:02:41,810
+Silver took on the task of predicting
+
+62
+00:02:41,810 --> 00:02:45,020
+the winner in each state.
+
+63
+00:02:45,020 --> 00:02:46,830
+To carry out this prediction task,
+
+64
+00:02:46,830 --> 00:02:50,330
+we're going to use some data from RealClearPolitics.com that
+
+65
+00:02:50,330 --> 00:02:52,740
+basically represents polling data that was collected
+
+66
+00:02:52,740 --> 00:02:57,560
+in the months leading up to the 2004, 2008, and 2012 US
+
+67
+00:02:57,560 --> 00:02:59,400
+presidential elections.
+
+68
+00:02:59,400 --> 00:03:01,870
+Each row in the data set represents a state
+
+69
+00:03:01,870 --> 00:03:04,150
+in a particular election year.
+
+70
+00:03:04,150 --> 00:03:06,830
+And the dependent variable, which is called Republican,
+
+71
+00:03:06,830 --> 00:03:08,280
+is a binary outcome.
+
+72
+00:03:08,280 --> 00:03:10,650
+It's 1 if the Republican won that state
+
+73
+00:03:10,650 --> 00:03:12,330
+in that particular election year,
+
+74
+00:03:12,330 --> 00:03:14,830
+and a 0 if a Democrat won.
+
+75
+00:03:14,830 --> 00:03:16,610
+The independent variables, again,
+
+76
+00:03:16,610 --> 00:03:18,960
+are related to polling data in that state.
+
+77
+00:03:18,960 --> 00:03:22,870
+So for instance, the Rasmussen and SurveyUSA variables
+
+78
+00:03:22,870 --> 00:03:24,970
+are related to two major polls that
+
+79
+00:03:24,970 --> 00:03:28,040
+are assigned across many different states in the United
+
+80
+00:03:28,040 --> 00:03:29,140
+States.
+
+81
+00:03:29,140 --> 00:03:31,720
+And it represents the percentage of voters
+
+82
+00:03:31,720 --> 00:03:33,950
+who said they were likely to vote Republican
+
+83
+00:03:33,950 --> 00:03:35,410
+minus the percentage who said they
+
+84
+00:03:35,410 --> 00:03:36,710
+were likely to vote Democrat.
+
+85
+00:03:36,710 --> 00:03:40,520
+So for instance, if the variable SurveyUSA in our data set
+
+86
+00:03:40,520 --> 00:03:44,310
+has value -6, it means that 6% more voters
+
+87
+00:03:44,310 --> 00:03:46,420
+said they were likely to vote Democrat
+
+88
+00:03:46,420 --> 00:03:49,889
+than said they were likely to vote Republican in that state.
+
+89
+00:03:49,889 --> 00:03:51,430
+We have two additional variables that
+
+90
+00:03:51,430 --> 00:03:54,290
+capture polling data from a wider range of polls.
+
+91
+00:03:54,290 --> 00:03:57,420
+Rasmussen and SurveyUSA are definitely not the only polls
+
+92
+00:03:57,420 --> 00:04:00,100
+that are run on a state by state basis.
+
+93
+00:04:00,100 --> 00:04:03,240
+DiffCount counts the number of all the polls leading up
+
+94
+00:04:03,240 --> 00:04:07,000
+to the election that predicted a Republican winner in the state,
+
+95
+00:04:07,000 --> 00:04:10,160
+minus the number of polls that predicted a Democratic winner.
+
+96
+00:04:10,160 --> 00:04:13,420
+And PropR, or proportion Republican,
+
+97
+00:04:13,420 --> 00:04:15,850
+has the proportion of all those polls leading up
+
+98
+00:04:15,850 --> 00:04:20,160
+to the election that predicted a Republican winner.
+
+99
+00:04:20,160 --> 00:04:22,036
+
+

@@ -1,0 +1,228 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:04,070
+This is a story of D2Hawkeye, a medical data mining
+
+2
+00:00:04,070 --> 00:00:09,720
+company located in Waltham, Massachusetts.
+
+3
+00:00:09,720 --> 00:00:14,790
+The company was founded by Chris Kryder, a medical doctor who
+
+4
+00:00:14,790 --> 00:00:17,940
+was an MIT physician in the 1990s.
+
+5
+00:00:17,940 --> 00:00:20,820
+The company was founded in 2001.
+
+6
+00:00:20,820 --> 00:00:26,530
+I have been in the board of this company since 2002.
+
+7
+00:00:26,530 --> 00:00:29,730
+The company combines expert knowledge
+
+8
+00:00:29,730 --> 00:00:34,110
+and databases with analytics to improve quality and course
+
+9
+00:00:34,110 --> 00:00:37,120
+management in health care.
+
+10
+00:00:37,120 --> 00:00:39,670
+The company was located in Waltham, Massachusetts.
+
+11
+00:00:39,670 --> 00:00:46,950
+It grew very fast and was sold to Verisk Analytics in 2009.
+
+12
+00:00:46,950 --> 00:00:52,240
+The overall process that D2Hawkeye uses is as follows.
+
+13
+00:00:52,240 --> 00:00:54,700
+It starts with medical claims that
+
+14
+00:00:54,700 --> 00:01:02,630
+consist of diagnoses, procedures, and drugs.
+
+15
+00:01:02,630 --> 00:01:07,350
+These medical claims are then processed
+
+16
+00:01:07,350 --> 00:01:13,150
+via process of aggregation, cleaning, and normalization.
+
+17
+00:01:13,150 --> 00:01:19,340
+This data then enters secure databases
+
+18
+00:01:19,340 --> 00:01:23,450
+on which predictive models are applied.
+
+19
+00:01:23,450 --> 00:01:27,600
+The output of predictive models are specific reports
+
+20
+00:01:27,600 --> 00:01:31,940
+that give insight to the various questions
+
+21
+00:01:31,940 --> 00:01:34,775
+that D2Hawkeye aspires to answer.
+
+22
+00:01:34,775 --> 00:01:40,790
+
+
+23
+00:01:40,790 --> 00:01:45,330
+The company tries to improve health care case management.
+
+24
+00:01:45,330 --> 00:01:51,440
+Specifically, it tries to identify high-risk patients,
+
+25
+00:01:51,440 --> 00:01:55,410
+work with patients to manage treatment and associated costs,
+
+26
+00:01:55,410 --> 00:01:57,180
+and arrange specialist care.
+
+27
+00:01:57,180 --> 00:02:00,320
+
+
+28
+00:02:00,320 --> 00:02:03,780
+Medical costs, of course, is a serious matter
+
+29
+00:02:03,780 --> 00:02:08,300
+both for the patient as well as the provider.
+
+30
+00:02:08,300 --> 00:02:12,180
+Being able to predict this cost is an important problem
+
+31
+00:02:12,180 --> 00:02:17,170
+that interests both the patients as well as the providers.
+
+32
+00:02:17,170 --> 00:02:21,520
+The overall goal of D2Hawkeye is to improve
+
+33
+00:02:21,520 --> 00:02:26,150
+the quality of cost predictions.
+
+34
+00:02:26,150 --> 00:02:30,230
+D2Hawkeye had many different types of clients.
+
+35
+00:02:30,230 --> 00:02:33,400
+The most important were third party administrators
+
+36
+00:02:33,400 --> 00:02:34,880
+of medical claims.
+
+37
+00:02:34,880 --> 00:02:37,000
+Third party administrators are companies
+
+38
+00:02:37,000 --> 00:02:42,240
+hired by the employer who manage the claims of the employees.
+
+39
+00:02:42,240 --> 00:02:45,320
+Now the type of clients were case management companies,
+
+40
+00:02:45,320 --> 00:02:48,120
+benefits consultants, and health plans.
+
+41
+00:02:48,120 --> 00:02:54,450
+The company grew and by 2009, it analyzed monthly millions
+
+42
+00:02:54,450 --> 00:03:00,040
+of people through the analytic platform it built.
+
+43
+00:03:00,040 --> 00:03:02,830
+This corresponded to thousands of employers
+
+44
+00:03:02,830 --> 00:03:04,050
+that were processed monthly.
+
+45
+00:03:04,050 --> 00:03:09,630
+
+
+46
+00:03:09,630 --> 00:03:12,860
+To analyze the data, the company used
+
+47
+00:03:12,860 --> 00:03:16,440
+what we call a pre-analytics approach.
+
+48
+00:03:16,440 --> 00:03:20,200
+This was based on the human judgment of physicians
+
+49
+00:03:20,200 --> 00:03:24,670
+who manually analyze patient histories and developed
+
+50
+00:03:24,670 --> 00:03:27,620
+medical rules.
+
+51
+00:03:27,620 --> 00:03:32,970
+Of course, this involved human judgment,
+
+52
+00:03:32,970 --> 00:03:35,850
+utilized a limited set of data, it
+
+53
+00:03:35,850 --> 00:03:40,400
+was often costly, and somewhat inefficient.
+
+54
+00:03:40,400 --> 00:03:42,840
+The key question we analyze in this lecture
+
+55
+00:03:42,840 --> 00:03:45,266
+is "Can we use analytics instead?"
+
+56
+00:03:45,266 --> 00:03:45,766
+
+

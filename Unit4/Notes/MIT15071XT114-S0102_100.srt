@@ -1,0 +1,536 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,450
+To predict the outcomes of the Supreme Court,
+
+2
+00:00:03,450 --> 00:00:08,109
+Martin used cases from 1994 through 2001.
+
+3
+00:00:08,109 --> 00:00:11,200
+He chose this period of time because the Supreme Court
+
+4
+00:00:11,200 --> 00:00:14,530
+was composed of the same nine justices that
+
+5
+00:00:14,530 --> 00:00:18,740
+were justices when he made his predictions in 2002.
+
+6
+00:00:18,740 --> 00:00:25,250
+These nine justices were Breyer, Ginsburg, Kennedy, O'Connor,
+
+7
+00:00:25,250 --> 00:00:30,750
+Rehnquist-- who was the Chief Justice-- Scalia, Souter,
+
+8
+00:00:30,750 --> 00:00:33,580
+Stevens, and Thomas.
+
+9
+00:00:33,580 --> 00:00:37,600
+This was a very rare data set, since as I mentioned earlier,
+
+10
+00:00:37,600 --> 00:00:39,540
+this was the longest period of time
+
+11
+00:00:39,540 --> 00:00:44,050
+with the same set of justices in over 180 years.
+
+12
+00:00:44,050 --> 00:00:47,170
+This allowed Martin to use a larger data set
+
+13
+00:00:47,170 --> 00:00:48,670
+then might have been available if he
+
+14
+00:00:48,670 --> 00:00:52,200
+was doing this experiment at a different time.
+
+15
+00:00:52,200 --> 00:00:54,810
+In this lecture, we'll focus on predicting
+
+16
+00:00:54,810 --> 00:00:57,320
+Justice Stevens' decisions.
+
+17
+00:00:57,320 --> 00:00:59,340
+He is generally considered a justice
+
+18
+00:00:59,340 --> 00:01:01,650
+who started out moderate, but became
+
+19
+00:01:01,650 --> 00:01:04,840
+more liberal during his time on the Supreme Court--
+
+20
+00:01:04,840 --> 00:01:07,555
+although, he's a self-proclaimed conservative.
+
+21
+00:01:07,555 --> 00:01:10,560
+
+
+22
+00:01:10,560 --> 00:01:13,160
+In this problem, our dependent variable
+
+23
+00:01:13,160 --> 00:01:15,130
+is whether or not Justice Stevens
+
+24
+00:01:15,130 --> 00:01:18,460
+voted to reverse the lower court decision.
+
+25
+00:01:18,460 --> 00:01:22,630
+This is a binary variable taking value 1 if Justice Stevens
+
+26
+00:01:22,630 --> 00:01:26,820
+decided to reverse or overturn the lower court decision,
+
+27
+00:01:26,820 --> 00:01:29,780
+and taking value 0 if Justice Stevens voted
+
+28
+00:01:29,780 --> 00:01:33,730
+to affirm or maintain the lower court decision.
+
+29
+00:01:33,730 --> 00:01:36,900
+Our independent variables are six different properties
+
+30
+00:01:36,900 --> 00:01:38,710
+of the case.
+
+31
+00:01:38,710 --> 00:01:42,330
+The circuit court of origin is the circuit
+
+32
+00:01:42,330 --> 00:01:45,150
+or lower court where the case came from.
+
+33
+00:01:45,150 --> 00:01:48,950
+There are 13 different circuit courts in the United States.
+
+34
+00:01:48,950 --> 00:01:51,010
+The 1st through 11th and Washington,
+
+35
+00:01:51,010 --> 00:01:54,060
+DC courts are defined by region.
+
+36
+00:01:54,060 --> 00:01:56,590
+And the federal court is defined by the subject
+
+37
+00:01:56,590 --> 00:01:58,980
+matter of the case.
+
+38
+00:01:58,980 --> 00:02:01,790
+The issue area of the case gives each case
+
+39
+00:02:01,790 --> 00:02:06,610
+a category, like civil rights or federal taxation.
+
+40
+00:02:06,610 --> 00:02:09,720
+The type of petitioner and type of respondent
+
+41
+00:02:09,720 --> 00:02:12,180
+define two parties in the case.
+
+42
+00:02:12,180 --> 00:02:16,110
+Some examples are the United States, an employer,
+
+43
+00:02:16,110 --> 00:02:18,530
+or an employee.
+
+44
+00:02:18,530 --> 00:02:22,440
+The ideological direction of the lower court decision
+
+45
+00:02:22,440 --> 00:02:24,130
+describes whether the lower court
+
+46
+00:02:24,130 --> 00:02:26,830
+made what was considered a liberal
+
+47
+00:02:26,830 --> 00:02:30,250
+or a conservative decision.
+
+48
+00:02:30,250 --> 00:02:32,900
+The last variable indicates whether or not
+
+49
+00:02:32,900 --> 00:02:35,890
+the petitioner argued that a law or practice was
+
+50
+00:02:35,890 --> 00:02:38,240
+unconstitutional.
+
+51
+00:02:38,240 --> 00:02:41,160
+To collect this data, Martin and his colleagues
+
+52
+00:02:41,160 --> 00:02:44,890
+read through all of the cases and coded the information.
+
+53
+00:02:44,890 --> 00:02:48,020
+Some of it, like the circuit court, is straightforward.
+
+54
+00:02:48,020 --> 00:02:50,870
+But other information required a judgment call,
+
+55
+00:02:50,870 --> 00:02:53,440
+like the ideological direction of the lower court.
+
+56
+00:02:53,440 --> 00:02:56,740
+
+
+57
+00:02:56,740 --> 00:02:59,400
+Now that we have our data and variables,
+
+58
+00:02:59,400 --> 00:03:03,730
+we are ready to predict the decisions of Justice Stevens.
+
+59
+00:03:03,730 --> 00:03:06,010
+We can use logistic regression,
+
+60
+00:03:06,010 --> 00:03:09,590
+and we get a model where some of the most significant variables
+
+61
+00:03:09,590 --> 00:03:13,080
+are: whether or not the case is from the 2nd circuit court,
+
+62
+00:03:13,080 --> 00:03:16,750
+with a coefficient of 1.66;
+
+63
+00:03:16,750 --> 00:03:19,770
+whether or not the case is from the 4th circuit court,
+
+64
+00:03:19,770 --> 00:03:23,600
+with a coefficient of 2.82;
+
+65
+00:03:23,600 --> 00:03:25,570
+and whether or not the lower court decision
+
+66
+00:03:25,570 --> 00:03:30,900
+was liberal, with a coefficient of negative 1.22.
+
+67
+00:03:30,900 --> 00:03:32,920
+While this tells us that the case being
+
+68
+00:03:32,920 --> 00:03:34,740
+from the 2nd or 4th circuit courts
+
+69
+00:03:34,740 --> 00:03:38,200
+is predictive of Justice Stevens reversing the case,
+
+70
+00:03:38,200 --> 00:03:40,850
+and the lower court decision being liberal
+
+71
+00:03:40,850 --> 00:03:44,580
+is predictive of Justice Stevens affirming the case,
+
+72
+00:03:44,580 --> 00:03:46,800
+it's difficult to understand which factors
+
+73
+00:03:46,800 --> 00:03:48,950
+are more important due to things like the scales
+
+74
+00:03:48,950 --> 00:03:51,550
+of the variables, and the possibility
+
+75
+00:03:51,550 --> 00:03:53,670
+of multicollinearity.
+
+76
+00:03:53,670 --> 00:03:55,880
+It's also difficult to quickly evaluate
+
+77
+00:03:55,880 --> 00:03:59,880
+what the prediction would be for a new case.
+
+78
+00:03:59,880 --> 00:04:02,240
+So instead of logistic regression,
+
+79
+00:04:02,240 --> 00:04:04,270
+Martin and his colleagues used a method
+
+80
+00:04:04,270 --> 00:04:08,250
+called classification and regression trees, or CART.
+
+81
+00:04:08,250 --> 00:04:10,770
+This method builds what is called a tree
+
+82
+00:04:10,770 --> 00:04:14,600
+by splitting on the values of the independent variables.
+
+83
+00:04:14,600 --> 00:04:17,970
+To predict the outcome for a new observation or case,
+
+84
+00:04:17,970 --> 00:04:21,110
+you can follow the splits in the tree and at the end,
+
+85
+00:04:21,110 --> 00:04:22,980
+you predict the most frequent outcome
+
+86
+00:04:22,980 --> 00:04:26,790
+in the training set that followed the same path.
+
+87
+00:04:26,790 --> 00:04:29,690
+Some advantages of CART are that it does not
+
+88
+00:04:29,690 --> 00:04:32,720
+assume a linear model, like logistic regression
+
+89
+00:04:32,720 --> 00:04:37,370
+or linear regression, and it's a very interpretable model.
+
+90
+00:04:37,370 --> 00:04:40,580
+Let's look at an example.
+
+91
+00:04:40,580 --> 00:04:44,700
+This plot shows sample data for two independent variables, x
+
+92
+00:04:44,700 --> 00:04:47,680
+and y, and each data point is colored
+
+93
+00:04:47,680 --> 00:04:51,700
+by the outcome variable, red or gray.
+
+94
+00:04:51,700 --> 00:04:55,100
+CART tries to split this data into subsets
+
+95
+00:04:55,100 --> 00:05:00,700
+so that each subset is as pure or homogeneous as possible.
+
+96
+00:05:00,700 --> 00:05:05,840
+The first three splits that CART would create are shown here.
+
+97
+00:05:05,840 --> 00:05:09,100
+Then the standard prediction made by a CART model
+
+98
+00:05:09,100 --> 00:05:12,040
+is just the majority in each subset.
+
+99
+00:05:12,040 --> 00:05:16,640
+If a new observation fell into one of these two subsets, then
+
+100
+00:05:16,640 --> 00:05:19,010
+we would predict red, since the majority
+
+101
+00:05:19,010 --> 00:05:23,070
+of the observations in those subsets are red.
+
+102
+00:05:23,070 --> 00:05:25,130
+However, if a new observation fell
+
+103
+00:05:25,130 --> 00:05:27,920
+into one of these two subsets, we
+
+104
+00:05:27,920 --> 00:05:31,270
+would predict gray, since the majority of the observations
+
+105
+00:05:31,270 --> 00:05:33,130
+in those two subsets are gray.
+
+106
+00:05:33,130 --> 00:05:36,480
+
+
+107
+00:05:36,480 --> 00:05:40,780
+A CART model is represented by what we call a tree.
+
+108
+00:05:40,780 --> 00:05:42,890
+The tree for the splits we just generated
+
+109
+00:05:42,890 --> 00:05:45,090
+is shown on the right.
+
+110
+00:05:45,090 --> 00:05:50,100
+The first split tests whether the variable x is less than 60.
+
+111
+00:05:50,100 --> 00:05:53,765
+If yes, the model says to predict red, and if no,
+
+112
+00:05:53,765 --> 00:05:56,660
+the model moves on to the next split.
+
+113
+00:05:56,660 --> 00:05:59,260
+Then, the second split checks whether or not
+
+114
+00:05:59,260 --> 00:06:02,300
+the variable y is less than 20.
+
+115
+00:06:02,300 --> 00:06:05,440
+If no, the model says to predict gray,
+
+116
+00:06:05,440 --> 00:06:09,430
+but if yes, the model moves on to the next split.
+
+117
+00:06:09,430 --> 00:06:11,500
+The third split checks whether or not
+
+118
+00:06:11,500 --> 00:06:14,770
+the variable x is less than 85.
+
+119
+00:06:14,770 --> 00:06:18,590
+If yes, then the model says to predict red, and if no,
+
+120
+00:06:18,590 --> 00:06:21,485
+the model says to predict gray.
+
+121
+00:06:21,485 --> 00:06:22,860
+There are a couple things to keep
+
+122
+00:06:22,860 --> 00:06:25,300
+in mind when reading trees.
+
+123
+00:06:25,300 --> 00:06:28,300
+In this tree, and for the trees we'll generate in R,
+
+124
+00:06:28,300 --> 00:06:32,680
+a yes response is always to the left and a no response
+
+125
+00:06:32,680 --> 00:06:34,840
+is always to the right.
+
+126
+00:06:34,840 --> 00:06:38,360
+Also, make sure you always start at the top of the tree.
+
+127
+00:06:38,360 --> 00:06:41,390
+The x less than 85 split only counts
+
+128
+00:06:41,390 --> 00:06:46,060
+for observations for which x is greater than 60
+
+129
+00:06:46,060 --> 00:06:49,720
+and y is less than 20.
+
+130
+00:06:49,720 --> 00:06:52,070
+In the next video, we'll discuss how
+
+131
+00:06:52,070 --> 00:06:54,800
+CART decides how many splits to generate
+
+132
+00:06:54,800 --> 00:06:58,120
+and how the final predictions are made.
+
+133
+00:06:58,120 --> 00:06:58,794
+
+

@@ -1,0 +1,576 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,720
+In this video, we'll build a CART model
+
+2
+00:00:02,720 --> 00:00:05,010
+to predict healthcare cost.
+
+3
+00:00:05,010 --> 00:00:10,040
+First, let's make sure the packages rpart and rpart.plot
+
+4
+00:00:10,040 --> 00:00:12,340
+are loaded with the library function.
+
+5
+00:00:12,340 --> 00:00:15,440
+
+
+6
+00:00:15,440 --> 00:00:17,370
+You should have already installed them
+
+7
+00:00:17,370 --> 00:00:20,380
+in the previous lecture on predicting Supreme Court
+
+8
+00:00:20,380 --> 00:00:20,880
+decisions.
+
+9
+00:00:20,880 --> 00:00:25,020
+
+
+10
+00:00:25,020 --> 00:00:27,240
+Now, let's build our CART model.
+
+11
+00:00:27,240 --> 00:00:31,200
+We'll call it ClaimsTree.
+
+12
+00:00:31,200 --> 00:00:37,580
+And we'll use the rpart function to predict bucket2009,
+
+13
+00:00:37,580 --> 00:00:50,550
+using as independent variables: age, arthritis, alzheimers,
+
+14
+00:00:50,550 --> 00:01:09,920
+cancer, copd, depression, diabetes, heart.failure, ihd,
+
+15
+00:01:09,920 --> 00:01:19,650
+kidney, osteoporosis, and stroke.
+
+16
+00:01:19,650 --> 00:01:29,690
+We'll also use bucket2008 and reimbursement2008.
+
+17
+00:01:29,690 --> 00:01:33,925
+The data set we'll use to build our model is ClaimsTrain.
+
+18
+00:01:33,925 --> 00:01:39,440
+
+
+19
+00:01:39,440 --> 00:01:45,400
+And then we'll add the arguments, method = "class",
+
+20
+00:01:45,400 --> 00:01:55,370
+since we have a classification problem here, and cp = 0.00005.
+
+21
+00:01:55,370 --> 00:01:58,380
+Note that even though we have a multi-class classification
+
+22
+00:01:58,380 --> 00:02:02,270
+problem here, we build our tree in the same way
+
+23
+00:02:02,270 --> 00:02:06,010
+as a binary classification problem.
+
+24
+00:02:06,010 --> 00:02:08,320
+So go ahead and hit Enter.
+
+25
+00:02:08,320 --> 00:02:11,490
+The cp value we're using here was
+
+26
+00:02:11,490 --> 00:02:13,500
+selected through cross-validation
+
+27
+00:02:13,500 --> 00:02:15,440
+on the training set.
+
+28
+00:02:15,440 --> 00:02:18,170
+We won't perform the cross-validation here,
+
+29
+00:02:18,170 --> 00:02:21,020
+because it takes a significant amount of time
+
+30
+00:02:21,020 --> 00:02:23,730
+on a data set of this size.
+
+31
+00:02:23,730 --> 00:02:29,390
+Remember that we have almost 275,000 observations
+
+32
+00:02:29,390 --> 00:02:31,510
+in our training set.
+
+33
+00:02:31,510 --> 00:02:33,760
+But keep in mind that the R commands
+
+34
+00:02:33,760 --> 00:02:38,070
+needed for cross-validation here are the same as those used
+
+35
+00:02:38,070 --> 00:02:40,870
+in the previous lecture on predicting Supreme Court
+
+36
+00:02:40,870 --> 00:02:42,780
+decisions.
+
+37
+00:02:42,780 --> 00:02:44,850
+So now that our model's done, let's
+
+38
+00:02:44,850 --> 00:02:47,860
+take a look at our tree with the prp function.
+
+39
+00:02:47,860 --> 00:02:53,510
+
+
+40
+00:02:53,510 --> 00:02:55,670
+It might take a while to load, because we
+
+41
+00:02:55,670 --> 00:02:57,930
+have a huge tree here.
+
+42
+00:02:57,930 --> 00:03:00,730
+This makes sense for a few reasons.
+
+43
+00:03:00,730 --> 00:03:03,740
+One is the large number of observations in our training
+
+44
+00:03:03,740 --> 00:03:04,980
+set.
+
+45
+00:03:04,980 --> 00:03:07,970
+Another is that we have a five-class classification
+
+46
+00:03:07,970 --> 00:03:10,340
+problem, so the classification is
+
+47
+00:03:10,340 --> 00:03:13,840
+more complex than a binary classification case,
+
+48
+00:03:13,840 --> 00:03:16,680
+like the one we saw in the previous lecture.
+
+49
+00:03:16,680 --> 00:03:21,530
+The trees used by D2Hawkeye were also very large CART trees.
+
+50
+00:03:21,530 --> 00:03:24,290
+While this hurts the interpretability of the model,
+
+51
+00:03:24,290 --> 00:03:27,850
+it's still possible to describe each of the buckets of the tree
+
+52
+00:03:27,850 --> 00:03:30,260
+according to the splits.
+
+53
+00:03:30,260 --> 00:03:33,780
+So now, let's make predictions on the test set.
+
+54
+00:03:33,780 --> 00:03:41,080
+So go back to your R console, and we'll call our predictions
+
+55
+00:03:41,080 --> 00:03:48,440
+PredictTest, where we'll use the predict function for our model
+
+56
+00:03:48,440 --> 00:03:53,865
+ClaimsTree, and our newdata is ClaimsTest.
+
+57
+00:03:53,865 --> 00:03:58,680
+
+
+58
+00:03:58,680 --> 00:04:01,310
+And we want to add type = "class"
+
+59
+00:04:01,310 --> 00:04:02,750
+to get class predictions.
+
+60
+00:04:02,750 --> 00:04:05,270
+
+
+61
+00:04:05,270 --> 00:04:07,490
+And we can make our classification matrix
+
+62
+00:04:07,490 --> 00:04:10,360
+on the test set to compute the accuracy.
+
+63
+00:04:10,360 --> 00:04:14,620
+So we'll use the table function, where the actual outcomes are
+
+64
+00:04:14,620 --> 00:04:21,814
+ClaimsTest$bucket2009, and our predictions are PredictTest.
+
+65
+00:04:21,814 --> 00:04:25,100
+
+
+66
+00:04:25,100 --> 00:04:27,060
+So to compute the accuracy, we need
+
+67
+00:04:27,060 --> 00:04:29,350
+to add up the numbers on the diagonal
+
+68
+00:04:29,350 --> 00:04:32,600
+and divide by the total number of observations in our test
+
+69
+00:04:32,600 --> 00:04:33,790
+set.
+
+70
+00:04:33,790 --> 00:04:50,410
+So we have 114141 + 16102 + 118 + 201 + 0.
+
+71
+00:04:50,410 --> 00:04:54,365
+And we'll divide by the number of rows in ClaimsTest.
+
+72
+00:04:54,365 --> 00:04:57,220
+
+
+73
+00:04:57,220 --> 00:05:02,430
+So the accuracy of our model is 0.713.
+
+74
+00:05:02,430 --> 00:05:05,420
+For the penalty error, we can use our penalty matrix
+
+75
+00:05:05,420 --> 00:05:07,670
+like we did in the previous video.
+
+76
+00:05:07,670 --> 00:05:11,440
+So scroll up to the classification matrix command
+
+77
+00:05:11,440 --> 00:05:18,560
+and surround the table function by the as.matrix function,
+
+78
+00:05:18,560 --> 00:05:21,375
+and then we'll multiply by PenaltyMatrix.
+
+79
+00:05:21,375 --> 00:05:26,090
+
+
+80
+00:05:26,090 --> 00:05:30,010
+So remember that this takes each entry in our classification
+
+81
+00:05:30,010 --> 00:05:33,770
+matrix and multiplies it by the corresponding number
+
+82
+00:05:33,770 --> 00:05:36,310
+in the penalty matrix.
+
+83
+00:05:36,310 --> 00:05:38,190
+So now we just need to add up all
+
+84
+00:05:38,190 --> 00:05:43,800
+of the numbers in this matrix by surrounding it by the sum
+
+85
+00:05:43,800 --> 00:05:47,840
+function and then dividing by the total number
+
+86
+00:05:47,840 --> 00:05:50,935
+of observations in our test set, or nrow(ClaimsTest).
+
+87
+00:05:50,935 --> 00:05:55,700
+
+
+88
+00:05:55,700 --> 00:05:59,570
+So our penalty error is 0.758.
+
+89
+00:05:59,570 --> 00:06:02,400
+In the previous video, we saw that our baseline method
+
+90
+00:06:02,400 --> 00:06:08,330
+had an accuracy of 68% and a penalty error of 0.74.
+
+91
+00:06:08,330 --> 00:06:10,510
+So while we increased the accuracy,
+
+92
+00:06:10,510 --> 00:06:12,770
+the penalty error also went up.
+
+93
+00:06:12,770 --> 00:06:14,100
+Why?
+
+94
+00:06:14,100 --> 00:06:18,870
+By default, rpart will try to maximize the overall accuracy,
+
+95
+00:06:18,870 --> 00:06:23,180
+and every type of error is seen as having a penalty of one.
+
+96
+00:06:23,180 --> 00:06:27,360
+Our CART model predicts 3, 4, and 5 so rarely
+
+97
+00:06:27,360 --> 00:06:31,450
+because there are very few observations in these classes.
+
+98
+00:06:31,450 --> 00:06:33,530
+So we don't really expect this model
+
+99
+00:06:33,530 --> 00:06:37,530
+to do better on the penalty error than the baseline method.
+
+100
+00:06:37,530 --> 00:06:39,640
+So how can we fix this?
+
+101
+00:06:39,640 --> 00:06:42,250
+The rpart function allows us to specify
+
+102
+00:06:42,250 --> 00:06:44,500
+a parameter called loss.
+
+103
+00:06:44,500 --> 00:06:46,330
+This is the penalty matrix we want
+
+104
+00:06:46,330 --> 00:06:48,650
+to use when building our model.
+
+105
+00:06:48,650 --> 00:06:52,930
+So let's scroll back up to where we built our CART model.
+
+106
+00:06:52,930 --> 00:06:55,140
+At the end of the rpart function,
+
+107
+00:06:55,140 --> 00:06:59,805
+we'll add the argument parms = list(loss=PenaltyMatrix).
+
+108
+00:06:59,805 --> 00:07:09,120
+
+
+109
+00:07:09,120 --> 00:07:12,470
+This is the name of the penalty matrix we created.
+
+110
+00:07:12,470 --> 00:07:17,150
+Close the parentheses and hit Enter.
+
+111
+00:07:17,150 --> 00:07:19,960
+So while our model is being built,
+
+112
+00:07:19,960 --> 00:07:23,270
+let's think about what we expect to happen.
+
+113
+00:07:23,270 --> 00:07:26,000
+If the rpart function knows that we'll
+
+114
+00:07:26,000 --> 00:07:29,070
+be giving a higher penalty to some types of errors
+
+115
+00:07:29,070 --> 00:07:32,490
+over others, it might choose different splits
+
+116
+00:07:32,490 --> 00:07:34,780
+when building the model to minimize
+
+117
+00:07:34,780 --> 00:07:37,270
+the worst types of errors.
+
+118
+00:07:37,270 --> 00:07:40,160
+We'll probably get a lower overall accuracy
+
+119
+00:07:40,160 --> 00:07:41,850
+with this new model.
+
+120
+00:07:41,850 --> 00:07:45,060
+But hopefully, the penalty error will be much lower too.
+
+121
+00:07:45,060 --> 00:07:49,850
+
+
+122
+00:07:49,850 --> 00:07:53,380
+So now that our model is done, let's regenerate our test
+
+123
+00:07:53,380 --> 00:07:58,090
+set predictions by scrolling up to where we created PredictTest
+
+124
+00:07:58,090 --> 00:08:02,330
+and hitting Enter, and then recreating our classification
+
+125
+00:08:02,330 --> 00:08:06,200
+matrix by scrolling up to the table function
+
+126
+00:08:06,200 --> 00:08:09,910
+and hitting Enter again.
+
+127
+00:08:09,910 --> 00:08:19,250
+Now let's add up the numbers on the diagonal, 94310 + 18942
+
+128
+00:08:19,250 --> 00:08:31,070
++ 4692 + 636 + 2, and divide by the number of rows
+
+129
+00:08:31,070 --> 00:08:31,835
+in ClaimsTest.
+
+130
+00:08:31,835 --> 00:08:34,870
+
+
+131
+00:08:34,870 --> 00:08:36,390
+And hit Enter.
+
+132
+00:08:36,390 --> 00:08:40,620
+So the accuracy of this model is 0.647.
+
+133
+00:08:40,620 --> 00:08:45,080
+And we can scroll up and compute the penalty error here
+
+134
+00:08:45,080 --> 00:08:49,570
+by going back to the sum command and hitting Enter.
+
+135
+00:08:49,570 --> 00:08:53,890
+So the penalty error of our new model is 0.642.
+
+136
+00:08:53,890 --> 00:08:57,170
+Our accuracy is now lower than the baseline method,
+
+137
+00:08:57,170 --> 00:09:00,700
+but our penalty error is also much lower.
+
+138
+00:09:00,700 --> 00:09:04,060
+Note that we have significantly fewer independent variables
+
+139
+00:09:04,060 --> 00:09:05,970
+than D2Hawkeye had.
+
+140
+00:09:05,970 --> 00:09:08,830
+If we had the hundreds of codes and risk factors
+
+141
+00:09:08,830 --> 00:09:13,230
+available to D2Hawkeye, we would hopefully do even better.
+
+142
+00:09:13,230 --> 00:09:16,550
+In the next video, we'll discuss the accuracy of the models
+
+143
+00:09:16,550 --> 00:09:21,720
+used by D2Hawkeye and how analytics can provide an edge.
+

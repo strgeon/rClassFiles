@@ -1,0 +1,440 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,200
+So can a CART model actually predict Supreme Court case
+
+2
+00:00:04,200 --> 00:00:07,220
+outcomes better than a group of experts?
+
+3
+00:00:07,220 --> 00:00:11,550
+Martin and his colleagues used 628 previous Supreme Court
+
+4
+00:00:11,550 --> 00:00:16,790
+cases between 1994 and 2001 to build their model.
+
+5
+00:00:16,790 --> 00:00:19,470
+They made predictions for the 68 cases
+
+6
+00:00:19,470 --> 00:00:22,840
+that would be decided in October, 2002,
+
+7
+00:00:22,840 --> 00:00:25,310
+before the term started.
+
+8
+00:00:25,310 --> 00:00:28,340
+Their model had two stages of CART trees.
+
+9
+00:00:28,340 --> 00:00:31,160
+The first stage involved making predictions
+
+10
+00:00:31,160 --> 00:00:32,900
+using two CART trees.
+
+11
+00:00:32,900 --> 00:00:36,420
+One to predict a unanimous liberal decision and one
+
+12
+00:00:36,420 --> 00:00:39,700
+to predict a unanimous conservative decision.
+
+13
+00:00:39,700 --> 00:00:44,060
+If the trees gave conflicting responses or both predicted no,
+
+14
+00:00:44,060 --> 00:00:46,600
+then they moved on to the next stage.
+
+15
+00:00:46,600 --> 00:00:50,220
+It turns out that about 50% of Supreme Court cases
+
+16
+00:00:50,220 --> 00:00:52,550
+result in a unanimous decision,
+
+17
+00:00:52,550 --> 00:00:56,970
+so this was a nice first step to detect the easier cases.
+
+18
+00:00:56,970 --> 00:00:59,600
+The second stage consisted of predicting
+
+19
+00:00:59,600 --> 00:01:02,760
+the decision of each individual justice,
+
+20
+00:01:02,760 --> 00:01:06,340
+and then use the majority decision of all nine justices
+
+21
+00:01:06,340 --> 00:01:10,180
+as a final prediction for the case.
+
+22
+00:01:10,180 --> 00:01:12,610
+In this lecture, we constructed the CART tree
+
+23
+00:01:12,610 --> 00:01:14,540
+for Justice Stevens.
+
+24
+00:01:14,540 --> 00:01:18,320
+Here's a different tree, this one for Justice O'Connor.
+
+25
+00:01:18,320 --> 00:01:20,170
+The first split is whether or not
+
+26
+00:01:20,170 --> 00:01:22,390
+the lower court decision is liberal.
+
+27
+00:01:22,390 --> 00:01:26,250
+If yes, then we predict that she will reverse the case.
+
+28
+00:01:26,250 --> 00:01:29,360
+This makes sense because Justice O'Connor is generally
+
+29
+00:01:29,360 --> 00:01:32,170
+viewed as a conservative judge.
+
+30
+00:01:32,170 --> 00:01:35,880
+On the other hand, if the lower court decision is conservative,
+
+31
+00:01:35,880 --> 00:01:39,010
+we check for the circuit court of origin.
+
+32
+00:01:39,010 --> 00:01:42,440
+If it's the second, third, DC, or federal court,
+
+33
+00:01:42,440 --> 00:01:45,660
+we predict that she will affirm the case.
+
+34
+00:01:45,660 --> 00:01:49,730
+If it's not one of these courts, we move on to the next split.
+
+35
+00:01:49,730 --> 00:01:52,170
+The remaining two splits are for the respondent
+
+36
+00:01:52,170 --> 00:01:55,520
+and the primary issue.
+
+37
+00:01:55,520 --> 00:01:59,100
+Here's another tree, this one for Justice Souter.
+
+38
+00:01:59,100 --> 00:02:01,830
+This shows an unusual property of the CART trees
+
+39
+00:02:01,830 --> 00:02:04,510
+that Martin and his colleagues developed.
+
+40
+00:02:04,510 --> 00:02:06,970
+They use predictions for some trees
+
+41
+00:02:06,970 --> 00:02:10,389
+as independent variables for other trees.
+
+42
+00:02:10,389 --> 00:02:13,120
+In this tree, the first split is whether or not
+
+43
+00:02:13,120 --> 00:02:16,860
+Justice Ginsburg's predicted decision is liberal.
+
+44
+00:02:16,860 --> 00:02:21,190
+So we have to run Justice Ginsburg's CART tree first,
+
+45
+00:02:21,190 --> 00:02:23,080
+see what the prediction is,
+
+46
+00:02:23,080 --> 00:02:26,930
+and then use that as input for Justice Souter's tree.
+
+47
+00:02:26,930 --> 00:02:30,690
+If Justice Ginsburg's predicted decision is liberal
+
+48
+00:02:30,690 --> 00:02:33,330
+and the lower court decision is liberal,
+
+49
+00:02:33,330 --> 00:02:37,610
+then we predict that Justice Souter will affirm the case.
+
+50
+00:02:37,610 --> 00:02:40,610
+But if the lower court decision is conservative,
+
+51
+00:02:40,610 --> 00:02:44,430
+then we predict that Justice Souter will reverse the case.
+
+52
+00:02:44,430 --> 00:02:47,530
+On the other side of the tree, if Justice Ginsburg's
+
+53
+00:02:47,530 --> 00:02:50,020
+predicted decision is conservative,
+
+54
+00:02:50,020 --> 00:02:52,660
+but the lower court decision is liberal,
+
+55
+00:02:52,660 --> 00:02:56,390
+then we predict that Justice Souter will reverse the case.
+
+56
+00:02:56,390 --> 00:02:58,770
+But if the lower court decision is conservative,
+
+57
+00:02:58,770 --> 00:03:02,520
+then we predict that Justice Souter will affirm the case.
+
+58
+00:03:02,520 --> 00:03:05,650
+In summary, if we predict that Justice Ginsburg will
+
+59
+00:03:05,650 --> 00:03:09,460
+make a liberal decision, then Justice Souter
+
+60
+00:03:09,460 --> 00:03:12,620
+will probably make a liberal decision too.
+
+61
+00:03:12,620 --> 00:03:14,930
+But if we predict that Justice Ginsburg will
+
+62
+00:03:14,930 --> 00:03:17,320
+make a conservative decision, then we
+
+63
+00:03:17,320 --> 00:03:19,270
+predict that Justice Souter will probably
+
+64
+00:03:19,270 --> 00:03:21,330
+make a conservative decision too.
+
+65
+00:03:21,330 --> 00:03:24,720
+
+
+66
+00:03:24,720 --> 00:03:29,520
+Martin and his colleagues also recruited 83 legal experts,
+
+67
+00:03:29,520 --> 00:03:33,210
+71 academics, and 12 attorneys.
+
+68
+00:03:33,210 --> 00:03:37,430
+38 had previously clerked for a Supreme Court Justice,
+
+69
+00:03:37,430 --> 00:03:40,660
+33 were chaired professors, and five
+
+70
+00:03:40,660 --> 00:03:43,340
+were current or former law school deans.
+
+71
+00:03:43,340 --> 00:03:46,840
+So this was really a dream team of experts.
+
+72
+00:03:46,840 --> 00:03:48,910
+Additionally, the experts were only
+
+73
+00:03:48,910 --> 00:03:52,540
+asked to predict within their area of expertise.
+
+74
+00:03:52,540 --> 00:03:55,470
+So not all experts predicted all cases,
+
+75
+00:03:55,470 --> 00:03:58,010
+but there was more than one expert making predictions
+
+76
+00:03:58,010 --> 00:04:00,220
+for each case.
+
+77
+00:04:00,220 --> 00:04:02,460
+When making their predictions, the experts
+
+78
+00:04:02,460 --> 00:04:05,620
+were allowed to consider any source of information,
+
+79
+00:04:05,620 --> 00:04:07,430
+but they were not allowed to communicate
+
+80
+00:04:07,430 --> 00:04:11,140
+with each other regarding the predictions.
+
+81
+00:04:11,140 --> 00:04:14,580
+For the 68 cases in October 2002,
+
+82
+00:04:14,580 --> 00:04:16,890
+the predictions were made, and at the end of the month
+
+83
+00:04:16,890 --> 00:04:19,010
+the results were computed.
+
+84
+00:04:19,010 --> 00:04:20,899
+For predicting the overall decision that
+
+85
+00:04:20,899 --> 00:04:23,430
+was made by the Supreme Court, the models
+
+86
+00:04:23,430 --> 00:04:27,240
+had an accuracy of 75%, while the experts only
+
+87
+00:04:27,240 --> 00:04:29,980
+had an accuracy of 59%.
+
+88
+00:04:29,980 --> 00:04:33,120
+So the models had a significant edge over the experts
+
+89
+00:04:33,120 --> 00:04:36,450
+in predicting the overall case outcomes.
+
+90
+00:04:36,450 --> 00:04:37,920
+However, when the predictions were
+
+91
+00:04:37,920 --> 00:04:41,820
+run for individual justices, the model and the experts
+
+92
+00:04:41,820 --> 00:04:43,950
+performed very similarly.
+
+93
+00:04:43,950 --> 00:04:46,700
+For some justices, the model performed better,
+
+94
+00:04:46,700 --> 00:04:52,070
+and for some justices, the experts performed better.
+
+95
+00:04:52,070 --> 00:04:54,660
+Being able to predict Supreme Court decisions
+
+96
+00:04:54,660 --> 00:04:57,840
+is very valuable to firms, politicians,
+
+97
+00:04:57,840 --> 00:05:00,830
+and non-governmental organizations.
+
+98
+00:05:00,830 --> 00:05:03,180
+We saw in this lecture that a model that
+
+99
+00:05:03,180 --> 00:05:06,720
+predicts overall Supreme Court decisions is both more
+
+100
+00:05:06,720 --> 00:05:10,650
+accurate than experts and can be run much faster than experts
+
+101
+00:05:10,650 --> 00:05:12,810
+can make their predictions.
+
+102
+00:05:12,810 --> 00:05:14,420
+The CART models that we built were
+
+103
+00:05:14,420 --> 00:05:18,060
+based on very high level components of the cases,
+
+104
+00:05:18,060 --> 00:05:19,880
+compared to the experts who can process
+
+105
+00:05:19,880 --> 00:05:23,520
+much more detailed and complex information.
+
+106
+00:05:23,520 --> 00:05:25,660
+This example really shows the edge
+
+107
+00:05:25,660 --> 00:05:29,170
+that analytics can provide in traditionally qualitative
+
+108
+00:05:29,170 --> 00:05:30,522
+applications.
+
+109
+00:05:30,522 --> 00:05:31,022
+
+

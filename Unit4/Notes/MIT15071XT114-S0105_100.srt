@@ -1,0 +1,584 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,840
+In this video, we'll introduce a method
+
+2
+00:00:02,840 --> 00:00:06,750
+that is similar to CART called random forests.
+
+3
+00:00:06,750 --> 00:00:10,130
+This method was designed to improve the prediction accuracy
+
+4
+00:00:10,130 --> 00:00:15,110
+of CART and works by building a large number of CART trees.
+
+5
+00:00:15,110 --> 00:00:17,190
+Unfortunately, this makes the method
+
+6
+00:00:17,190 --> 00:00:20,130
+less interpretable than CART, so often you
+
+7
+00:00:20,130 --> 00:00:23,110
+need to decide if you value the interpretability
+
+8
+00:00:23,110 --> 00:00:26,420
+or the increase in accuracy more.
+
+9
+00:00:26,420 --> 00:00:29,950
+To make a prediction for a new observation, each tree
+
+10
+00:00:29,950 --> 00:00:32,689
+in the forest votes on the outcome
+
+11
+00:00:32,689 --> 00:00:34,420
+and we pick the outcome that receives
+
+12
+00:00:34,420 --> 00:00:37,640
+the majority of the votes.
+
+13
+00:00:37,640 --> 00:00:41,480
+So how does random forests build many CART trees?
+
+14
+00:00:41,480 --> 00:00:44,120
+We can't just run CART multiple times
+
+15
+00:00:44,120 --> 00:00:47,640
+because it would create the same tree every time.
+
+16
+00:00:47,640 --> 00:00:50,330
+To prevent this, random forests only
+
+17
+00:00:50,330 --> 00:00:54,050
+allows each tree to split on a random subset
+
+18
+00:00:54,050 --> 00:00:56,790
+of the available independent variables,
+
+19
+00:00:56,790 --> 00:00:58,940
+and each tree is built from what we
+
+20
+00:00:58,940 --> 00:01:03,260
+call a bagged or bootstrapped sample of the data.
+
+21
+00:01:03,260 --> 00:01:05,110
+This just means that the data used
+
+22
+00:01:05,110 --> 00:01:07,260
+as the training data for each tree
+
+23
+00:01:07,260 --> 00:01:10,400
+is selected randomly with replacement.
+
+24
+00:01:10,400 --> 00:01:12,440
+Let's look at an example.
+
+25
+00:01:12,440 --> 00:01:15,120
+Suppose we have five data points in our training set.
+
+26
+00:01:15,120 --> 00:01:18,890
+We'll call them 1, 2, 3, 4, and 5.
+
+27
+00:01:18,890 --> 00:01:21,220
+For the first tree, we'll randomly
+
+28
+00:01:21,220 --> 00:01:25,930
+pick five data points randomly sampled with replacement.
+
+29
+00:01:25,930 --> 00:01:32,650
+So the data could be 2, 4, 5, 2, and 1.
+
+30
+00:01:32,650 --> 00:01:34,890
+Each time we pick one of the five data
+
+31
+00:01:34,890 --> 00:01:39,330
+points regardless of whether or not it's been selected already.
+
+32
+00:01:39,330 --> 00:01:41,320
+These would be the five data points
+
+33
+00:01:41,320 --> 00:01:45,060
+we would use when constructing the first CART tree.
+
+34
+00:01:45,060 --> 00:01:48,400
+Then we repeat this process for the second tree.
+
+35
+00:01:48,400 --> 00:01:53,950
+This time the data set might be 3, 5, 1, 5, and 2.
+
+36
+00:01:53,950 --> 00:01:58,460
+And we would use this data when building the second CART tree.
+
+37
+00:01:58,460 --> 00:02:00,210
+Then we would repeat this process
+
+38
+00:02:00,210 --> 00:02:03,840
+for each additional tree we want to create.
+
+39
+00:02:03,840 --> 00:02:07,140
+So since each tree sees a different set of variables
+
+40
+00:02:07,140 --> 00:02:09,770
+and a different set of data, we get
+
+41
+00:02:09,770 --> 00:02:14,710
+what's called a forest of many different trees.
+
+42
+00:02:14,710 --> 00:02:18,250
+Just like CART, random forests has some parameter values
+
+43
+00:02:18,250 --> 00:02:20,170
+that need to be selected.
+
+44
+00:02:20,170 --> 00:02:24,070
+The first is the minimum number of observations in a subset,
+
+45
+00:02:24,070 --> 00:02:26,880
+or the minbucket parameter from CART.
+
+46
+00:02:26,880 --> 00:02:29,390
+When we create a random forest in R,
+
+47
+00:02:29,390 --> 00:02:32,680
+this will be called nodesize.
+
+48
+00:02:32,680 --> 00:02:36,550
+A smaller value of nodesize, which leads to bigger trees,
+
+49
+00:02:36,550 --> 00:02:39,630
+may take longer in R. Random forests
+
+50
+00:02:39,630 --> 00:02:44,170
+is much more computationally intensive than CART.
+
+51
+00:02:44,170 --> 00:02:47,410
+The second parameter is the number of trees to build,
+
+52
+00:02:47,410 --> 00:02:51,140
+which is called ntree in R. This should not
+
+53
+00:02:51,140 --> 00:02:55,210
+be set too small, but the larger it is the longer it will take.
+
+54
+00:02:55,210 --> 00:02:59,030
+A couple hundred trees is typically plenty.
+
+55
+00:02:59,030 --> 00:03:01,030
+A nice thing about random forests
+
+56
+00:03:01,030 --> 00:03:03,790
+is that it's not as sensitive to the parameter values
+
+57
+00:03:03,790 --> 00:03:05,390
+as CART is.
+
+58
+00:03:05,390 --> 00:03:07,920
+In the next video, we'll talk about a nice way
+
+59
+00:03:07,920 --> 00:03:09,890
+to pick the CART parameter.
+
+60
+00:03:09,890 --> 00:03:13,240
+For random forests, as long as the selection is reasonable,
+
+61
+00:03:13,240 --> 00:03:15,000
+it's OK.
+
+62
+00:03:15,000 --> 00:03:17,880
+Let's switch to R and create a random forest model
+
+63
+00:03:17,880 --> 00:03:20,140
+to predict the decisions of Justice Stevens.
+
+64
+00:03:20,140 --> 00:03:23,170
+
+
+65
+00:03:23,170 --> 00:03:27,270
+In our R console, let's start by installing and loading
+
+66
+00:03:27,270 --> 00:03:29,910
+the package "randomForest."
+
+67
+00:03:29,910 --> 00:03:32,560
+We first need to install the package
+
+68
+00:03:32,560 --> 00:03:36,690
+using the install.packages function for the package
+
+69
+00:03:36,690 --> 00:03:39,980
+"randomForest."
+
+70
+00:03:39,980 --> 00:03:43,270
+You should see a few lines run in your R console
+
+71
+00:03:43,270 --> 00:03:45,720
+and then when you're back to the blinking cursor,
+
+72
+00:03:45,720 --> 00:03:47,810
+load the package with the library command.
+
+73
+00:03:47,810 --> 00:03:52,240
+
+
+74
+00:03:52,240 --> 00:03:55,520
+Now we're ready to build our random forest model.
+
+75
+00:03:55,520 --> 00:04:01,370
+We'll call it StevensForest and use the randomForest function,
+
+76
+00:04:01,370 --> 00:04:03,670
+first giving our dependent variable,
+
+77
+00:04:03,670 --> 00:04:06,660
+Reverse, followed by a tilde sign,
+
+78
+00:04:06,660 --> 00:04:08,240
+and then our independent variables
+
+79
+00:04:08,240 --> 00:04:10,400
+separated by plus signs.
+
+80
+00:04:10,400 --> 00:04:11,120
+Circuit
+
+81
+00:04:11,120 --> 00:04:12,060
++ Issue
+
+82
+00:04:12,060 --> 00:04:13,586
++ Petitioner
+
+83
+00:04:13,586 --> 00:04:14,086
++ Respondent
+
+84
+00:04:14,086 --> 00:04:17,209
+
+
+85
+00:04:17,209 --> 00:04:17,709
++ LowerCourt
+
+86
+00:04:17,709 --> 00:04:20,550
+
+
+87
+00:04:20,550 --> 00:04:22,790
++ Unconst
+
+88
+00:04:22,790 --> 00:04:24,890
+We'll use the data set Train.
+
+89
+00:04:24,890 --> 00:04:27,440
+
+
+90
+00:04:27,440 --> 00:04:31,060
+For random forests, we need to give two additional arguments.
+
+91
+00:04:31,060 --> 00:04:35,880
+These are nodesize, also known as minbucket for CART,
+
+92
+00:04:35,880 --> 00:04:38,670
+and we'll set this equal to 25, the same value we
+
+93
+00:04:38,670 --> 00:04:40,520
+used for our CART model.
+
+94
+00:04:40,520 --> 00:04:43,330
+And then we need to set the parameter ntree.
+
+95
+00:04:43,330 --> 00:04:45,490
+This is the number of trees to build.
+
+96
+00:04:45,490 --> 00:04:48,280
+And we'll build 200 trees here.
+
+97
+00:04:48,280 --> 00:04:50,450
+Then hit Enter.
+
+98
+00:04:50,450 --> 00:04:53,560
+You should see an interesting warning message here.
+
+99
+00:04:53,560 --> 00:04:57,320
+In CART, we added the argument method="class",
+
+100
+00:04:57,320 --> 00:05:01,030
+so that it was clear that we're doing a classification problem.
+
+101
+00:05:01,030 --> 00:05:03,380
+As I mentioned earlier, trees can also
+
+102
+00:05:03,380 --> 00:05:05,440
+be used for regression problems, which
+
+103
+00:05:05,440 --> 00:05:07,470
+you'll see in the recitation.
+
+104
+00:05:07,470 --> 00:05:11,290
+The randomForest function does not have a method argument.
+
+105
+00:05:11,290 --> 00:05:14,120
+So when we want to do a classification problem,
+
+106
+00:05:14,120 --> 00:05:17,250
+we need to make sure outcome is a factor.
+
+107
+00:05:17,250 --> 00:05:20,960
+Let's convert the variable Reverse to a factor variable
+
+108
+00:05:20,960 --> 00:05:24,180
+in both our training and our testing sets.
+
+109
+00:05:24,180 --> 00:05:27,410
+We do this by typing the name of the variable we want
+
+110
+00:05:27,410 --> 00:05:30,960
+to convert-- in our case Train$Reverse--
+
+111
+00:05:30,960 --> 00:05:36,600
+and then type as.factor and then in parentheses the variable
+
+112
+00:05:36,600 --> 00:05:39,580
+name, Train$Reverse.
+
+113
+00:05:39,580 --> 00:05:42,550
+And just repeat this for the test set as well.
+
+114
+00:05:42,550 --> 00:05:51,200
+Test$Reverse=as.factor(Test$Reverse)
+
+115
+00:05:51,200 --> 00:05:54,310
+Now let's try creating our random forest again.
+
+116
+00:05:54,310 --> 00:05:57,450
+Just use the up arrow to get back to the random forest line
+
+117
+00:05:57,450 --> 00:05:58,860
+and hit Enter.
+
+118
+00:05:58,860 --> 00:06:01,100
+We didn't get a warning message this time
+
+119
+00:06:01,100 --> 00:06:04,370
+so our model is ready to make predictions.
+
+120
+00:06:04,370 --> 00:06:07,290
+Let's compute predictions on our test set.
+
+121
+00:06:07,290 --> 00:06:12,320
+We'll call our predictions PredictForest and use
+
+122
+00:06:12,320 --> 00:06:16,010
+the predict function to make predictions using our model,
+
+123
+00:06:16,010 --> 00:06:21,215
+StevensForest, and the new data set Test.
+
+124
+00:06:21,215 --> 00:06:24,260
+
+
+125
+00:06:24,260 --> 00:06:28,180
+Let's look at the confusion matrix to compute our accuracy.
+
+126
+00:06:28,180 --> 00:06:32,550
+We'll use the table function and first give the true outcome,
+
+127
+00:06:32,550 --> 00:06:35,745
+Test$Reverse, and then our predictions, PredictForest.
+
+128
+00:06:35,745 --> 00:06:39,290
+
+
+129
+00:06:39,290 --> 00:06:41,710
+Our accuracy here is (40+74)/(40+37+19+74).
+
+130
+00:06:41,710 --> 00:06:52,330
+
+
+131
+00:06:52,330 --> 00:06:57,650
+So the accuracy of our Random Forest model is about 67%.
+
+132
+00:06:57,650 --> 00:06:59,460
+Recall that our logistic regression
+
+133
+00:06:59,460 --> 00:07:04,230
+model had an accuracy of 66.5% and our CART model
+
+134
+00:07:04,230 --> 00:07:07,620
+had an accuracy of 65.9%.
+
+135
+00:07:07,620 --> 00:07:10,460
+So our random forest model improved our accuracy
+
+136
+00:07:10,460 --> 00:07:12,470
+a little bit over CART.
+
+137
+00:07:12,470 --> 00:07:15,850
+Sometimes you'll see a smaller improvement in accuracy
+
+138
+00:07:15,850 --> 00:07:18,180
+and sometimes you'll see that random forests can
+
+139
+00:07:18,180 --> 00:07:21,290
+significantly improve in accuracy over CART.
+
+140
+00:07:21,290 --> 00:07:24,150
+We'll see this a lot in the recitation in the homework
+
+141
+00:07:24,150 --> 00:07:26,010
+assignments.
+
+142
+00:07:26,010 --> 00:07:29,940
+Keep in mind that Random Forests has a random component.
+
+143
+00:07:29,940 --> 00:07:33,070
+You may have gotten a different confusion matrix than me
+
+144
+00:07:33,070 --> 00:07:36,444
+because there's a random component to this method.
+
+145
+00:07:36,444 --> 00:07:36,944
+
+

@@ -1,0 +1,340 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:05,210
+Now it's time to evaluate our models on the testing set.
+
+2
+00:00:05,210 --> 00:00:07,570
+So the first model we're going to want to look at
+
+3
+00:00:07,570 --> 00:00:10,530
+is that smart baseline model that basically just took
+
+4
+00:00:10,530 --> 00:00:13,880
+a look at the polling results from the Rasmussen poll
+
+5
+00:00:13,880 --> 00:00:15,630
+and used those to determine who was
+
+6
+00:00:15,630 --> 00:00:18,060
+predicted to win the election.
+
+7
+00:00:18,060 --> 00:00:20,850
+So it's very easy to compute the outcome
+
+8
+00:00:20,850 --> 00:00:23,980
+for this simple baseline on the testing set.
+
+9
+00:00:23,980 --> 00:00:27,620
+We're going to want to table the testing set outcome
+
+10
+00:00:27,620 --> 00:00:31,260
+variable, Republican, and we're going
+
+11
+00:00:31,260 --> 00:00:34,090
+to compare that against the actual outcome
+
+12
+00:00:34,090 --> 00:00:36,110
+of the smart baseline, which as you recall
+
+13
+00:00:36,110 --> 00:00:40,490
+would be the sign of the testing set's Rasmussen variables.
+
+14
+00:00:40,490 --> 00:00:43,770
+
+
+15
+00:00:43,770 --> 00:00:47,180
+And we can see that for these results,
+
+16
+00:00:47,180 --> 00:00:50,890
+there are 18 times where the smart baseline predicted
+
+17
+00:00:50,890 --> 00:00:53,320
+that the Democrat would win and it's correct,
+
+18
+00:00:53,320 --> 00:00:56,880
+21 where it predicted the Republican would win
+
+19
+00:00:56,880 --> 00:01:00,870
+and was correct, two times when it was inconclusive,
+
+20
+00:01:00,870 --> 00:01:03,430
+and four times where it predicted Republican
+
+21
+00:01:03,430 --> 00:01:05,650
+but the Democrat actually won.
+
+22
+00:01:05,650 --> 00:01:09,050
+So that's four mistakes and two inconclusive results
+
+23
+00:01:09,050 --> 00:01:10,545
+on the testing set.
+
+24
+00:01:10,545 --> 00:01:11,920
+So this is going to be what we're
+
+25
+00:01:11,920 --> 00:01:16,490
+going to compare our logistic regression-based model against.
+
+26
+00:01:16,490 --> 00:01:21,110
+So we need to obtain final testing set prediction
+
+27
+00:01:21,110 --> 00:01:21,930
+from our model.
+
+28
+00:01:21,930 --> 00:01:26,030
+So we selected mod2, which was the two variable model.
+
+29
+00:01:26,030 --> 00:01:31,400
+So we'll say, TestPrediction is equal to the predict
+
+30
+00:01:31,400 --> 00:01:33,500
+of that model that we selected.
+
+31
+00:01:33,500 --> 00:01:36,450
+Now, since we're actually making testing set predictions,
+
+32
+00:01:36,450 --> 00:01:40,490
+we'll pass in newdata = Test, and again,
+
+33
+00:01:40,490 --> 00:01:43,250
+since we want probabilities to be returned,
+
+34
+00:01:43,250 --> 00:01:44,750
+we're going to pass type="response".
+
+35
+00:01:44,750 --> 00:01:50,280
+
+
+36
+00:01:50,280 --> 00:01:54,070
+And the moment of truth, we're finally going to table
+
+37
+00:01:54,070 --> 00:02:00,840
+the test set Republican value against the test prediction
+
+38
+00:02:00,840 --> 00:02:05,420
+being greater than or equal to 0.5, at least a 50% probability
+
+39
+00:02:05,420 --> 00:02:07,910
+of the Republican winning.
+
+40
+00:02:07,910 --> 00:02:11,840
+And we see that for this particular case, in all but one
+
+41
+00:02:11,840 --> 00:02:16,050
+of the 45 observations in the testing set, we're correct.
+
+42
+00:02:16,050 --> 00:02:18,370
+Now, we could have tried changing this threshold
+
+43
+00:02:18,370 --> 00:02:23,250
+from 0.5 to other values and computed out an ROC curve,
+
+44
+00:02:23,250 --> 00:02:25,710
+but that doesn't quite make as much sense in this setting
+
+45
+00:02:25,710 --> 00:02:27,640
+where we're just trying to accurately predict
+
+46
+00:02:27,640 --> 00:02:30,440
+the outcome of each state and we don't care more
+
+47
+00:02:30,440 --> 00:02:33,040
+about one sort of error-- when we predicted Republican
+
+48
+00:02:33,040 --> 00:02:35,510
+and it was actually Democrat-- than the other,
+
+49
+00:02:35,510 --> 00:02:38,540
+where we predicted Democrat and it was actually Republican.
+
+50
+00:02:38,540 --> 00:02:41,450
+So in this particular case, we feel OK just
+
+51
+00:02:41,450 --> 00:02:47,170
+using the cutoff of 0.5 to evaluate our model.
+
+52
+00:02:47,170 --> 00:02:50,010
+So let's take a look now at the mistake we made
+
+53
+00:02:50,010 --> 00:02:52,850
+and see if we can understand what's going on.
+
+54
+00:02:52,850 --> 00:02:56,140
+So to actually pull out the mistake we made,
+
+55
+00:02:56,140 --> 00:02:59,950
+we can just take a subset of the testing set
+
+56
+00:02:59,950 --> 00:03:03,120
+and limit it to when we predicted true,
+
+57
+00:03:03,120 --> 00:03:05,100
+but actually the Democrat won, which
+
+58
+00:03:05,100 --> 00:03:07,930
+is the case when that one failed.
+
+59
+00:03:07,930 --> 00:03:11,880
+So this would be when TestPrediction
+
+60
+00:03:11,880 --> 00:03:17,700
+is greater than or equal to 0.5, and it was not a Republican.
+
+61
+00:03:17,700 --> 00:03:22,980
+So Republican was equal to zero.
+
+62
+00:03:22,980 --> 00:03:25,150
+So here is that subset, which just
+
+63
+00:03:25,150 --> 00:03:28,170
+has one observation since we made just one mistake.
+
+64
+00:03:28,170 --> 00:03:30,840
+So this was for the year 2012, the testing set year.
+
+65
+00:03:30,840 --> 00:03:32,930
+This was the state of Florida.
+
+66
+00:03:32,930 --> 00:03:35,470
+And looking through these predictor variables,
+
+67
+00:03:35,470 --> 00:03:38,070
+we see why we made the mistake.
+
+68
+00:03:38,070 --> 00:03:41,520
+The Rasmussen poll gave the Republican a two percentage
+
+69
+00:03:41,520 --> 00:03:45,000
+point lead, SurveyUSA called a tie,
+
+70
+00:03:45,000 --> 00:03:47,400
+DiffCount said there were six more polls that
+
+71
+00:03:47,400 --> 00:03:49,320
+predicted Republican than Democrat,
+
+72
+00:03:49,320 --> 00:03:51,110
+and two thirds of the polls predicted
+
+73
+00:03:51,110 --> 00:03:52,882
+the Republican was going to win.
+
+74
+00:03:52,882 --> 00:03:55,090
+But actually in this case, the Republican didn't win.
+
+75
+00:03:55,090 --> 00:03:58,280
+Barack Obama won the state of Florida
+
+76
+00:03:58,280 --> 00:04:00,450
+in 2012 over Mitt Romney.
+
+77
+00:04:00,450 --> 00:04:02,990
+So the models here are not magic,
+
+78
+00:04:02,990 --> 00:04:07,030
+and given this sort of data, it's pretty unsurprising
+
+79
+00:04:07,030 --> 00:04:09,010
+that our model actually didn't get Florida
+
+80
+00:04:09,010 --> 00:04:11,280
+correct in this case and made the mistake.
+
+81
+00:04:11,280 --> 00:04:13,690
+However, overall, it seems to be outperforming
+
+82
+00:04:13,690 --> 00:04:15,744
+the smart baseline that we selected,
+
+83
+00:04:15,744 --> 00:04:18,380
+and so we think that maybe this would be a nice model
+
+84
+00:04:18,380 --> 00:04:21,150
+to use in the election prediction.
+

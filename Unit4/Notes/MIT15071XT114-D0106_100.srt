@@ -1,0 +1,208 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:04,680
+We will discuss the results of the classification tree model.
+
+2
+00:00:04,680 --> 00:00:07,730
+
+
+3
+00:00:07,730 --> 00:00:11,080
+So we first observe that the overall accuracy
+
+4
+00:00:11,080 --> 00:00:16,309
+of the method regarding the percentage that it accurately
+
+5
+00:00:16,309 --> 00:00:23,340
+predicts is 80%, compared to 75% of the baseline.
+
+6
+00:00:23,340 --> 00:00:26,380
+But notice that this is done in an interesting way.
+
+7
+00:00:26,380 --> 00:00:31,260
+For bucket one patients, the two models are equivalent.
+
+8
+00:00:31,260 --> 00:00:34,390
+But of course this suggests the idea
+
+9
+00:00:34,390 --> 00:00:36,430
+that healthy people stay healthy,
+
+10
+00:00:36,430 --> 00:00:38,950
+which is the idea of the baseline model.
+
+11
+00:00:38,950 --> 00:00:43,080
+The cost repeats is valid in the data.
+
+12
+00:00:43,080 --> 00:00:46,000
+But then for buckets two to five,
+
+13
+00:00:46,000 --> 00:00:49,200
+notice that the accuracy increases substantially from
+
+14
+00:00:49,200 --> 00:00:54,370
+31% to 60%-- it doubles-- from 21% to 53%--
+
+15
+00:00:54,370 --> 00:00:58,360
+more than doubles-- and from 19% to 39%-- doubles.
+
+16
+00:00:58,360 --> 00:01:02,680
+There's an improvement from 23% to 30%, not as big as before,
+
+17
+00:01:02,680 --> 00:01:05,519
+but there is indeed an improvement for bucket five.
+
+18
+00:01:05,519 --> 00:01:11,240
+But notice the improvement on the penalty from 0.56 to 0.52
+
+19
+00:01:11,240 --> 00:01:13,130
+overall.
+
+20
+00:01:13,130 --> 00:01:16,640
+A small improvement in bucket one,
+
+21
+00:01:16,640 --> 00:01:22,280
+but a significant improvement as we increase on the buckets.
+
+22
+00:01:22,280 --> 00:01:28,320
+For example, here for bucket five,
+
+23
+00:01:28,320 --> 00:01:33,120
+the penalty error decreases from 1.88 to 1.01,
+
+24
+00:01:33,120 --> 00:01:34,280
+a substantial improvement.
+
+25
+00:01:34,280 --> 00:01:37,770
+
+
+26
+00:01:37,770 --> 00:01:40,040
+So we observed that there's a substantial improvement
+
+27
+00:01:40,040 --> 00:01:44,216
+over the baseline, especially as we go down on buckets.
+
+28
+00:01:44,216 --> 00:01:47,540
+It doubles the accuracy over the baseline in some cases.
+
+29
+00:01:47,540 --> 00:01:50,790
+
+
+30
+00:01:50,790 --> 00:01:54,270
+And so we have seen there's a smaller accuracy
+
+31
+00:01:54,270 --> 00:01:59,860
+improvement in bucket five, but there's a much lower penalty
+
+32
+00:01:59,860 --> 00:02:02,980
+in the prediction for bucket five.
+
+33
+00:02:02,980 --> 00:02:05,470
+So what is the edge of the analytics
+
+34
+00:02:05,470 --> 00:02:08,050
+provided to D2Hawkeye?
+
+35
+00:02:08,050 --> 00:02:11,190
+First and foremost, there was a substantial improvement
+
+36
+00:02:11,190 --> 00:02:12,950
+in the company's ability to identify
+
+37
+00:02:12,950 --> 00:02:15,055
+patients who need more attention.
+
+38
+00:02:15,055 --> 00:02:17,900
+
+
+39
+00:02:17,900 --> 00:02:20,720
+Another advantage was related to the fact
+
+40
+00:02:20,720 --> 00:02:24,210
+that the model was in fact interpretable by physicians.
+
+41
+00:02:24,210 --> 00:02:26,930
+So the physicians were able to improve the model
+
+42
+00:02:26,930 --> 00:02:32,070
+by identifying new variables and refining existing variables.
+
+43
+00:02:32,070 --> 00:02:35,350
+That really led to further improvements.
+
+44
+00:02:35,350 --> 00:02:38,720
+Finally, and quite importantly, the analytics
+
+45
+00:02:38,720 --> 00:02:44,630
+gave the company an edge over the competition using--
+
+46
+00:02:44,630 --> 00:02:47,970
+that the competition used last century methods.
+
+47
+00:02:47,970 --> 00:02:49,960
+And the use of machine learning methods--
+
+48
+00:02:49,960 --> 00:02:51,890
+in this case, classification trees--
+
+49
+00:02:51,890 --> 00:02:55,850
+provided an edge that also helped Hawkeye
+
+50
+00:02:55,850 --> 00:03:00,103
+when it was sold to Verisk Analytics in 2009.
+
+51
+00:03:00,103 --> 00:03:00,603
+
+

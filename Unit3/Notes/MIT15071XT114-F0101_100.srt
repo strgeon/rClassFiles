@@ -1,0 +1,260 @@
+0
+00:00:00,000 --> 00:00:00,820
+
+
+1
+00:00:00,820 --> 00:00:05,270
+In this lecture, we'll describe the Framingham Heart Study, one
+
+2
+00:00:05,270 --> 00:00:08,189
+of the most important epidemiological studies ever
+
+3
+00:00:08,189 --> 00:00:11,110
+conducted, and the underlying analytics that
+
+4
+00:00:11,110 --> 00:00:14,170
+led to our current understanding of cardiovascular disease.
+
+5
+00:00:14,170 --> 00:00:16,850
+
+
+6
+00:00:16,850 --> 00:00:20,060
+To motivate how the study affected our understanding
+
+7
+00:00:20,060 --> 00:00:23,870
+of blood pressure today, we describe the case
+
+8
+00:00:23,870 --> 00:00:26,060
+of Franklin Delano Roosevelt, FDR
+
+9
+00:00:26,060 --> 00:00:28,680
+for short, who was the President of the United States
+
+10
+00:00:28,680 --> 00:00:31,350
+from 1933 to 1945.
+
+11
+00:00:31,350 --> 00:00:34,300
+He was the longest-serving president of the United States,
+
+12
+00:00:34,300 --> 00:00:37,220
+and he led the country during difficult times --
+
+13
+00:00:37,220 --> 00:00:39,460
+the Great Depression, and World War II.
+
+14
+00:00:39,460 --> 00:00:47,670
+He died while President on April 12, 1945.
+
+15
+00:00:47,670 --> 00:00:56,510
+Before the presidency, FDR's blood pressure was 140/100.
+
+16
+00:00:56,510 --> 00:00:59,680
+Today, healthy blood pressure is considered
+
+17
+00:00:59,680 --> 00:01:03,350
+to be less than 120/80.
+
+18
+00:01:03,350 --> 00:01:10,070
+So therefore, 140/100 is today considered high blood pressure.
+
+19
+00:01:10,070 --> 00:01:14,651
+One year before his death, his blood pressure was 210/120.
+
+20
+00:01:14,651 --> 00:01:17,860
+Today this is called hypertensive crisis,
+
+21
+00:01:17,860 --> 00:01:20,920
+and emergency care is needed.
+
+22
+00:01:20,920 --> 00:01:25,380
+On the other hand, FDR's personal physician
+
+23
+00:01:25,380 --> 00:01:29,000
+said a moderate degree of atherosclerosis
+
+24
+00:01:29,000 --> 00:01:33,500
+although no more than normal for a man of his age.
+
+25
+00:01:33,500 --> 00:01:38,180
+Two months before his death, his blood pressure was 260/150,
+
+26
+00:01:38,180 --> 00:01:44,960
+and the day of his death was 300/190.
+
+27
+00:01:44,960 --> 00:01:47,970
+There were early misconceptions in the first half
+
+28
+00:01:47,970 --> 00:01:52,730
+of the 20th century about blood pressure.
+
+29
+00:01:52,730 --> 00:01:55,600
+High blood pressure, dubbed essential hypertension,
+
+30
+00:01:55,600 --> 00:02:00,350
+was considered important to force blood through arteries,
+
+31
+00:02:00,350 --> 00:02:03,240
+and it was considered harmful to lower blood pressure.
+
+32
+00:02:03,240 --> 00:02:05,980
+Today, of course, we know better.
+
+33
+00:02:05,980 --> 00:02:09,100
+In the words of Daniel Levy, the Framingham Heart Study
+
+34
+00:02:09,100 --> 00:02:14,110
+director, "today presidential blood pressure numbers
+
+35
+00:02:14,110 --> 00:02:17,310
+like FDR's would send the country's leading doctors
+
+36
+00:02:17,310 --> 00:02:20,690
+racing down hallways, whisking the nation's leader
+
+37
+00:02:20,690 --> 00:02:28,020
+into the cardiac care unit of Bethesda Naval Hospital."
+
+38
+00:02:28,020 --> 00:02:28,980
+So how did we learn?
+
+39
+00:02:28,980 --> 00:02:32,362
+
+
+40
+00:02:32,362 --> 00:02:35,330
+In the late 1940s, the US government
+
+41
+00:02:35,330 --> 00:02:39,220
+set out to better understand cardiovascular disease.
+
+42
+00:02:39,220 --> 00:02:42,890
+The plan was to track a large cohort of initially healthy
+
+43
+00:02:42,890 --> 00:02:46,352
+patients over their lifetimes.
+
+44
+00:02:46,352 --> 00:02:50,950
+A city was chosen, the city of Framingham, Massachusetts,
+
+45
+00:02:50,950 --> 00:02:54,890
+to be the site for the study.
+
+46
+00:02:54,890 --> 00:02:59,130
+Framingham has an appropriate size.
+
+47
+00:02:59,130 --> 00:03:01,040
+It's not too large, it's not too small.
+
+48
+00:03:01,040 --> 00:03:06,890
+It has a stable population that doesn't move too much.
+
+49
+00:03:06,890 --> 00:03:10,690
+And the doctors and residents were quite cooperative.
+
+50
+00:03:10,690 --> 00:03:16,180
+So in 1948, the Framingham Heart Study started.
+
+51
+00:03:16,180 --> 00:03:20,660
+
+
+52
+00:03:20,660 --> 00:03:28,820
+The study included 5,209 patients, aged 30 to 59.
+
+53
+00:03:28,820 --> 00:03:30,690
+Patients were given a questionnaire
+
+54
+00:03:30,690 --> 00:03:34,930
+and an examination every two years.
+
+55
+00:03:34,930 --> 00:03:37,820
+During this examination, their physical characteristics
+
+56
+00:03:37,820 --> 00:03:41,260
+were recorded, their behavioral characteristics, as well as
+
+57
+00:03:41,260 --> 00:03:44,120
+test results.
+
+58
+00:03:44,120 --> 00:03:49,020
+Exams and questions expanded over time,
+
+59
+00:03:49,020 --> 00:03:52,560
+but the key in the study was that the trajectory
+
+60
+00:03:52,560 --> 00:03:54,270
+of the health of the patients was
+
+61
+00:03:54,270 --> 00:03:58,260
+followed during their entire lifespan.
+
+62
+00:03:58,260 --> 00:04:02,530
+In this class, we will build models
+
+63
+00:04:02,530 --> 00:04:06,750
+using the Framingham data to predict and prevent
+
+64
+00:04:06,750 --> 00:04:08,580
+heart disease.
+

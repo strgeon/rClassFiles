@@ -1,0 +1,628 @@
+0
+00:00:00,000 --> 00:00:00,610
+
+
+1
+00:00:00,610 --> 00:00:03,040
+In CART, the value of minbucket can
+
+2
+00:00:03,040 --> 00:00:06,370
+affect the model's out-of-sample accuracy.
+
+3
+00:00:06,370 --> 00:00:09,070
+As we discussed earlier in the lecture,
+
+4
+00:00:09,070 --> 00:00:13,200
+if minbucket is too small, over-fitting might occur.
+
+5
+00:00:13,200 --> 00:00:17,480
+But if minbucket is too large, the model might be too simple.
+
+6
+00:00:17,480 --> 00:00:20,830
+So how should we set this parameter value?
+
+7
+00:00:20,830 --> 00:00:24,390
+We could select the value that gives the best testing set
+
+8
+00:00:24,390 --> 00:00:27,380
+accuracy, but this isn't right.
+
+9
+00:00:27,380 --> 00:00:31,050
+The idea of the testing set is to measure model performance
+
+10
+00:00:31,050 --> 00:00:34,210
+on data the model has never seen before.
+
+11
+00:00:34,210 --> 00:00:36,160
+By picking the value of minbucket
+
+12
+00:00:36,160 --> 00:00:38,790
+to get the best test set performance,
+
+13
+00:00:38,790 --> 00:00:43,820
+the testing set was implicitly used to generate the model.
+
+14
+00:00:43,820 --> 00:00:48,140
+Instead, we'll use a method called K-fold Cross Validation,
+
+15
+00:00:48,140 --> 00:00:52,180
+which is one way to properly select the parameter value.
+
+16
+00:00:52,180 --> 00:00:56,020
+This method works by going through the following steps.
+
+17
+00:00:56,020 --> 00:00:58,960
+First, we split the training set into k
+
+18
+00:00:58,960 --> 00:01:02,190
+equally sized subsets, or folds.
+
+19
+00:01:02,190 --> 00:01:05,500
+In this example, k equals 5.
+
+20
+00:01:05,500 --> 00:01:11,370
+Then we select k - 1, or four folds, to estimate the model,
+
+21
+00:01:11,370 --> 00:01:14,760
+and compute predictions on the remaining one fold, which
+
+22
+00:01:14,760 --> 00:01:18,080
+is often referred to as the validation set.
+
+23
+00:01:18,080 --> 00:01:20,300
+We build a model and make predictions
+
+24
+00:01:20,300 --> 00:01:24,770
+for each possible parameter value we're considering.
+
+25
+00:01:24,770 --> 00:01:28,200
+Then we repeat this for each of the other folds,
+
+26
+00:01:28,200 --> 00:01:30,480
+or pieces of our training set.
+
+27
+00:01:30,480 --> 00:01:33,720
+So we would build a model using folds 1, 2, 3,
+
+28
+00:01:33,720 --> 00:01:37,780
+and 5 to make predictions on fold 4,
+
+29
+00:01:37,780 --> 00:01:42,230
+and then we would build a model using folds 1, 2, 4,
+
+30
+00:01:42,230 --> 00:01:47,320
+and 5 to make predictions on fold 3, etc.
+
+31
+00:01:47,320 --> 00:01:49,830
+So ultimately, cross validation builds
+
+32
+00:01:49,830 --> 00:01:56,360
+many models, one for each fold and possible parameter value.
+
+33
+00:01:56,360 --> 00:01:59,170
+Then, for each candidate parameter value,
+
+34
+00:01:59,170 --> 00:02:01,490
+and for each fold, we can compute
+
+35
+00:02:01,490 --> 00:02:03,780
+the accuracy of the model.
+
+36
+00:02:03,780 --> 00:02:08,419
+This plot shows the possible parameter values on the x-axis,
+
+37
+00:02:08,419 --> 00:02:12,120
+and the accuracy of the model on the y-axis.
+
+38
+00:02:12,120 --> 00:02:16,390
+This line shows the accuracy of our model on fold 1.
+
+39
+00:02:16,390 --> 00:02:19,790
+We can also compute the accuracy of the model using
+
+40
+00:02:19,790 --> 00:02:23,300
+each of the other folds as the validation sets.
+
+41
+00:02:23,300 --> 00:02:26,410
+We then average the accuracy over the k
+
+42
+00:02:26,410 --> 00:02:29,370
+folds to determine the final parameter
+
+43
+00:02:29,370 --> 00:02:31,900
+value that we want to use.
+
+44
+00:02:31,900 --> 00:02:34,850
+Typically, the behavior looks like this--
+
+45
+00:02:34,850 --> 00:02:37,400
+if the parameter value is too small,
+
+46
+00:02:37,400 --> 00:02:40,590
+then the accuracy is lower, because the model is probably
+
+47
+00:02:40,590 --> 00:02:42,940
+over-fit to the training set.
+
+48
+00:02:42,940 --> 00:02:46,110
+But if the parameter value is too large,
+
+49
+00:02:46,110 --> 00:02:48,980
+then the accuracy is also lower, because the model
+
+50
+00:02:48,980 --> 00:02:51,080
+is too simple.
+
+51
+00:02:51,080 --> 00:02:55,340
+In this case, we would pick a parameter value around six,
+
+52
+00:02:55,340 --> 00:02:58,770
+because it leads to the maximum average accuracy
+
+53
+00:02:58,770 --> 00:03:00,335
+over all parameter values.
+
+54
+00:03:00,335 --> 00:03:02,970
+
+
+55
+00:03:02,970 --> 00:03:06,010
+So far, we've used the parameter minbucket
+
+56
+00:03:06,010 --> 00:03:10,580
+to limit our tree in R. When we use cross validation in R,
+
+57
+00:03:10,580 --> 00:03:14,330
+we'll use a parameter called cp instead.
+
+58
+00:03:14,330 --> 00:03:17,010
+This is the complexity parameter.
+
+59
+00:03:17,010 --> 00:03:20,270
+It's like Adjusted R-squared for linear regression,
+
+60
+00:03:20,270 --> 00:03:24,110
+and AIC for logistic regression, in that it measures
+
+61
+00:03:24,110 --> 00:03:27,850
+the trade-off between model complexity and accuracy
+
+62
+00:03:27,850 --> 00:03:29,790
+on the training set.
+
+63
+00:03:29,790 --> 00:03:33,170
+A smaller cp value leads to a bigger tree,
+
+64
+00:03:33,170 --> 00:03:36,310
+so a smaller cp value might over-fit the model
+
+65
+00:03:36,310 --> 00:03:37,910
+to the training set.
+
+66
+00:03:37,910 --> 00:03:40,720
+But a cp value that's too large might
+
+67
+00:03:40,720 --> 00:03:43,200
+build a model that's too simple.
+
+68
+00:03:43,200 --> 00:03:45,880
+Let's go to R, and use cross validation
+
+69
+00:03:45,880 --> 00:03:49,850
+to select the value of cp for our CART tree.
+
+70
+00:03:49,850 --> 00:03:53,050
+In our R console, let's try cross validation
+
+71
+00:03:53,050 --> 00:03:54,810
+for our CART model.
+
+72
+00:03:54,810 --> 00:03:59,590
+To do this, we need to install and load two new packages.
+
+73
+00:03:59,590 --> 00:04:04,455
+First, we'll install the package "caret".
+
+74
+00:04:04,455 --> 00:04:09,060
+
+
+75
+00:04:09,060 --> 00:04:12,250
+You should see some lines run in your R console,
+
+76
+00:04:12,250 --> 00:04:14,930
+and then when you're back to the blinking cursor,
+
+77
+00:04:14,930 --> 00:04:17,330
+load the package with library(caret).
+
+78
+00:04:17,330 --> 00:04:21,260
+
+
+79
+00:04:21,260 --> 00:04:26,020
+Now, let's install the package "e1071".
+
+80
+00:04:26,020 --> 00:04:35,280
+So again, install.packages("e1071").
+
+81
+00:04:35,280 --> 00:04:38,730
+Again, you should see some lines run in your R console,
+
+82
+00:04:38,730 --> 00:04:40,680
+and when you're back to the cursor,
+
+83
+00:04:40,680 --> 00:04:47,340
+load the package with library(e1071).
+
+84
+00:04:47,340 --> 00:04:51,590
+Now, we'll define our cross validation experiment.
+
+85
+00:04:51,590 --> 00:04:55,220
+First, we need to define how many folds we want.
+
+86
+00:04:55,220 --> 00:04:59,560
+We can do this using the trainControl function.
+
+87
+00:04:59,560 --> 00:05:09,060
+So we'll say numFolds = trainControl,
+
+88
+00:05:09,060 --> 00:05:14,420
+and then in parentheses, method = "cv",
+
+89
+00:05:14,420 --> 00:05:21,690
+for cross validation, and then number = 10, for 10 folds.
+
+90
+00:05:21,690 --> 00:05:24,920
+Then we need to pick the possible values for our cp
+
+91
+00:05:24,920 --> 00:05:29,340
+parameter, using the expand.grid function.
+
+92
+00:05:29,340 --> 00:05:38,770
+So we'll call it cpGrid, and then use expand.grid,
+
+93
+00:05:38,770 --> 00:05:53,240
+where the only argument is .cp = seq(0.01,0.5,0.01).
+
+94
+00:05:53,240 --> 00:05:55,400
+This will define our cp parameters
+
+95
+00:05:55,400 --> 00:06:03,800
+to test as numbers from 0.01 to 0.5, in increments of 0.01.
+
+96
+00:06:03,800 --> 00:06:07,340
+Now, we're ready to perform cross validation.
+
+97
+00:06:07,340 --> 00:06:10,600
+We'll do this using the train function, where
+
+98
+00:06:10,600 --> 00:06:13,170
+the first argument is similar to that
+
+99
+00:06:13,170 --> 00:06:14,720
+when we're building models.
+
+100
+00:06:14,720 --> 00:06:18,100
+It's the dependent variable, Reverse,
+
+101
+00:06:18,100 --> 00:06:22,490
+followed by a tilde symbol, and then the independent variables
+
+102
+00:06:22,490 --> 00:06:32,990
+separated by plus signs-- Circuit + Issue + Petitioner +
+
+103
+00:06:32,990 --> 00:06:46,820
+Respondent + LowerCourt + Unconst.
+
+104
+00:06:46,820 --> 00:06:51,750
+Our data set here is Train, with a capital T,
+
+105
+00:06:51,750 --> 00:06:58,510
+and then we need to add the arguments method = "rpart",
+
+106
+00:06:58,510 --> 00:07:01,840
+since we want to cross validate a CART model,
+
+107
+00:07:01,840 --> 00:07:08,430
+and then trControl = numFolds, the output
+
+108
+00:07:08,430 --> 00:07:16,750
+of our trainControl function, and then tuneGrid = cpGrid,
+
+109
+00:07:16,750 --> 00:07:20,990
+the output of the expand.grid function.
+
+110
+00:07:20,990 --> 00:07:24,210
+If you hit Enter, it might take a little while,
+
+111
+00:07:24,210 --> 00:07:26,040
+but after a few seconds, you should
+
+112
+00:07:26,040 --> 00:07:28,630
+get a table describing the cross validation
+
+113
+00:07:28,630 --> 00:07:33,060
+accuracy for different cp parameters.
+
+114
+00:07:33,060 --> 00:07:37,440
+The first column gives the cp parameter that was tested,
+
+115
+00:07:37,440 --> 00:07:39,950
+and the second column gives the cross validation
+
+116
+00:07:39,950 --> 00:07:42,920
+accuracy for that cp value.
+
+117
+00:07:42,920 --> 00:07:47,390
+The accuracy starts lower, and then increases,
+
+118
+00:07:47,390 --> 00:07:52,420
+and then will start decreasing again, as we saw in the slides.
+
+119
+00:07:52,420 --> 00:07:55,920
+At the bottom of the output, it says,
+
+120
+00:07:55,920 --> 00:08:00,370
+"Accuracy was used to select the optimal model using the largest
+
+121
+00:08:00,370 --> 00:08:01,510
+value.
+
+122
+00:08:01,510 --> 00:08:07,170
+The final value used for the model was cp = 0.18."
+
+123
+00:08:07,170 --> 00:08:11,820
+This is the cp value we want to use in our CART model.
+
+124
+00:08:11,820 --> 00:08:15,643
+So now let's create a new CART model with this value of cp,
+
+125
+00:08:15,643 --> 00:08:18,700
+instead of the minbucket parameter.
+
+126
+00:08:18,700 --> 00:08:24,650
+We'll call this model StevensTreeCV,
+
+127
+00:08:24,650 --> 00:08:28,750
+and we'll use the rpart function, like we did earlier,
+
+128
+00:08:28,750 --> 00:08:35,220
+to predict Reverse using all of our independent variables:
+
+129
+00:08:35,220 --> 00:08:46,760
+Circuit, Issue, Petitioner, Respondent,
+
+130
+00:08:46,760 --> 00:08:52,520
+LowerCourt, and Unconst.
+
+131
+00:08:52,520 --> 00:09:01,160
+Our data set here is Train, and then we want method = "class",
+
+132
+00:09:01,160 --> 00:09:04,980
+since we're building a classification tree, and cp
+
+133
+00:09:04,980 --> 00:09:09,710
+= 0.18.
+
+134
+00:09:09,710 --> 00:09:13,830
+Now, let's make predictions on our test set using this model.
+
+135
+00:09:13,830 --> 00:09:18,620
+We'll call our predictions PredictCV,
+
+136
+00:09:18,620 --> 00:09:20,720
+and we'll use the predict function
+
+137
+00:09:20,720 --> 00:09:26,880
+to make predictions using the model StevensTreeCV,
+
+138
+00:09:26,880 --> 00:09:34,750
+the newdata set Test, and we want to add type = "class",
+
+139
+00:09:34,750 --> 00:09:37,930
+so that we get class predictions.
+
+140
+00:09:37,930 --> 00:09:40,240
+Now let's create our confusion matrix,
+
+141
+00:09:40,240 --> 00:09:44,800
+using the table function, where we first give the true outcome,
+
+142
+00:09:44,800 --> 00:09:51,110
+Test$Reverse, and then our predictions, PredictCV.
+
+143
+00:09:51,110 --> 00:09:57,460
+So the accuracy of this model is 59 + 64,
+
+144
+00:09:57,460 --> 00:10:04,620
+divided by the total number in this table, 59 + 18 + 29 +
+
+145
+00:10:04,620 --> 00:10:09,500
+64, the total number of observations in our test set.
+
+146
+00:10:09,500 --> 00:10:13,980
+So the accuracy of this model is 0.724.
+
+147
+00:10:13,980 --> 00:10:17,460
+Remember that the accuracy of our previous CART model
+
+148
+00:10:17,460 --> 00:10:20,470
+was 0.659.
+
+149
+00:10:20,470 --> 00:10:22,820
+Cross validation helps us make sure we're
+
+150
+00:10:22,820 --> 00:10:25,360
+selecting a good parameter value,
+
+151
+00:10:25,360 --> 00:10:27,340
+and often this will significantly
+
+152
+00:10:27,340 --> 00:10:29,530
+increase the accuracy.
+
+153
+00:10:29,530 --> 00:10:33,090
+If we had already happened to select a good parameter value,
+
+154
+00:10:33,090 --> 00:10:36,190
+then the accuracy might not of increased that much.
+
+155
+00:10:36,190 --> 00:10:38,580
+But by using cross validation, we
+
+156
+00:10:38,580 --> 00:10:43,020
+can be sure that we're selecting a smart parameter value.
+

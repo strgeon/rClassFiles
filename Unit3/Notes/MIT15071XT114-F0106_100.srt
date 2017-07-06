@@ -1,0 +1,240 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:05,310
+Let us next examine the impact that the Framingham Heart
+
+2
+00:00:05,310 --> 00:00:06,480
+Study had through the years.
+
+3
+00:00:06,480 --> 00:00:09,870
+
+
+4
+00:00:09,870 --> 00:00:14,930
+So the graph on the right shows the number
+
+5
+00:00:14,930 --> 00:00:18,510
+of papers written every year using data
+
+6
+00:00:18,510 --> 00:00:21,650
+from the Framingham Study as a function of time,
+
+7
+00:00:21,650 --> 00:00:25,790
+and we observe the very significant increase
+
+8
+00:00:25,790 --> 00:00:27,750
+in the number of such publications.
+
+9
+00:00:27,750 --> 00:00:32,360
+Altogether, there has been 2,400 studies
+
+10
+00:00:32,360 --> 00:00:34,950
+written using the Framingham data.
+
+11
+00:00:34,950 --> 00:00:37,430
+During the years, many other risk factors were evaluated.
+
+12
+00:00:37,430 --> 00:00:40,650
+Obesity, exercise, psychological,
+
+13
+00:00:40,650 --> 00:00:41,880
+and social issues.
+
+14
+00:00:41,880 --> 00:00:47,210
+In fact, the Texas Heart Institute Journal
+
+15
+00:00:47,210 --> 00:00:51,620
+named the Framingham Heart Study as the top 10 cardiology
+
+16
+00:00:51,620 --> 00:00:54,090
+advance of the 20th century.
+
+17
+00:00:54,090 --> 00:00:58,432
+
+
+18
+00:00:58,432 --> 00:00:59,890
+In addition to the study, there has
+
+19
+00:00:59,890 --> 00:01:05,129
+been an online tool that assesses
+
+20
+00:01:05,129 --> 00:01:12,830
+the risk for your 10-year risk of having a heart attack.
+
+21
+00:01:12,830 --> 00:01:20,470
+So you input in this online tool your age, your gender,
+
+22
+00:01:20,470 --> 00:01:24,390
+the total cholesterol, the HDL cholesterol,
+
+23
+00:01:24,390 --> 00:01:29,140
+whether or not you are a smoker, the systolic blood pressure,
+
+24
+00:01:29,140 --> 00:01:36,800
+and then it calculates your 10-year risk.
+
+25
+00:01:36,800 --> 00:01:41,120
+So how about new research directions and challenges
+
+26
+00:01:41,120 --> 00:01:42,860
+that the study is facing?
+
+27
+00:01:42,860 --> 00:01:45,440
+
+
+28
+00:01:45,440 --> 00:01:49,550
+So currently, we are in the third generation that
+
+29
+00:01:49,550 --> 00:01:52,690
+started in 2002, but there was also a second generation
+
+30
+00:01:52,690 --> 00:01:55,700
+study of people enrolled in 1971,
+
+31
+00:01:55,700 --> 00:01:58,880
+and the third started in 2002.
+
+32
+00:01:58,880 --> 00:02:01,580
+As a result, this enables the study
+
+33
+00:02:01,580 --> 00:02:06,440
+to examine family history as a risk factor.
+
+34
+00:02:06,440 --> 00:02:12,230
+More diverse cohorts started in 1994 and 2003.
+
+35
+00:02:12,230 --> 00:02:18,910
+In addition to the classical measures we have used so far,
+
+36
+00:02:18,910 --> 00:02:21,080
+social network analysis of the participants
+
+37
+00:02:21,080 --> 00:02:23,130
+has also been utilized.
+
+38
+00:02:23,130 --> 00:02:26,900
+And additionally and quite importantly,
+
+39
+00:02:26,900 --> 00:02:33,290
+genome -wide association study is underway linking genetics
+
+40
+00:02:33,290 --> 00:02:37,010
+to heart conditions as a risk factor.
+
+41
+00:02:37,010 --> 00:02:40,800
+Of course, many challenges are related to funding.
+
+42
+00:02:40,800 --> 00:02:45,110
+Funding cuts in 1969 nearly closed the study,
+
+43
+00:02:45,110 --> 00:02:49,630
+and the 2013 sequester is threatening
+
+44
+00:02:49,630 --> 00:02:50,960
+to close the study as well.
+
+45
+00:02:50,960 --> 00:02:54,460
+
+
+46
+00:02:54,460 --> 00:02:57,850
+A very important impact of the Framingham Heart Study
+
+47
+00:02:57,850 --> 00:03:02,130
+is the development of clinical decision rules.
+
+48
+00:03:02,130 --> 00:03:04,980
+The early work on the study paved the way
+
+49
+00:03:04,980 --> 00:03:08,530
+for clinical decision rules as it is done today.
+
+50
+00:03:08,530 --> 00:03:14,320
+And the graph shows the clinical prediction rules
+
+51
+00:03:14,320 --> 00:03:22,980
+published as a function of the year from 1960s to today.
+
+52
+00:03:22,980 --> 00:03:29,000
+And you observe that more than 70,000 published rules,
+
+53
+00:03:29,000 --> 00:03:32,990
+clinical decision rules, have been published across medicine,
+
+54
+00:03:32,990 --> 00:03:38,410
+and you observe that the rate of publication is increasing.
+
+55
+00:03:38,410 --> 00:03:40,620
+So these clinical decision rules are
+
+56
+00:03:40,620 --> 00:03:45,590
+developed using patient and disease characteristics,
+
+57
+00:03:45,590 --> 00:03:48,550
+and then observed test results from patients
+
+58
+00:03:48,550 --> 00:03:52,372
+that can assess the effectiveness of such rules.
+
+59
+00:03:52,372 --> 00:03:52,872
+
+

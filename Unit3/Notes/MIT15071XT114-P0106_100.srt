@@ -1,0 +1,40 @@
+0
+00:00:00,000 --> 00:00:00,660
+
+
+1
+00:00:00,660 --> 00:00:01,280
+Hi.
+
+2
+00:00:01,280 --> 00:00:03,980
+I'm John, and I'll be leading the recitation this week.
+
+3
+00:00:03,980 --> 00:00:06,330
+We'll be using polling data from the months leading up
+
+4
+00:00:06,330 --> 00:00:09,790
+to a presidential election to predict that election's winner.
+
+5
+00:00:09,790 --> 00:00:12,030
+We'll go over how to build logistic regression
+
+6
+00:00:12,030 --> 00:00:14,980
+models in R, how to select the variables to include
+
+7
+00:00:14,980 --> 00:00:18,340
+in those models, and how to evaluate the model predictions.
+
+8
+00:00:18,340 --> 00:00:20,087
+Let's get started.
+
+9
+00:00:20,087 --> 00:00:20,587
+
+

@@ -1,0 +1,668 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,640
+Now that we have identified a set of risk factors,
+
+2
+00:00:03,640 --> 00:00:08,720
+let's use this data to predict the 10 year risk of CHD.
+
+3
+00:00:08,720 --> 00:00:11,190
+First, we'll randomly split our patients
+
+4
+00:00:11,190 --> 00:00:14,420
+into a training set and a testing set.
+
+5
+00:00:14,420 --> 00:00:16,830
+Then, we'll use logistic regression
+
+6
+00:00:16,830 --> 00:00:20,790
+to predict whether or not a patient experienced CHD
+
+7
+00:00:20,790 --> 00:00:24,640
+within 10 years of the first examination.
+
+8
+00:00:24,640 --> 00:00:26,800
+Keep in mind that all of the risk factors
+
+9
+00:00:26,800 --> 00:00:31,780
+were collected at the first examination of the patients.
+
+10
+00:00:31,780 --> 00:00:35,320
+After building our model, we'll evaluate the predictive power
+
+11
+00:00:35,320 --> 00:00:37,850
+of the model on the test set.
+
+12
+00:00:37,850 --> 00:00:42,730
+Let's go to R and create our logistic regression model.
+
+13
+00:00:42,730 --> 00:00:47,220
+In our R console, we'll call our data set framingham
+
+14
+00:00:47,220 --> 00:00:52,202
+and use the read.csv function to read in the data file
+
+15
+00:00:52,202 --> 00:00:52,910
+"framingham.csv".
+
+16
+00:00:52,910 --> 00:00:55,760
+
+
+17
+00:00:55,760 --> 00:00:58,320
+Remember to navigate to the directory containing
+
+18
+00:00:58,320 --> 00:01:03,930
+the file "framingham.csv" before reading in the data.
+
+19
+00:01:03,930 --> 00:01:06,965
+Let's take a look at our data by using the str function.
+
+20
+00:01:06,965 --> 00:01:10,720
+
+
+21
+00:01:10,720 --> 00:01:16,800
+We have data for 4,240 patients and 16 variables.
+
+22
+00:01:16,800 --> 00:01:20,470
+We have the demographic risk factors male, age,
+
+23
+00:01:20,470 --> 00:01:23,240
+and education; the behavioral risk
+
+24
+00:01:23,240 --> 00:01:26,880
+factors currentSmoker and cigsPerDay;
+
+25
+00:01:26,880 --> 00:01:32,840
+the medical history risk factors BPMeds, prevalentStroke,
+
+26
+00:01:32,840 --> 00:01:37,500
+prevalentHyp, and diabetes; and the physical exam risk
+
+27
+00:01:37,500 --> 00:01:46,600
+factors totChol, sysBP, diaBP, BMI, heartRate, and glucose
+
+28
+00:01:46,600 --> 00:01:47,890
+level.
+
+29
+00:01:47,890 --> 00:01:51,940
+The last variable is the outcome or dependent variable,
+
+30
+00:01:51,940 --> 00:01:53,940
+whether or not the patient developed
+
+31
+00:01:53,940 --> 00:01:57,360
+CHD in the next 10 years.
+
+32
+00:01:57,360 --> 00:02:01,760
+Now let's split our data into a training set and a testing set
+
+33
+00:02:01,760 --> 00:02:06,320
+using sample.split like we did in the previous lecture.
+
+34
+00:02:06,320 --> 00:02:09,385
+We first need to load the library caTools.
+
+35
+00:02:09,385 --> 00:02:13,660
+
+
+36
+00:02:13,660 --> 00:02:17,580
+Now, let's set our seed and create our split.
+
+37
+00:02:17,580 --> 00:02:21,830
+We'll start by setting our seed to 1000,
+
+38
+00:02:21,830 --> 00:02:27,235
+and then use the sample.split function to create the split.
+
+39
+00:02:27,235 --> 00:02:31,170
+
+
+40
+00:02:31,170 --> 00:02:34,147
+The first argument is the outcome variable
+
+41
+00:02:34,147 --> 00:02:35,063
+framingham$TenYearCHD.
+
+42
+00:02:35,063 --> 00:02:39,970
+
+
+43
+00:02:39,970 --> 00:02:42,890
+And the second argument is the percentage of data
+
+44
+00:02:42,890 --> 00:02:46,880
+that we want in the training set or the SplitRatio.
+
+45
+00:02:46,880 --> 00:02:51,620
+Here, we'll put 65% of the data in the training set.
+
+46
+00:02:51,620 --> 00:02:54,300
+When you have more data like we do here,
+
+47
+00:02:54,300 --> 00:02:57,410
+you can afford to put less data in the training set
+
+48
+00:02:57,410 --> 00:02:59,650
+and more in the testing set.
+
+49
+00:02:59,650 --> 00:03:01,610
+This will increase our confidence
+
+50
+00:03:01,610 --> 00:03:04,480
+in the ability of the model to extend to new data
+
+51
+00:03:04,480 --> 00:03:07,340
+since we have a larger test set, and still
+
+52
+00:03:07,340 --> 00:03:09,310
+give us enough data in the training set
+
+53
+00:03:09,310 --> 00:03:11,060
+to create our model.
+
+54
+00:03:11,060 --> 00:03:15,000
+You typically want to put somewhere between 50% and 80%
+
+55
+00:03:15,000 --> 00:03:18,130
+of the data in the training set.
+
+56
+00:03:18,130 --> 00:03:21,040
+Now, let's split up our data using subset.
+
+57
+00:03:21,040 --> 00:03:24,190
+We'll call our training set "train"
+
+58
+00:03:24,190 --> 00:03:28,400
+and use the subset function to take a subset of framingham
+
+59
+00:03:28,400 --> 00:03:33,310
+and take the observations for which split is equal to TRUE.
+
+60
+00:03:33,310 --> 00:03:35,730
+We'll call our testing set "test"
+
+61
+00:03:35,730 --> 00:03:37,890
+and again use the subset function
+
+62
+00:03:37,890 --> 00:03:40,690
+to take a subset of framingham and take
+
+63
+00:03:40,690 --> 00:03:43,400
+the observations for which split equals FALSE.
+
+64
+00:03:43,400 --> 00:03:47,120
+
+
+65
+00:03:47,120 --> 00:03:49,780
+Now we're ready to build our logistic regression
+
+66
+00:03:49,780 --> 00:03:52,280
+model using the training set.
+
+67
+00:03:52,280 --> 00:03:58,340
+Let's call it framinghamLog, and we'll use the glm function
+
+68
+00:03:58,340 --> 00:04:00,160
+like we did in the previous lecture
+
+69
+00:04:00,160 --> 00:04:03,800
+to create a logistic regression model.
+
+70
+00:04:03,800 --> 00:04:05,510
+We'll use a nice little trick here
+
+71
+00:04:05,510 --> 00:04:07,730
+where we predict our dependent variable
+
+72
+00:04:07,730 --> 00:04:10,450
+using all of the other variables in the data set
+
+73
+00:04:10,450 --> 00:04:12,810
+as independent variables.
+
+74
+00:04:12,810 --> 00:04:16,120
+First, type the name of the dependent variable,
+
+75
+00:04:16,120 --> 00:04:21,910
+TenYearCHD, followed by the tilde and then a period.
+
+76
+00:04:21,910 --> 00:04:24,560
+
+
+77
+00:04:24,560 --> 00:04:26,800
+This will use all of the other variables
+
+78
+00:04:26,800 --> 00:04:29,610
+in the data set as independent variables
+
+79
+00:04:29,610 --> 00:04:32,260
+and is used in place of listing out
+
+80
+00:04:32,260 --> 00:04:35,150
+all of the independent variables' names separated
+
+81
+00:04:35,150 --> 00:04:37,420
+by the plus sign.
+
+82
+00:04:37,420 --> 00:04:39,340
+Be careful doing this with data sets
+
+83
+00:04:39,340 --> 00:04:42,380
+that have identifying variables like a patient ID
+
+84
+00:04:42,380 --> 00:04:44,780
+or name since you wouldn't want to use
+
+85
+00:04:44,780 --> 00:04:48,380
+these as independent variables.
+
+86
+00:04:48,380 --> 00:04:51,100
+Following the period, we need to give the argument
+
+87
+00:04:51,100 --> 00:04:55,410
+that defines the data set to use, data = train.
+
+88
+00:04:55,410 --> 00:04:58,890
+And then, the final argument for a logistic regression model
+
+89
+00:04:58,890 --> 00:05:00,825
+is family = binomial.
+
+90
+00:05:00,825 --> 00:05:03,450
+
+
+91
+00:05:03,450 --> 00:05:05,500
+Let's take a look at the summary of our model.
+
+92
+00:05:05,500 --> 00:05:13,810
+
+
+93
+00:05:13,810 --> 00:05:18,860
+It looks like male, age, prevalent stroke,
+
+94
+00:05:18,860 --> 00:05:23,090
+total cholesterol, systolic blood pressure, and glucose
+
+95
+00:05:23,090 --> 00:05:25,960
+are all significant in our model.
+
+96
+00:05:25,960 --> 00:05:28,680
+Cigarettes per day and prevalent hypertension
+
+97
+00:05:28,680 --> 00:05:31,160
+are almost significant.
+
+98
+00:05:31,160 --> 00:05:35,220
+All of the significant variables have positive coefficients,
+
+99
+00:05:35,220 --> 00:05:38,070
+meaning that higher values in these variables
+
+100
+00:05:38,070 --> 00:05:40,240
+contribute to a higher probability
+
+101
+00:05:40,240 --> 00:05:43,850
+of 10-year coronary heart disease.
+
+102
+00:05:43,850 --> 00:05:46,540
+Now, let's use this model to make predictions
+
+103
+00:05:46,540 --> 00:05:47,950
+on our test set.
+
+104
+00:05:47,950 --> 00:05:52,260
+We'll call our predictions predictTest
+
+105
+00:05:52,260 --> 00:05:54,370
+and use the predict function, which
+
+106
+00:05:54,370 --> 00:05:59,190
+takes as arguments the name of our model, framinghamLog,
+
+107
+00:05:59,190 --> 00:06:04,790
+then type = "response", which gives us probabilities,
+
+108
+00:06:04,790 --> 00:06:12,670
+and lastly newdata = test, the name of our testing set.
+
+109
+00:06:12,670 --> 00:06:15,770
+Now, let's use a threshold value of 0.5
+
+110
+00:06:15,770 --> 00:06:18,360
+to create a confusion matrix.
+
+111
+00:06:18,360 --> 00:06:22,580
+We'll use the table function and give as the first argument,
+
+112
+00:06:22,580 --> 00:06:29,590
+the actual values, test$TenYearCHD,
+
+113
+00:06:29,590 --> 00:06:32,990
+and then as the second argument our predictions,
+
+114
+00:06:32,990 --> 00:06:38,190
+predictTest > 0.5.
+
+115
+00:06:38,190 --> 00:06:42,600
+With a threshold of 0.5, we predict an outcome of 1,
+
+116
+00:06:42,600 --> 00:06:45,630
+the true column, very rarely.
+
+117
+00:06:45,630 --> 00:06:49,610
+This means that our model rarely predicts a 10-year CHD
+
+118
+00:06:49,610 --> 00:06:52,770
+risk above 50%.
+
+119
+00:06:52,770 --> 00:06:55,690
+What is the accuracy of this model?
+
+120
+00:06:55,690 --> 00:07:01,280
+Well, it's the sum of the cases we get right, 1069 plus 11,
+
+121
+00:07:01,280 --> 00:07:04,580
+divided by the total number of observations in our data
+
+122
+00:07:04,580 --> 00:07:11,750
+set, 1069 + 6 + 187 + 11.
+
+123
+00:07:11,750 --> 00:07:17,720
+So the accuracy of our model is about 84.8%.
+
+124
+00:07:17,720 --> 00:07:20,840
+We need to compare this to the accuracy of a simple baseline
+
+125
+00:07:20,840 --> 00:07:22,060
+method.
+
+126
+00:07:22,060 --> 00:07:24,900
+The more frequent outcome in this case is 0,
+
+127
+00:07:24,900 --> 00:07:30,680
+so the baseline method would always predict 0 or no CHD.
+
+128
+00:07:30,680 --> 00:07:36,290
+This baseline method would get an accuracy of 1069
+
+129
+00:07:36,290 --> 00:07:42,710
++ 6-- this is the total number of true negative cases--
+
+130
+00:07:42,710 --> 00:07:46,380
+divided by the total number of observations in our data
+
+131
+00:07:46,380 --> 00:07:53,130
+set, 1069 + 6 + 187 + 11.
+
+132
+00:07:53,130 --> 00:07:59,590
+So the baseline model would get an accuracy of about 84.4%.
+
+133
+00:07:59,590 --> 00:08:04,330
+So our model barely beats the baseline in terms of accuracy.
+
+134
+00:08:04,330 --> 00:08:08,490
+But do we still have a valuable model by varying the threshold?
+
+135
+00:08:08,490 --> 00:08:11,790
+Let's compute the out-of-sample AUC.
+
+136
+00:08:11,790 --> 00:08:17,630
+To do this, we first need to load the ROCR package.
+
+137
+00:08:17,630 --> 00:08:20,040
+And then, we'll use the prediction function
+
+138
+00:08:20,040 --> 00:08:24,310
+of the ROCR package to make our predictions.
+
+139
+00:08:24,310 --> 00:08:29,440
+Let's call the output of that ROCRpred and use the prediction
+
+140
+00:08:29,440 --> 00:08:33,360
+function, which takes as a first argument our predictions,
+
+141
+00:08:33,360 --> 00:08:37,610
+predictTest, and then as a second argument the true
+
+142
+00:08:37,610 --> 00:08:38,900
+outcome, test$TenYearCHD.
+
+143
+00:08:38,900 --> 00:08:43,539
+
+
+144
+00:08:43,539 --> 00:08:45,990
+Then, we need to type as.numeric(performance(ROCRpred,
+
+145
+00:08:45,990 --> 00:08:46,698
+"auc")@y.values).
+
+146
+00:08:46,698 --> 00:09:09,710
+
+
+147
+00:09:09,710 --> 00:09:14,060
+This will give us the AUC value on our testing set.
+
+148
+00:09:14,060 --> 00:09:18,050
+So we have an AUC of about 74% on our test set,
+
+149
+00:09:18,050 --> 00:09:21,210
+which means that the model can differentiate between low risk
+
+150
+00:09:21,210 --> 00:09:25,010
+patients and high risk patients pretty well.
+
+151
+00:09:25,010 --> 00:09:29,070
+As we saw in R, we were able to build a logistic regression
+
+152
+00:09:29,070 --> 00:09:32,520
+model with a few interesting properties.
+
+153
+00:09:32,520 --> 00:09:37,440
+It rarely predicted 10-year CHD risk above 50%.
+
+154
+00:09:37,440 --> 00:09:40,870
+So the accuracy of the model was very close to the baseline
+
+155
+00:09:40,870 --> 00:09:42,120
+model.
+
+156
+00:09:42,120 --> 00:09:45,490
+However, the model could differentiate between low risk
+
+157
+00:09:45,490 --> 00:09:48,720
+patients and high risk patients pretty well
+
+158
+00:09:48,720 --> 00:09:53,140
+with an out-of-sample AUC of 0.74.
+
+159
+00:09:53,140 --> 00:09:55,960
+Additionally, some of the significant variables
+
+160
+00:09:55,960 --> 00:10:00,490
+suggest possible interventions to prevent CHD.
+
+161
+00:10:00,490 --> 00:10:05,240
+We saw that more cigarettes per day, higher cholesterol, higher
+
+162
+00:10:05,240 --> 00:10:08,900
+systolic blood pressure, and higher glucose levels
+
+163
+00:10:08,900 --> 00:10:11,480
+all increased risk.
+
+164
+00:10:11,480 --> 00:10:13,500
+Later in the lecture, we'll discuss
+
+165
+00:10:13,500 --> 00:10:15,720
+some medical interventions that are currently
+
+166
+00:10:15,720 --> 00:10:18,750
+used to prevent CHD.
+

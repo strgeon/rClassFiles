@@ -1,0 +1,600 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,890
+As usual, we will start by reading in our data
+
+2
+00:00:02,890 --> 00:00:05,350
+and looking at it in the R console.
+
+3
+00:00:05,350 --> 00:00:08,250
+So we can create a data frame called polling
+
+4
+00:00:08,250 --> 00:00:14,605
+using the read.csv function for our PollingData.csv file.
+
+5
+00:00:14,605 --> 00:00:19,610
+And we can take a look at its structure with the str command.
+
+6
+00:00:19,610 --> 00:00:22,300
+And what we can see is that as expected,
+
+7
+00:00:22,300 --> 00:00:25,460
+we have a state and a year variable for each observation,
+
+8
+00:00:25,460 --> 00:00:27,760
+as well as some polling data and the outcome
+
+9
+00:00:27,760 --> 00:00:29,620
+variable, Republican.
+
+10
+00:00:29,620 --> 00:00:31,480
+So something we notice right off the bat
+
+11
+00:00:31,480 --> 00:00:34,260
+is that even though there are 50 states and three election
+
+12
+00:00:34,260 --> 00:00:37,810
+years, so we would expect 150 observations,
+
+13
+00:00:37,810 --> 00:00:42,440
+we actually only have 145 observations in the data frame.
+
+14
+00:00:42,440 --> 00:00:44,710
+So using the table function, we can
+
+15
+00:00:44,710 --> 00:00:48,650
+look at the breakdown of the polling data frame's Year
+
+16
+00:00:48,650 --> 00:00:50,340
+variable.
+
+17
+00:00:50,340 --> 00:00:54,470
+And what we see is that while in the 2004 and 2008 elections,
+
+18
+00:00:54,470 --> 00:00:58,310
+all 50 states have data reported, in 2012, only 45
+
+19
+00:00:58,310 --> 00:01:00,430
+of the 50 states have data.
+
+20
+00:01:00,430 --> 00:01:01,890
+And actually, what happened here is
+
+21
+00:01:01,890 --> 00:01:05,050
+that pollsters were so sure about the five missing states
+
+22
+00:01:05,050 --> 00:01:07,750
+that they didn't perform any polls in the months leading up
+
+23
+00:01:07,750 --> 00:01:09,740
+to the 2012 election.
+
+24
+00:01:09,740 --> 00:01:12,580
+So since these states are particularly easy to predict,
+
+25
+00:01:12,580 --> 00:01:15,140
+we feel pretty comfortable moving forward, making
+
+26
+00:01:15,140 --> 00:01:19,399
+predictions just for the 45 remaining states.
+
+27
+00:01:19,399 --> 00:01:20,815
+So the second thing that we notice
+
+28
+00:01:20,815 --> 00:01:22,760
+is that there are these NA values, which
+
+29
+00:01:22,760 --> 00:01:24,800
+signify missing data.
+
+30
+00:01:24,800 --> 00:01:27,740
+So to get a handle on just how many values are missing,
+
+31
+00:01:27,740 --> 00:01:32,370
+we can use our summary function on the polling data frame.
+
+32
+00:01:32,370 --> 00:01:34,320
+And what we see is that while for the majority
+
+33
+00:01:34,320 --> 00:01:37,090
+of our variables, there's actually no missing data,
+
+34
+00:01:37,090 --> 00:01:39,410
+we see that for the Rasmussen polling data
+
+35
+00:01:39,410 --> 00:01:42,710
+and also for the SurveyUSA polling data,
+
+36
+00:01:42,710 --> 00:01:45,472
+there are a decent number of missing values.
+
+37
+00:01:45,472 --> 00:01:46,930
+So let's take a look at just how we
+
+38
+00:01:46,930 --> 00:01:49,760
+can handle this missing data.
+
+39
+00:01:49,760 --> 00:01:51,660
+There are a number of simple approaches
+
+40
+00:01:51,660 --> 00:01:54,140
+to dealing with missing data.
+
+41
+00:01:54,140 --> 00:01:56,340
+One would be to delete observations
+
+42
+00:01:56,340 --> 00:01:59,430
+that are missing at least one variable value.
+
+43
+00:01:59,430 --> 00:02:00,960
+Unfortunately, in this case, that
+
+44
+00:02:00,960 --> 00:02:03,090
+would result in throwing away more than 50%
+
+45
+00:02:03,090 --> 00:02:04,695
+of the observations.
+
+46
+00:02:04,695 --> 00:02:06,820
+And further, we want to be able to make predictions
+
+47
+00:02:06,820 --> 00:02:09,380
+for all states, not just for the ones that
+
+48
+00:02:09,380 --> 00:02:12,330
+report all of their variable values.
+
+49
+00:02:12,330 --> 00:02:15,320
+Another observation would be to remove the variables that
+
+50
+00:02:15,320 --> 00:02:18,290
+have missing values, in this case, the Rasmussen
+
+51
+00:02:18,290 --> 00:02:21,010
+and SurveyUSA variables.
+
+52
+00:02:21,010 --> 00:02:24,070
+However, we expect Rasmussen and SurveyUSA
+
+53
+00:02:24,070 --> 00:02:27,430
+to be qualitatively different from aggregate variables,
+
+54
+00:02:27,430 --> 00:02:30,210
+such as DiffCount and PropR, so we
+
+55
+00:02:30,210 --> 00:02:32,640
+want to retain them in our data set.
+
+56
+00:02:32,640 --> 00:02:35,040
+A third approach would be to fill the missing data
+
+57
+00:02:35,040 --> 00:02:37,130
+points with average values.
+
+58
+00:02:37,130 --> 00:02:40,490
+So for Rasmussen and SurveyUSA, the average value for a poll
+
+59
+00:02:40,490 --> 00:02:43,320
+would be very close to zero across all the times
+
+60
+00:02:43,320 --> 00:02:45,380
+with it reported, which is roughly a tie
+
+61
+00:02:45,380 --> 00:02:48,240
+between the Democrat and Republican candidate.
+
+62
+00:02:48,240 --> 00:02:52,530
+However, if PropR is very close to one or zero,
+
+63
+00:02:52,530 --> 00:02:55,440
+we would expect the Rasmussen or SurveyUSA
+
+64
+00:02:55,440 --> 00:02:57,250
+values that are currently missing
+
+65
+00:02:57,250 --> 00:03:01,260
+to be positive or negative, respectively.
+
+66
+00:03:01,260 --> 00:03:03,240
+This leads to a more complicated approach
+
+67
+00:03:03,240 --> 00:03:06,120
+called multiple imputation in which we fill in the missing
+
+68
+00:03:06,120 --> 00:03:09,500
+values based on the non-missing values for an observation.
+
+69
+00:03:09,500 --> 00:03:12,640
+So for instance, if the Rasmussen variable is reported
+
+70
+00:03:12,640 --> 00:03:16,090
+and is very negative, then a missing SurveyUSA value
+
+71
+00:03:16,090 --> 00:03:19,820
+would likely be filled in as a negative value as well.
+
+72
+00:03:19,820 --> 00:03:22,100
+Just like in the sample.split function,
+
+73
+00:03:22,100 --> 00:03:24,630
+multiple runs of multiple imputation
+
+74
+00:03:24,630 --> 00:03:28,240
+will in general result in different missing values being
+
+75
+00:03:28,240 --> 00:03:33,430
+filled in based on the random seed that is set.
+
+76
+00:03:33,430 --> 00:03:35,550
+Although multiple imputation is in general
+
+77
+00:03:35,550 --> 00:03:37,930
+a mathematically sophisticated approach,
+
+78
+00:03:37,930 --> 00:03:40,640
+we can use it rather easily through pre-existing R
+
+79
+00:03:40,640 --> 00:03:41,840
+libraries.
+
+80
+00:03:41,840 --> 00:03:43,420
+We will use the Multiple Imputation
+
+81
+00:03:43,420 --> 00:03:46,980
+by Chained Equations, or mice package.
+
+82
+00:03:46,980 --> 00:03:50,330
+So just like we did in lecture with the ROCR package,
+
+83
+00:03:50,330 --> 00:03:52,150
+we're going to install and then load
+
+84
+00:03:52,150 --> 00:03:54,910
+a new package, the "mice" package.
+
+85
+00:03:54,910 --> 00:03:58,440
+So we run install.packages, and we
+
+86
+00:03:58,440 --> 00:04:00,635
+pass it "mice", which is the name of the package we
+
+87
+00:04:00,635 --> 00:04:02,320
+want to install.
+
+88
+00:04:02,320 --> 00:04:07,420
+So you have to select a mirror near you for the installation,
+
+89
+00:04:07,420 --> 00:04:11,330
+and hopefully everything will go smoothly
+
+90
+00:04:11,330 --> 00:04:13,450
+and you'll get the package mice installed.
+
+91
+00:04:13,450 --> 00:04:14,850
+So after it's installed, we still
+
+92
+00:04:14,850 --> 00:04:16,990
+need to load it so that we can actually use it,
+
+93
+00:04:16,990 --> 00:04:19,830
+so we do that with the library command.
+
+94
+00:04:19,830 --> 00:04:22,850
+If you have to use it in the future, all you'll have to do
+
+95
+00:04:22,850 --> 00:04:26,050
+is run library instead of installing and then running
+
+96
+00:04:26,050 --> 00:04:27,600
+library.
+
+97
+00:04:27,600 --> 00:04:31,410
+So for our multiple imputation to be useful,
+
+98
+00:04:31,410 --> 00:04:33,790
+we have to be able to find out the values of our missing
+
+99
+00:04:33,790 --> 00:04:38,200
+variables without using the outcome of Republican.
+
+100
+00:04:38,200 --> 00:04:40,510
+So, what we're going to do here is
+
+101
+00:04:40,510 --> 00:04:42,420
+we're going to limit our data frame to just
+
+102
+00:04:42,420 --> 00:04:44,710
+the four polling related variables
+
+103
+00:04:44,710 --> 00:04:47,970
+before we actually perform multiple imputation.
+
+104
+00:04:47,970 --> 00:04:51,350
+So we're going to create a new data frame called simple,
+
+105
+00:04:51,350 --> 00:04:53,840
+and that's just going to be our original polling data
+
+106
+00:04:53,840 --> 00:05:04,570
+frame limited to Rasmussen, SurveyUSA, PropR,
+
+107
+00:05:04,570 --> 00:05:05,250
+and DiffCount.
+
+108
+00:05:05,250 --> 00:05:10,390
+
+
+109
+00:05:10,390 --> 00:05:13,360
+We can take a look at the simple data
+
+110
+00:05:13,360 --> 00:05:16,676
+frame using the summary command.
+
+111
+00:05:16,676 --> 00:05:18,380
+What we can see is that we haven't
+
+112
+00:05:18,380 --> 00:05:19,420
+done anything fancy yet.
+
+113
+00:05:19,420 --> 00:05:21,550
+We still have our missing values.
+
+114
+00:05:21,550 --> 00:05:23,170
+All that's changed is now we have
+
+115
+00:05:23,170 --> 00:05:26,790
+a smaller number of variables in total.
+
+116
+00:05:26,790 --> 00:05:30,950
+So again, multiple imputation, if you ran it twice,
+
+117
+00:05:30,950 --> 00:05:33,150
+you would get different values that were filled in.
+
+118
+00:05:33,150 --> 00:05:37,220
+So, to make sure that everybody following along
+
+119
+00:05:37,220 --> 00:05:39,370
+gets the same results from imputation,
+
+120
+00:05:39,370 --> 00:05:42,092
+we're going to set the random seed to a value.
+
+121
+00:05:42,092 --> 00:05:43,550
+It doesn't really matter what value
+
+122
+00:05:43,550 --> 00:05:48,310
+we pick, so we'll just pick my favorite number, 144.
+
+123
+00:05:48,310 --> 00:05:50,110
+And now we're ready to do imputation,
+
+124
+00:05:50,110 --> 00:05:51,580
+which is just one line.
+
+125
+00:05:51,580 --> 00:05:55,930
+So we're going to create a new data frame called imputed,
+
+126
+00:05:55,930 --> 00:05:58,820
+and we're going to use the function complete,
+
+127
+00:05:58,820 --> 00:06:01,777
+called on the function mice, called on simple.
+
+128
+00:06:01,777 --> 00:06:04,400
+
+
+129
+00:06:04,400 --> 00:06:08,460
+So the output here shows us that five rounds of imputation
+
+130
+00:06:08,460 --> 00:06:12,020
+have been run, and now all of the variables
+
+131
+00:06:12,020 --> 00:06:13,070
+have been filled in.
+
+132
+00:06:13,070 --> 00:06:14,580
+So there's no more missing values,
+
+133
+00:06:14,580 --> 00:06:19,850
+and we can see that using the summary function on imputed.
+
+134
+00:06:19,850 --> 00:06:22,840
+So Rasmussen and SurveyUSA both have no more
+
+135
+00:06:22,840 --> 00:06:25,290
+of those NA or missing values.
+
+136
+00:06:25,290 --> 00:06:28,800
+So the last step in this imputation process
+
+137
+00:06:28,800 --> 00:06:32,060
+is to actually copy the Rasmussen and SurveyUSA
+
+138
+00:06:32,060 --> 00:06:35,660
+variables back into our original polling data frame, which
+
+139
+00:06:35,660 --> 00:06:37,830
+has all the variables for the problem.
+
+140
+00:06:37,830 --> 00:06:41,050
+And we can do that with two simple assignments.
+
+141
+00:06:41,050 --> 00:06:45,690
+So we'll just copy over to polling$Rasmussen, the value
+
+142
+00:06:45,690 --> 00:06:49,940
+from the imputed data frame, and then we'll
+
+143
+00:06:49,940 --> 00:06:54,480
+do the same for the SurveyUSA variable.
+
+144
+00:06:54,480 --> 00:06:57,175
+
+
+145
+00:06:57,175 --> 00:07:00,900
+And we'll use one final check using summary
+
+146
+00:07:00,900 --> 00:07:03,800
+on the final polling data frame.
+
+147
+00:07:03,800 --> 00:07:06,860
+And as we can see, Rasmussen and SurveyUSA
+
+148
+00:07:06,860 --> 00:07:09,160
+are no longer missing values.
+
+149
+00:07:09,160 --> 00:07:09,660
+
+

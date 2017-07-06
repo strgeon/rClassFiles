@@ -1,0 +1,568 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,990
+We saw in the previous video that the outcome
+
+2
+00:00:02,990 --> 00:00:06,870
+of a logistic regression model is a probability.
+
+3
+00:00:06,870 --> 00:00:10,260
+Often, we want to make an actual prediction.
+
+4
+00:00:10,260 --> 00:00:12,760
+Should we predict 1 for poor care,
+
+5
+00:00:12,760 --> 00:00:16,110
+or should we predict 0 for good care?
+
+6
+00:00:16,110 --> 00:00:19,380
+We can convert the probabilities to predictions
+
+7
+00:00:19,380 --> 00:00:23,030
+using what's called a threshold value, t.
+
+8
+00:00:23,030 --> 00:00:26,490
+If the probability of poor care is greater than this threshold
+
+9
+00:00:26,490 --> 00:00:30,290
+value, t, we predict poor quality care.
+
+10
+00:00:30,290 --> 00:00:32,310
+But if the probability of poor care
+
+11
+00:00:32,310 --> 00:00:33,920
+is less than the threshold value,
+
+12
+00:00:33,920 --> 00:00:37,110
+t, then we predict good quality care.
+
+13
+00:00:37,110 --> 00:00:41,340
+But what value should we pick for the threshold, t?
+
+14
+00:00:41,340 --> 00:00:44,200
+The threshold value, t, is often selected
+
+15
+00:00:44,200 --> 00:00:46,485
+based on which errors are better.
+
+16
+00:00:46,485 --> 00:00:49,200
+You might be thinking that making no errors
+
+17
+00:00:49,200 --> 00:00:51,590
+is better, which is, of course, true.
+
+18
+00:00:51,590 --> 00:00:54,820
+But it's rare to have a model that predicts perfectly,
+
+19
+00:00:54,820 --> 00:00:57,500
+so you're bound to make some errors.
+
+20
+00:00:57,500 --> 00:01:00,570
+There are two types of errors that a model can make --
+
+21
+00:01:00,570 --> 00:01:03,300
+ones where you predict 1, or poor care,
+
+22
+00:01:03,300 --> 00:01:07,470
+but the actual outcome is 0, and ones where you predict 0,
+
+23
+00:01:07,470 --> 00:01:11,500
+or good care, but the actual outcome is 1.
+
+24
+00:01:11,500 --> 00:01:14,670
+If we pick a large threshold value t,
+
+25
+00:01:14,670 --> 00:01:17,080
+then we will predict poor care rarely,
+
+26
+00:01:17,080 --> 00:01:19,150
+since the probability of poor care
+
+27
+00:01:19,150 --> 00:01:22,670
+has to be really large to be greater than the threshold.
+
+28
+00:01:22,670 --> 00:01:25,050
+This means that we will make more errors where
+
+29
+00:01:25,050 --> 00:01:28,700
+we say good care, but it's actually poor care.
+
+30
+00:01:28,700 --> 00:01:31,660
+This approach would detect the patients receiving the worst
+
+31
+00:01:31,660 --> 00:01:35,660
+care and prioritize them for intervention.
+
+32
+00:01:35,660 --> 00:01:39,410
+On the other hand, if the threshold value, t, is small,
+
+33
+00:01:39,410 --> 00:01:42,850
+we predict poor care frequently, and we predict good care
+
+34
+00:01:42,850 --> 00:01:44,060
+rarely.
+
+35
+00:01:44,060 --> 00:01:46,400
+This means that we will make more errors where
+
+36
+00:01:46,400 --> 00:01:49,910
+we say poor care, but it's actually good care.
+
+37
+00:01:49,910 --> 00:01:52,170
+This approach would detect all patients
+
+38
+00:01:52,170 --> 00:01:55,040
+who might be receiving poor care.
+
+39
+00:01:55,040 --> 00:01:57,540
+Some decision-makers often have a preference
+
+40
+00:01:57,540 --> 00:01:59,810
+for one type of error over the other,
+
+41
+00:01:59,810 --> 00:02:03,110
+which should influence the threshold value they pick.
+
+42
+00:02:03,110 --> 00:02:05,450
+If there's no preference between the errors,
+
+43
+00:02:05,450 --> 00:02:09,280
+the right threshold to select is t = 0.5,
+
+44
+00:02:09,280 --> 00:02:13,730
+since it just predicts the most likely outcome.
+
+45
+00:02:13,730 --> 00:02:16,730
+To make this discussion a little more quantitative,
+
+46
+00:02:16,730 --> 00:02:20,360
+we use what's called a confusion matrix or classification
+
+47
+00:02:20,360 --> 00:02:21,680
+matrix.
+
+48
+00:02:21,680 --> 00:02:23,880
+This compares the actual outcomes
+
+49
+00:02:23,880 --> 00:02:26,160
+to the predicted outcomes.
+
+50
+00:02:26,160 --> 00:02:29,880
+The rows are labeled with the actual outcome,
+
+51
+00:02:29,880 --> 00:02:33,920
+and the columns are labeled with the predicted outcome.
+
+52
+00:02:33,920 --> 00:02:36,350
+Each entry of the table gives the number of data
+
+53
+00:02:36,350 --> 00:02:39,570
+observations that fall into that category.
+
+54
+00:02:39,570 --> 00:02:42,900
+So the number of true negatives, or TN,
+
+55
+00:02:42,900 --> 00:02:45,350
+is the number of observations that are actually
+
+56
+00:02:45,350 --> 00:02:49,210
+good care and for which we predict good care.
+
+57
+00:02:49,210 --> 00:02:52,770
+The true positives, or TP, is the number
+
+58
+00:02:52,770 --> 00:02:54,520
+of observations that are actually
+
+59
+00:02:54,520 --> 00:02:58,030
+poor care and for which we predict poor care.
+
+60
+00:02:58,030 --> 00:03:01,260
+These are the two types that we get correct.
+
+61
+00:03:01,260 --> 00:03:05,510
+The false positives, or FP, are the number of data points
+
+62
+00:03:05,510 --> 00:03:10,370
+for which we predict poor care, but they're actually good care.
+
+63
+00:03:10,370 --> 00:03:14,690
+And the false negatives, or FN, are the number of data points
+
+64
+00:03:14,690 --> 00:03:19,990
+for which we predict good care, but they're actually poor care.
+
+65
+00:03:19,990 --> 00:03:22,220
+We can compute two outcome measures
+
+66
+00:03:22,220 --> 00:03:26,050
+that help us determine what types of errors we are making.
+
+67
+00:03:26,050 --> 00:03:32,856
+They're called sensitivity and specificity.
+
+68
+00:03:32,856 --> 00:03:38,620
+
+
+69
+00:03:38,620 --> 00:03:42,770
+Sensitivity is equal to the true positives
+
+70
+00:03:42,770 --> 00:03:47,980
+divided by the true positives plus the false negatives,
+
+71
+00:03:47,980 --> 00:03:51,750
+and measures the percentage of actual poor care cases
+
+72
+00:03:51,750 --> 00:03:53,870
+that we classify correctly.
+
+73
+00:03:53,870 --> 00:03:57,150
+This is often called the true positive rate.
+
+74
+00:03:57,150 --> 00:04:00,710
+Specificity is equal to the true negatives
+
+75
+00:04:00,710 --> 00:04:05,520
+divided by the true negatives plus the false positives,
+
+76
+00:04:05,520 --> 00:04:08,570
+and measures the percentage of actual good care cases
+
+77
+00:04:08,570 --> 00:04:10,700
+that we classify correctly.
+
+78
+00:04:10,700 --> 00:04:13,651
+This is often called the true negative rate.
+
+79
+00:04:13,651 --> 00:04:17,700
+A model with a higher threshold will have a lower sensitivity
+
+80
+00:04:17,700 --> 00:04:20,209
+and a higher specificity.
+
+81
+00:04:20,209 --> 00:04:24,440
+A model with a lower threshold will have a higher sensitivity
+
+82
+00:04:24,440 --> 00:04:26,930
+and a lower specificity.
+
+83
+00:04:26,930 --> 00:04:29,260
+Let's compute some confusion matrices
+
+84
+00:04:29,260 --> 00:04:33,550
+in R using different threshold values.
+
+85
+00:04:33,550 --> 00:04:37,490
+In our R console, let's make some classification tables
+
+86
+00:04:37,490 --> 00:04:41,680
+using different threshold values and the table function.
+
+87
+00:04:41,680 --> 00:04:45,560
+First, we'll use a threshold value of 0.5.
+
+88
+00:04:45,560 --> 00:04:49,020
+So type table, and then the first argument,
+
+89
+00:04:49,020 --> 00:04:52,500
+or what we want to label the rows by, should be the true
+
+90
+00:04:52,500 --> 00:04:54,230
+outcome, which is qualityTrain$PoorCare.
+
+91
+00:04:54,230 --> 00:05:00,440
+
+
+92
+00:05:00,440 --> 00:05:02,290
+And then the second argument, or what
+
+93
+00:05:02,290 --> 00:05:04,750
+we want to label the columns by, will
+
+94
+00:05:04,750 --> 00:05:07,850
+be predictTrain, or our predictions
+
+95
+00:05:07,850 --> 00:05:12,670
+from the previous video, greater than 0.5.
+
+96
+00:05:12,670 --> 00:05:17,200
+This will return TRUE if our prediction is greater than 0.5,
+
+97
+00:05:17,200 --> 00:05:19,860
+which means we want to predict poor care,
+
+98
+00:05:19,860 --> 00:05:23,540
+and it will return FALSE if our prediction is less than 0.5,
+
+99
+00:05:23,540 --> 00:05:27,010
+which means we want to predict good care.
+
+100
+00:05:27,010 --> 00:05:30,040
+If you hit Enter, we get a table where the rows are labeled
+
+101
+00:05:30,040 --> 00:05:33,840
+by 0 or 1, the true outcome, and the columns
+
+102
+00:05:33,840 --> 00:05:37,780
+are labeled by FALSE or TRUE, our predicted outcome.
+
+103
+00:05:37,780 --> 00:05:42,400
+So you can see here that for 70 cases, we predict good care
+
+104
+00:05:42,400 --> 00:05:46,220
+and they actually received good care, and for 10 cases,
+
+105
+00:05:46,220 --> 00:05:50,230
+we predict poor care, and they actually received poor care.
+
+106
+00:05:50,230 --> 00:05:53,200
+We make four mistakes where we say poor care
+
+107
+00:05:53,200 --> 00:05:57,010
+and it's actually good care, and we make 15 mistakes where
+
+108
+00:05:57,010 --> 00:06:01,010
+we say good care, but it's actually poor care.
+
+109
+00:06:01,010 --> 00:06:05,240
+Let's compute the sensitivity, or the true positive rate,
+
+110
+00:06:05,240 --> 00:06:08,790
+and the specificity, or the true negative rate.
+
+111
+00:06:08,790 --> 00:06:12,870
+The sensitivity here would be 10, our true positives,
+
+112
+00:06:12,870 --> 00:06:18,460
+divided by 25 the total number of positive cases.
+
+113
+00:06:18,460 --> 00:06:22,400
+So we have a sensitivity of 0.4.
+
+114
+00:06:22,400 --> 00:06:27,260
+Our specificity here would be 70, the true negative cases,
+
+115
+00:06:27,260 --> 00:06:33,430
+divided by 74, the total number of negative cases.
+
+116
+00:06:33,430 --> 00:06:38,900
+So our specificity here is about 0.95.
+
+117
+00:06:38,900 --> 00:06:41,480
+Now, let's try increasing the threshold.
+
+118
+00:06:41,480 --> 00:06:44,830
+Use the up arrow to get back to the table command,
+
+119
+00:06:44,830 --> 00:06:49,350
+and change the threshold value to 0.7.
+
+120
+00:06:49,350 --> 00:06:52,310
+Now, if we compute our sensitivity,
+
+121
+00:06:52,310 --> 00:06:58,480
+we get a sensitivity of 8 divided by 25, which is 0.32.
+
+122
+00:06:58,480 --> 00:07:00,620
+And if we compute our specificity,
+
+123
+00:07:00,620 --> 00:07:04,930
+we get a specificity of 73 divided by 74,
+
+124
+00:07:04,930 --> 00:07:07,050
+which is about 0.99.
+
+125
+00:07:07,050 --> 00:07:10,870
+So by increasing the threshold, our sensitivity went down
+
+126
+00:07:10,870 --> 00:07:13,670
+and our specificity went up.
+
+127
+00:07:13,670 --> 00:07:16,540
+Now, let's try decreasing the threshold.
+
+128
+00:07:16,540 --> 00:07:19,820
+Hit the up arrow again to get to the table function,
+
+129
+00:07:19,820 --> 00:07:23,940
+and change the threshold value to 0.2.
+
+130
+00:07:23,940 --> 00:07:26,570
+Now, if we compute our sensitivity,
+
+131
+00:07:26,570 --> 00:07:31,380
+it's 16 divided by 25, or 0.64.
+
+132
+00:07:31,380 --> 00:07:33,290
+And if we compute our specificity,
+
+133
+00:07:33,290 --> 00:07:38,590
+it's 54 divided by 74, or about 0.73.
+
+134
+00:07:38,590 --> 00:07:41,930
+So with the lower threshold, our sensitivity went up,
+
+135
+00:07:41,930 --> 00:07:44,890
+and our specificity went down.
+
+136
+00:07:44,890 --> 00:07:47,250
+But which threshold should we pick?
+
+137
+00:07:47,250 --> 00:07:50,450
+Maybe 0.4 is better, or 0.6.
+
+138
+00:07:50,450 --> 00:07:52,100
+How do we decide?
+
+139
+00:07:52,100 --> 00:07:55,320
+In the next video, we'll see a nice visualization
+
+140
+00:07:55,320 --> 00:07:57,807
+to help us select a threshold.
+
+141
+00:07:57,807 --> 00:07:58,306
+
+
