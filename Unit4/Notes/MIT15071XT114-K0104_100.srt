@@ -1,0 +1,504 @@
+0
+00:00:00,000 --> 00:00:01,040
+
+
+1
+00:00:01,040 --> 00:00:03,920
+Let's see how regression trees do.
+
+2
+00:00:03,920 --> 00:00:07,450
+We'll first load the rpart library
+
+3
+00:00:07,450 --> 00:00:12,550
+and also load the rpart plotting library.
+
+4
+00:00:12,550 --> 00:00:14,800
+We build a regression tree in the same way
+
+5
+00:00:14,800 --> 00:00:18,400
+we would build a classification tree, using the rpart command.
+
+6
+00:00:18,400 --> 00:00:21,390
+
+
+7
+00:00:21,390 --> 00:00:25,579
+We predict MEDV as a function of latitude and longitude,
+
+8
+00:00:25,579 --> 00:00:26,620
+using the boston dataset.
+
+9
+00:00:26,620 --> 00:00:29,950
+
+
+10
+00:00:29,950 --> 00:00:33,870
+If we now plot the tree using the prp command, which
+
+11
+00:00:33,870 --> 00:00:39,620
+is defined in rpart.plot, we can see it makes a lot of splits
+
+12
+00:00:39,620 --> 00:00:41,850
+and is a little bit hard to interpret.
+
+13
+00:00:41,850 --> 00:00:45,340
+But the important thing is to look at the leaves.
+
+14
+00:00:45,340 --> 00:00:47,000
+In a classification tree, the leaves
+
+15
+00:00:47,000 --> 00:00:50,680
+would be the classification we assign
+
+16
+00:00:50,680 --> 00:00:54,000
+that these splits would apply to.
+
+17
+00:00:54,000 --> 00:00:58,930
+But in regression trees, we instead predict the number.
+
+18
+00:00:58,930 --> 00:01:02,230
+That number is the average of the median house
+
+19
+00:01:02,230 --> 00:01:07,080
+prices in that bucket or leaf.
+
+20
+00:01:07,080 --> 00:01:10,160
+So let's see what that means in practice.
+
+21
+00:01:10,160 --> 00:01:14,465
+So we'll plot again the latitude of the points.
+
+22
+00:01:14,465 --> 00:01:18,910
+
+
+23
+00:01:18,910 --> 00:01:25,590
+And we'll again plot the points with above median prices.
+
+24
+00:01:25,590 --> 00:01:29,180
+I just scrolled up from my command history to do that.
+
+25
+00:01:29,180 --> 00:01:31,650
+Now we want to predict what the tree thinks
+
+26
+00:01:31,650 --> 00:01:34,310
+is above median, just like we did with linear regression.
+
+27
+00:01:34,310 --> 00:01:38,035
+So we'll say the fitted values we
+
+28
+00:01:38,035 --> 00:01:41,460
+can get from using the predict command on the tree we just
+
+29
+00:01:41,460 --> 00:01:41,960
+built.
+
+30
+00:01:41,960 --> 00:01:45,070
+
+
+31
+00:01:45,070 --> 00:01:47,400
+And we can do another points command,
+
+32
+00:01:47,400 --> 00:01:49,710
+just like we did before.
+
+33
+00:01:49,710 --> 00:02:05,830
+The fitted values are greater than 21.2, the color is blue,
+
+34
+00:02:05,830 --> 00:02:10,090
+and the character is a dollar sign.
+
+35
+00:02:10,090 --> 00:02:13,210
+
+
+36
+00:02:13,210 --> 00:02:15,730
+Now we see that we've done a much better job
+
+37
+00:02:15,730 --> 00:02:17,930
+than linear regression was able to do.
+
+38
+00:02:17,930 --> 00:02:21,840
+We've correctly left the low value area in Boston
+
+39
+00:02:21,840 --> 00:02:25,114
+and below out, and we've correctly
+
+40
+00:02:25,114 --> 00:02:26,780
+managed to classify some of those points
+
+41
+00:02:26,780 --> 00:02:29,600
+in the bottom right and top right.
+
+42
+00:02:29,600 --> 00:02:32,270
+We're still making mistakes, but we're
+
+43
+00:02:32,270 --> 00:02:34,740
+able to make a nonlinear prediction
+
+44
+00:02:34,740 --> 00:02:37,600
+on latitude and longitude.
+
+45
+00:02:37,600 --> 00:02:41,840
+So that's interesting, but the tree was very complicated.
+
+46
+00:02:41,840 --> 00:02:45,420
+So maybe it's drastically overfitting.
+
+47
+00:02:45,420 --> 00:02:49,230
+Can we get most of this effect with a much simpler tree?
+
+48
+00:02:49,230 --> 00:02:49,942
+We can.
+
+49
+00:02:49,942 --> 00:02:52,170
+We would just change the minbucket size.
+
+50
+00:02:52,170 --> 00:02:57,930
+So let's build a new tree using the rpart command again:
+
+51
+00:02:57,930 --> 00:03:04,800
+MEDV as a function of LAT and LON, the data=boston.
+
+52
+00:03:04,800 --> 00:03:07,845
+But this time we'll say the minbucket size must be 50.
+
+53
+00:03:07,845 --> 00:03:10,620
+
+
+54
+00:03:10,620 --> 00:03:16,270
+We'll use the other way of plotting trees, plot,
+
+55
+00:03:16,270 --> 00:03:18,110
+and we'll add text to the text command.
+
+56
+00:03:18,110 --> 00:03:21,820
+
+
+57
+00:03:21,820 --> 00:03:23,710
+And we see we have far fewer splits,
+
+58
+00:03:23,710 --> 00:03:26,040
+and it's far more interpretable.
+
+59
+00:03:26,040 --> 00:03:28,590
+The first split says if the longitude
+
+60
+00:03:28,590 --> 00:03:30,974
+is greater than or equal to negative 71.07--
+
+61
+00:03:30,974 --> 00:03:32,890
+so if you're on the right side of the picture.
+
+62
+00:03:32,890 --> 00:03:35,510
+
+
+63
+00:03:35,510 --> 00:03:37,510
+So the left-hand branch is on the left-hand side
+
+64
+00:03:37,510 --> 00:03:38,968
+of the picture and the right-hand--
+
+65
+00:03:38,968 --> 00:03:40,810
+So the left-hand side of the tree
+
+66
+00:03:40,810 --> 00:03:44,080
+corresponds to the right-hand side of the map.
+
+67
+00:03:44,080 --> 00:03:45,830
+And the right side of the tree corresponds
+
+68
+00:03:45,830 --> 00:03:47,770
+to the left side of the map.
+
+69
+00:03:47,770 --> 00:03:50,340
+That's a little bit of a mouthful.
+
+70
+00:03:50,340 --> 00:03:51,990
+Let's see what it means visually.
+
+71
+00:03:51,990 --> 00:03:57,820
+So we'll remember these values, and we'll
+
+72
+00:03:57,820 --> 00:04:03,460
+plot the longitude and latitude again.
+
+73
+00:04:03,460 --> 00:04:04,510
+So here's our map.
+
+74
+00:04:04,510 --> 00:04:05,120
+OK.
+
+75
+00:04:05,120 --> 00:04:08,680
+So the first split was on longitude,
+
+76
+00:04:08,680 --> 00:04:12,000
+and it was negative 71.07.
+
+77
+00:04:12,000 --> 00:04:15,570
+So there's a very handy command, "abline,"
+
+78
+00:04:15,570 --> 00:04:19,670
+which can plot horizontal or vertical lines easily.
+
+79
+00:04:19,670 --> 00:04:23,070
+So we're going to plot a vertical line, so v,
+
+80
+00:04:23,070 --> 00:04:28,070
+and we wanted to plot it at negative 71.07.
+
+81
+00:04:28,070 --> 00:04:28,850
+OK.
+
+82
+00:04:28,850 --> 00:04:30,760
+So that's that first split from the tree.
+
+83
+00:04:30,760 --> 00:04:33,160
+It corresponds to being on either the left or right-hand
+
+84
+00:04:33,160 --> 00:04:36,910
+side of this tree.
+
+85
+00:04:36,910 --> 00:04:44,240
+We'll plot the-- what we want to do is, we'll focus on one area.
+
+86
+00:04:44,240 --> 00:04:49,040
+We'll focus on the lowest price prediction, which
+
+87
+00:04:49,040 --> 00:04:51,057
+is in the bottom left corner of the tree,
+
+88
+00:04:51,057 --> 00:04:53,140
+right down at the bottom left after all those splits.
+
+89
+00:04:53,140 --> 00:04:54,556
+So that's where we want to get to.
+
+90
+00:04:54,556 --> 00:04:57,640
+So let's plot again the points.
+
+91
+00:04:57,640 --> 00:04:59,400
+Plot a vertical line.
+
+92
+00:04:59,400 --> 00:05:02,340
+The next split down towards that bottom left corner
+
+93
+00:05:02,340 --> 00:05:08,900
+was a horizontal line at 42.21.
+
+94
+00:05:08,900 --> 00:05:10,979
+So I put that in.
+
+95
+00:05:10,979 --> 00:05:11,770
+That's interesting.
+
+96
+00:05:11,770 --> 00:05:14,000
+So that line corresponds pretty much to where
+
+97
+00:05:14,000 --> 00:05:16,940
+the Charles River was from before.
+
+98
+00:05:16,940 --> 00:05:19,600
+The final split you need to get to that bottom left corner I
+
+99
+00:05:19,600 --> 00:05:23,840
+was pointing out is 42.17.
+
+100
+00:05:23,840 --> 00:05:27,260
+It was above this line.
+
+101
+00:05:27,260 --> 00:05:28,810
+And now that's interesting.
+
+102
+00:05:28,810 --> 00:05:31,960
+If we look at the right side of the middle of the three
+
+103
+00:05:31,960 --> 00:05:33,970
+rectangles on the right side, that
+
+104
+00:05:33,970 --> 00:05:35,345
+is the bucket we were predicting.
+
+105
+00:05:35,345 --> 00:05:38,820
+And it corresponds to that rectangle, those areas.
+
+106
+00:05:38,820 --> 00:05:43,890
+That's the South Boston low price area we saw before.
+
+107
+00:05:43,890 --> 00:05:48,360
+So maybe we can make that more clear by plotting, now,
+
+108
+00:05:48,360 --> 00:05:49,900
+the high value prices.
+
+109
+00:05:49,900 --> 00:05:55,210
+So let's go back up to where we plotted all the red dots
+
+110
+00:05:55,210 --> 00:05:56,700
+and overlay it.
+
+111
+00:05:56,700 --> 00:05:58,470
+So this makes it even more clear.
+
+112
+00:05:58,470 --> 00:06:02,510
+We've correctly shown how the regression tree carves out
+
+113
+00:06:02,510 --> 00:06:05,120
+that rectangle in the bottom of Boston
+
+114
+00:06:05,120 --> 00:06:09,460
+and says that is a low value area.
+
+115
+00:06:09,460 --> 00:06:11,649
+So that's actually very interesting.
+
+116
+00:06:11,649 --> 00:06:13,690
+It's shown us something that regression trees can
+
+117
+00:06:13,690 --> 00:06:15,898
+do that we would never expect linear regression to be
+
+118
+00:06:15,898 --> 00:06:16,889
+able to do.
+
+119
+00:06:16,889 --> 00:06:19,180
+So the question we're going to answer in the next video
+
+120
+00:06:19,180 --> 00:06:22,604
+is given that regression trees can do these fancy things
+
+121
+00:06:22,604 --> 00:06:24,020
+with latitude and longitude, is it
+
+122
+00:06:24,020 --> 00:06:25,895
+actually going to help us to be able to build
+
+123
+00:06:25,895 --> 00:06:28,220
+a predictive model, predicting house prices?
+
+124
+00:06:28,220 --> 00:06:30,380
+Well, we'll have to see.
+
+125
+00:06:30,380 --> 00:06:31,626
+
+

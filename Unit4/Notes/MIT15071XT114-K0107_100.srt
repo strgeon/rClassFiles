@@ -1,0 +1,400 @@
+0
+00:00:00,000 --> 00:00:01,150
+
+
+1
+00:00:01,150 --> 00:00:05,700
+OK, so now we know what CP is, we can go ahead and build
+
+2
+00:00:05,700 --> 00:00:09,107
+one last tree using cross validation.
+
+3
+00:00:09,107 --> 00:00:11,190
+So we need to make sure first we have the required
+
+4
+00:00:11,190 --> 00:00:14,710
+libraries installed and in use.
+
+5
+00:00:14,710 --> 00:00:18,840
+So the first package is the "caret" package.
+
+6
+00:00:18,840 --> 00:00:21,720
+
+
+7
+00:00:21,720 --> 00:00:28,190
+And the second one we need is the "e1071" package.
+
+8
+00:00:28,190 --> 00:00:29,730
+OK.
+
+9
+00:00:29,730 --> 00:00:33,300
+So we need to tell the caret package how exactly we
+
+10
+00:00:33,300 --> 00:00:35,730
+want to do our parameter tuning.
+
+11
+00:00:35,730 --> 00:00:38,290
+There are actually quite a few ways of doing it.
+
+12
+00:00:38,290 --> 00:00:40,525
+But we're going to restrict ourselves in this course
+
+13
+00:00:40,525 --> 00:00:42,720
+to just 10-fold cross validation,
+
+14
+00:00:42,720 --> 00:00:44,882
+as was explained in the lecture.
+
+15
+00:00:44,882 --> 00:00:46,965
+So let's say  tr.control=trainControl(method="cv",
+
+16
+00:00:46,965 --> 00:00:47,465
+number=10).
+
+17
+00:00:47,465 --> 00:01:01,260
+
+
+18
+00:01:01,260 --> 00:01:03,470
+OK, that was easy enough.
+
+19
+00:01:03,470 --> 00:01:07,280
+Now we need to tell caret which range of cp parameters
+
+20
+00:01:07,280 --> 00:01:08,775
+to try out.
+
+21
+00:01:08,775 --> 00:01:12,890
+Now remember that cp varies between 0 and 1.
+
+22
+00:01:12,890 --> 00:01:14,605
+It's likely for any given problem
+
+23
+00:01:14,605 --> 00:01:17,500
+that we don't need to explore the whole range.
+
+24
+00:01:17,500 --> 00:01:19,530
+I happen to know, by the fact that I
+
+25
+00:01:19,530 --> 00:01:23,090
+made this presentation ahead of time, that the value of cp
+
+26
+00:01:23,090 --> 00:01:25,700
+we're going to pick is very small.
+
+27
+00:01:25,700 --> 00:01:32,160
+So what I want to do is make a grid of cp values to try.
+
+28
+00:01:32,160 --> 00:01:49,400
+And it will be over the range of 0 to 0.01.
+
+29
+00:01:49,400 --> 00:01:53,170
+OK, so how does what I wrote led to that?
+
+30
+00:01:53,170 --> 00:02:00,240
+Well, 1 times 0.001 is obviously 0.001.
+
+31
+00:02:00,240 --> 00:02:06,810
+And 10 times 0.001 is obviously 0.01.
+
+32
+00:02:06,810 --> 00:02:11,300
+0 to 5, or 0 to 10, means the numbers
+
+33
+00:02:11,300 --> 00:02:15,140
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
+
+34
+00:02:15,140 --> 00:02:26,680
+So 0 to 10 times 0.001 is those numbers scaled by 0.001.
+
+35
+00:02:26,680 --> 00:02:31,650
+So those are the values of cp that caret will try.
+
+36
+00:02:31,650 --> 00:02:36,150
+So let's store the results of the cross validation fitting
+
+37
+00:02:36,150 --> 00:02:38,370
+in a variable called tr.
+
+38
+00:02:38,370 --> 00:02:41,530
+And we'll use the train function.
+
+39
+00:02:41,530 --> 00:02:55,128
+Predicting MEDV based on LAT, LON, CRIM, zoning, industry,
+
+40
+00:02:55,128 --> 00:03:05,610
+Charles River, pollution, rooms, age, distance,
+
+41
+00:03:05,610 --> 00:03:12,850
+distance from highways, tax, and pupil-teacher ratio.
+
+42
+00:03:12,850 --> 00:03:18,840
+OK, we're using the train data set.
+
+43
+00:03:18,840 --> 00:03:25,270
+We're using trees (rpart), our train control
+
+44
+00:03:25,270 --> 00:03:30,460
+is what we just made before, and our tuning grid
+
+45
+00:03:30,460 --> 00:03:36,540
+is the other thing we just made, which we called cp.grid.
+
+46
+00:03:36,540 --> 00:03:37,704
+And it whirrs away.
+
+47
+00:03:37,704 --> 00:03:40,370
+And what its doing there is it's trying all the different values
+
+48
+00:03:40,370 --> 00:03:43,060
+of cp that we asked it to.
+
+49
+00:03:43,060 --> 00:03:47,240
+So we can see what it's done but typing tr.
+
+50
+00:03:47,240 --> 00:03:51,600
+You can see it tried 11 different values of cp.
+
+51
+00:03:51,600 --> 00:03:57,800
+And it decided that cp equals 0.001 was the best because it
+
+52
+00:03:57,800 --> 00:04:03,380
+had the best RMSE-- Root Mean Square Error.
+
+53
+00:04:03,380 --> 00:04:07,970
+And it was 5.03 for 0.001.
+
+54
+00:04:07,970 --> 00:04:13,740
+You see that it's pretty insensitive to a particular value of cp.
+
+55
+00:04:13,740 --> 00:04:16,690
+So it's maybe not too important.
+
+56
+00:04:16,690 --> 00:04:19,269
+It's interesting though that the numbers are so low.
+
+57
+00:04:19,269 --> 00:04:22,420
+I tried it for a much larger range of cp values,
+
+58
+00:04:22,420 --> 00:04:27,930
+and the best solutions are always very close to 0.
+
+59
+00:04:27,930 --> 00:04:31,660
+So it wants us to build a very detail-rich tree.
+
+60
+00:04:31,660 --> 00:04:35,660
+So let's see what the tree that that value of cp corresponds to
+
+61
+00:04:35,660 --> 00:04:36,160
+is.
+
+62
+00:04:36,160 --> 00:04:38,435
+So we can get that from going best.tree=tr$finalModel.
+
+63
+00:04:38,435 --> 00:04:52,100
+
+
+64
+00:04:52,100 --> 00:04:54,625
+And we can plot that tree.
+
+65
+00:04:54,625 --> 00:05:00,166
+So that's the model that corresponds to 0.001.
+
+66
+00:05:00,166 --> 00:05:03,310
+Plot it.
+
+67
+00:05:03,310 --> 00:05:07,029
+Wow, OK, so that's a very detailed tree.
+
+68
+00:05:07,029 --> 00:05:09,320
+You can see that it looks pretty much like the same tree we
+
+69
+00:05:09,320 --> 00:05:11,300
+had before, initially.
+
+70
+00:05:11,300 --> 00:05:13,880
+But then it starts to get much more detailed at the bottom.
+
+71
+00:05:13,880 --> 00:05:15,980
+And in fact if you can see close enough,
+
+72
+00:05:15,980 --> 00:05:17,980
+there's actually latitude and longitude in there
+
+73
+00:05:17,980 --> 00:05:20,140
+right down at the bottom as well.
+
+74
+00:05:20,140 --> 00:05:22,650
+So maybe the tree is finally going
+
+75
+00:05:22,650 --> 00:05:25,460
+to beat the linear regression model.
+
+76
+00:05:25,460 --> 00:05:27,994
+Well, we can test it out the same way as we did before.
+
+77
+00:05:27,994 --> 00:05:30,035
+best.tree.pred=predict(best.tree,  newdata=test).
+
+78
+00:05:30,035 --> 00:05:39,070
+
+
+79
+00:05:39,070 --> 00:05:44,140
+best.tree.sse, the Sum of Squared Errors,
+
+80
+00:05:44,140 --> 00:05:50,320
+is the sum of the best tree's predictions
+
+81
+00:05:50,320 --> 00:05:57,160
+less the true values squared.
+
+82
+00:05:57,160 --> 00:06:03,410
+That number is 3,675.
+
+83
+00:06:03,410 --> 00:06:06,150
+So if you can remember from the last video,
+
+84
+00:06:06,150 --> 00:06:11,890
+the tree from the previous video actually only got something
+
+85
+00:06:11,890 --> 00:06:12,535
+in the 4,000s.
+
+86
+00:06:12,535 --> 00:06:13,372
+So not very good.
+
+87
+00:06:13,372 --> 00:06:14,580
+So we have actually improved.
+
+88
+00:06:14,580 --> 00:06:16,940
+This tree is better on the testing set
+
+89
+00:06:16,940 --> 00:06:19,390
+than the original tree we created.
+
+90
+00:06:19,390 --> 00:06:22,280
+But, you may also remember that the linear regression
+
+91
+00:06:22,280 --> 00:06:25,510
+model did actually better than that still.
+
+92
+00:06:25,510 --> 00:06:30,720
+The linear regression SSE was more around 3,030.
+
+93
+00:06:30,720 --> 00:06:35,390
+So the best tree is not as good as the linear regression model.
+
+94
+00:06:35,390 --> 00:06:39,930
+But cross validation did improve performance.
+
+95
+00:06:39,930 --> 00:06:42,980
+So the takeaway is, I guess, that trees
+
+96
+00:06:42,980 --> 00:06:46,040
+aren't always the best method you have available to you.
+
+97
+00:06:46,040 --> 00:06:49,960
+But you should always try cross validating
+
+98
+00:06:49,960 --> 00:06:53,338
+them to get as much performance out of them as you can.
+
+99
+00:06:53,338 --> 00:06:57,000
+And that's the end of the presentation. Thank you.
+
