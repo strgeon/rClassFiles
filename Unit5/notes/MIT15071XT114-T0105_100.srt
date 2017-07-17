@@ -1,0 +1,440 @@
+0
+00:00:00,000 --> 00:00:00,530
+
+
+1
+00:00:00,530 --> 00:00:04,420
+After Watson has completed the initial two steps of question
+
+2
+00:00:04,420 --> 00:00:07,350
+analysis and hypothesis generation,
+
+3
+00:00:07,350 --> 00:00:09,840
+it's then time to move on to step three,
+
+4
+00:00:09,840 --> 00:00:13,040
+where each of the hypotheses are scored.
+
+5
+00:00:13,040 --> 00:00:15,920
+In this step, Watson computes confidence levels
+
+6
+00:00:15,920 --> 00:00:19,320
+for each possible answer or hypothesis.
+
+7
+00:00:19,320 --> 00:00:21,810
+This is necessary to accurately estimate
+
+8
+00:00:21,810 --> 00:00:25,530
+the probability of a proposed answer being correct.
+
+9
+00:00:25,530 --> 00:00:28,610
+Watson will only buzz in to answer a question
+
+10
+00:00:28,610 --> 00:00:31,240
+if a confidence level for one of the hypotheses
+
+11
+00:00:31,240 --> 00:00:33,250
+is above a threshold.
+
+12
+00:00:33,250 --> 00:00:35,610
+To compute these confidence levels,
+
+13
+00:00:35,610 --> 00:00:39,980
+Watson combines a large number of different methods.
+
+14
+00:00:39,980 --> 00:00:43,510
+First, Watson starts with lightweight scoring algorithms
+
+15
+00:00:43,510 --> 00:00:46,660
+to prune down the large set of hypotheses.
+
+16
+00:00:46,660 --> 00:00:50,630
+Recall that in step two, about 200 different hypotheses
+
+17
+00:00:50,630 --> 00:00:52,420
+were generated.
+
+18
+00:00:52,420 --> 00:00:55,200
+An example of a lightweight scoring algorithm
+
+19
+00:00:55,200 --> 00:00:58,640
+is computing the likelihood that a candidate answer is actually
+
+20
+00:00:58,640 --> 00:01:01,030
+an instance of the LAT.
+
+21
+00:01:01,030 --> 00:01:05,570
+For the Mozart symphony question where the LAT is "this planet,"
+
+22
+00:01:05,570 --> 00:01:09,140
+a candidate answer like "Earth" would have a very high score,
+
+23
+00:01:09,140 --> 00:01:11,600
+but a candidate answer like, "the moon"
+
+24
+00:01:11,600 --> 00:01:13,960
+would have a lower score.
+
+25
+00:01:13,960 --> 00:01:16,460
+If the likelihood is not very high,
+
+26
+00:01:16,460 --> 00:01:19,470
+Watson throws away the hypothesis.
+
+27
+00:01:19,470 --> 00:01:22,490
+The candidate answers that pass this step proceed
+
+28
+00:01:22,490 --> 00:01:25,550
+to the next stage of the scoring algorithms.
+
+29
+00:01:25,550 --> 00:01:28,750
+Watson lets about 100 candidate answers
+
+30
+00:01:28,750 --> 00:01:30,260
+pass on to the next stage.
+
+31
+00:01:30,260 --> 00:01:32,970
+
+
+32
+00:01:32,970 --> 00:01:37,150
+Then Watson moves into more advanced scoring analytics.
+
+33
+00:01:37,150 --> 00:01:39,810
+Watson needs to gather supporting evidence
+
+34
+00:01:39,810 --> 00:01:42,090
+for each candidate answer.
+
+35
+00:01:42,090 --> 00:01:44,320
+One way of doing this is through a method
+
+36
+00:01:44,320 --> 00:01:46,770
+called passage search, where passages
+
+37
+00:01:46,770 --> 00:01:50,130
+are retrieved that contain the hypothesis text.
+
+38
+00:01:50,130 --> 00:01:52,610
+To simulate this, let's see what happens
+
+39
+00:01:52,610 --> 00:01:56,160
+when we search for two of our hypotheses on Google.
+
+40
+00:01:56,160 --> 00:01:58,850
+Our first hypothesis is "Mozart's last
+
+41
+00:01:58,850 --> 00:02:01,200
+and perhaps most powerful symphony shares
+
+42
+00:02:01,200 --> 00:02:03,010
+its name with Mercury."
+
+43
+00:02:03,010 --> 00:02:05,860
+And our second hypothesis is "Mozart's last
+
+44
+00:02:05,860 --> 00:02:08,310
+and perhaps most powerful symphony shares
+
+45
+00:02:08,310 --> 00:02:11,550
+its name with Jupiter."
+
+46
+00:02:11,550 --> 00:02:15,870
+On Google, if we search for Mozart, symphony, and Mercury,
+
+47
+00:02:15,870 --> 00:02:18,270
+we get about 900,000 results.
+
+48
+00:02:18,270 --> 00:02:20,350
+And we get some good results.
+
+49
+00:02:20,350 --> 00:02:23,330
+They definitely mention the three words we searched for,
+
+50
+00:02:23,330 --> 00:02:26,440
+but Mercury is only next to symphony once.
+
+51
+00:02:26,440 --> 00:02:31,700
+And there's no mention about this being his last symphony.
+
+52
+00:02:31,700 --> 00:02:35,570
+Now, if we search for Mozart, symphony, and Jupiter,
+
+53
+00:02:35,570 --> 00:02:38,290
+we get about 1.5 million results,
+
+54
+00:02:38,290 --> 00:02:40,630
+and they look much more promising.
+
+55
+00:02:40,630 --> 00:02:44,390
+We see the phrase "last symphony" a couple times
+
+56
+00:02:44,390 --> 00:02:47,510
+and "Jupiter symphony" more than once.
+
+57
+00:02:47,510 --> 00:02:50,250
+Therefore, the hypothesis with Jupiter
+
+58
+00:02:50,250 --> 00:02:53,120
+seems to be more supported than the hypothesis with Mercury.
+
+59
+00:02:53,120 --> 00:02:55,790
+
+
+60
+00:02:55,790 --> 00:02:58,690
+Now, the scoring analytics determine the degree
+
+61
+00:02:58,690 --> 00:03:02,740
+of certainty that the evidence supports the candidate answers.
+
+62
+00:03:02,740 --> 00:03:06,170
+More than 50 different scoring components are used.
+
+63
+00:03:06,170 --> 00:03:10,410
+One example is analyzing temporal relationships.
+
+64
+00:03:10,410 --> 00:03:14,340
+Consider the Jeopardy question-- "In 1594, he
+
+65
+00:03:14,340 --> 00:03:18,100
+took a job as a tax collector in Andalusia."
+
+66
+00:03:18,100 --> 00:03:22,380
+Two candidate answers are Thoreau and Cervantes.
+
+67
+00:03:22,380 --> 00:03:24,870
+However, this algorithm would determine
+
+68
+00:03:24,870 --> 00:03:28,360
+that Thoreau was not born until 1817.
+
+69
+00:03:28,360 --> 00:03:32,790
+So it would give a higher score to Cervantes.
+
+70
+00:03:32,790 --> 00:03:35,800
+Once all of the scoring algorithms are run,
+
+71
+00:03:35,800 --> 00:03:38,710
+Watson needs to select the single best supported
+
+72
+00:03:38,710 --> 00:03:40,360
+hypothesis.
+
+73
+00:03:40,360 --> 00:03:42,990
+Before this can be done, similar answers
+
+74
+00:03:42,990 --> 00:03:46,415
+need to be merged, since multiple candidate answers may
+
+75
+00:03:46,415 --> 00:03:48,170
+be equivalent.
+
+76
+00:03:48,170 --> 00:03:50,690
+As an example, the candidate answers
+
+77
+00:03:50,690 --> 00:03:55,800
+"Abraham Lincoln" and "Honest Abe" refer to the same person.
+
+78
+00:03:55,800 --> 00:03:58,240
+So the scores for these two candidate answers
+
+79
+00:03:58,240 --> 00:03:59,980
+need to be combined.
+
+80
+00:03:59,980 --> 00:04:02,410
+Watson should not be viewing similar answers
+
+81
+00:04:02,410 --> 00:04:04,820
+as competing choices.
+
+82
+00:04:04,820 --> 00:04:07,830
+Now, Watson is ready to rank the hypotheses
+
+83
+00:04:07,830 --> 00:04:11,130
+and estimate an overall confidence for each.
+
+84
+00:04:11,130 --> 00:04:15,740
+To do this, predictive analytics are used.
+
+85
+00:04:15,740 --> 00:04:18,779
+To compute an overall confidence level for each candidate
+
+86
+00:04:18,779 --> 00:04:22,470
+answer, Watson uses logistic regression.
+
+87
+00:04:22,470 --> 00:04:26,410
+The training data is a set of historical Jeopardy questions
+
+88
+00:04:26,410 --> 00:04:28,960
+and all of the candidate answers.
+
+89
+00:04:28,960 --> 00:04:30,700
+Each of the scoring algorithms is
+
+90
+00:04:30,700 --> 00:04:33,770
+used as an independent variable.
+
+91
+00:04:33,770 --> 00:04:37,110
+Then, logistic regression is used to predict whether or not
+
+92
+00:04:37,110 --> 00:04:41,390
+a candidate answer is correct using the scores.
+
+93
+00:04:41,390 --> 00:04:43,800
+This gives each score a weight and computes
+
+94
+00:04:43,800 --> 00:04:46,620
+an overall profitability or confidence
+
+95
+00:04:46,620 --> 00:04:49,380
+that a candidate answer is correct.
+
+96
+00:04:49,380 --> 00:04:52,330
+If the highest confidence level for one of the candidate
+
+97
+00:04:52,330 --> 00:04:55,140
+answers for a question is high enough,
+
+98
+00:04:55,140 --> 00:04:57,240
+Watson buzzes in to answer the question.
+
+99
+00:04:57,240 --> 00:04:59,780
+
+
+100
+00:04:59,780 --> 00:05:02,520
+In total, the Watson system is composed
+
+101
+00:05:02,520 --> 00:05:05,090
+of eight refrigerator-sized cabinets
+
+102
+00:05:05,090 --> 00:05:09,020
+and has high-speed local storage for all information.
+
+103
+00:05:09,020 --> 00:05:13,280
+It originally took over two hours to answer one question.
+
+104
+00:05:13,280 --> 00:05:17,280
+And the team had to reduce this to two to six seconds.
+
+105
+00:05:17,280 --> 00:05:20,890
+In the next video, we'll see how Watson progressed in the six
+
+106
+00:05:20,890 --> 00:05:23,890
+years between starting and playing on Jeopardy,
+
+107
+00:05:23,890 --> 00:05:26,240
+what happened during the game, and what
+
+108
+00:05:26,240 --> 00:05:29,129
+the Watson team is working on now.
+
+109
+00:05:29,129 --> 00:05:29,629
+
+

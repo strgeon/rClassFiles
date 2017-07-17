@@ -1,0 +1,596 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,130
+Pre-processing the data can be difficult,
+
+2
+00:00:03,130 --> 00:00:07,280
+but, luckily, R's packages provide easy-to-use functions
+
+3
+00:00:07,280 --> 00:00:09,400
+for the most common tasks.
+
+4
+00:00:09,400 --> 00:00:12,530
+In this video, we'll load and process our data
+
+5
+00:00:12,530 --> 00:00:16,300
+in R. In your R console, let's load
+
+6
+00:00:16,300 --> 00:00:21,560
+the data set tweets.csv with the read.csv function.
+
+7
+00:00:21,560 --> 00:00:24,030
+But since we're working with text data here,
+
+8
+00:00:24,030 --> 00:00:25,742
+we need one extra argument, which is
+
+9
+00:00:25,742 --> 00:00:26,700
+stringsAsFactors=FALSE.
+
+10
+00:00:26,700 --> 00:00:29,390
+
+
+11
+00:00:29,390 --> 00:00:32,119
+So we'll call our data set tweets.
+
+12
+00:00:32,119 --> 00:00:35,440
+And we'll use the read.csv function to read in the data
+
+13
+00:00:35,440 --> 00:00:40,028
+file tweets.csv, but then we'll add the extra argument
+
+14
+00:00:40,028 --> 00:00:40,986
+stringsAsFactors=FALSE.
+
+15
+00:00:40,986 --> 00:00:47,530
+
+
+16
+00:00:47,530 --> 00:00:50,150
+You'll always need to add this extra argument when
+
+17
+00:00:50,150 --> 00:00:52,660
+working on a text analytics problem
+
+18
+00:00:52,660 --> 00:00:56,040
+so that the text is read in properly.
+
+19
+00:00:56,040 --> 00:00:57,670
+Now let's take a look at the structure
+
+20
+00:00:57,670 --> 00:00:59,620
+of our data with the str function.
+
+21
+00:00:59,620 --> 00:01:02,450
+
+
+22
+00:01:02,450 --> 00:01:08,250
+We can see that we have 1,181 observations of two variables,
+
+23
+00:01:08,250 --> 00:01:10,960
+the text of the tweet, called Tweet,
+
+24
+00:01:10,960 --> 00:01:15,500
+and the average sentiment score, called Avg for average.
+
+25
+00:01:15,500 --> 00:01:17,610
+The tweet texts are real tweets that we
+
+26
+00:01:17,610 --> 00:01:21,000
+found on the internet directed to Apple with a few cleaned up
+
+27
+00:01:21,000 --> 00:01:22,390
+words.
+
+28
+00:01:22,390 --> 00:01:25,250
+We're more interested in being able to detect
+
+29
+00:01:25,250 --> 00:01:28,220
+the tweets with clear negative sentiment,
+
+30
+00:01:28,220 --> 00:01:30,910
+so let's define a new variable in our data
+
+31
+00:01:30,910 --> 00:01:34,519
+set tweets called Negative.
+
+32
+00:01:34,519 --> 00:01:36,810
+And we'll set this equal to as.factor(tweets$Avg <= -1).
+
+33
+00:01:36,810 --> 00:01:47,000
+
+
+34
+00:01:47,000 --> 00:01:51,180
+This will set tweets$Negative equal to true if the average
+
+35
+00:01:51,180 --> 00:01:54,560
+sentiment score is less than or equal to negative 1 and will
+
+36
+00:01:54,560 --> 00:01:58,460
+set tweets$Negative equal to false if the average sentiment
+
+37
+00:01:58,460 --> 00:02:01,050
+score is greater than negative 1.
+
+38
+00:02:01,050 --> 00:02:03,610
+Let's look at a table of this new variable, Negative.
+
+39
+00:02:03,610 --> 00:02:08,360
+
+
+40
+00:02:08,360 --> 00:02:15,329
+We can see that 182 of the 1,181 tweets, or about 15%,
+
+41
+00:02:15,329 --> 00:02:15,870
+are negative.
+
+42
+00:02:15,870 --> 00:02:18,630
+
+
+43
+00:02:18,630 --> 00:02:20,835
+Now to pre-process our text data so
+
+44
+00:02:20,835 --> 00:02:23,250
+that we can use the bag of words approach,
+
+45
+00:02:23,250 --> 00:02:26,850
+we'll be using the tm text mining package.
+
+46
+00:02:26,850 --> 00:02:31,250
+We'll need to install and load two packages to do this.
+
+47
+00:02:31,250 --> 00:02:37,590
+First, let's install the package tm, and go ahead
+
+48
+00:02:37,590 --> 00:02:39,620
+and select a CRAN mirror near you.
+
+49
+00:02:39,620 --> 00:02:43,380
+
+
+50
+00:02:43,380 --> 00:02:45,910
+As soon as that package is done installing
+
+51
+00:02:45,910 --> 00:02:47,990
+and you're back at the blinking cursor,
+
+52
+00:02:47,990 --> 00:02:52,640
+go ahead and load that package with the library command.
+
+53
+00:02:52,640 --> 00:02:56,996
+Then we also need to install the package SnowballC.
+
+54
+00:02:56,996 --> 00:03:00,230
+
+
+55
+00:03:00,230 --> 00:03:03,530
+This package helps us use the tm package.
+
+56
+00:03:03,530 --> 00:03:06,330
+And go ahead and load the snowball package as well.
+
+57
+00:03:06,330 --> 00:03:09,280
+
+
+58
+00:03:09,280 --> 00:03:12,610
+One of the concepts introduced by the tm package
+
+59
+00:03:12,610 --> 00:03:14,660
+is that of a corpus.
+
+60
+00:03:14,660 --> 00:03:17,330
+A corpus is a collection of documents.
+
+61
+00:03:17,330 --> 00:03:22,100
+We'll need to convert our tweets to a corpus for pre-processing.
+
+62
+00:03:22,100 --> 00:03:25,160
+tm can create a corpus in many different ways,
+
+63
+00:03:25,160 --> 00:03:28,420
+but we'll create it from the tweet column of our data frame
+
+64
+00:03:28,420 --> 00:03:32,420
+using two functions, Corpus and VectorSource.
+
+65
+00:03:32,420 --> 00:03:35,310
+We'll call our corpus "corpus" and then
+
+66
+00:03:35,310 --> 00:03:40,030
+use the Corpus and the VectorSource functions
+
+67
+00:03:40,030 --> 00:03:44,847
+called on our tweets variable of our tweets data set.
+
+68
+00:03:44,847 --> 00:03:45,805
+So that's tweets$Tweet.
+
+69
+00:03:45,805 --> 00:03:50,140
+
+
+70
+00:03:50,140 --> 00:03:51,710
+We can check that this has worked
+
+71
+00:03:51,710 --> 00:03:57,210
+by typing corpus and seeing that our corpus has 1,181 text
+
+72
+00:03:57,210 --> 00:03:59,040
+documents.
+
+73
+00:03:59,040 --> 00:04:02,070
+And we can check that the documents match our tweets
+
+74
+00:04:02,070 --> 00:04:03,437
+by using double brackets.
+
+75
+00:04:03,437 --> 00:04:04,270
+So type corpus[[1]].
+
+76
+00:04:04,270 --> 00:04:09,860
+
+
+77
+00:04:09,860 --> 00:04:14,130
+This shows us the first tweet in our corpus.
+
+78
+00:04:14,130 --> 00:04:17,660
+Now we're ready to start pre-processing our data.
+
+79
+00:04:17,660 --> 00:04:20,470
+Pre-processing is easy in tm.
+
+80
+00:04:20,470 --> 00:04:24,010
+Each operation, like stemming or removing stop words,
+
+81
+00:04:24,010 --> 00:04:26,180
+can be done with one line in R, where
+
+82
+00:04:26,180 --> 00:04:29,010
+we use the tm_map function.
+
+83
+00:04:29,010 --> 00:04:32,190
+Let's try it out by changing all of the text in our tweets
+
+84
+00:04:32,190 --> 00:04:33,840
+to lowercase.
+
+85
+00:04:33,840 --> 00:04:36,540
+To do that, we'll replace our corpus
+
+86
+00:04:36,540 --> 00:04:41,290
+with the output of the tm_map function, where
+
+87
+00:04:41,290 --> 00:04:44,430
+the first argument is the name of our corpus
+
+88
+00:04:44,430 --> 00:04:46,780
+and the second argument is what we want to do.
+
+89
+00:04:46,780 --> 00:04:50,440
+In this case, tolower.
+
+90
+00:04:50,440 --> 00:04:53,320
+tolower is a standard function in R,
+
+91
+00:04:53,320 --> 00:04:56,850
+and this is like when we pass mean to the tapply function.
+
+92
+00:04:56,850 --> 00:04:59,780
+We're passing the tm_map function
+
+93
+00:04:59,780 --> 00:05:03,620
+a function to use on our corpus.
+
+94
+00:05:03,620 --> 00:05:06,180
+Let's see what that did by looking at our first tweet
+
+95
+00:05:06,180 --> 00:05:06,870
+again.
+
+96
+00:05:06,870 --> 00:05:09,140
+Go ahead and hit the up arrow twice to get back
+
+97
+00:05:09,140 --> 00:05:13,415
+to corpus[[1]] and now we can see that all of our letters are
+
+98
+00:05:13,415 --> 00:05:13,915
+lowercase.
+
+99
+00:05:13,915 --> 00:05:16,980
+
+
+100
+00:05:16,980 --> 00:05:19,950
+Now let's remove all punctuation.
+
+101
+00:05:19,950 --> 00:05:22,070
+This is done in a very similar way,
+
+102
+00:05:22,070 --> 00:05:24,370
+except this time we give the argument
+
+103
+00:05:24,370 --> 00:05:27,640
+removePunctuation instead of tolower.
+
+104
+00:05:27,640 --> 00:05:31,120
+Hit the up arrow twice, and in the tm_map function,
+
+105
+00:05:31,120 --> 00:05:33,995
+delete tolower, and type removePunctuation.
+
+106
+00:05:33,995 --> 00:05:37,210
+
+
+107
+00:05:37,210 --> 00:05:40,100
+Let's see what this did to our first tweet again.
+
+108
+00:05:40,100 --> 00:05:43,540
+Now the comma after "say", the exclamation point after
+
+109
+00:05:43,540 --> 00:05:48,990
+"received", and the @ symbols before "Apple" are all gone.
+
+110
+00:05:48,990 --> 00:05:52,860
+Now we want to remove the stop words in our tweets.
+
+111
+00:05:52,860 --> 00:05:56,074
+tm provides a list of stop words for the English language.
+
+112
+00:05:56,074 --> 00:05:58,490
+We can check it out by typing stopwords("english") [1:10].
+
+113
+00:05:58,490 --> 00:06:08,300
+
+
+114
+00:06:08,300 --> 00:06:10,430
+We see that these are words like "I,"
+
+115
+00:06:10,430 --> 00:06:14,490
+"me," "my," "myself," et cetera.
+
+116
+00:06:14,490 --> 00:06:17,610
+Removing words can be done with the removeWords argument
+
+117
+00:06:17,610 --> 00:06:20,740
+to the tm_map function, but we need one extra argument
+
+118
+00:06:20,740 --> 00:06:24,830
+this time-- what the stop words are that we want to remove.
+
+119
+00:06:24,830 --> 00:06:27,370
+We'll remove all of these English stop words,
+
+120
+00:06:27,370 --> 00:06:29,750
+but we'll also remove the word "apple"
+
+121
+00:06:29,750 --> 00:06:32,310
+since all of these tweets have the word "apple"
+
+122
+00:06:32,310 --> 00:06:35,040
+and it probably won't be very useful in our prediction
+
+123
+00:06:35,040 --> 00:06:36,600
+problem.
+
+124
+00:06:36,600 --> 00:06:38,660
+So go ahead and hit the up arrow to get back
+
+125
+00:06:38,660 --> 00:06:43,732
+to the tm_map function, delete removePunctuation and, instead,
+
+126
+00:06:43,732 --> 00:06:44,440
+type removeWords.
+
+127
+00:06:44,440 --> 00:06:48,210
+
+
+128
+00:06:48,210 --> 00:06:50,760
+Then we need to add one extra argument, c("apple").
+
+129
+00:06:50,760 --> 00:06:55,230
+
+
+130
+00:06:55,230 --> 00:06:57,730
+This is us removing the word "apple."
+
+131
+00:06:57,730 --> 00:06:58,980
+And then stopwords("english").
+
+132
+00:06:58,980 --> 00:07:04,020
+
+
+133
+00:07:04,020 --> 00:07:06,260
+So this will remove the word "apple"
+
+134
+00:07:06,260 --> 00:07:10,060
+and all of the English stop words.
+
+135
+00:07:10,060 --> 00:07:11,560
+Let's take a look at our first tweet
+
+136
+00:07:11,560 --> 00:07:12,684
+again to see what happened.
+
+137
+00:07:12,684 --> 00:07:16,470
+
+
+138
+00:07:16,470 --> 00:07:19,590
+Now we can see that we have significantly fewer words, only
+
+139
+00:07:19,590 --> 00:07:22,730
+the words that are not stop words.
+
+140
+00:07:22,730 --> 00:07:26,230
+Lastly, we want to stem our document with the stemDocument
+
+141
+00:07:26,230 --> 00:07:27,220
+argument.
+
+142
+00:07:27,220 --> 00:07:30,850
+Go ahead and scroll back up to the removePunctuation,
+
+143
+00:07:30,850 --> 00:07:36,090
+delete removePunctuation, and type stemDocument.
+
+144
+00:07:36,090 --> 00:07:39,830
+If you hit Enter and then look at the first tweet again,
+
+145
+00:07:39,830 --> 00:07:44,540
+we can see that this took off the ending of "customer,"
+
+146
+00:07:44,540 --> 00:07:48,260
+"service," "received," and "appstore."
+
+147
+00:07:48,260 --> 00:07:51,360
+In the next video, we'll investigate our corpus
+
+148
+00:07:51,360 --> 00:07:54,510
+and prepare it for our prediction problem.
+

@@ -1,0 +1,288 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,140
+When Watson receives a question, the first step
+
+2
+00:00:03,140 --> 00:00:05,670
+is question analysis.
+
+3
+00:00:05,670 --> 00:00:09,080
+One of the things Watson tries to figure out in this step
+
+4
+00:00:09,080 --> 00:00:12,210
+is what the question is looking for.
+
+5
+00:00:12,210 --> 00:00:15,620
+This is defined as trying to find the Lexical Answer
+
+6
+00:00:15,620 --> 00:00:19,300
+Type, or LAT, of the question.
+
+7
+00:00:19,300 --> 00:00:22,280
+The LAT is the word or noun in the question
+
+8
+00:00:22,280 --> 00:00:25,470
+that specifies the type of answer.
+
+9
+00:00:25,470 --> 00:00:28,720
+You should be able to replace the LAT with the answer
+
+10
+00:00:28,720 --> 00:00:30,850
+to complete the sentence.
+
+11
+00:00:30,850 --> 00:00:34,580
+For example, for the question, "Mozart's last
+
+12
+00:00:34,580 --> 00:00:36,770
+and perhaps most powerful symphony
+
+13
+00:00:36,770 --> 00:00:40,680
+shares its name with this planet," the LAT in this case
+
+14
+00:00:40,680 --> 00:00:43,370
+is "this planet."
+
+15
+00:00:43,370 --> 00:00:46,380
+If we replace this with the answer "Jupiter,"
+
+16
+00:00:46,380 --> 00:00:47,920
+it makes sense.
+
+17
+00:00:47,920 --> 00:00:51,570
+Mozart's last and perhaps most powerful symphony shares
+
+18
+00:00:51,570 --> 00:00:54,120
+its name with Jupiter.
+
+19
+00:00:54,120 --> 00:00:57,270
+For the question, "Smaller than only Greenland,
+
+20
+00:00:57,270 --> 00:01:01,910
+it's the world's second largest island," the LAT is "it's."
+
+21
+00:01:01,910 --> 00:01:05,269
+If we replace the LAT with the answer "New Guinea,"
+
+22
+00:01:05,269 --> 00:01:06,650
+it makes sense.
+
+23
+00:01:06,650 --> 00:01:09,120
+"Smaller than only Greenland, New Guinea
+
+24
+00:01:09,120 --> 00:01:11,850
+is the world's second largest island."
+
+25
+00:01:11,850 --> 00:01:14,220
+Unfortunately, the LAT is not "island,"
+
+26
+00:01:14,220 --> 00:01:17,520
+which would be more descriptive, since the sentence with "New
+
+27
+00:01:17,520 --> 00:01:21,160
+Guinea" in place of "island" does not make sense.
+
+28
+00:01:21,160 --> 00:01:24,980
+We can see in these two examples that sometimes the LAT is very
+
+29
+00:01:24,980 --> 00:01:29,630
+specific, like "this planet," and sometimes it's very vague,
+
+30
+00:01:29,630 --> 00:01:32,880
+like "it's."
+
+31
+00:01:32,880 --> 00:01:36,460
+If we know the LAT, we know what to look for.
+
+32
+00:01:36,460 --> 00:01:40,420
+However, in an analysis of 20,000 questions,
+
+33
+00:01:40,420 --> 00:01:45,360
+2,500 distinct LATs were found, and 12% of the questions
+
+34
+00:01:45,360 --> 00:01:47,680
+did not even have an explicit LAT.
+
+35
+00:01:47,680 --> 00:01:50,360
+They had LATs like "it's."
+
+36
+00:01:50,360 --> 00:01:54,790
+Furthermore, even the most frequent 200 explicit LATs
+
+37
+00:01:54,790 --> 00:01:58,550
+cover less than 50% of the questions.
+
+38
+00:01:58,550 --> 00:02:01,420
+So to enhance the question analysis step,
+
+39
+00:02:01,420 --> 00:02:04,360
+Watson also performs relation detection
+
+40
+00:02:04,360 --> 00:02:08,020
+to find relationships among words and decomposition
+
+41
+00:02:08,020 --> 00:02:09,980
+to split the question into different clues.
+
+42
+00:02:09,980 --> 00:02:13,220
+
+
+43
+00:02:13,220 --> 00:02:17,280
+The second step in Watson is hypothesis generation.
+
+44
+00:02:17,280 --> 00:02:21,100
+The goal of this step is to use the question analysis of step
+
+45
+00:02:21,100 --> 00:02:26,190
+one to produce candidate answers by searching the databases.
+
+46
+00:02:26,190 --> 00:02:29,510
+In this step several hundred candidate answers
+
+47
+00:02:29,510 --> 00:02:31,280
+are generated.
+
+48
+00:02:31,280 --> 00:02:34,700
+For the question, "Mozart's last and perhaps most powerful
+
+49
+00:02:34,700 --> 00:02:37,520
+symphony shares its name with this planet,"
+
+50
+00:02:37,520 --> 00:02:42,050
+candidate answers could be Mercury, Earth, and Jupiter.
+
+51
+00:02:42,050 --> 00:02:44,760
+These are generated using various search techniques.
+
+52
+00:02:44,760 --> 00:02:47,430
+
+
+53
+00:02:47,430 --> 00:02:50,380
+Then each candidate answer plugged back
+
+54
+00:02:50,380 --> 00:02:52,750
+into the question in place of the LAT
+
+55
+00:02:52,750 --> 00:02:55,700
+is considered a hypothesis.
+
+56
+00:02:55,700 --> 00:02:58,100
+For the question about Mozart's symphony,
+
+57
+00:02:58,100 --> 00:03:00,200
+hypothesis one would be the question
+
+58
+00:03:00,200 --> 00:03:03,400
+with "Mercury" in place of "this planet."
+
+59
+00:03:03,400 --> 00:03:05,490
+Hypothesis two would have "Jupiter"
+
+60
+00:03:05,490 --> 00:03:07,360
+in place of "this planet."
+
+61
+00:03:07,360 --> 00:03:09,510
+And hypothesis three would have "Earth"
+
+62
+00:03:09,510 --> 00:03:14,050
+in place of "this planet."
+
+63
+00:03:14,050 --> 00:03:17,350
+If the correct answer is not generated at this stage,
+
+64
+00:03:17,350 --> 00:03:21,260
+Watson has no hope of getting the question right.
+
+65
+00:03:21,260 --> 00:03:23,760
+Therefore, this step errors on the side
+
+66
+00:03:23,760 --> 00:03:26,220
+of generating a lot of hypotheses
+
+67
+00:03:26,220 --> 00:03:28,040
+and leaves it up to the next step
+
+68
+00:03:28,040 --> 00:03:30,260
+to find the correct answer.
+
+69
+00:03:30,260 --> 00:03:34,140
+In the next video, we'll discuss how steps three and four
+
+70
+00:03:34,140 --> 00:03:36,931
+score and rank the hypotheses.
+
+71
+00:03:36,931 --> 00:03:37,430
+
+

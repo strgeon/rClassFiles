@@ -1,0 +1,484 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:02,250
+Now that we've prepared our data set,
+
+2
+00:00:02,250 --> 00:00:04,780
+let's use CART to build a predictive model.
+
+3
+00:00:04,780 --> 00:00:07,930
+First, we need to load the necessary packages in our R
+
+4
+00:00:07,930 --> 00:00:13,307
+Console by typing library(rpart),
+
+5
+00:00:13,307 --> 00:00:14,515
+and then library(rpart.plot).
+
+6
+00:00:14,515 --> 00:00:21,950
+
+
+7
+00:00:21,950 --> 00:00:23,860
+Now let's build our model.
+
+8
+00:00:23,860 --> 00:00:30,760
+We'll call it tweetCART, and we'll use the rpart function
+
+9
+00:00:30,760 --> 00:00:35,450
+to predict Negative using all of the other variables
+
+10
+00:00:35,450 --> 00:00:41,890
+as our independent variables and the data set trainSparse.
+
+11
+00:00:41,890 --> 00:00:46,880
+We'll add one more argument here, which is method = "class"
+
+12
+00:00:46,880 --> 00:00:50,050
+so that the rpart function knows to build a classification
+
+13
+00:00:50,050 --> 00:00:51,320
+model.
+
+14
+00:00:51,320 --> 00:00:53,660
+We're just using the default parameter settings
+
+15
+00:00:53,660 --> 00:00:57,920
+so we won't add anything for minbucket or cp.
+
+16
+00:00:57,920 --> 00:01:00,965
+Now let's plot the tree using the prp function.
+
+17
+00:01:00,965 --> 00:01:06,960
+
+
+18
+00:01:06,960 --> 00:01:10,730
+Our tree says that if the word "freak" is in the tweet,
+
+19
+00:01:10,730 --> 00:01:13,830
+then predict TRUE, or negative sentiment.
+
+20
+00:01:13,830 --> 00:01:15,870
+If the word "freak" is not in the tweet,
+
+21
+00:01:15,870 --> 00:01:19,760
+but the word "hate" is, again predict TRUE.
+
+22
+00:01:19,760 --> 00:01:22,090
+If neither of these two words are in the tweet,
+
+23
+00:01:22,090 --> 00:01:26,240
+but the word "wtf" is, also predict TRUE, or negative
+
+24
+00:01:26,240 --> 00:01:27,650
+sentiment.
+
+25
+00:01:27,650 --> 00:01:30,450
+If none of these three words are in the tweet,
+
+26
+00:01:30,450 --> 00:01:34,500
+then predict FALSE, or non-negative sentiment.
+
+27
+00:01:34,500 --> 00:01:36,500
+This tree makes sense intuitively
+
+28
+00:01:36,500 --> 00:01:38,300
+since these three words are generally
+
+29
+00:01:38,300 --> 00:01:41,220
+seen as negative words.
+
+30
+00:01:41,220 --> 00:01:44,050
+Now, let's go back to our R Console
+
+31
+00:01:44,050 --> 00:01:47,380
+and evaluate the numerical performance of our model
+
+32
+00:01:47,380 --> 00:01:50,690
+by making predictions on the test set.
+
+33
+00:01:50,690 --> 00:01:52,995
+We'll call our predictions predictCART.
+
+34
+00:01:52,995 --> 00:01:55,730
+
+
+35
+00:01:55,730 --> 00:01:58,310
+And we'll use the predict function
+
+36
+00:01:58,310 --> 00:02:06,965
+to predict using our model tweetCART on the new data set
+
+37
+00:02:06,965 --> 00:02:07,465
+testSparse.
+
+38
+00:02:07,465 --> 00:02:09,970
+
+
+39
+00:02:09,970 --> 00:02:14,870
+We'll add one more argument, which is type = "class"
+
+40
+00:02:14,870 --> 00:02:17,960
+to make sure we get class predictions.
+
+41
+00:02:17,960 --> 00:02:20,430
+Now let's make our confusion matrix
+
+42
+00:02:20,430 --> 00:02:22,520
+using the table function.
+
+43
+00:02:22,520 --> 00:02:26,040
+We'll give as the first argument the actual outcomes,
+
+44
+00:02:26,040 --> 00:02:30,450
+testSparse$Negative, and then as the second argument,
+
+45
+00:02:30,450 --> 00:02:32,300
+our predictions, predictCART.
+
+46
+00:02:32,300 --> 00:02:37,020
+
+
+47
+00:02:37,020 --> 00:02:39,260
+To compute the accuracy of our model,
+
+48
+00:02:39,260 --> 00:02:44,640
+we add up the numbers on the diagonal, 294 plus 18--
+
+49
+00:02:44,640 --> 00:02:47,590
+these are the observations we predicted correctly--
+
+50
+00:02:47,590 --> 00:02:51,120
+and divide by the total number of observations in the table,
+
+51
+00:02:51,120 --> 00:02:54,360
+or the total number of observations in our test set.
+
+52
+00:02:54,360 --> 00:02:57,000
+
+
+53
+00:02:57,000 --> 00:03:00,940
+So the accuracy of our CART model is about 0.88.
+
+54
+00:03:00,940 --> 00:03:03,600
+Let's compare this to a simple baseline model
+
+55
+00:03:03,600 --> 00:03:06,160
+that always predicts non-negative.
+
+56
+00:03:06,160 --> 00:03:08,930
+To compute the accuracy of the baseline model,
+
+57
+00:03:08,930 --> 00:03:12,760
+let's make a table of just the outcome variable Negative.
+
+58
+00:03:12,760 --> 00:03:16,292
+So we'll type table, and then in parentheses,
+
+59
+00:03:16,292 --> 00:03:17,125
+testSparse$Negative.
+
+60
+00:03:17,125 --> 00:03:24,150
+
+
+61
+00:03:24,150 --> 00:03:26,120
+This tells us that in our test set
+
+62
+00:03:26,120 --> 00:03:29,780
+we have 300 observations with non-negative sentiment
+
+63
+00:03:29,780 --> 00:03:33,450
+and 55 observations with negative sentiment.
+
+64
+00:03:33,450 --> 00:03:35,450
+So the accuracy of a baseline model
+
+65
+00:03:35,450 --> 00:03:37,760
+that always predicts non-negative
+
+66
+00:03:37,760 --> 00:03:44,340
+would be 300 divided by 355, or 0.845.
+
+67
+00:03:44,340 --> 00:03:48,360
+So our CART model does better than the simple baseline model.
+
+68
+00:03:48,360 --> 00:03:50,200
+How about a random forest model?
+
+69
+00:03:50,200 --> 00:03:51,940
+How well would that do?
+
+70
+00:03:51,940 --> 00:03:55,380
+Let's first load the random forest package
+
+71
+00:03:55,380 --> 00:04:01,680
+with library(randomForest), and then we'll
+
+72
+00:04:01,680 --> 00:04:06,080
+set the seed to 123 so that we can
+
+73
+00:04:06,080 --> 00:04:08,750
+replicate our model if we want to.
+
+74
+00:04:08,750 --> 00:04:12,200
+Keep in mind that even if you set the seed to 123,
+
+75
+00:04:12,200 --> 00:04:14,800
+you might get a different random forest model than me
+
+76
+00:04:14,800 --> 00:04:17,820
+depending on your operating system.
+
+77
+00:04:17,820 --> 00:04:19,820
+Now, let's create our model.
+
+78
+00:04:19,820 --> 00:04:26,570
+We'll call it tweetRF and use the randomForest function
+
+79
+00:04:26,570 --> 00:04:30,860
+to predict Negative again using all of our other variables
+
+80
+00:04:30,860 --> 00:04:35,030
+as independent variables and the data set trainSparse.
+
+81
+00:04:35,030 --> 00:04:38,070
+
+
+82
+00:04:38,070 --> 00:04:41,410
+We'll again use the default parameter settings.
+
+83
+00:04:41,410 --> 00:04:43,940
+The random forest model takes significantly longer
+
+84
+00:04:43,940 --> 00:04:45,940
+to build than the CART model.
+
+85
+00:04:45,940 --> 00:04:48,490
+We've seen this before when building CART and random forest
+
+86
+00:04:48,490 --> 00:04:50,710
+models, but in this case, the difference
+
+87
+00:04:50,710 --> 00:04:52,800
+is particularly drastic.
+
+88
+00:04:52,800 --> 00:04:55,680
+This is because we have so many independent variables,
+
+89
+00:04:55,680 --> 00:04:58,350
+about 300 different words.
+
+90
+00:04:58,350 --> 00:05:00,970
+So far in this course, we haven't seen data sets
+
+91
+00:05:00,970 --> 00:05:03,590
+with this many independent variables.
+
+92
+00:05:03,590 --> 00:05:06,680
+So keep in mind that for text analytics problems,
+
+93
+00:05:06,680 --> 00:05:09,760
+building a random forest model will take significantly longer
+
+94
+00:05:09,760 --> 00:05:11,980
+than building a CART model.
+
+95
+00:05:11,980 --> 00:05:13,750
+So now that our model's finished,
+
+96
+00:05:13,750 --> 00:05:16,330
+let's make predictions on our test set.
+
+97
+00:05:16,330 --> 00:05:20,430
+We'll call them predictRF, and again, we'll
+
+98
+00:05:20,430 --> 00:05:23,570
+use the predict function to make predictions
+
+99
+00:05:23,570 --> 00:05:27,920
+using the model tweetRF this time,
+
+100
+00:05:27,920 --> 00:05:30,090
+and again, the new data set testSparse.
+
+101
+00:05:30,090 --> 00:05:34,080
+
+
+102
+00:05:34,080 --> 00:05:36,950
+Now let's make our confusion matrix using the table
+
+103
+00:05:36,950 --> 00:05:40,790
+function, first giving the actual outcomes,
+
+104
+00:05:40,790 --> 00:05:46,535
+testSparse$Negative, and then giving our predictions,
+
+105
+00:05:46,535 --> 00:05:47,035
+predictRF.
+
+106
+00:05:47,035 --> 00:05:49,780
+
+
+107
+00:05:49,780 --> 00:05:52,690
+To compute the accuracy of the random forest model,
+
+108
+00:05:52,690 --> 00:05:58,280
+we again sum up the cases we got right, 293 plus 21,
+
+109
+00:05:58,280 --> 00:06:01,530
+and divide by the total number of observations in the table.
+
+110
+00:06:01,530 --> 00:06:05,970
+
+
+111
+00:06:05,970 --> 00:06:10,370
+So our random forest model has an accuracy of 0.885.
+
+112
+00:06:10,370 --> 00:06:12,320
+This is a little better than our CART model,
+
+113
+00:06:12,320 --> 00:06:14,930
+but due to the interpretability of our CART model,
+
+114
+00:06:14,930 --> 00:06:18,310
+I'd probably prefer it over the random forest model.
+
+115
+00:06:18,310 --> 00:06:21,090
+If you were to use cross-validation to pick the cp
+
+116
+00:06:21,090 --> 00:06:23,770
+parameter for the CART model, the accuracy
+
+117
+00:06:23,770 --> 00:06:27,820
+would increase to about the same as the random forest model.
+
+118
+00:06:27,820 --> 00:06:31,280
+So by using a bag-of-words approach and these models,
+
+119
+00:06:31,280 --> 00:06:33,910
+we can reasonably predict sentiment even
+
+120
+00:06:33,910 --> 00:06:37,490
+with a relatively small data set of tweets.
+

@@ -1,0 +1,188 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,245
+Until now, we have seen data that are structured, numerical,
+
+2
+00:00:04,245 --> 00:00:05,860
+or categorical.
+
+3
+00:00:05,860 --> 00:00:08,550
+On the other hand, tweets are loosely structured.
+
+4
+00:00:08,550 --> 00:00:10,080
+They are often textual.
+
+5
+00:00:10,080 --> 00:00:13,160
+They have poor spelling, often contain
+
+6
+00:00:13,160 --> 00:00:16,470
+non-traditional grammar, and they are multilingual.
+
+7
+00:00:16,470 --> 00:00:19,630
+In this example here, we see two examples
+
+8
+00:00:19,630 --> 00:00:22,270
+of this aspect of tweets.
+
+9
+00:00:22,270 --> 00:00:25,280
+
+
+10
+00:00:25,280 --> 00:00:28,890
+We have also discussed why people care about textual data.
+
+11
+00:00:28,890 --> 00:00:32,270
+A key question, however, is how to handle this information
+
+12
+00:00:32,270 --> 00:00:34,190
+included in the tweets.
+
+13
+00:00:34,190 --> 00:00:37,140
+Humans cannot, of course, keep up with internet-scale volumes
+
+14
+00:00:37,140 --> 00:00:41,950
+of data as there are about half a billion tweets per day.
+
+15
+00:00:41,950 --> 00:00:46,090
+Even at the small scale, the cost and time
+
+16
+00:00:46,090 --> 00:00:50,590
+required to process this is of course prohibitive.
+
+17
+00:00:50,590 --> 00:00:53,350
+How can computers help?
+
+18
+00:00:53,350 --> 00:00:57,230
+The field that addresses how computers understand text
+
+19
+00:00:57,230 --> 00:00:59,430
+is called Natural Language Processing.
+
+20
+00:00:59,430 --> 00:01:02,350
+The goal is to understand and derive meaning
+
+21
+00:01:02,350 --> 00:01:03,680
+from human language.
+
+22
+00:01:03,680 --> 00:01:08,100
+In 1950, Alan Turing, a major computer scientist of the era,
+
+23
+00:01:08,100 --> 00:01:10,780
+proposed a test of machine intelligence.
+
+24
+00:01:10,780 --> 00:01:13,680
+That the computer program passes it if it can take part
+
+25
+00:01:13,680 --> 00:01:16,910
+in a real-time conversation and cannot be distinguished from
+
+26
+00:01:16,910 --> 00:01:19,010
+a human.
+
+27
+00:01:19,010 --> 00:01:21,300
+Let's discuss briefly the history of Natural Language
+
+28
+00:01:21,300 --> 00:01:22,250
+Processing.
+
+29
+00:01:22,250 --> 00:01:24,350
+There has been some progress-- for example,
+
+30
+00:01:24,350 --> 00:01:27,180
+the "chatterbot" ELIZA.
+
+31
+00:01:27,180 --> 00:01:30,490
+The initial focus has been on understanding grammar.
+
+32
+00:01:30,490 --> 00:01:33,560
+Later, the focus shifted towards statistical, machine learning
+
+33
+00:01:33,560 --> 00:01:38,030
+techniques that learn from large bodies of text.
+
+34
+00:01:38,030 --> 00:01:42,240
+Today, there are modern versions of these Natural Language
+
+35
+00:01:42,240 --> 00:01:43,690
+Processing.
+
+36
+00:01:43,690 --> 00:01:50,080
+Apple is using Siri, and Google is using Google Now.
+
+37
+00:01:50,080 --> 00:01:52,610
+Why is it hard?
+
+38
+00:01:52,610 --> 00:01:54,480
+Let us give you an example.
+
+39
+00:01:54,480 --> 00:01:58,440
+Suppose we say the phrase, I put my bag in the car.
+
+40
+00:01:58,440 --> 00:02:00,680
+Is it large and blue?
+
+41
+00:02:00,680 --> 00:02:03,570
+The question is, does the "it" refer to the bag
+
+42
+00:02:03,570 --> 00:02:06,780
+or the "it" refers to car?
+
+43
+00:02:06,780 --> 00:02:08,930
+The context is often important.
+
+44
+00:02:08,930 --> 00:02:12,670
+Humans use homonyms, metaphors, often sarcasm.
+
+45
+00:02:12,670 --> 00:02:16,070
+In this lecture, we'll see how can build analytics models
+
+46
+00:02:16,070 --> 00:02:18,960
+using text as our data.
+

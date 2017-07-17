@@ -1,0 +1,56 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,650
+This week we'll see how we can use analytics
+
+2
+00:00:02,650 --> 00:00:05,860
+to understand opinions and intelligence.
+
+3
+00:00:05,860 --> 00:00:07,800
+In the first lecture, we'll see how
+
+4
+00:00:07,800 --> 00:00:11,660
+we can use Tweets on Twitter to understand sentiment and public
+
+5
+00:00:11,660 --> 00:00:13,040
+perception.
+
+6
+00:00:13,040 --> 00:00:15,240
+In the second lecture, we'll discuss
+
+7
+00:00:15,240 --> 00:00:18,030
+how IBM built a computer that could beat the best
+
+8
+00:00:18,030 --> 00:00:21,470
+human players at Jeopardy, a popular game show.
+
+9
+00:00:21,470 --> 00:00:24,760
+Through these examples, we'll introduce the exciting area
+
+10
+00:00:24,760 --> 00:00:27,990
+of text analytics, and see how we can turn words
+
+11
+00:00:27,990 --> 00:00:30,800
+into variables to be used in our models.
+
+12
+00:00:30,800 --> 00:00:32,780
+Let's get started.
+
+13
+00:00:32,780 --> 00:00:33,366
+
+

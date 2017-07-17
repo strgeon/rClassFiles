@@ -1,0 +1,780 @@
+0
+00:00:00,000 --> 00:00:00,840
+
+
+1
+00:00:00,840 --> 00:00:05,900
+The graph shows on the horizontal axis the percentage
+
+2
+00:00:05,900 --> 00:00:10,290
+of questions answered, and on the vertical axis,
+
+3
+00:00:10,290 --> 00:00:16,030
+the percentage of answers that were correct.
+
+4
+00:00:16,030 --> 00:00:24,620
+When Watson started, the graph that shows its performance
+
+5
+00:00:24,620 --> 00:00:26,990
+is shown here.
+
+6
+00:00:26,990 --> 00:00:34,910
+In 2007, we observed that the performance of Watson improved,
+
+7
+00:00:34,910 --> 00:00:37,180
+and it is shown there.
+
+8
+00:00:37,180 --> 00:00:46,670
+And then successively from 2008 May to 2010,
+
+9
+00:00:46,670 --> 00:00:50,100
+we see the successive improvement of Watson
+
+10
+00:00:50,100 --> 00:00:53,870
+in this graph that shows a trade-off between questions
+
+11
+00:00:53,870 --> 00:00:57,050
+answered and precision.
+
+12
+00:00:57,050 --> 00:01:01,090
+This is the area of the best human players.
+
+13
+00:01:01,090 --> 00:01:05,459
+Observe that they answer a high number of questions
+
+14
+00:01:05,459 --> 00:01:08,500
+and they answer a very high number of questions correctly.
+
+15
+00:01:08,500 --> 00:01:13,670
+So it was at that time-- 2010-- that the people that
+
+16
+00:01:13,670 --> 00:01:16,350
+controlled the decision decided that Watson
+
+17
+00:01:16,350 --> 00:01:18,115
+is ready to enter the competition.
+
+18
+00:01:18,115 --> 00:01:21,170
+
+
+19
+00:01:21,170 --> 00:01:24,950
+So the games were scheduled for February 2011.
+
+20
+00:01:24,950 --> 00:01:27,340
+Two games were played, and the winner
+
+21
+00:01:27,340 --> 00:01:31,201
+would be the contestant with the highest winnings over the two
+
+22
+00:01:31,201 --> 00:01:31,700
+games.
+
+23
+00:01:31,700 --> 00:01:35,570
+
+
+24
+00:01:35,570 --> 00:01:38,760
+Once we got into the game, it was nerve-wracking, frankly.
+
+25
+00:01:38,760 --> 00:01:41,400
+Brad, if you're ready, make your first choice.
+
+26
+00:01:41,400 --> 00:01:43,960
+Let's take "Alternate Meanings" for $200, Alex.
+
+27
+00:01:43,960 --> 00:01:47,891
+"4-letter word for a vantage point or a belief."
+
+28
+00:01:47,891 --> 00:01:48,390
+Brad.
+
+29
+00:01:48,390 --> 00:01:49,061
+What is a view?
+
+30
+00:01:49,061 --> 00:01:49,560
+Yes.
+
+31
+00:01:49,560 --> 00:01:52,520
+After the first clue of the game, which Brad won,
+
+32
+00:01:52,520 --> 00:01:56,240
+I had just this horrible feeling at that moment
+
+33
+00:01:56,240 --> 00:01:58,660
+that he was as good as everyone said he was,
+
+34
+00:01:58,660 --> 00:02:02,200
+and he was just going to run the whole board on us.
+
+35
+00:02:02,200 --> 00:02:04,160
+"Alternate Meanings," $400.
+
+36
+00:02:04,160 --> 00:02:07,170
+"4-letter word for the iron fitting on the hoof of a horse
+
+37
+00:02:07,170 --> 00:02:10,371
+or a card-dealing box in a casino."
+
+38
+00:02:10,371 --> 00:02:10,870
+Watson.
+
+39
+00:02:10,870 --> 00:02:11,767
+What is shoe?
+
+40
+00:02:11,767 --> 00:02:12,350
+You are right.
+
+41
+00:02:12,350 --> 00:02:13,433
+We actually took the lead.
+
+42
+00:02:13,433 --> 00:02:14,430
+We were ahead of them.
+
+43
+00:02:14,430 --> 00:02:16,471
+But then we started getting some questions wrong.
+
+44
+00:02:16,471 --> 00:02:17,010
+Watson.
+
+45
+00:02:17,010 --> 00:02:17,900
+What is leg?
+
+46
+00:02:17,900 --> 00:02:19,450
+No, I'm sorry, I can't accept that.
+
+47
+00:02:19,450 --> 00:02:20,980
+What is 1920s?
+
+48
+00:02:20,980 --> 00:02:21,550
+No.
+
+49
+00:02:21,550 --> 00:02:22,800
+What is chic?
+
+50
+00:02:22,800 --> 00:02:23,680
+No, sorry.
+
+51
+00:02:23,680 --> 00:02:24,280
+Brad?
+
+52
+00:02:24,280 --> 00:02:24,900
+What is class?
+
+53
+00:02:24,900 --> 00:02:26,260
+Class, you got it.
+
+54
+00:02:26,260 --> 00:02:27,030
+Watson.
+
+55
+00:02:27,030 --> 00:02:28,090
+What is Sauron?
+
+56
+00:02:28,090 --> 00:02:30,580
+Sauron is right, and that puts you
+
+57
+00:02:30,580 --> 00:02:34,966
+into a tie for the lead with Brad.
+
+58
+00:02:34,966 --> 00:02:36,340
+A lot of people were feeling good
+
+59
+00:02:36,340 --> 00:02:40,420
+because Watson held his own and was doing pretty well.
+
+60
+00:02:40,420 --> 00:02:42,780
+But I wanted to be winning.
+
+61
+00:02:42,780 --> 00:02:45,910
+Too close for comfort.
+
+62
+00:02:45,910 --> 00:02:47,040
+Ken, you're in third place.
+
+63
+00:02:47,040 --> 00:02:49,500
+That means you go first in "Double Jeopardy."
+
+64
+00:02:49,500 --> 00:02:52,990
+The "Double Jeopardy" round of the first game I thought
+
+65
+00:02:52,990 --> 00:02:54,830
+was phenomenal.
+
+66
+00:02:54,830 --> 00:02:56,010
+Watson went on a terror.
+
+67
+00:02:56,010 --> 00:02:56,900
+Watson.
+
+68
+00:02:56,900 --> 00:02:58,220
+Who is Franz Liszt?
+
+69
+00:02:58,220 --> 00:02:58,950
+You are right.
+
+70
+00:02:58,950 --> 00:03:00,070
+What is violin?
+
+71
+00:03:00,070 --> 00:03:00,600
+Good.
+
+72
+00:03:00,600 --> 00:03:02,496
+Who is The Church Lady?
+
+73
+00:03:02,496 --> 00:03:03,330
+Yes.
+
+74
+00:03:03,330 --> 00:03:04,290
+Watson.
+
+75
+00:03:04,290 --> 00:03:05,610
+What is narcolepsy?
+
+76
+00:03:05,610 --> 00:03:06,200
+You are right.
+
+77
+00:03:06,200 --> 00:03:12,600
+And with that, you move to $36,681.
+
+78
+00:03:12,600 --> 00:03:16,330
+After the first game, we have a pretty good commanding lead,
+
+79
+00:03:16,330 --> 00:03:18,146
+but we've seen enough Jeopardy to know
+
+80
+00:03:18,146 --> 00:03:19,270
+that this is not a lockout.
+
+81
+00:03:19,270 --> 00:03:23,660
+
+
+82
+00:03:23,660 --> 00:03:28,510
+Welcome to the deciding game in the IBM Challenge here
+
+83
+00:03:28,510 --> 00:03:29,370
+on Jeopardy!.
+
+84
+00:03:29,370 --> 00:03:31,920
+The second game was a whole other story.
+
+85
+00:03:31,920 --> 00:03:34,290
+We struggled some at the beginning.
+
+86
+00:03:34,290 --> 00:03:36,040
+"Actors Who Direct" for $1,000.
+
+87
+00:03:36,040 --> 00:03:37,870
+"A Bronx Tale."
+
+88
+00:03:37,870 --> 00:03:38,390
+Brad.
+
+89
+00:03:38,390 --> 00:03:40,880
+Who is Robert De Niro?
+
+90
+00:03:40,880 --> 00:03:41,460
+Correct.
+
+91
+00:03:41,460 --> 00:03:44,010
+That was an awful category because Watson
+
+92
+00:03:44,010 --> 00:03:47,380
+got every single one right, but was just a little too slow.
+
+93
+00:03:47,380 --> 00:03:48,000
+Ken.
+
+94
+00:03:48,000 --> 00:03:48,740
+Who is Denzel Washington?
+
+95
+00:03:48,740 --> 00:03:49,239
+You got him.
+
+96
+00:03:49,239 --> 00:03:51,790
+Ken and Brad were getting the answer in a second.
+
+97
+00:03:51,790 --> 00:03:53,581
+"Rocky II", "III", & "IV."
+
+98
+00:03:53,581 --> 00:03:54,080
+Brad.
+
+99
+00:03:54,080 --> 00:03:55,230
+Who is Sylvester Stallone?
+
+100
+00:03:55,230 --> 00:03:55,970
+Correct.
+
+101
+00:03:55,970 --> 00:04:00,310
+Even with 2,800 cores, it took us 2 1/2 seconds or 3 seconds,
+
+102
+00:04:00,310 --> 00:04:03,060
+and that just gives you a sense of how incredible the human
+
+103
+00:04:03,060 --> 00:04:05,610
+brain is-- how quickly it could understand the category,
+
+104
+00:04:05,610 --> 00:04:06,570
+what's being asked.
+
+105
+00:04:06,570 --> 00:04:06,670
+Boom!
+
+106
+00:04:06,670 --> 00:04:07,461
+And get the answer.
+
+107
+00:04:07,461 --> 00:04:08,240
+Who is Sean Penn?
+
+108
+00:04:08,240 --> 00:04:08,860
+Right.
+
+109
+00:04:08,860 --> 00:04:10,870
+Ken was doing very well.
+
+110
+00:04:10,870 --> 00:04:15,260
+And the risk was if Ken gets a "Daily Double," that's big.
+
+111
+00:04:15,260 --> 00:04:17,087
+Gets it right, he's going to be well ahead.
+
+112
+00:04:17,087 --> 00:04:19,670
+And then with that kind of lead going into "Final Jeaoprady"--
+
+113
+00:04:19,670 --> 00:04:22,300
+if he bets enough, he could end up winning the match.
+
+114
+00:04:22,300 --> 00:04:25,450
+"A camel is a horse designed by this."
+
+115
+00:04:25,450 --> 00:04:25,950
+Ken.
+
+116
+00:04:25,950 --> 00:04:26,760
+What's a committee?
+
+117
+00:04:26,760 --> 00:04:27,260
+Good.
+
+118
+00:04:27,260 --> 00:04:28,650
+"Familiar Sayings" for $2,000.
+
+119
+00:04:28,650 --> 00:04:30,400
+We've gotta find that last "Daily Double."
+
+120
+00:04:30,400 --> 00:04:32,390
+We've gotta find that last "Daily Double."
+
+121
+00:04:32,390 --> 00:04:33,740
+It was nail-biting.
+
+122
+00:04:33,740 --> 00:04:35,340
+I mean, it was just intense.
+
+123
+00:04:35,340 --> 00:04:37,440
+Because these guys were good.
+
+124
+00:04:37,440 --> 00:04:37,940
+Ken.
+
+125
+00:04:37,940 --> 00:04:38,710
+Who is the brain?
+
+126
+00:04:38,710 --> 00:04:39,570
+Brain, yes.
+
+127
+00:04:39,570 --> 00:04:40,555
+There was a crucial moment in the game.
+
+128
+00:04:40,555 --> 00:04:41,930
+There was still a "Daily Double" on the board
+
+129
+00:04:41,930 --> 00:04:44,450
+and it was starting to become pretty clear that it
+
+130
+00:04:44,450 --> 00:04:46,385
+was in the "Legal E's" category.
+
+131
+00:04:46,385 --> 00:04:49,100
+Let's go to "Legal E's" for $1,200.
+
+132
+00:04:49,100 --> 00:04:50,980
+"This person is appointed by a testator
+
+133
+00:04:50,980 --> 00:04:54,840
+to carry out the directions and requests in his will."
+
+134
+00:04:54,840 --> 00:04:55,400
+Watson.
+
+135
+00:04:55,400 --> 00:04:56,670
+What is executor?
+
+136
+00:04:56,670 --> 00:04:57,600
+Right.
+
+137
+00:04:57,600 --> 00:04:59,710
+Same category, $1,600.
+
+138
+00:04:59,710 --> 00:05:05,210
+Answer-- "Daily Double."
+
+139
+00:05:05,210 --> 00:05:08,740
+That was the moment when I knew it's over.
+
+140
+00:05:08,740 --> 00:05:12,400
+Let us look at the results of the game.
+
+141
+00:05:12,400 --> 00:05:14,630
+Looking at these numbers, it is fair to say
+
+142
+00:05:14,630 --> 00:05:19,100
+that Watson's victory over the two best human players
+
+143
+00:05:19,100 --> 00:05:20,840
+has been a decisive one.
+
+144
+00:05:20,840 --> 00:05:25,340
+In the first day, Watson's winnings
+
+145
+00:05:25,340 --> 00:05:31,790
+were more than double the sum of the winnings of both players.
+
+146
+00:05:31,790 --> 00:05:38,050
+And in the second day, it was more than their sum.
+
+147
+00:05:38,050 --> 00:05:44,150
+Overall, the winnings for Watson were almost double
+
+148
+00:05:44,150 --> 00:05:47,090
+the sum of the winnings of both players--
+
+149
+00:05:47,090 --> 00:05:48,800
+a rather decisive victory.
+
+150
+00:05:48,800 --> 00:05:51,520
+
+
+151
+00:05:51,520 --> 00:05:55,050
+So what's next for Watson?
+
+152
+00:05:55,050 --> 00:05:59,010
+So Watson is ideally suited to answer questions which
+
+153
+00:05:59,010 --> 00:06:01,960
+cover a wide range of material and often
+
+154
+00:06:01,960 --> 00:06:06,250
+have to deal with inconsistent or incomplete information.
+
+155
+00:06:06,250 --> 00:06:10,390
+This makes it particularly appropriate for applications
+
+156
+00:06:10,390 --> 00:06:11,920
+like medicine.
+
+157
+00:06:11,920 --> 00:06:15,050
+Note that the amount of medical information available
+
+158
+00:06:15,050 --> 00:06:17,800
+is doubling every five years, and a lot of the data
+
+159
+00:06:17,800 --> 00:06:20,310
+is unstructured.
+
+160
+00:06:20,310 --> 00:06:26,380
+As a result, Watson has been utilized for cancer diagnosis
+
+161
+00:06:26,380 --> 00:06:29,150
+and selecting the best course of treatment.
+
+162
+00:06:29,150 --> 00:06:32,130
+And Watson has been in discussions
+
+163
+00:06:32,130 --> 00:06:37,710
+with MD Anderson and Memorial Sloan-Kettering Cancer Centers
+
+164
+00:06:37,710 --> 00:06:42,310
+to apply the Watson technology for cancer diagnosis
+
+165
+00:06:42,310 --> 00:06:44,785
+and selecting the best course of treatment.
+
+166
+00:06:44,785 --> 00:06:48,920
+
+
+167
+00:06:48,920 --> 00:06:52,370
+So what is the analytics edge of Watson?
+
+168
+00:06:52,370 --> 00:06:56,530
+First, we have observed that the major technology of Watson
+
+169
+00:06:56,530 --> 00:06:58,690
+is to combine many algorithms that
+
+170
+00:06:58,690 --> 00:07:01,470
+increase the accuracy and the confidence
+
+171
+00:07:01,470 --> 00:07:03,090
+of the overall outcome.
+
+172
+00:07:03,090 --> 00:07:05,410
+Any one of these algorithms would not have worked,
+
+173
+00:07:05,410 --> 00:07:11,940
+but their combination gives Watson a considerable edge.
+
+174
+00:07:11,940 --> 00:07:14,926
+The second important observation that gives Watson an edge
+
+175
+00:07:14,926 --> 00:07:17,300
+is that it approaches the problem in a very different way
+
+176
+00:07:17,300 --> 00:07:20,390
+than how a human approaches a problem.
+
+177
+00:07:20,390 --> 00:07:24,140
+A key aspect of the technology is hypothesis generation,
+
+178
+00:07:24,140 --> 00:07:26,980
+and then using different and distinct algorithms
+
+179
+00:07:26,980 --> 00:07:30,170
+to explore this hypothesis and combining them,
+
+180
+00:07:30,170 --> 00:07:34,320
+it leads to answers that provide an edge.
+
+181
+00:07:34,320 --> 00:07:36,580
+Finally, and quite importantly, Watson
+
+182
+00:07:36,580 --> 00:07:39,440
+has a considerable ability to deal
+
+183
+00:07:39,440 --> 00:07:42,670
+with massive amounts of data, often in unstructured form.
+
+184
+00:07:42,670 --> 00:07:46,440
+And the vast majority of the data-- 90% of it-- is, in fact,
+
+185
+00:07:46,440 --> 00:07:47,410
+unstructured.
+
+186
+00:07:47,410 --> 00:07:50,300
+So the combination of these ideas
+
+187
+00:07:50,300 --> 00:07:53,830
+give Watson a significant edge.
+
+188
+00:07:53,830 --> 00:07:59,790
+It is no accident that IBM has invested so far more than $24
+
+189
+00:07:59,790 --> 00:08:03,680
+billion to invest in Watson technologies,
+
+190
+00:08:03,680 --> 00:08:07,190
+and it has created a company within IBM
+
+191
+00:08:07,190 --> 00:08:11,080
+called Watson Solutions, whose key objective is
+
+192
+00:08:11,080 --> 00:08:13,580
+to apply the Watson technology and the edge
+
+193
+00:08:13,580 --> 00:08:17,570
+that it creates to a variety of verticals, one of which
+
+194
+00:08:17,570 --> 00:08:19,280
+is medicine.
+

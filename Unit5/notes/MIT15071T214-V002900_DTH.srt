@@ -1,0 +1,416 @@
+0
+00:00:00,000 --> 00:00:00,840
+
+
+1
+00:00:00,840 --> 00:00:06,210
+This is a lecture of how IBM built a computer that plays
+
+2
+00:00:06,210 --> 00:00:09,100
+the very popular game of Jeopardy!.
+
+3
+00:00:09,100 --> 00:00:14,160
+In 2004, IBM Vice President Charles Lickel and coworkers
+
+4
+00:00:14,160 --> 00:00:15,890
+were having dinner at a restaurant.
+
+5
+00:00:15,890 --> 00:00:19,160
+All of a sudden, the restaurant fell silent.
+
+6
+00:00:19,160 --> 00:00:21,770
+Everyone was watching the game Jeopardy!
+
+7
+00:00:21,770 --> 00:00:23,210
+on the television.
+
+8
+00:00:23,210 --> 00:00:26,040
+A contestant, Ken Jennings, was setting the record
+
+9
+00:00:26,040 --> 00:00:30,690
+for the longest winning streak of all time, 75 days.
+
+10
+00:00:30,690 --> 00:00:32,920
+Why was everyone so interested?
+
+11
+00:00:32,920 --> 00:00:33,420
+Jeopardy!
+
+12
+00:00:33,420 --> 00:00:37,080
+is a quiz show that asks complex and clever questions like puns,
+
+13
+00:00:37,080 --> 00:00:39,940
+obscure facts, and uncommon words.
+
+14
+00:00:39,940 --> 00:00:42,380
+It originally aired in 1964.
+
+15
+00:00:42,380 --> 00:00:44,330
+It covers a huge variety of topics,
+
+16
+00:00:44,330 --> 00:00:46,630
+and it's generally viewed as an impressive feat
+
+17
+00:00:46,630 --> 00:00:48,600
+to do well in this game.
+
+18
+00:00:48,600 --> 00:00:52,040
+No computer system has ever been developed that could even come
+
+19
+00:00:52,040 --> 00:00:54,630
+close to competing with humans on Jeopardy!.
+
+20
+00:00:54,630 --> 00:00:58,030
+
+
+21
+00:00:58,030 --> 00:01:02,370
+IBM Research strives to push the limits of science.
+
+22
+00:01:02,370 --> 00:01:05,560
+It has a tradition of addressing inspiring and difficult
+
+23
+00:01:05,560 --> 00:01:07,640
+challenges over the years.
+
+24
+00:01:07,640 --> 00:01:11,300
+In the mid '90s, it built Deep Blue, a computer,
+
+25
+00:01:11,300 --> 00:01:14,060
+to compete against the best human chess players,
+
+26
+00:01:14,060 --> 00:01:16,530
+and then in the mid '90s, Deep Blue
+
+27
+00:01:16,530 --> 00:01:19,530
+beat Garry Kasparov, who was at that time
+
+28
+00:01:19,530 --> 00:01:22,260
+the world champion in chess.
+
+29
+00:01:22,260 --> 00:01:25,650
+Later it built Blue Gene, a computer
+
+30
+00:01:25,650 --> 00:01:27,740
+to map the human genome.
+
+31
+00:01:27,740 --> 00:01:31,600
+
+
+32
+00:01:31,600 --> 00:01:35,310
+In 2005, a team at IBM Research started
+
+33
+00:01:35,310 --> 00:01:39,680
+creating a computer that would compete at Jeopardy!
+
+34
+00:01:39,680 --> 00:01:42,870
+Of course, no one knew at the time how to beat humans
+
+35
+00:01:42,870 --> 00:01:45,610
+or if it was even possible.
+
+36
+00:01:45,610 --> 00:01:48,610
+Six years later, a two-game exhibition match
+
+37
+00:01:48,610 --> 00:01:50,040
+aired on television.
+
+38
+00:01:50,040 --> 00:01:52,395
+The winner would receive a million dollars.
+
+39
+00:01:52,395 --> 00:01:54,900
+
+
+40
+00:01:54,900 --> 00:02:00,030
+The contestants were Ken Jennings, the longest winning
+
+41
+00:02:00,030 --> 00:02:04,550
+champion, whose longest winning streak was 75 days;
+
+42
+00:02:04,550 --> 00:02:08,940
+Brad Rutter, who was the biggest money winner of over 3.5
+
+43
+00:02:08,940 --> 00:02:12,850
+million; and Watson, a supercomputer with 3,000
+
+44
+00:02:12,850 --> 00:02:17,000
+processors and a database of 200 million pages of information.
+
+45
+00:02:17,000 --> 00:02:18,779
+
+
+46
+00:02:18,779 --> 00:02:22,723
+This is Jeopardy!-- The IBM Challenge.
+
+47
+00:02:22,723 --> 00:02:24,695
+
+
+48
+00:02:24,695 --> 00:02:30,118
+And now, here is the host of Jeopardy!, Alex Trebek.
+
+49
+00:02:30,118 --> 00:02:32,486
+
+
+50
+00:02:32,486 --> 00:02:33,569
+Thank you, Johnny Gilbert.
+
+51
+00:02:33,569 --> 00:02:35,541
+Thank you, ladies and gentlemen.
+
+52
+00:02:35,541 --> 00:02:39,280
+And welcome, everyone, to a very special Jeopardy! event.
+
+53
+00:02:39,280 --> 00:02:41,010
+For the next three days, we're going
+
+54
+00:02:41,010 --> 00:02:44,430
+to be coming to you from this IBM Research facility just
+
+55
+00:02:44,430 --> 00:02:46,490
+outside of New York City.
+
+56
+00:02:46,490 --> 00:02:48,210
+And let me tell you why.
+
+57
+00:02:48,210 --> 00:02:50,590
+A little over three years ago, the folks at IBM
+
+58
+00:02:50,590 --> 00:02:53,320
+came to us with a proposal that they considered
+
+59
+00:02:53,320 --> 00:02:56,550
+to be the next grand challenge in computing.
+
+60
+00:02:56,550 --> 00:02:59,280
+And that was designing a computer system
+
+61
+00:02:59,280 --> 00:03:01,120
+that could understand the complexities
+
+62
+00:03:01,120 --> 00:03:03,700
+of natural language well enough to compete
+
+63
+00:03:03,700 --> 00:03:06,240
+against Jeopardy!'s best players.
+
+64
+00:03:06,240 --> 00:03:08,760
+Well, they think they've succeeded,
+
+65
+00:03:08,760 --> 00:03:10,270
+and that's why we're here today.
+
+66
+00:03:10,270 --> 00:03:14,340
+So you are about to witness what may prove to be an historic
+
+67
+00:03:14,340 --> 00:03:18,200
+competition -- an exhibition match pitting an IBM computer
+
+68
+00:03:18,200 --> 00:03:21,710
+system against the two most celebrated and successful
+
+69
+00:03:21,710 --> 00:03:24,050
+players in Jeopardy! history.
+
+70
+00:03:24,050 --> 00:03:25,620
+Sounds like a lot of fun, doesn't it?
+
+71
+00:03:25,620 --> 00:03:28,570
+Developed and programmed especially for this moment,
+
+72
+00:03:28,570 --> 00:03:31,840
+making its first appearance on our national television
+
+73
+00:03:31,840 --> 00:03:34,740
+program, ladies and gentlemen, this is Watson.
+
+74
+00:03:34,740 --> 00:03:40,211
+
+
+75
+00:03:40,211 --> 00:03:43,510
+Just as I expected, that was a very warm reception.
+
+76
+00:03:43,510 --> 00:03:46,470
+And I'm sure Watson would've appreciated
+
+77
+00:03:46,470 --> 00:03:48,910
+the applause, except for one thing.
+
+78
+00:03:48,910 --> 00:03:52,340
+Watson can neither hear nor see.
+
+79
+00:03:52,340 --> 00:03:55,360
+It will be receiving all of its information electronically.
+
+80
+00:03:55,360 --> 00:03:59,120
+And as a matter of fact, what you're looking at right now
+
+81
+00:03:59,120 --> 00:04:01,670
+is not the real Watson.
+
+82
+00:04:01,670 --> 00:04:03,790
+This is an avatar.
+
+83
+00:04:03,790 --> 00:04:06,400
+This is a representation of Watson.
+
+84
+00:04:06,400 --> 00:04:09,770
+Watson, of course, is a sophisticated computer system
+
+85
+00:04:09,770 --> 00:04:12,740
+too big and too heavy to fit behind that lectern
+
+86
+00:04:12,740 --> 00:04:14,520
+on our stage.
+
+87
+00:04:14,520 --> 00:04:16,070
+But it is close by.
+
+88
+00:04:16,070 --> 00:04:17,510
+It's right next door.
+
+89
+00:04:17,510 --> 00:04:21,269
+And a little while ago, I paid it a visit.
+
+90
+00:04:21,269 --> 00:04:22,920
+The very first thing you will notice
+
+91
+00:04:22,920 --> 00:04:27,470
+as I come into Watson's space is noise.
+
+92
+00:04:27,470 --> 00:04:29,600
+There is a lot of noise.
+
+93
+00:04:29,600 --> 00:04:33,370
+A little bit comes from Watson himself, but most of the noise
+
+94
+00:04:33,370 --> 00:04:36,030
+comes from two very large refrigerator
+
+95
+00:04:36,030 --> 00:04:38,980
+units that help to keep Watson cool.
+
+96
+00:04:38,980 --> 00:04:44,310
+Now as you can see, Watson has been set up in two units.
+
+97
+00:04:44,310 --> 00:04:48,220
+Each half contains five separate racks.
+
+98
+00:04:48,220 --> 00:04:56,190
+Each of these racks contains 10 IBM Power 750 servers.
+
+99
+00:04:56,190 --> 00:04:57,840
+Now when you link all of these servers
+
+100
+00:04:57,840 --> 00:05:00,770
+together, as they have done for Watson,
+
+101
+00:05:00,770 --> 00:05:04,090
+you create a deep analytic system
+
+102
+00:05:04,090 --> 00:05:09,100
+that is the equivalent of 2,800 powerful computers tied
+
+103
+00:05:09,100 --> 00:05:12,860
+together in a super high speed network.
+

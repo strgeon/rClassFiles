@@ -1,0 +1,352 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,650
+In this lecture, we'll be trying to understand sentiment
+
+2
+00:00:03,650 --> 00:00:07,280
+of tweets about the company Apple.
+
+3
+00:00:07,280 --> 00:00:11,530
+Apple is a computer company known for its laptops, phones,
+
+4
+00:00:11,530 --> 00:00:14,280
+tablets, and personal media players.
+
+5
+00:00:14,280 --> 00:00:17,250
+While Apple has a large number of fans,
+
+6
+00:00:17,250 --> 00:00:19,220
+they also have a large number of people
+
+7
+00:00:19,220 --> 00:00:20,950
+who don't like their products.
+
+8
+00:00:20,950 --> 00:00:23,540
+And they have several competitors.
+
+9
+00:00:23,540 --> 00:00:26,390
+To better understand public perception,
+
+10
+00:00:26,390 --> 00:00:29,530
+Apple wants to monitor how people feel over time
+
+11
+00:00:29,530 --> 00:00:32,600
+and how people receive new announcements.
+
+12
+00:00:32,600 --> 00:00:36,080
+Our challenge in this lecture is to see if we can correctly
+
+13
+00:00:36,080 --> 00:00:40,400
+classify tweets as being negative, positive, or neither
+
+14
+00:00:40,400 --> 00:00:43,510
+about Apple.
+
+15
+00:00:43,510 --> 00:00:46,140
+To collect the data needed for this task,
+
+16
+00:00:46,140 --> 00:00:48,820
+we had to perform two steps.
+
+17
+00:00:48,820 --> 00:00:53,750
+The first was to collect data about tweets from the internet.
+
+18
+00:00:53,750 --> 00:00:56,060
+Twitter data is publicly available.
+
+19
+00:00:56,060 --> 00:00:58,690
+And you can collect it through scraping the website
+
+20
+00:00:58,690 --> 00:01:01,680
+or by using a special interface for programmers
+
+21
+00:01:01,680 --> 00:01:05,000
+that Twitter provides called an API.
+
+22
+00:01:05,000 --> 00:01:08,210
+The sender of the tweet might be useful to predict sentiment.
+
+23
+00:01:08,210 --> 00:01:11,020
+But we'll ignore it to keep our data anonymized.
+
+24
+00:01:11,020 --> 00:01:15,196
+So we'll just be using the text of the tweet.
+
+25
+00:01:15,196 --> 00:01:18,260
+Then we need to construct the outcome variable
+
+26
+00:01:18,260 --> 00:01:21,330
+for these tweets, which means that we have to label them
+
+27
+00:01:21,330 --> 00:01:25,170
+as positive, negative, or neutral sentiment.
+
+28
+00:01:25,170 --> 00:01:27,960
+We would like to label thousands of tweets.
+
+29
+00:01:27,960 --> 00:01:30,540
+And we know that two people might disagree over
+
+30
+00:01:30,540 --> 00:01:33,380
+the correct classification of a tweet.
+
+31
+00:01:33,380 --> 00:01:36,100
+So to do this efficiently, one option
+
+32
+00:01:36,100 --> 00:01:38,890
+is to use the Amazon Mechanical Turk.
+
+33
+00:01:38,890 --> 00:01:41,630
+
+
+34
+00:01:41,630 --> 00:01:44,870
+So what is the Amazon Mechanical Turk?
+
+35
+00:01:44,870 --> 00:01:49,160
+It allows people to break tasks down into small components
+
+36
+00:01:49,160 --> 00:01:52,670
+and then enables them to distribute these tasks online
+
+37
+00:01:52,670 --> 00:01:56,250
+to be solved by people all over the world.
+
+38
+00:01:56,250 --> 00:02:00,520
+People can sign up to perform the available tasks for a fee.
+
+39
+00:02:00,520 --> 00:02:03,220
+As the task creator, we pay the workers
+
+40
+00:02:03,220 --> 00:02:05,760
+a fixed amount per completed task.
+
+41
+00:02:05,760 --> 00:02:10,472
+For example, we might pay $0.02 for a single classified tweet.
+
+42
+00:02:10,472 --> 00:02:13,610
+The Amazon Mechanical Turk serves as a broker
+
+43
+00:02:13,610 --> 00:02:16,520
+and takes a small cut of the money.
+
+44
+00:02:16,520 --> 00:02:19,140
+Many of the tasks on the Mechanical Turk
+
+45
+00:02:19,140 --> 00:02:21,830
+require human intelligence, like classifying
+
+46
+00:02:21,830 --> 00:02:23,620
+the sentiment of a tweet.
+
+47
+00:02:23,620 --> 00:02:25,890
+But these tasks may be time consuming
+
+48
+00:02:25,890 --> 00:02:29,120
+or require building otherwise unneeded capacity
+
+49
+00:02:29,120 --> 00:02:30,900
+for the creator of the task.
+
+50
+00:02:30,900 --> 00:02:35,570
+And so it's appealing to outsource the job.
+
+51
+00:02:35,570 --> 00:02:38,840
+The task that we put on the Amazon Mechanical Turk
+
+52
+00:02:38,840 --> 00:02:41,590
+was to judge the sentiment expressed
+
+53
+00:02:41,590 --> 00:02:45,760
+by the following item toward the software company Apple.
+
+54
+00:02:45,760 --> 00:02:49,300
+The items we gave them were tweets that we had collected.
+
+55
+00:02:49,300 --> 00:02:51,550
+The workers could pick from the following options
+
+56
+00:02:51,550 --> 00:02:56,410
+as their response-- strongly negative, negative, neutral,
+
+57
+00:02:56,410 --> 00:02:59,220
+positive, and strongly positive.
+
+58
+00:02:59,220 --> 00:03:01,340
+We represented each of these outcomes
+
+59
+00:03:01,340 --> 00:03:04,806
+as a number on the scale from negative 2 to 2.
+
+60
+00:03:04,806 --> 00:03:08,540
+We had five workers label each tweet.
+
+61
+00:03:08,540 --> 00:03:10,930
+The graph on the right shows the distribution
+
+62
+00:03:10,930 --> 00:03:12,710
+of the number of tweets classified
+
+63
+00:03:12,710 --> 00:03:14,900
+into each of the categories.
+
+64
+00:03:14,900 --> 00:03:17,760
+We can see here that the majority of tweets
+
+65
+00:03:17,760 --> 00:03:21,430
+were classified as neutral, with a small number classified
+
+66
+00:03:21,430 --> 00:03:23,495
+as strongly negative or strongly positive.
+
+67
+00:03:23,495 --> 00:03:26,750
+
+
+68
+00:03:26,750 --> 00:03:30,670
+Then, for each tweet, we take the average of the five scores
+
+69
+00:03:30,670 --> 00:03:32,690
+given by the five workers.
+
+70
+00:03:32,690 --> 00:03:35,620
+For example, the tweet "LOVE U @APPLE"
+
+71
+00:03:35,620 --> 00:03:39,010
+was seen as strongly positive by 4 of the workers
+
+72
+00:03:39,010 --> 00:03:41,260
+and positive by one of the workers.
+
+73
+00:03:41,260 --> 00:03:43,460
+So it gets a score of 1.8.
+
+74
+00:03:43,460 --> 00:03:47,150
+The tweet "@apple @twitter Happy Programmers' Day folks!"
+
+75
+00:03:47,150 --> 00:03:50,510
+was seen as slightly positive on average.
+
+76
+00:03:50,510 --> 00:03:53,480
+And the tweet "So disappointed in @Apple.
+
+77
+00:03:53,480 --> 00:03:56,210
+Sold me a Macbook Air that WONT run my apps.
+
+78
+00:03:56,210 --> 00:03:58,170
+So I have to drive hours to return it.
+
+79
+00:03:58,170 --> 00:04:02,300
+They won't let me ship it." was seen as pretty negative.
+
+80
+00:04:02,300 --> 00:04:04,050
+So now we have a bunch of tweets that
+
+81
+00:04:04,050 --> 00:04:05,710
+are labeled with their sentiment.
+
+82
+00:04:05,710 --> 00:04:08,260
+But how do we build independent variables
+
+83
+00:04:08,260 --> 00:04:12,760
+from the text of a tweet to be used to predict the sentiment?
+
+84
+00:04:12,760 --> 00:04:15,810
+In the next video, we'll discuss a technique
+
+85
+00:04:15,810 --> 00:04:18,829
+called bag of words that transforms text
+
+86
+00:04:18,829 --> 00:04:21,370
+into independent variables.
+
+87
+00:04:21,370 --> 00:04:21,942
+
+

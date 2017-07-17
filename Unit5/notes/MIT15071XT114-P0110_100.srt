@@ -1,0 +1,48 @@
+0
+00:00:00,000 --> 00:00:00,480
+
+
+1
+00:00:00,480 --> 00:00:00,980
+Hi.
+
+2
+00:00:00,980 --> 00:00:04,090
+I'm John, and I'll be leading the recitation this week.
+
+3
+00:00:04,090 --> 00:00:06,580
+We'll be looking into how to use the text of emails
+
+4
+00:00:06,580 --> 00:00:08,980
+in the inboxes of Enron executives
+
+5
+00:00:08,980 --> 00:00:12,310
+to predict if those emails are relevant to an investigation
+
+6
+00:00:12,310 --> 00:00:13,440
+into the company.
+
+7
+00:00:13,440 --> 00:00:15,320
+We'll be extracting word frequencies
+
+8
+00:00:15,320 --> 00:00:17,260
+from the text of the documents, and then
+
+9
+00:00:17,260 --> 00:00:20,620
+integrating those frequencies into predictive models.
+
+10
+00:00:20,620 --> 00:00:22,510
+Let's get started.
+
+11
+00:00:22,510 --> 00:00:23,083
+
+

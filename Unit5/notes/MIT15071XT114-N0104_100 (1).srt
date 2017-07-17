@@ -1,0 +1,488 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,730
+In this lecture, we'll use a technique called Bag of Words
+
+2
+00:00:03,730 --> 00:00:06,640
+to build text analytics models.
+
+3
+00:00:06,640 --> 00:00:10,570
+Fully understanding text is difficult, but Bag of Words
+
+4
+00:00:10,570 --> 00:00:13,130
+provides a very simple approach.
+
+5
+00:00:13,130 --> 00:00:15,360
+It just counts the number of times
+
+6
+00:00:15,360 --> 00:00:19,320
+each word appears in the text and uses these counts
+
+7
+00:00:19,320 --> 00:00:22,080
+as the independent variables.
+
+8
+00:00:22,080 --> 00:00:25,880
+For example, in the sentence, "This course is great.
+
+9
+00:00:25,880 --> 00:00:28,440
+I would recommend this course my friends,"
+
+10
+00:00:28,440 --> 00:00:34,180
+the word this is seen twice, the word course is seen twice,
+
+11
+00:00:34,180 --> 00:00:39,000
+the word great is seen once, et cetera.
+
+12
+00:00:39,000 --> 00:00:42,680
+In Bag of Words, there's one feature for each word.
+
+13
+00:00:42,680 --> 00:00:46,160
+This is a very simple approach, but is often very effective,
+
+14
+00:00:46,160 --> 00:00:47,330
+too.
+
+15
+00:00:47,330 --> 00:00:50,680
+It's used as a baseline in text analytics projects
+
+16
+00:00:50,680 --> 00:00:53,390
+and for natural language processing.
+
+17
+00:00:53,390 --> 00:00:55,360
+This isn't the whole story, though.
+
+18
+00:00:55,360 --> 00:00:57,940
+Preprocessing the text can dramatically
+
+19
+00:00:57,940 --> 00:01:02,890
+improve the performance of the Bag of Words method.
+
+20
+00:01:02,890 --> 00:01:05,099
+One part of preprocessing the text
+
+21
+00:01:05,099 --> 00:01:07,620
+is to clean up irregularities.
+
+22
+00:01:07,620 --> 00:01:11,000
+Text data often as many inconsistencies that will cause
+
+23
+00:01:11,000 --> 00:01:12,940
+algorithms trouble.
+
+24
+00:01:12,940 --> 00:01:15,850
+Computers are very literal by default.
+
+25
+00:01:15,850 --> 00:01:20,710
+Apple with just an uppercase A, APPLE all in uppercase letters,
+
+26
+00:01:20,710 --> 00:01:24,370
+or ApPLe with a mixture of uppercase and lowercase letters
+
+27
+00:01:24,370 --> 00:01:26,990
+will all be counted separately.
+
+28
+00:01:26,990 --> 00:01:29,610
+We want to change the text so that all three
+
+29
+00:01:29,610 --> 00:01:33,450
+versions of Apple here will be counted as the same word,
+
+30
+00:01:33,450 --> 00:01:37,930
+by either changing all words to uppercase or to lower case.
+
+31
+00:01:37,930 --> 00:01:41,350
+We'll typically change all the letters to lowercase,
+
+32
+00:01:41,350 --> 00:01:43,500
+so these three versions of Apple will all
+
+33
+00:01:43,500 --> 00:01:46,030
+become Apple with lower case letters
+
+34
+00:01:46,030 --> 00:01:48,000
+and will be counted as the same word.
+
+35
+00:01:48,000 --> 00:01:50,940
+
+
+36
+00:01:50,940 --> 00:01:53,900
+Punctuation can also cause problems.
+
+37
+00:01:53,900 --> 00:01:55,910
+The basic approach is to deal with this
+
+38
+00:01:55,910 --> 00:01:58,510
+is to remove everything that isn't a standard number
+
+39
+00:01:58,510 --> 00:01:59,650
+or letter.
+
+40
+00:01:59,650 --> 00:02:03,480
+However, sometimes punctuation is meaningful.
+
+41
+00:02:03,480 --> 00:02:07,990
+In the case of Twitter, @Apple denotes a message to Apple,
+
+42
+00:02:07,990 --> 00:02:11,690
+and #Apple is a message about Apple.
+
+43
+00:02:11,690 --> 00:02:13,790
+For web addresses, the punctuation
+
+44
+00:02:13,790 --> 00:02:16,420
+often defines the web address.
+
+45
+00:02:16,420 --> 00:02:19,190
+For these reasons, the removal of punctuation
+
+46
+00:02:19,190 --> 00:02:22,370
+should be tailored to the specific problem.
+
+47
+00:02:22,370 --> 00:02:27,420
+In our case, we will remove all punctuation, so @Apple,
+
+48
+00:02:27,420 --> 00:02:31,020
+Apple with an exclamation point, Apple with dashes
+
+49
+00:02:31,020 --> 00:02:33,010
+will all count as just Apple.
+
+50
+00:02:33,010 --> 00:02:35,880
+
+
+51
+00:02:35,880 --> 00:02:38,490
+Another preprocessing task we want to do
+
+52
+00:02:38,490 --> 00:02:41,680
+is to remove unhelpful terms.
+
+53
+00:02:41,680 --> 00:02:43,820
+Many words are frequently used but are
+
+54
+00:02:43,820 --> 00:02:45,990
+only meaningful in a sentence.
+
+55
+00:02:45,990 --> 00:02:49,110
+These are called stop words.
+
+56
+00:02:49,110 --> 00:02:53,940
+Examples are the, is, at, and which.
+
+57
+00:02:53,940 --> 00:02:56,440
+It's unlikely that these words will improve
+
+58
+00:02:56,440 --> 00:02:58,660
+the machine learning prediction quality,
+
+59
+00:02:58,660 --> 00:03:02,680
+so we want to remove them to reduce the size of the data.
+
+60
+00:03:02,680 --> 00:03:05,560
+There are some potential problems with this approach.
+
+61
+00:03:05,560 --> 00:03:08,330
+Sometimes, two stop words taken together
+
+62
+00:03:08,330 --> 00:03:10,560
+have a very important meaning.
+
+63
+00:03:10,560 --> 00:03:14,580
+For example, "The Who"-- which is a combination of two stop
+
+64
+00:03:14,580 --> 00:03:18,100
+words-- is actually the name of the band we see on the right
+
+65
+00:03:18,100 --> 00:03:19,800
+here.
+
+66
+00:03:19,800 --> 00:03:23,960
+By removing the stop words, we remove both of these words,
+
+67
+00:03:23,960 --> 00:03:26,720
+but The Who might actually have a significant meaning
+
+68
+00:03:26,720 --> 00:03:28,850
+for our prediction task.
+
+69
+00:03:28,850 --> 00:03:31,940
+Another example is the phrase, "Take That".
+
+70
+00:03:31,940 --> 00:03:33,700
+If we remove the stop words, we'll
+
+71
+00:03:33,700 --> 00:03:38,000
+remove the word "that," so the phrase would just say, "take."
+
+72
+00:03:38,000 --> 00:03:41,620
+It no longer has the same meaning as before.
+
+73
+00:03:41,620 --> 00:03:45,150
+So while removing stop words sometimes is not helpful,
+
+74
+00:03:45,150 --> 00:03:50,770
+it generally is a very helpful preprocessing step.
+
+75
+00:03:50,770 --> 00:03:53,430
+Lastly, an important preprocessing step
+
+76
+00:03:53,430 --> 00:03:55,300
+is called stemming.
+
+77
+00:03:55,300 --> 00:03:57,550
+This step is motivated by the desire
+
+78
+00:03:57,550 --> 00:03:59,760
+to represent words with different endings
+
+79
+00:03:59,760 --> 00:04:01,380
+as the same word.
+
+80
+00:04:01,380 --> 00:04:05,020
+We probably do not need to draw a distinction between argue,
+
+81
+00:04:05,020 --> 00:04:07,910
+argued, argues, and arguing.
+
+82
+00:04:07,910 --> 00:04:12,370
+They could all be represented by a common stem, argu.
+
+83
+00:04:12,370 --> 00:04:15,290
+The algorithmic process of performing this reduction
+
+84
+00:04:15,290 --> 00:04:17,170
+is called stemming.
+
+85
+00:04:17,170 --> 00:04:20,440
+There are many ways to approach the problem.
+
+86
+00:04:20,440 --> 00:04:22,750
+One approach is to build a database
+
+87
+00:04:22,750 --> 00:04:24,890
+of words and their stems.
+
+88
+00:04:24,890 --> 00:04:29,130
+A pro is that this approach handles exceptions very nicely,
+
+89
+00:04:29,130 --> 00:04:31,970
+since we have defined all of the stems.
+
+90
+00:04:31,970 --> 00:04:34,980
+However, it won't handle new words at all,
+
+91
+00:04:34,980 --> 00:04:36,860
+since they are not in the database.
+
+92
+00:04:36,860 --> 00:04:39,030
+This is especially bad for problems
+
+93
+00:04:39,030 --> 00:04:41,070
+where we're using data from the internet,
+
+94
+00:04:41,070 --> 00:04:44,480
+since we have no idea what words will be used.
+
+95
+00:04:44,480 --> 00:04:47,910
+A different approach is to write a rule-based algorithm.
+
+96
+00:04:47,910 --> 00:04:53,460
+In this approach, if a word ends in things like ed, ing, or ly,
+
+97
+00:04:53,460 --> 00:04:55,305
+we would remove the ending.
+
+98
+00:04:55,305 --> 00:04:59,010
+A pro of this approach is that it handles new or unknown words
+
+99
+00:04:59,010 --> 00:04:59,910
+well.
+
+100
+00:04:59,910 --> 00:05:02,080
+However, there are many exceptions,
+
+101
+00:05:02,080 --> 00:05:04,320
+and this approach would miss all of these.
+
+102
+00:05:04,320 --> 00:05:08,480
+Words like child and children would be considered different,
+
+103
+00:05:08,480 --> 00:05:13,830
+but it would get other plurals, like dog and dogs.
+
+104
+00:05:13,830 --> 00:05:15,940
+This second approach is widely popular
+
+105
+00:05:15,940 --> 00:05:17,910
+and is called the Porter Stemmer, designed
+
+106
+00:05:17,910 --> 00:05:22,520
+by Martin Porter in 1980, and it's still used today.
+
+107
+00:05:22,520 --> 00:05:26,820
+Stemmers like this one have been written for many languages.
+
+108
+00:05:26,820 --> 00:05:28,720
+Other options for stemming include
+
+109
+00:05:28,720 --> 00:05:30,570
+machine learning, where algorithms
+
+110
+00:05:30,570 --> 00:05:34,420
+are trained to recognize the roots of words and combinations
+
+111
+00:05:34,420 --> 00:05:36,750
+of the approaches explained here.
+
+112
+00:05:36,750 --> 00:05:39,190
+As a real example from our data set,
+
+113
+00:05:39,190 --> 00:05:42,715
+the phrase "by far the best customer care service I
+
+114
+00:05:42,715 --> 00:05:45,290
+have ever received" has three words
+
+115
+00:05:45,290 --> 00:05:48,660
+that would be stemmed-- customer, service,
+
+116
+00:05:48,660 --> 00:05:50,050
+and received.
+
+117
+00:05:50,050 --> 00:05:53,110
+The "er" would be removed in customer,
+
+118
+00:05:53,110 --> 00:05:55,550
+the "e" would be removed in service,
+
+119
+00:05:55,550 --> 00:05:59,740
+and the "ed" would be removed in received.
+
+120
+00:05:59,740 --> 00:06:03,180
+In the next video, we'll see how to run these preprocessing
+
+121
+00:06:03,180 --> 00:06:05,150
+steps in R.
+

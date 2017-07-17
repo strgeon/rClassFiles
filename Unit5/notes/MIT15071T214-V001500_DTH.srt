@@ -1,0 +1,340 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,490
+So why is the game of Jeopardy hard for a computer?
+
+2
+00:00:04,490 --> 00:00:09,090
+We said earlier that Watson had 3,000 processors and a database
+
+3
+00:00:09,090 --> 00:00:12,700
+of 200 million pages of information.
+
+4
+00:00:12,700 --> 00:00:16,620
+So shouldn't it be easy for Watson to play Jeopardy?
+
+5
+00:00:16,620 --> 00:00:19,440
+Unfortunately, Jeopardy has a wide variety
+
+6
+00:00:19,440 --> 00:00:23,100
+of categories which are purposely made cryptic.
+
+7
+00:00:23,100 --> 00:00:26,960
+While computers can easily answer precise questions,
+
+8
+00:00:26,960 --> 00:00:30,290
+like computing the square root of a complicated number,
+
+9
+00:00:30,290 --> 00:00:34,470
+understanding natural language is hard for computers.
+
+10
+00:00:34,470 --> 00:00:38,570
+As an example, suppose we ask Watson to answer the question:
+
+11
+00:00:38,570 --> 00:00:41,620
+Where was Albert Einstein born?
+
+12
+00:00:41,620 --> 00:00:43,770
+Stored in its database, Watson might
+
+13
+00:00:43,770 --> 00:00:47,610
+have the following information: "One day, from his city
+
+14
+00:00:47,610 --> 00:00:50,420
+views of Ulm, Otto chose a watercolor
+
+15
+00:00:50,420 --> 00:00:55,140
+to send to Albert Einstein as a remembrance of his birthplace."
+
+16
+00:00:55,140 --> 00:00:57,460
+As a human, we can probably figure out
+
+17
+00:00:57,460 --> 00:01:00,530
+that the name of the city is Ulm,
+
+18
+00:01:00,530 --> 00:01:03,360
+but this is a hard sentence to parse.
+
+19
+00:01:03,360 --> 00:01:06,030
+How would you tell a computer that Albert Einstein was
+
+20
+00:01:06,030 --> 00:01:08,205
+born in Ulm using just this sentence?
+
+21
+00:01:08,205 --> 00:01:10,820
+
+
+22
+00:01:10,820 --> 00:01:11,320
+OK.
+
+23
+00:01:11,320 --> 00:01:13,490
+So how about if we just store answers
+
+24
+00:01:13,490 --> 00:01:17,330
+to all possible questions that could be asked on Jeopardy?
+
+25
+00:01:17,330 --> 00:01:20,145
+Unfortunately, this would be impossible.
+
+26
+00:01:20,145 --> 00:01:24,600
+An analysis of 200,000 previous Jeopardy questions
+
+27
+00:01:24,600 --> 00:01:28,070
+yielded over 2,500 different categories,
+
+28
+00:01:28,070 --> 00:01:32,270
+and new questions are created on Jeopardy all the time.
+
+29
+00:01:32,270 --> 00:01:34,570
+Well, OK, then let's just search Google
+
+30
+00:01:34,570 --> 00:01:36,890
+for the answer to the question.
+
+31
+00:01:36,890 --> 00:01:39,800
+Unfortunately, no links to the outside world
+
+32
+00:01:39,800 --> 00:01:42,240
+are permitted on Jeopardy, and this rule
+
+33
+00:01:42,240 --> 00:01:44,610
+applied to Watson as well.
+
+34
+00:01:44,610 --> 00:01:47,700
+And even if Watson could search the internet for the answer
+
+35
+00:01:47,700 --> 00:01:50,940
+to a question, it can take considerable skill
+
+36
+00:01:50,940 --> 00:01:54,950
+to find the right web page with the right information.
+
+37
+00:01:54,950 --> 00:01:57,380
+So instead, Watson used analytics
+
+38
+00:01:57,380 --> 00:01:59,780
+to answer the Jeopardy questions.
+
+39
+00:01:59,780 --> 00:02:03,180
+Watson received each question in text form.
+
+40
+00:02:03,180 --> 00:02:06,250
+Normally, the players see and hear the questions,
+
+41
+00:02:06,250 --> 00:02:07,860
+but Watson couldn't hear anything,
+
+42
+00:02:07,860 --> 00:02:12,260
+so they decided to feed him the questions in text instead.
+
+43
+00:02:12,260 --> 00:02:14,990
+With the question in text form, IBM
+
+44
+00:02:14,990 --> 00:02:18,660
+was able to use text analytics and other analytical methods
+
+45
+00:02:18,660 --> 00:02:21,600
+to make Watson a competitive player.
+
+46
+00:02:21,600 --> 00:02:24,200
+Overall, they used 100 different techniques
+
+47
+00:02:24,200 --> 00:02:27,760
+for analyzing natural language, finding hypotheses
+
+48
+00:02:27,760 --> 00:02:30,860
+for the questions, and ranking these hypotheses
+
+49
+00:02:30,860 --> 00:02:33,830
+to pick an answer.
+
+50
+00:02:33,830 --> 00:02:37,910
+Watson had a huge database of sources and several basic tools
+
+51
+00:02:37,910 --> 00:02:40,310
+to help understand language.
+
+52
+00:02:40,310 --> 00:02:44,270
+The database consisted of a massive number of data sources,
+
+53
+00:02:44,270 --> 00:02:48,970
+like encyclopedias, texts, manuals, magazines,
+
+54
+00:02:48,970 --> 00:02:52,700
+and downloaded pages of Wikipedia.
+
+55
+00:02:52,700 --> 00:02:56,220
+One of the tools Watson had was a lexicon,
+
+56
+00:02:56,220 --> 00:02:59,880
+which describes the relationship between different words.
+
+57
+00:02:59,880 --> 00:03:03,250
+For example, the lexicon could tell Watson
+
+58
+00:03:03,250 --> 00:03:06,560
+that water is a clear liquid, but not all clear liquids
+
+59
+00:03:06,560 --> 00:03:08,220
+are water.
+
+60
+00:03:08,220 --> 00:03:10,500
+Another tool Watson had was a part
+
+61
+00:03:10,500 --> 00:03:13,490
+of speech tagger and parser.
+
+62
+00:03:13,490 --> 00:03:17,400
+This would identify functions of words in text.
+
+63
+00:03:17,400 --> 00:03:20,190
+For example, it would know that the word "race"
+
+64
+00:03:20,190 --> 00:03:23,330
+can be used as a verb or a noun.
+
+65
+00:03:23,330 --> 00:03:26,030
+"The students had to race to catch the bus"
+
+66
+00:03:26,030 --> 00:03:30,210
+uses race as a verb, while "Please indicate your race"
+
+67
+00:03:30,210 --> 00:03:33,400
+uses race as a noun.
+
+68
+00:03:33,400 --> 00:03:36,400
+Then, using these data sources and tools,
+
+69
+00:03:36,400 --> 00:03:38,400
+Watson would answer a question by going
+
+70
+00:03:38,400 --> 00:03:40,930
+through four major steps.
+
+71
+00:03:40,930 --> 00:03:43,730
+The first step is question analysis,
+
+72
+00:03:43,730 --> 00:03:45,640
+where Watson tries to figure out what
+
+73
+00:03:45,640 --> 00:03:47,990
+the question is looking for.
+
+74
+00:03:47,990 --> 00:03:51,350
+The second step is hypothesis generation,
+
+75
+00:03:51,350 --> 00:03:53,380
+where Watson searches the information
+
+76
+00:03:53,380 --> 00:03:56,410
+sources for possible answers.
+
+77
+00:03:56,410 --> 00:03:58,740
+After this, Watson moves on to step
+
+78
+00:03:58,740 --> 00:04:02,330
+three, when the different hypotheses are scored.
+
+79
+00:04:02,330 --> 00:04:04,100
+This means that a confidence level
+
+80
+00:04:04,100 --> 00:04:07,570
+has to be computed for each answer.
+
+81
+00:04:07,570 --> 00:04:10,490
+The final step is ranking the hypotheses
+
+82
+00:04:10,490 --> 00:04:13,890
+to look for a highly-supported answer.
+
+83
+00:04:13,890 --> 00:04:17,320
+In the next two videos, we'll go through how each of these steps
+
+84
+00:04:17,320 --> 00:04:18,870
+work.
+
