@@ -293,3 +293,48 @@ as.numeric(performance(predictionTestRF, "auc")@y.values)
 
 #Problem 4.7 - Evaluating on the Test Set
 #Problem 4.8 - Evaluating on the Test Set
+
+#Problem 6.1 - Integrating Word Count Information
+wordCount = rowSums(as.matrix(dtm))
+# Error: cannot allocate vector of size 1.2 Gb
+#IMPORTANT NOTE: If you received an error message when running the command above, it might be because your computer ran out of memory when trying to convert dtm to a matrix. If this happened to you, try running the following lines of code instead to create wordCount (if you didn't get an error, you don't need to run these lines). This code is a little more cryptic, but is more memory efficient.
+
+library(slam)
+wordCount = rollup(dtm, 2, FUN=sum)$v
+# 
+hist(wordCount)
+hist(log(wordCount))
+
+emailsSparse$logWordCount = log(wordCount)
+boxplot(emailsSparse$logWordCount~emailsSparse$spam)
+
+train2 = subset(emailsSparse, spl == TRUE)
+test2 = subset(emailsSparse, spl == FALSE)
+
+spam2CART = rpart(spam~., data=train2, method="class")
+set.seed(123)
+spam2RF = randomForest(spam~., data=train2)
+
+prp(spam2CART)
+
+predTest2CART = predict(spam2CART, newdata=test2)[,2]
+predTest2RF = predict(spam2RF, newdata=test2, type="prob")[,2]
+table(test2$spam, predTest2CART > 0.5)
+#    
+#     FALSE TRUE
+#   0  1214   94
+#   1    26  384
+#0.930151339
+predictionTest2CART = prediction(predTest2CART, test2$spam)
+as.numeric(performance(predictionTest2CART, "auc")@y.values)
+# [1] 0.9582438
+table(test2$spam, predTest2RF > 0.5)
+#0.977881257
+#     FALSE TRUE
+#   0  1298   10
+#   1    28  382
+
+predictionTest2RF = prediction(predTest2RF, test2$spam)
+as.numeric(performance(predictionTest2RF, "auc")@y.values)
+# [1] 0.9980905
+
