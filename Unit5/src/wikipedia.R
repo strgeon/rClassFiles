@@ -29,7 +29,7 @@ library("tm")
 library("SnowballC")
 
 #WRONG, need to call VCorpus
-corpusAdded=Corpus(VectorSource(wiki$Added))
+#corpusAdded=Corpus(VectorSource(wiki$Added))
 corpusAdded
 # <<SimpleCorpus>>
 # Metadata:  corpus specific: 1, document level (indexed): 0
