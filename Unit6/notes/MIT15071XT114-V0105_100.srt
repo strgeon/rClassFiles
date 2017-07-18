@@ -1,0 +1,332 @@
+0
+00:00:00,000 --> 00:00:00,520
+
+
+1
+00:00:00,520 --> 00:00:03,170
+In this video, we'll discuss the method
+
+2
+00:00:03,170 --> 00:00:05,770
+of hierarchical clustering.
+
+3
+00:00:05,770 --> 00:00:08,490
+In hierarchical clustering, the clusters
+
+4
+00:00:08,490 --> 00:00:13,050
+are formed by each data point starting in its own cluster.
+
+5
+00:00:13,050 --> 00:00:17,100
+As a small example, suppose we have five data points.
+
+6
+00:00:17,100 --> 00:00:21,220
+Each data point is labeled as belonging in its own cluster.
+
+7
+00:00:21,220 --> 00:00:24,340
+So this data point is in the red cluster, this one's
+
+8
+00:00:24,340 --> 00:00:28,070
+in the blue cluster, this one's in the purple cluster,
+
+9
+00:00:28,070 --> 00:00:30,640
+this one's in the green cluster, and this one's
+
+10
+00:00:30,640 --> 00:00:32,840
+in the yellow cluster.
+
+11
+00:00:32,840 --> 00:00:36,520
+Then hierarchical clustering combines the two nearest
+
+12
+00:00:36,520 --> 00:00:38,870
+clusters into one cluster.
+
+13
+00:00:38,870 --> 00:00:41,620
+We'll use Euclidean and Centroid distances
+
+14
+00:00:41,620 --> 00:00:44,840
+to decide which two clusters are the closest.
+
+15
+00:00:44,840 --> 00:00:47,570
+In our example, the green and yellow clusters
+
+16
+00:00:47,570 --> 00:00:49,590
+are closest together.
+
+17
+00:00:49,590 --> 00:00:53,690
+So we would combine these two clusters into one cluster.
+
+18
+00:00:53,690 --> 00:00:56,170
+So now the green cluster has two points,
+
+19
+00:00:56,170 --> 00:00:58,710
+and the yellow cluster is gone.
+
+20
+00:00:58,710 --> 00:01:00,660
+Now this process repeats.
+
+21
+00:01:00,660 --> 00:01:03,310
+We again find the two nearest clusters,
+
+22
+00:01:03,310 --> 00:01:07,160
+which this time are the green cluster and the purple cluster,
+
+23
+00:01:07,160 --> 00:01:09,870
+and we combine them into one cluster.
+
+24
+00:01:09,870 --> 00:01:12,050
+Now the green cluster has three points,
+
+25
+00:01:12,050 --> 00:01:14,820
+and the purple cluster is gone.
+
+26
+00:01:14,820 --> 00:01:19,130
+Now the two nearest clusters are the red and blue clusters.
+
+27
+00:01:19,130 --> 00:01:21,360
+So we would combine these two clusters
+
+28
+00:01:21,360 --> 00:01:24,400
+into one cluster, the red cluster.
+
+29
+00:01:24,400 --> 00:01:27,380
+So now we have just two clusters, the red one
+
+30
+00:01:27,380 --> 00:01:29,160
+and the green one.
+
+31
+00:01:29,160 --> 00:01:32,720
+So now the final step is to combine these two clusters
+
+32
+00:01:32,720 --> 00:01:34,870
+into one cluster.
+
+33
+00:01:34,870 --> 00:01:37,580
+So at the end of hierarchical clustering,
+
+34
+00:01:37,580 --> 00:01:41,780
+all of our data points are in a single cluster.
+
+35
+00:01:41,780 --> 00:01:44,060
+The hierarchical cluster process can
+
+36
+00:01:44,060 --> 00:01:47,260
+be displayed through what's called a dendrogram.
+
+37
+00:01:47,260 --> 00:01:50,180
+The data points are listed along the bottom,
+
+38
+00:01:50,180 --> 00:01:53,470
+and the lines show how the clusters were combined.
+
+39
+00:01:53,470 --> 00:01:55,880
+The height of the lines represents how far
+
+40
+00:01:55,880 --> 00:01:59,280
+apart the clusters were when they were combined.
+
+41
+00:01:59,280 --> 00:02:02,180
+So points 1 and 4 were pretty close
+
+42
+00:02:02,180 --> 00:02:04,260
+together when they were combined.
+
+43
+00:02:04,260 --> 00:02:07,270
+But when we combined the two clusters at the end,
+
+44
+00:02:07,270 --> 00:02:10,620
+they were significantly farther apart.
+
+45
+00:02:10,620 --> 00:02:14,040
+We can use a dendrogram to decide how many clusters we
+
+46
+00:02:14,040 --> 00:02:17,480
+want for our final clustering model.
+
+47
+00:02:17,480 --> 00:02:20,120
+This dendrogram shows the clustering process
+
+48
+00:02:20,120 --> 00:02:22,230
+with ten data points.
+
+49
+00:02:22,230 --> 00:02:25,720
+The easiest way to pick the number of clusters you want
+
+50
+00:02:25,720 --> 00:02:29,930
+is to draw a horizontal line across the dendrogram.
+
+51
+00:02:29,930 --> 00:02:32,595
+The number of vertical lines that line crosses
+
+52
+00:02:32,595 --> 00:02:35,700
+is the number of clusters there will be.
+
+53
+00:02:35,700 --> 00:02:39,780
+In this case, our line crosses two vertical lines,
+
+54
+00:02:39,780 --> 00:02:44,400
+meaning that we will have two clusters-- one cluster
+
+55
+00:02:44,400 --> 00:02:48,720
+with points 5, 2, and 7, and one cluster with the remaining
+
+56
+00:02:48,720 --> 00:02:50,600
+points.
+
+57
+00:02:50,600 --> 00:02:52,510
+The farthest this horizontal line
+
+58
+00:02:52,510 --> 00:02:55,160
+can move up and down in the dendrogram
+
+59
+00:02:55,160 --> 00:02:57,700
+without hitting one of the horizontal lines
+
+60
+00:02:57,700 --> 00:03:00,420
+of the dendrogram, the better that choice
+
+61
+00:03:00,420 --> 00:03:03,070
+of the number of clusters is.
+
+62
+00:03:03,070 --> 00:03:07,200
+If we instead selected three clusters,
+
+63
+00:03:07,200 --> 00:03:09,950
+this line can't move as far up and down
+
+64
+00:03:09,950 --> 00:03:13,770
+without hitting horizontal lines in the dendrogram.
+
+65
+00:03:13,770 --> 00:03:18,060
+This probably means that the two cluster choice is better.
+
+66
+00:03:18,060 --> 00:03:19,970
+But when picking the number of clusters,
+
+67
+00:03:19,970 --> 00:03:22,700
+you should also consider how many clusters
+
+68
+00:03:22,700 --> 00:03:25,190
+make sense for the particular application
+
+69
+00:03:25,190 --> 00:03:28,000
+you're working with.
+
+70
+00:03:28,000 --> 00:03:30,770
+After selecting the number of clusters you want,
+
+71
+00:03:30,770 --> 00:03:34,340
+you should analyze your clusters to see if they're meaningful.
+
+72
+00:03:34,340 --> 00:03:37,240
+This can be done by looking at basic statistics
+
+73
+00:03:37,240 --> 00:03:41,600
+in each cluster, like the mean, maximum, and minimum values
+
+74
+00:03:41,600 --> 00:03:44,730
+in each cluster and each variable.
+
+75
+00:03:44,730 --> 00:03:47,390
+You can also check to see if the clusters have
+
+76
+00:03:47,390 --> 00:03:51,150
+a feature in common that was not used in the clustering,
+
+77
+00:03:51,150 --> 00:03:53,210
+like an outcome variable.
+
+78
+00:03:53,210 --> 00:03:55,520
+This often indicates that your clusters
+
+79
+00:03:55,520 --> 00:03:58,580
+might help improve a predictive model.
+
+80
+00:03:58,580 --> 00:04:02,610
+In the next video, we'll cluster our movies by genre,
+
+81
+00:04:02,610 --> 00:04:04,730
+and then analyze our clusters to see
+
+82
+00:04:04,730 --> 00:04:08,550
+how they can be used to perform content filtering.
+

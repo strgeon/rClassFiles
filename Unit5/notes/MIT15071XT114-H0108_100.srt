@@ -1,0 +1,60 @@
+0
+00:00:00,000 --> 00:00:00,530
+
+
+1
+00:00:00,530 --> 00:00:03,810
+Let's conclude with a word about the status of predictive coding
+
+2
+00:00:03,810 --> 00:00:05,600
+today.
+
+3
+00:00:05,600 --> 00:00:09,250
+In legal systems, it's difficult to change existing practice
+
+4
+00:00:09,250 --> 00:00:12,450
+because of laws reliance on past precedent, which
+
+5
+00:00:12,450 --> 00:00:16,850
+causes current decisions to be made on the basis of past ones.
+
+6
+00:00:16,850 --> 00:00:19,920
+Because the types of eDiscovery admissible in court
+
+7
+00:00:19,920 --> 00:00:23,070
+have historically been limited to keyword search coupled
+
+8
+00:00:23,070 --> 00:00:25,810
+with manual review, nearly all cases
+
+9
+00:00:25,810 --> 00:00:28,950
+today use this eDiscovery approach.
+
+10
+00:00:28,950 --> 00:00:32,610
+However, this status quo seems to be starting to change.
+
+11
+00:00:32,610 --> 00:00:36,540
+In 2012, a US District Court ruled that predictive coding
+
+12
+00:00:36,540 --> 00:00:39,060
+was a legitimate eDiscovery tool, which
+
+13
+00:00:39,060 --> 00:00:43,756
+may pave the way for its expanded use in coming years.
+
+14
+00:00:43,756 --> 00:00:44,256
+
+

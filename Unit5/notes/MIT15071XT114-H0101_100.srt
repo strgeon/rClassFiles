@@ -1,0 +1,284 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,280
+In this recitation, we're going to talk
+
+2
+00:00:02,280 --> 00:00:04,175
+about predictive coding-- an emerging
+
+3
+00:00:04,175 --> 00:00:08,820
+use of text analytics in the area of criminal justice.
+
+4
+00:00:08,820 --> 00:00:11,930
+We'll start with the story of Enron, the United States energy
+
+5
+00:00:11,930 --> 00:00:14,650
+company based out of Houston, Texas that was involved
+
+6
+00:00:14,650 --> 00:00:17,370
+in a number of electricity production and distribution
+
+7
+00:00:17,370 --> 00:00:18,540
+markets.
+
+8
+00:00:18,540 --> 00:00:21,560
+In the early 2000s, Enron was a hot company,
+
+9
+00:00:21,560 --> 00:00:24,860
+with a market capitalization exceeding $60 billion,
+
+10
+00:00:24,860 --> 00:00:28,340
+and Forbes magazine ranked it as the most innovative US
+
+11
+00:00:28,340 --> 00:00:30,700
+company six years in a row.
+
+12
+00:00:30,700 --> 00:00:33,850
+Now, all that changed in 2001 with the news
+
+13
+00:00:33,850 --> 00:00:36,820
+of widespread accounting fraud at the firm.
+
+14
+00:00:36,820 --> 00:00:39,950
+This massive fraud led to Enron's bankruptcy, the largest
+
+15
+00:00:39,950 --> 00:00:43,280
+ever at the time, and led to Enron's accounting firm, Arthur
+
+16
+00:00:43,280 --> 00:00:44,840
+Andersen, dissolving.
+
+17
+00:00:44,840 --> 00:00:47,470
+To this day, Enron remains a symbol
+
+18
+00:00:47,470 --> 00:00:50,750
+of corporate greed and corruption.
+
+19
+00:00:50,750 --> 00:00:53,150
+Now, while Enron's collapse stemmed largely
+
+20
+00:00:53,150 --> 00:00:55,260
+from accounting fraud, the firm also
+
+21
+00:00:55,260 --> 00:00:56,820
+faced sanctions for its involvement
+
+22
+00:00:56,820 --> 00:01:00,110
+in the California electricity crisis.
+
+23
+00:01:00,110 --> 00:01:03,160
+California is the most populous state in the United States.
+
+24
+00:01:03,160 --> 00:01:06,900
+And in 2000 to 2001, it had a number of power blackouts,
+
+25
+00:01:06,900 --> 00:01:10,220
+despite having sufficient generating capacity.
+
+26
+00:01:10,220 --> 00:01:12,970
+It later surfaced that Enron played a key role
+
+27
+00:01:12,970 --> 00:01:16,050
+in this energy crisis by artificially reducing
+
+28
+00:01:16,050 --> 00:01:18,880
+power supply to spike prices and then
+
+29
+00:01:18,880 --> 00:01:21,840
+making a profit from this market instability.
+
+30
+00:01:21,840 --> 00:01:25,160
+The Federal Energy Regulatory Commission, or FERC,
+
+31
+00:01:25,160 --> 00:01:28,000
+investigated Enron's involvement in the crisis,
+
+32
+00:01:28,000 --> 00:01:29,920
+and this investigation eventually
+
+33
+00:01:29,920 --> 00:01:33,980
+led to a $1.52 billion settlement.
+
+34
+00:01:33,980 --> 00:01:36,440
+FERC's investigation into Enron will
+
+35
+00:01:36,440 --> 00:01:40,200
+be the topic of today's recitation.
+
+36
+00:01:40,200 --> 00:01:43,570
+Now, Enron was a huge company, and its corporate servers
+
+37
+00:01:43,570 --> 00:01:47,190
+contained millions of emails and other electronic files.
+
+38
+00:01:47,190 --> 00:01:49,000
+Sifting through these documents to find
+
+39
+00:01:49,000 --> 00:01:50,860
+the ones relevant to an investigation
+
+40
+00:01:50,860 --> 00:01:52,780
+is no simple task.
+
+41
+00:01:52,780 --> 00:01:56,090
+In law, this electronic document retrieval process
+
+42
+00:01:56,090 --> 00:01:58,350
+is called the eDiscovery problem,
+
+43
+00:01:58,350 --> 00:02:02,390
+and relevant files are called responsive documents.
+
+44
+00:02:02,390 --> 00:02:06,190
+Traditionally, the eDiscovery problem has been solved
+
+45
+00:02:06,190 --> 00:02:08,910
+by using keyword search-- in our case, perhaps,
+
+46
+00:02:08,910 --> 00:02:11,250
+searching for phrases like "electricity bid"
+
+47
+00:02:11,250 --> 00:02:14,110
+or "energy schedule"-- followed by an expensive
+
+48
+00:02:14,110 --> 00:02:16,820
+and time-consuming manual review process,
+
+49
+00:02:16,820 --> 00:02:19,260
+in which attorneys read through thousands of documents
+
+50
+00:02:19,260 --> 00:02:22,030
+to determine which ones are responsive.
+
+51
+00:02:22,030 --> 00:02:25,780
+However, predictive coding is a new technique,
+
+52
+00:02:25,780 --> 00:02:28,450
+in which attorneys manually label some documents
+
+53
+00:02:28,450 --> 00:02:31,010
+and then use text analytics models trained
+
+54
+00:02:31,010 --> 00:02:32,950
+on the manually labeled documents
+
+55
+00:02:32,950 --> 00:02:35,150
+to predict which of the remaining documents
+
+56
+00:02:35,150 --> 00:02:37,480
+are responsive.
+
+57
+00:02:37,480 --> 00:02:39,570
+Now, as part of its investigation,
+
+58
+00:02:39,570 --> 00:02:42,910
+the FERC released hundreds of thousands of emails
+
+59
+00:02:42,910 --> 00:02:46,370
+from top executives at Enron creating the largest publicly
+
+60
+00:02:46,370 --> 00:02:48,480
+available set of emails today.
+
+61
+00:02:48,480 --> 00:02:52,410
+We will use this data set called the Enron Corpus to perform
+
+62
+00:02:52,410 --> 00:02:55,330
+predictive coding in this recitation.
+
+63
+00:02:55,330 --> 00:02:57,980
+Our data set contains just two fields--
+
+64
+00:02:57,980 --> 00:03:01,030
+email, which is the text of the email in question,
+
+65
+00:03:01,030 --> 00:03:03,760
+and responsive, which is whether the email relates
+
+66
+00:03:03,760 --> 00:03:07,110
+to energy schedules or bids.
+
+67
+00:03:07,110 --> 00:03:08,780
+The labels for these emails were made
+
+68
+00:03:08,780 --> 00:03:12,530
+by attorneys as part of the 2010 text retrieval conference
+
+69
+00:03:12,530 --> 00:03:16,057
+legal track, a predictive coding competition.
+
+70
+00:03:16,057 --> 00:03:16,556
+
+

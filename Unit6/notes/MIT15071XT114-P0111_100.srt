@@ -1,0 +1,64 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:01,320
+Hello.
+
+2
+00:00:01,320 --> 00:00:03,690
+This week we'll discuss how analytics
+
+3
+00:00:03,690 --> 00:00:06,100
+can be used to make recommendations
+
+4
+00:00:06,100 --> 00:00:08,020
+for movies and for health.
+
+5
+00:00:08,020 --> 00:00:10,190
+In the first lecture, we discuss how
+
+6
+00:00:10,190 --> 00:00:13,130
+Netflix offered the million dollar prize
+
+7
+00:00:13,130 --> 00:00:15,700
+to improve their movie recommendation system.
+
+8
+00:00:15,700 --> 00:00:18,620
+In the second lecture, we discuss how health care claims
+
+9
+00:00:18,620 --> 00:00:22,210
+data can be used to predict the occurrence of a heart attack
+
+10
+00:00:22,210 --> 00:00:25,040
+and to better understand patterns.
+
+11
+00:00:25,040 --> 00:00:27,360
+Through these examples, we'll discuss the method
+
+12
+00:00:27,360 --> 00:00:30,550
+of clustering, which is used to find similarities
+
+13
+00:00:30,550 --> 00:00:32,020
+and patterns in data.
+
+14
+00:00:32,020 --> 00:00:34,000
+Let's get started.
+
+15
+00:00:34,000 --> 00:00:34,710
+
+

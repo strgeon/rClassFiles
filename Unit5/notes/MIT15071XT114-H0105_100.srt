@@ -1,0 +1,264 @@
+0
+00:00:00,000 --> 00:00:00,570
+
+
+1
+00:00:00,570 --> 00:00:03,480
+At long last, we're ready to split our data into a training
+
+2
+00:00:03,480 --> 00:00:06,580
+and testing set, and to actually build a model.
+
+3
+00:00:06,580 --> 00:00:09,230
+So we'll start by loading the caTools package,
+
+4
+00:00:09,230 --> 00:00:10,777
+so that we can split our data.
+
+5
+00:00:10,777 --> 00:00:11,985
+So we'll do library(caTools).
+
+6
+00:00:11,985 --> 00:00:15,010
+
+
+7
+00:00:15,010 --> 00:00:17,720
+And then, as usual, we're going to set our random seed so
+
+8
+00:00:17,720 --> 00:00:20,390
+that everybody has the same results.
+
+9
+00:00:20,390 --> 00:00:24,350
+So use set.seed and we'll pick the number 144.
+
+10
+00:00:24,350 --> 00:00:26,390
+Again, the number isn't particularly important.
+
+11
+00:00:26,390 --> 00:00:29,830
+The important thing is that we all use the same one.
+
+12
+00:00:29,830 --> 00:00:33,050
+So as usual, we're going to obtain the split variable.
+
+13
+00:00:33,050 --> 00:00:38,180
+We'll call it spl, using the sample.split function.
+
+14
+00:00:38,180 --> 00:00:40,860
+The outcome variable that we pass is
+
+15
+00:00:40,860 --> 00:00:43,585
+labeledTerms$responsive.
+
+16
+00:00:43,585 --> 00:00:45,610
+And we'll do a 70/30 split.
+
+17
+00:00:45,610 --> 00:00:48,190
+So we'll pass 0.7 here.
+
+18
+00:00:48,190 --> 00:00:51,080
+So then train, the training data frame,
+
+19
+00:00:51,080 --> 00:00:57,100
+can be obtained using subset on the labeled terms where
+
+20
+00:00:57,100 --> 00:00:59,150
+spl is TRUE.
+
+21
+00:00:59,150 --> 00:01:06,680
+And test is the subset when spl is FALSE.
+
+22
+00:01:06,680 --> 00:01:09,690
+
+
+23
+00:01:09,690 --> 00:01:11,780
+So now we're ready to build the model.
+
+24
+00:01:11,780 --> 00:01:13,630
+And we'll build a simple CART model
+
+25
+00:01:13,630 --> 00:01:15,280
+using the default parameters.
+
+26
+00:01:15,280 --> 00:01:17,950
+But a random forest would be another good choice
+
+27
+00:01:17,950 --> 00:01:19,490
+from our toolset.
+
+28
+00:01:19,490 --> 00:01:22,935
+So we'll start by loading up the packages for the CART model.
+
+29
+00:01:22,935 --> 00:01:23,935
+We'll do library(rpart).
+
+30
+00:01:23,935 --> 00:01:26,480
+
+
+31
+00:01:26,480 --> 00:01:32,990
+And we'll also load up the rpart.plot package, so
+
+32
+00:01:32,990 --> 00:01:36,100
+that we can plot the outcome.
+
+33
+00:01:36,100 --> 00:01:40,450
+So we'll create a model called emailCART,
+
+34
+00:01:40,450 --> 00:01:42,310
+using the rpart function.
+
+35
+00:01:42,310 --> 00:01:45,060
+We're predicting responsive.
+
+36
+00:01:45,060 --> 00:01:46,994
+And we're predicting it using all
+
+37
+00:01:46,994 --> 00:01:48,160
+of the additional variables.
+
+38
+00:01:48,160 --> 00:01:50,970
+All the frequencies of the terms that are included.
+
+39
+00:01:50,970 --> 00:01:53,220
+Obviously tilde period is important here,
+
+40
+00:01:53,220 --> 00:01:55,610
+because there are 788 terms.
+
+41
+00:01:55,610 --> 00:01:58,520
+Way too many to actually type out.
+
+42
+00:01:58,520 --> 00:02:00,520
+The data that we're using to train the model
+
+43
+00:02:00,520 --> 00:02:03,400
+is just our training data frame, train.
+
+44
+00:02:03,400 --> 00:02:05,850
+And then the method is class, since we
+
+45
+00:02:05,850 --> 00:02:09,139
+have a classification problem here.
+
+46
+00:02:09,139 --> 00:02:11,470
+And once we've trained the CART model,
+
+47
+00:02:11,470 --> 00:02:13,030
+we can plot it out using prp.
+
+48
+00:02:13,030 --> 00:02:17,020
+
+
+49
+00:02:17,020 --> 00:02:18,200
+There we go.
+
+50
+00:02:18,200 --> 00:02:22,060
+So we can see at the very top is the word California.
+
+51
+00:02:22,060 --> 00:02:24,650
+If California appears at least twice in an email,
+
+52
+00:02:24,650 --> 00:02:29,270
+we're going to take the right part over here and predict
+
+53
+00:02:29,270 --> 00:02:31,340
+that a document is responsive.
+
+54
+00:02:31,340 --> 00:02:34,170
+It's somewhat unsurprising that California shows up,
+
+55
+00:02:34,170 --> 00:02:37,060
+because we know that Enron had a heavy involvement
+
+56
+00:02:37,060 --> 00:02:39,670
+in the California energy markets.
+
+57
+00:02:39,670 --> 00:02:42,340
+So further down the tree, we see a number of other terms
+
+58
+00:02:42,340 --> 00:02:45,820
+that we could plausibly expect to be related
+
+59
+00:02:45,820 --> 00:02:48,490
+to energy bids and energy scheduling,
+
+60
+00:02:48,490 --> 00:02:52,690
+like system, demand, bid, and gas.
+
+61
+00:02:52,690 --> 00:02:55,210
+Down here at the bottom is Jeff, which is perhaps
+
+62
+00:02:55,210 --> 00:02:58,400
+a reference to Enron's CEO, Jeff Skillings, who ended up
+
+63
+00:02:58,400 --> 00:03:00,240
+actually being jailed for his involvement
+
+64
+00:03:00,240 --> 00:03:02,580
+in the fraud at the company.
+
+65
+00:03:02,580 --> 00:03:03,343
+
+

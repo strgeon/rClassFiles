@@ -1,0 +1,316 @@
+0
+00:00:00,000 --> 00:00:00,530
+
+
+1
+00:00:00,530 --> 00:00:02,090
+Now that we've trained a model, we
+
+2
+00:00:02,090 --> 00:00:05,150
+need to evaluate it on the test set.
+
+3
+00:00:05,150 --> 00:00:08,980
+So let's build an object called pred
+
+4
+00:00:08,980 --> 00:00:11,290
+that has the predicted probabilities
+
+5
+00:00:11,290 --> 00:00:13,400
+for each class from our CART model.
+
+6
+00:00:13,400 --> 00:00:18,070
+So we'll use predict of emailCART, our CART model,
+
+7
+00:00:18,070 --> 00:00:21,290
+passing it newdata=test, to get test set predicted
+
+8
+00:00:21,290 --> 00:00:23,380
+probabilities.
+
+9
+00:00:23,380 --> 00:00:25,860
+So to recall the structure of pred,
+
+10
+00:00:25,860 --> 00:00:30,540
+we can look at the first 10 rows with pred[1:10,].
+
+11
+00:00:30,540 --> 00:00:31,900
+So this is the rows we want.
+
+12
+00:00:31,900 --> 00:00:33,220
+We want all the columns.
+
+13
+00:00:33,220 --> 00:00:37,600
+So we'll just leave a comma and nothing else afterward.
+
+14
+00:00:37,600 --> 00:00:42,070
+So the left column here is the predicted probability
+
+15
+00:00:42,070 --> 00:00:44,620
+of the document being non-responsive.
+
+16
+00:00:44,620 --> 00:00:46,960
+And the right column is the predicted probability
+
+17
+00:00:46,960 --> 00:00:48,660
+of the document being responsive.
+
+18
+00:00:48,660 --> 00:00:50,380
+They sum to 1.
+
+19
+00:00:50,380 --> 00:00:52,950
+So in our case, we want to extract
+
+20
+00:00:52,950 --> 00:00:56,060
+the predicted probability of the document being responsive.
+
+21
+00:00:56,060 --> 00:00:58,240
+So we're looking for the rightmost column.
+
+22
+00:00:58,240 --> 00:01:02,030
+So we'll create an object called pred.prob.
+
+23
+00:01:02,030 --> 00:01:08,190
+And we'll select the rightmost or second column.
+
+24
+00:01:08,190 --> 00:01:08,690
+All right.
+
+25
+00:01:08,690 --> 00:01:10,970
+So pred.prob now contains our test set
+
+26
+00:01:10,970 --> 00:01:12,102
+predicted probabilities.
+
+27
+00:01:12,102 --> 00:01:14,090
+And we're interested in the accuracy
+
+28
+00:01:14,090 --> 00:01:16,110
+of our model on the test set.
+
+29
+00:01:16,110 --> 00:01:20,890
+So for this computation, we'll use a cutoff of 0.5.
+
+30
+00:01:20,890 --> 00:01:24,570
+And so we can just table the true outcome,
+
+31
+00:01:24,570 --> 00:01:29,590
+which is test$responsive against the predicted outcome,
+
+32
+00:01:29,590 --> 00:01:36,125
+which is pred.prob >= 0.5.
+
+33
+00:01:36,125 --> 00:01:41,310
+What we can see here is that in 195 cases,
+
+34
+00:01:41,310 --> 00:01:45,730
+we predict false when the left column and the true outcome
+
+35
+00:01:45,730 --> 00:01:47,260
+was zero, non-responsive.
+
+36
+00:01:47,260 --> 00:01:48,540
+So we were correct.
+
+37
+00:01:48,540 --> 00:01:51,920
+And in another 25, we correctly identified a responsive
+
+38
+00:01:51,920 --> 00:01:53,530
+document.
+
+39
+00:01:53,530 --> 00:01:57,000
+In 20 cases, we identified a document as responsive,
+
+40
+00:01:57,000 --> 00:01:59,200
+but it was actually non-responsive.
+
+41
+00:01:59,200 --> 00:02:01,590
+And in 17, the opposite happened.
+
+42
+00:02:01,590 --> 00:02:03,890
+We identified a document as non-responsive,
+
+43
+00:02:03,890 --> 00:02:06,080
+but it actually was responsive.
+
+44
+00:02:06,080 --> 00:02:13,180
+So our accuracy is 195 + 25, our correct results,
+
+45
+00:02:13,180 --> 00:02:15,670
+divided by the total number of elements
+
+46
+00:02:15,670 --> 00:02:24,116
+in the testing set, 195 + 25 + 17 + 20.
+
+47
+00:02:24,116 --> 00:02:29,800
+So we have an accuracy in the test set of 85.6%.
+
+48
+00:02:29,800 --> 00:02:31,370
+And now we want to compare ourselves
+
+49
+00:02:31,370 --> 00:02:33,390
+to the accuracy of the baseline model.
+
+50
+00:02:33,390 --> 00:02:35,700
+As we've already established, the baseline model
+
+51
+00:02:35,700 --> 00:02:39,610
+is always going to predict the document is non-responsive.
+
+52
+00:02:39,610 --> 00:02:45,330
+So if we table test$responsive, we see that it's going to be
+
+53
+00:02:45,330 --> 00:02:48,530
+correct in 215 of the cases.
+
+54
+00:02:48,530 --> 00:02:51,980
+So then the accuracy is 215 divided
+
+55
+00:02:51,980 --> 00:02:56,220
+by the total number of test set observations.
+
+56
+00:02:56,220 --> 00:03:00,260
+So that's 83.7% accuracy.
+
+57
+00:03:00,260 --> 00:03:02,190
+So we see just a small improvement
+
+58
+00:03:02,190 --> 00:03:05,420
+in accuracy using the CART model, which, as we know,
+
+59
+00:03:05,420 --> 00:03:09,050
+is a common case in unbalanced data sets.
+
+60
+00:03:09,050 --> 00:03:12,820
+However, as in most document retrieval applications,
+
+61
+00:03:12,820 --> 00:03:16,330
+there are uneven costs for different types of errors here.
+
+62
+00:03:16,330 --> 00:03:19,690
+Typically, a human will still have to manually review
+
+63
+00:03:19,690 --> 00:03:21,910
+all of the predicted responsive documents
+
+64
+00:03:21,910 --> 00:03:24,820
+to make sure they are actually responsive.
+
+65
+00:03:24,820 --> 00:03:27,260
+Therefore, if we have a false positive,
+
+66
+00:03:27,260 --> 00:03:29,820
+in which a non-responsive document is labeled
+
+67
+00:03:29,820 --> 00:03:32,390
+as responsive, the mistake translates
+
+68
+00:03:32,390 --> 00:03:34,670
+to a bit of additional work in the manual review
+
+69
+00:03:34,670 --> 00:03:39,140
+process but no further harm, since the manual review process
+
+70
+00:03:39,140 --> 00:03:41,770
+will remove this erroneous result.
+
+71
+00:03:41,770 --> 00:03:44,615
+But on the other hand, if we have a false negative,
+
+72
+00:03:44,615 --> 00:03:48,450
+in which a responsive document is labeled as non-responsive
+
+73
+00:03:48,450 --> 00:03:51,650
+by our model, we will miss the document entirely
+
+74
+00:03:51,650 --> 00:03:54,480
+in our predictive coding process.
+
+75
+00:03:54,480 --> 00:03:57,670
+Therefore, we're going to assign a higher cost to false negatives
+
+76
+00:03:57,670 --> 00:04:01,090
+than to false positives, which makes this a good time to look
+
+77
+00:04:01,090 --> 00:04:04,880
+at other cut-offs on our ROC curve.
+
+78
+00:04:04,880 --> 00:04:05,434
+
+

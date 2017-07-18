@@ -1,0 +1,388 @@
+0
+00:00:00,000 --> 00:00:00,730
+
+
+1
+00:00:00,730 --> 00:00:04,680
+To download the data that we'll be working with in this video,
+
+2
+00:00:04,680 --> 00:00:08,904
+click on the hyperlink given in the text above this video.
+
+3
+00:00:08,904 --> 00:00:10,070
+Don't use Internet Explorer.
+
+4
+00:00:10,070 --> 00:00:16,050
+Chrome, Safari, or Firefox should all work fine.
+
+5
+00:00:16,050 --> 00:00:17,700
+After you click on the hyperlink,
+
+6
+00:00:17,700 --> 00:00:21,020
+it will take you to a page that looks like this.
+
+7
+00:00:21,020 --> 00:00:24,280
+Go ahead and copy all the text on this page
+
+8
+00:00:24,280 --> 00:00:33,090
+by first selecting all of it and then hitting Control-c on a PC
+
+9
+00:00:33,090 --> 00:00:35,680
+or Command-c on a Mac.
+
+10
+00:00:35,680 --> 00:00:38,740
+Then go to a simple text editor, like
+
+11
+00:00:38,740 --> 00:00:42,600
+Notepad on a PC or Text Edit on a Mac,
+
+12
+00:00:42,600 --> 00:00:46,480
+and paste what you just copied into the text editor
+
+13
+00:00:46,480 --> 00:00:51,060
+with Control-v on a PC or Command-v on a Mac.
+
+14
+00:00:51,060 --> 00:00:59,820
+Then go ahead and save this file as the name movieLens.txt,
+
+15
+00:00:59,820 --> 00:01:01,220
+for text.
+
+16
+00:01:01,220 --> 00:01:06,620
+Save this somewhere that you can easily navigate to in R. Now,
+
+17
+00:01:06,620 --> 00:01:09,570
+let's switch to R and load our data.
+
+18
+00:01:09,570 --> 00:01:13,370
+First, in your R console, navigate to the directory
+
+19
+00:01:13,370 --> 00:01:15,170
+where you just saved that file.
+
+20
+00:01:15,170 --> 00:01:24,660
+
+
+21
+00:01:24,660 --> 00:01:27,110
+And click OK.
+
+22
+00:01:27,110 --> 00:01:30,750
+Now, to load our data, we'll be using a slightly different
+
+23
+00:01:30,750 --> 00:01:32,520
+command this time.
+
+24
+00:01:32,520 --> 00:01:34,550
+Our data is not a CSV file.
+
+25
+00:01:34,550 --> 00:01:36,840
+It's a text file, where the entries
+
+26
+00:01:36,840 --> 00:01:39,560
+are separated by a vertical bar.
+
+27
+00:01:39,560 --> 00:01:42,750
+So we'll call our data set movies,
+
+28
+00:01:42,750 --> 00:01:46,510
+and then we'll use the read.table function, where
+
+29
+00:01:46,510 --> 00:01:51,620
+the first argument is the name of our data set in quotes.
+
+30
+00:01:51,620 --> 00:01:56,000
+The second argument is header=FALSE.
+
+31
+00:01:56,000 --> 00:01:58,170
+This is because our data doesn't have
+
+32
+00:01:58,170 --> 00:02:01,440
+a header or a variable name row.
+
+33
+00:02:01,440 --> 00:02:09,150
+And then the next argument is sep="|" ,
+
+34
+00:02:09,150 --> 00:02:13,870
+which can be found above the Enter key on your keyboard.
+
+35
+00:02:13,870 --> 00:02:16,920
+We need one more argument, which is quote="\"".
+
+36
+00:02:16,920 --> 00:02:24,790
+
+
+37
+00:02:24,790 --> 00:02:27,650
+Close the parentheses, and hit Enter.
+
+38
+00:02:27,650 --> 00:02:30,400
+That last argument just made sure that our text
+
+39
+00:02:30,400 --> 00:02:33,270
+was read in properly.
+
+40
+00:02:33,270 --> 00:02:35,340
+Let's take a look at the structure of our data
+
+41
+00:02:35,340 --> 00:02:36,900
+using the str function.
+
+42
+00:02:36,900 --> 00:02:42,400
+
+
+43
+00:02:42,400 --> 00:02:49,210
+We have 1,682 observations of 24 different variables.
+
+44
+00:02:49,210 --> 00:02:53,530
+Since our variables didn't have names, header equaled false,
+
+45
+00:02:53,530 --> 00:02:59,090
+R just labeled them with V1, V2, V3, etc.
+
+46
+00:02:59,090 --> 00:03:01,640
+But from the Movie Lens documentation,
+
+47
+00:03:01,640 --> 00:03:03,810
+we know what these variables are.
+
+48
+00:03:03,810 --> 00:03:07,830
+So we'll go ahead and add in the column names ourselves.
+
+49
+00:03:07,830 --> 00:03:14,270
+To do this, start by typing colnames, for column names,
+
+50
+00:03:14,270 --> 00:03:16,320
+and then in parentheses, the name of our data
+
+51
+00:03:16,320 --> 00:03:20,010
+set, movies, and then equals, and we'll
+
+52
+00:03:20,010 --> 00:03:22,410
+use the c function, where we're going
+
+53
+00:03:22,410 --> 00:03:24,520
+to list all of the variable names,
+
+54
+00:03:24,520 --> 00:03:28,500
+each of them in double quotes and separated by commas.
+
+55
+00:03:28,500 --> 00:03:34,840
+So first, we have "ID", the ID of the movie, then "Title",
+
+56
+00:03:34,840 --> 00:03:46,590
+"ReleaseDate", "VideoReleaseDate", "IMDB",
+
+57
+00:03:46,590 --> 00:03:50,090
+"Unknown"-- this is the unknown genre--
+
+58
+00:03:50,090 --> 00:03:58,030
+and then our 18 other genres-- "Action", "Adventure",
+
+59
+00:03:58,030 --> 00:04:10,620
+"Animation", "Childrens, "Comedy", "Crime",
+
+60
+00:04:10,620 --> 00:04:23,620
+"Documentary", "Drama", "Fantasy", "FilmNoir",
+
+61
+00:04:23,620 --> 00:04:41,730
+"Horror", "Musical", "Mystery", "Romance", "SciFi", "Thriller",
+
+62
+00:04:41,730 --> 00:04:43,635
+"War", and "Western".
+
+63
+00:04:43,635 --> 00:04:46,321
+
+
+64
+00:04:46,321 --> 00:04:46,820
+Go
+
+65
+00:04:46,820 --> 00:04:50,690
+ahead and close the parentheses, and hit Enter.
+
+66
+00:04:50,690 --> 00:04:52,450
+Let's see what our data looks like now
+
+67
+00:04:52,450 --> 00:04:56,780
+using the str function again.
+
+68
+00:04:56,780 --> 00:04:59,980
+We can see that we have the same number of observations
+
+69
+00:04:59,980 --> 00:05:02,780
+and the same number of variables, but each of them
+
+70
+00:05:02,780 --> 00:05:06,660
+now has the name that we just gave.
+
+71
+00:05:06,660 --> 00:05:10,900
+We won't be using the ID, release date, video release
+
+72
+00:05:10,900 --> 00:05:13,600
+date, or IMDB variables,
+
+73
+00:05:13,600 --> 00:05:15,850
+so let's go ahead and remove them.
+
+74
+00:05:15,850 --> 00:05:20,780
+To do this, we type the name of our data set-- movies$--
+
+75
+00:05:20,780 --> 00:05:23,630
+the name of the variable we want to remove,
+
+76
+00:05:23,630 --> 00:05:27,460
+and then just say =NULL, in capital letters.
+
+77
+00:05:27,460 --> 00:05:31,400
+This will just remove the variable from our data set.
+
+78
+00:05:31,400 --> 00:05:39,260
+Let's repeat this with ReleaseDate, VideoReleaseDate,
+
+79
+00:05:39,260 --> 00:05:45,080
+and IMDB.
+
+80
+00:05:45,080 --> 00:05:51,280
+
+
+81
+00:05:51,280 --> 00:05:54,520
+And there are a few duplicate entries in our data set,
+
+82
+00:05:54,520 --> 00:05:58,100
+so we'll go ahead and remove them with the unique function.
+
+83
+00:05:58,100 --> 00:05:59,480
+So just type the name of our data
+
+84
+00:05:59,480 --> 00:06:00,688
+set, movies = unique(movies).
+
+85
+00:06:00,688 --> 00:06:06,530
+
+
+86
+00:06:06,530 --> 00:06:08,660
+Let's take a look at our data one more time.
+
+87
+00:06:08,660 --> 00:06:12,300
+
+
+88
+00:06:12,300 --> 00:06:17,910
+Now, we have 1,664 observations, a few less than before,
+
+89
+00:06:17,910 --> 00:06:22,600
+and 20 variables-- the title of the movie, the unknown genre
+
+90
+00:06:22,600 --> 00:06:28,000
+label, and then the 18 other genre labels.
+
+91
+00:06:28,000 --> 00:06:30,880
+In this video, we've seen one example
+
+92
+00:06:30,880 --> 00:06:33,830
+of how to prepare data taken from the internet
+
+93
+00:06:33,830 --> 00:06:35,480
+to work with it in R.
+
+94
+00:06:35,480 --> 00:06:38,130
+In the next video, we'll use this data
+
+95
+00:06:38,130 --> 00:06:42,063
+set to cluster our movies using hierarchical clustering.
+
+96
+00:06:42,063 --> 00:06:42,563
+
+

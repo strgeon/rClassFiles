@@ -1,0 +1,232 @@
+0
+00:00:00,000 --> 00:00:00,570
+
+
+1
+00:00:00,570 --> 00:00:04,150
+In this lecture, we'll be using data from MovieLens
+
+2
+00:00:04,150 --> 00:00:08,720
+to explain clustering and perform content filtering.
+
+3
+00:00:08,720 --> 00:00:12,700
+movielens.org is a movie recommendation website
+
+4
+00:00:12,700 --> 00:00:14,910
+run by the GroupLens research lab
+
+5
+00:00:14,910 --> 00:00:17,630
+at the University of Minnesota.
+
+6
+00:00:17,630 --> 00:00:20,740
+They collect user preferences about movies
+
+7
+00:00:20,740 --> 00:00:23,760
+and do collaborative filtering to make recommendations
+
+8
+00:00:23,760 --> 00:00:28,200
+to users, based on the similarities between users.
+
+9
+00:00:28,200 --> 00:00:32,140
+We'll use their movie database to do content filtering
+
+10
+00:00:32,140 --> 00:00:35,840
+using a technique called clustering.
+
+11
+00:00:35,840 --> 00:00:39,200
+First, let's discuss what data we have.
+
+12
+00:00:39,200 --> 00:00:42,410
+Movies in the MovieLens data set are categorized
+
+13
+00:00:42,410 --> 00:00:44,970
+as belonging to different genres.
+
+14
+00:00:44,970 --> 00:00:49,990
+There are 18 different genres as well as an unknown category.
+
+15
+00:00:49,990 --> 00:00:54,250
+The genres include crime, musical, mystery,
+
+16
+00:00:54,250 --> 00:00:56,070
+and children's.
+
+17
+00:00:56,070 --> 00:00:59,490
+Each movie may belong to many different genres.
+
+18
+00:00:59,490 --> 00:01:03,150
+So a movie could be classified as drama, adventure,
+
+19
+00:01:03,150 --> 00:01:05,160
+and sci-fi.
+
+20
+00:01:05,160 --> 00:01:09,670
+The question we want to answer is, can we systematically
+
+21
+00:01:09,670 --> 00:01:14,210
+find groups of movies with similar sets of genres?
+
+22
+00:01:14,210 --> 00:01:18,680
+To answer this question, we'll use a method called clustering.
+
+23
+00:01:18,680 --> 00:01:21,770
+Clustering is different from the other analytics methods
+
+24
+00:01:21,770 --> 00:01:23,650
+we've covered so far.
+
+25
+00:01:23,650 --> 00:01:27,970
+It's called an unsupervised learning method.
+
+26
+00:01:27,970 --> 00:01:29,660
+This means that we're just trying
+
+27
+00:01:29,660 --> 00:01:32,390
+to segment the data into similar groups,
+
+28
+00:01:32,390 --> 00:01:35,430
+instead of trying to predict an outcome.
+
+29
+00:01:35,430 --> 00:01:37,740
+In this image on the slide, based
+
+30
+00:01:37,740 --> 00:01:40,020
+on the locations of points, we've
+
+31
+00:01:40,020 --> 00:01:44,510
+divided them into three clusters-- a blue cluster,
+
+32
+00:01:44,510 --> 00:01:48,790
+a red cluster, and a yellow cluster.
+
+33
+00:01:48,790 --> 00:01:51,880
+This is the goal of clustering-- to put each data
+
+34
+00:01:51,880 --> 00:01:56,841
+point into a group with similar values in the data.
+
+35
+00:01:56,841 --> 00:02:00,950
+A clustering algorithm does not predict anything.
+
+36
+00:02:00,950 --> 00:02:06,560
+However, clustering can be used to improve predictive methods.
+
+37
+00:02:06,560 --> 00:02:09,860
+You can cluster the data into similar groups
+
+38
+00:02:09,860 --> 00:02:13,410
+and then build a predictive model for each group.
+
+39
+00:02:13,410 --> 00:02:17,810
+This can often improve the accuracy of predictive methods.
+
+40
+00:02:17,810 --> 00:02:21,520
+But as a warning, be careful not to over-fit your model
+
+41
+00:02:21,520 --> 00:02:23,190
+to the training set.
+
+42
+00:02:23,190 --> 00:02:26,910
+This works best for large data sets.
+
+43
+00:02:26,910 --> 00:02:30,100
+There are many different algorithms for clustering.
+
+44
+00:02:30,100 --> 00:02:32,430
+They differ in what makes a cluster
+
+45
+00:02:32,430 --> 00:02:34,850
+and how the clusters are found.
+
+46
+00:02:34,850 --> 00:02:38,690
+In this class, we'll cover hierarchical clustering
+
+47
+00:02:38,690 --> 00:02:40,760
+and K-means clustering.
+
+48
+00:02:40,760 --> 00:02:45,020
+In this lecture, we'll discuss hierarchical clustering.
+
+49
+00:02:45,020 --> 00:02:49,490
+And in the next lecture, we'll discuss K-means clustering.
+
+50
+00:02:49,490 --> 00:02:52,520
+You'll learn how to create clusters using either method
+
+51
+00:02:52,520 --> 00:02:56,390
+in R. There are other clustering methods also,
+
+52
+00:02:56,390 --> 00:02:59,015
+but hierarchical and K-means are two
+
+53
+00:02:59,015 --> 00:03:01,800
+of the most popular methods.
+
+54
+00:03:01,800 --> 00:03:04,460
+To cluster data points, we need to compute
+
+55
+00:03:04,460 --> 00:03:07,000
+how similar the points are.
+
+56
+00:03:07,000 --> 00:03:10,400
+This is done by computing the distance between points, which
+
+57
+00:03:10,400 --> 00:03:13,530
+we'll discuss in the next video.
+

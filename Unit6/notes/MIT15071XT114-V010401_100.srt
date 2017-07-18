@@ -1,0 +1,452 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,830
+So how does clustering work?
+
+2
+00:00:02,830 --> 00:00:05,270
+The first step in clustering is to define
+
+3
+00:00:05,270 --> 00:00:08,150
+the distance between two data points.
+
+4
+00:00:08,150 --> 00:00:10,750
+The most popular way to compute the distance
+
+5
+00:00:10,750 --> 00:00:13,850
+is what's called Euclidean distance.
+
+6
+00:00:13,850 --> 00:00:16,300
+This is the standard way to compute distance
+
+7
+00:00:16,300 --> 00:00:18,520
+that you might have seen before.
+
+8
+00:00:18,520 --> 00:00:20,800
+Suppose we have two data points-- i
+
+9
+00:00:20,800 --> 00:00:24,320
+and j. The distance between the two points,
+
+10
+00:00:24,320 --> 00:00:28,840
+which we'll call dij, is equal to the square root
+
+11
+00:00:28,840 --> 00:00:30,640
+of the difference between the two
+
+12
+00:00:30,640 --> 00:00:35,420
+points in the first component, squared, plus the difference
+
+13
+00:00:35,420 --> 00:00:37,830
+between the two points in the second component,
+
+14
+00:00:37,830 --> 00:00:41,270
+squared, all the way up to the difference between the two
+
+15
+00:00:41,270 --> 00:00:44,060
+points in the k-th component, squared,
+
+16
+00:00:44,060 --> 00:00:46,630
+where k here is the number of attributes
+
+17
+00:00:46,630 --> 00:00:49,660
+or independent variables.
+
+18
+00:00:49,660 --> 00:00:53,330
+Let's see how this works by looking at an example.
+
+19
+00:00:53,330 --> 00:00:56,910
+In our movie lens dataset, we have binary vectors
+
+20
+00:00:56,910 --> 00:01:01,090
+for each movie, classifying that movie into genres.
+
+21
+00:01:01,090 --> 00:01:03,650
+The movie Toy Story is categorized
+
+22
+00:01:03,650 --> 00:01:07,620
+as an animation, comedy, and children's movie.
+
+23
+00:01:07,620 --> 00:01:10,340
+So the data for Toy Story has a 1
+
+24
+00:01:10,340 --> 00:01:15,460
+in the spot for these three genres and a 0 everywhere else.
+
+25
+00:01:15,460 --> 00:01:19,640
+The movie Batman Forever is categorized as an action,
+
+26
+00:01:19,640 --> 00:01:22,910
+adventure, comedy, and crime movie.
+
+27
+00:01:22,910 --> 00:01:27,480
+So Batman Forever has a 1 in the spot for these four genres
+
+28
+00:01:27,480 --> 00:01:30,270
+and a 0 everywhere else.
+
+29
+00:01:30,270 --> 00:01:33,120
+So given these two data observations,
+
+30
+00:01:33,120 --> 00:01:35,890
+let's compute the distance between them.
+
+31
+00:01:35,890 --> 00:01:41,040
+So the distance, d, would be equal to the square root
+
+32
+00:01:41,040 --> 00:02:07,440
+of (0-0)^2 + (0-1)^2 + (0-1)^2 + (1-0)^2 , etc.
+
+33
+00:02:07,440 --> 00:02:10,050
+This ends up being equal to the square root of 5.
+
+34
+00:02:10,050 --> 00:02:12,690
+
+
+35
+00:02:12,690 --> 00:02:15,040
+In addition to Euclidean distance,
+
+36
+00:02:15,040 --> 00:02:17,020
+there are many other popular distance
+
+37
+00:02:17,020 --> 00:02:18,990
+metrics that could be used.
+
+38
+00:02:18,990 --> 00:02:23,140
+One is called Manhattan distance, where the distance is
+
+39
+00:02:23,140 --> 00:02:26,810
+computed to be the sum of the absolute values instead
+
+40
+00:02:26,810 --> 00:02:28,840
+of the sum of squares.
+
+41
+00:02:28,840 --> 00:02:32,000
+Another is called maximum coordinate distance,
+
+42
+00:02:32,000 --> 00:02:35,320
+where we only consider the measurement for which the data
+
+43
+00:02:35,320 --> 00:02:37,910
+points deviate the most.
+
+44
+00:02:37,910 --> 00:02:39,760
+Another important distance that we
+
+45
+00:02:39,760 --> 00:02:42,930
+have to calculate for clustering is the distance
+
+46
+00:02:42,930 --> 00:02:47,450
+between clusters, when a cluster is a group of data points.
+
+47
+00:02:47,450 --> 00:02:50,740
+We just discussed how to compute the distance between two
+
+48
+00:02:50,740 --> 00:02:53,690
+individual points, but how do we compute
+
+49
+00:02:53,690 --> 00:02:56,630
+the distance between groups of points?
+
+50
+00:02:56,630 --> 00:02:58,970
+One way of doing this is by using
+
+51
+00:02:58,970 --> 00:03:01,760
+what's called the minimum distance.
+
+52
+00:03:01,760 --> 00:03:04,620
+This defines the distance between clusters
+
+53
+00:03:04,620 --> 00:03:07,910
+as the distance between the two data points in the clusters
+
+54
+00:03:07,910 --> 00:03:10,460
+that are closest together.
+
+55
+00:03:10,460 --> 00:03:13,340
+For example, we would define the distance
+
+56
+00:03:13,340 --> 00:03:15,850
+between the yellow and red clusters
+
+57
+00:03:15,850 --> 00:03:19,130
+by computing the Euclidean distance between these two
+
+58
+00:03:19,130 --> 00:03:21,120
+points.
+
+59
+00:03:21,120 --> 00:03:24,670
+The other points in the clusters could be really far away,
+
+60
+00:03:24,670 --> 00:03:28,070
+but it doesn't matter if we use minimum distance.
+
+61
+00:03:28,070 --> 00:03:31,800
+The only thing we care about is how close together the closest
+
+62
+00:03:31,800 --> 00:03:33,440
+points are.
+
+63
+00:03:33,440 --> 00:03:37,190
+Alternatively, we could use maximum distance.
+
+64
+00:03:37,190 --> 00:03:41,290
+This one computes the distance between the two clusters
+
+65
+00:03:41,290 --> 00:03:43,290
+as the distance between the two points
+
+66
+00:03:43,290 --> 00:03:45,340
+that are the farthest apart.
+
+67
+00:03:45,340 --> 00:03:48,390
+So for example, we would compute the distance
+
+68
+00:03:48,390 --> 00:03:50,810
+between the yellow and red clusters
+
+69
+00:03:50,810 --> 00:03:54,150
+by looking at these two points.
+
+70
+00:03:54,150 --> 00:03:57,360
+Here, it doesn't matter how close together the other points
+
+71
+00:03:57,360 --> 00:03:58,240
+are.
+
+72
+00:03:58,240 --> 00:04:01,430
+All we care about is how close together the furthest points
+
+73
+00:04:01,430 --> 00:04:03,190
+are.
+
+74
+00:04:03,190 --> 00:04:06,530
+The most common distance metric between clusters
+
+75
+00:04:06,530 --> 00:04:08,690
+is called centroid distance.
+
+76
+00:04:08,690 --> 00:04:10,910
+And this is what we'll use.
+
+77
+00:04:10,910 --> 00:04:13,610
+It defines the distance between clusters
+
+78
+00:04:13,610 --> 00:04:16,980
+by computing the centroid of the clusters.
+
+79
+00:04:16,980 --> 00:04:19,029
+The centroid is just the data point
+
+80
+00:04:19,029 --> 00:04:23,330
+that takes the average of all data points in each component.
+
+81
+00:04:23,330 --> 00:04:27,100
+This takes all data points in each cluster into account
+
+82
+00:04:27,100 --> 00:04:30,530
+and can be thought of as the middle data point.
+
+83
+00:04:30,530 --> 00:04:34,570
+In our example, the centroids between yellow and red
+
+84
+00:04:34,570 --> 00:04:37,700
+are here, and we would compute the distance
+
+85
+00:04:37,700 --> 00:04:40,420
+between the clusters by computing
+
+86
+00:04:40,420 --> 00:04:42,925
+the Euclidean distance between those two points.
+
+87
+00:04:42,925 --> 00:04:45,650
+
+
+88
+00:04:45,650 --> 00:04:47,980
+When we are computing distances, it's
+
+89
+00:04:47,980 --> 00:04:51,880
+highly influenced by the scale of the variables.
+
+90
+00:04:51,880 --> 00:04:55,120
+As an example, suppose you're computing the distance
+
+91
+00:04:55,120 --> 00:04:58,170
+between two data points, where one variable is
+
+92
+00:04:58,170 --> 00:05:01,680
+the revenue of a company in thousands of dollars,
+
+93
+00:05:01,680 --> 00:05:05,050
+and another is the age of the company in years.
+
+94
+00:05:05,050 --> 00:05:07,210
+The revenue variable would really
+
+95
+00:05:07,210 --> 00:05:10,460
+dominate in the distance calculation.
+
+96
+00:05:10,460 --> 00:05:13,150
+The differences between the data points for revenue
+
+97
+00:05:13,150 --> 00:05:14,800
+would be in the thousands.
+
+98
+00:05:14,800 --> 00:05:18,010
+Whereas the differences between the year variable
+
+99
+00:05:18,010 --> 00:05:20,650
+would probably be less than 10.
+
+100
+00:05:20,650 --> 00:05:25,250
+To handle this, it's customary to normalize the data first.
+
+101
+00:05:25,250 --> 00:05:28,410
+We can normalize by subtracting the mean of the data
+
+102
+00:05:28,410 --> 00:05:30,870
+and dividing by the standard deviation.
+
+103
+00:05:30,870 --> 00:05:33,650
+We'll see more of this in the homework.
+
+104
+00:05:33,650 --> 00:05:37,250
+In our movie data set, all of our genre variables
+
+105
+00:05:37,250 --> 00:05:38,910
+are on the same scale.
+
+106
+00:05:38,910 --> 00:05:41,770
+So we don't have to worry about normalizing.
+
+107
+00:05:41,770 --> 00:05:44,580
+But if we wanted to add a variable, like box office
+
+108
+00:05:44,580 --> 00:05:47,140
+revenue, we would need to normalize
+
+109
+00:05:47,140 --> 00:05:51,400
+so that this variable didn't dominate all of the others.
+
+110
+00:05:51,400 --> 00:05:54,870
+Now that we've defined how we'll compute the distances,
+
+111
+00:05:54,870 --> 00:05:57,660
+we'll talk about a specific clustering algorithm--
+
+112
+00:05:57,660 --> 00:06:01,590
+hierarchical clustering-- in the next video.
+
