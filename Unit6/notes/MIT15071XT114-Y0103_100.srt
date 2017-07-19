@@ -1,0 +1,364 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,990
+Let us discuss the performance of a benchmark algorithm.
+
+2
+00:00:02,990 --> 00:00:05,250
+The Random Forest algorithm is known
+
+3
+00:00:05,250 --> 00:00:08,690
+for its attractive property of detecting variable interactions
+
+4
+00:00:08,690 --> 00:00:11,816
+and excellent performance as a learning algorithm.
+
+5
+00:00:11,816 --> 00:00:13,940
+For this reason, we're selecting the Random Forest
+
+6
+00:00:13,940 --> 00:00:15,990
+algorithm as a benchmark-- initially,
+
+7
+00:00:15,990 --> 00:00:17,890
+we randomly partitioned the full data
+
+8
+00:00:17,890 --> 00:00:21,900
+set into two separate parts, where the split was 50-50,
+
+9
+00:00:21,900 --> 00:00:25,750
+and the partitioning was done evenly within each cost bin.
+
+10
+00:00:25,750 --> 00:00:27,380
+The first part, the training set,
+
+11
+00:00:27,380 --> 00:00:29,830
+was used to develop the method.
+
+12
+00:00:29,830 --> 00:00:32,400
+The second part, the test set, was
+
+13
+00:00:32,400 --> 00:00:35,020
+used to evaluate the model's performance.
+
+14
+00:00:35,020 --> 00:00:39,290
+The table in this slide reports the accuracy
+
+15
+00:00:39,290 --> 00:00:45,330
+of the Random Forest algorithm on each of the three buckets.
+
+16
+00:00:45,330 --> 00:00:48,170
+Let us now introduce the idea of clustering.
+
+17
+00:00:48,170 --> 00:00:51,740
+Patients in each bucket may have different characteristics.
+
+18
+00:00:51,740 --> 00:00:56,190
+For this reason, we create clusters for each cost bucket
+
+19
+00:00:56,190 --> 00:00:59,867
+and make predictions for each cluster using the Random Forest
+
+20
+00:00:59,867 --> 00:01:00,367
+algorithm.
+
+21
+00:01:00,367 --> 00:01:02,990
+
+
+22
+00:01:02,990 --> 00:01:07,030
+Clustering is mostly used in the absence of a target variable
+
+23
+00:01:07,030 --> 00:01:09,970
+to search for relationships among input variables
+
+24
+00:01:09,970 --> 00:01:13,080
+or to organize data into meaningful groups.
+
+25
+00:01:13,080 --> 00:01:15,450
+In this study, although the target variable
+
+26
+00:01:15,450 --> 00:01:18,500
+is well-defined as a heart attack or not a heart attack,
+
+27
+00:01:18,500 --> 00:01:21,160
+there are many different trajectories
+
+28
+00:01:21,160 --> 00:01:23,780
+that are associated with the target.
+
+29
+00:01:23,780 --> 00:01:28,100
+There's not one set pattern of health
+
+30
+00:01:28,100 --> 00:01:31,530
+or diagnostic combination that leads a person to heart attack.
+
+31
+00:01:31,530 --> 00:01:33,690
+Instead, we'll show that there are
+
+32
+00:01:33,690 --> 00:01:37,360
+many different dynamic health patterns and time series
+
+33
+00:01:37,360 --> 00:01:40,300
+diagnostic relations preceding a heart attack.
+
+34
+00:01:40,300 --> 00:01:43,440
+
+
+35
+00:01:43,440 --> 00:01:45,650
+The clustering methods we used were
+
+36
+00:01:45,650 --> 00:01:48,740
+spectral clustering and k-means clustering.
+
+37
+00:01:48,740 --> 00:01:53,550
+We focus, in the lecture, on the k-means clustering.
+
+38
+00:01:53,550 --> 00:01:58,580
+The broad description of the algorithm is as follows.
+
+39
+00:01:58,580 --> 00:02:04,500
+We first specify the number of clusters k.
+
+40
+00:02:04,500 --> 00:02:10,780
+Then we randomly assign each data point to a cluster.
+
+41
+00:02:10,780 --> 00:02:13,920
+We then compute the cluster centroids.
+
+42
+00:02:13,920 --> 00:02:18,600
+We re-assign each point to the closest cluster centroid.
+
+43
+00:02:18,600 --> 00:02:21,180
+We then re-compute the cluster centroids,
+
+44
+00:02:21,180 --> 00:02:25,590
+and we repeat steps 4 and 5 until no improvement is made.
+
+45
+00:02:25,590 --> 00:02:28,560
+
+
+46
+00:02:28,560 --> 00:02:34,030
+Let us illustrate the k-means algorithm in action.
+
+47
+00:02:34,030 --> 00:02:38,560
+We specify the desired number of clusters k.
+
+48
+00:02:38,560 --> 00:02:40,640
+In this case, we use k=2.
+
+49
+00:02:40,640 --> 00:02:44,840
+
+
+50
+00:02:44,840 --> 00:02:49,800
+We then randomly assign each data point to a cluster.
+
+51
+00:02:49,800 --> 00:02:53,100
+
+
+52
+00:02:53,100 --> 00:02:56,940
+In this case, we have the three points in red,
+
+53
+00:02:56,940 --> 00:03:00,380
+and the two points in black.
+
+54
+00:03:00,380 --> 00:03:04,400
+We then compute the cluster centroids,
+
+55
+00:03:04,400 --> 00:03:08,880
+indicated by the red x and the grey x.
+
+56
+00:03:08,880 --> 00:03:15,120
+We re-assign each point to the closest cluster centroid,
+
+57
+00:03:15,120 --> 00:03:20,545
+and now you observe that this point changes from a red
+
+58
+00:03:20,545 --> 00:03:22,900
+to a grey.
+
+59
+00:03:22,900 --> 00:03:30,130
+We re-compute the cluster centroids,
+
+60
+00:03:30,130 --> 00:03:36,090
+and we repeat the previous steps, 4 and 5
+
+61
+00:03:36,090 --> 00:03:37,850
+until no improvement is made.
+
+62
+00:03:37,850 --> 00:03:42,580
+We observe that, in this case, the k-means clustering is done,
+
+63
+00:03:42,580 --> 00:03:44,210
+and this is our final clustering.
+
+64
+00:03:44,210 --> 00:03:49,920
+
+
+65
+00:03:49,920 --> 00:03:52,690
+Let us discuss some practical considerations.
+
+66
+00:03:52,690 --> 00:03:54,790
+The number of clusters k can be selected
+
+67
+00:03:54,790 --> 00:03:58,076
+from previous knowledge or by simply experimenting.
+
+68
+00:03:58,076 --> 00:04:01,570
+We can strategically select an initial partition of points
+
+69
+00:04:01,570 --> 00:04:05,910
+into clusters if we have some knowledge of the data.
+
+70
+00:04:05,910 --> 00:04:08,660
+We can also run the algorithm several times
+
+71
+00:04:08,660 --> 00:04:11,000
+with different random starting points.
+
+72
+00:04:11,000 --> 00:04:13,560
+In the recitations, we'll learn how
+
+73
+00:04:13,560 --> 00:04:20,120
+to run the k-means algorithm in R.
+
+74
+00:04:20,120 --> 00:04:22,980
+So how do we measure performance?
+
+75
+00:04:22,980 --> 00:04:25,830
+After we construct the clusters in the training set,
+
+76
+00:04:25,830 --> 00:04:29,390
+we assign new observations to clusters by proximity
+
+77
+00:04:29,390 --> 00:04:31,195
+to the centroid of each cluster.
+
+78
+00:04:31,195 --> 00:04:33,860
+
+
+79
+00:04:33,860 --> 00:04:36,730
+We measure performance by recording
+
+80
+00:04:36,730 --> 00:04:39,240
+the average performance rate in each cluster.
+
+81
+00:04:39,240 --> 00:04:43,124
+
+
+82
+00:04:43,124 --> 00:04:45,290
+Let us now discuss the performance of the clustering
+
+83
+00:04:45,290 --> 00:04:45,790
+methods.
+
+84
+00:04:45,790 --> 00:04:49,070
+
+
+85
+00:04:49,070 --> 00:04:54,150
+We perform clustering on each bucket using k=10 clusters.
+
+86
+00:04:54,150 --> 00:04:59,650
+In the table we record the average prediction
+
+87
+00:04:59,650 --> 00:05:02,700
+rate of each cost bucket.
+
+88
+00:05:02,700 --> 00:05:06,550
+We observe a very visible improvement
+
+89
+00:05:06,550 --> 00:05:13,800
+when we use clustering-- from 49% to 64%, from 56% to 73%,
+
+90
+00:05:13,800 --> 00:05:16,890
+from 58% to 78%.
+

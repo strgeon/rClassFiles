@@ -1,0 +1,92 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,110
+What is the impact of clustering?
+
+2
+00:00:02,110 --> 00:00:05,100
+Clustering members within each cost bucket
+
+3
+00:00:05,100 --> 00:00:09,087
+yielded better predictions for heart attacks within clusters.
+
+4
+00:00:09,087 --> 00:00:10,670
+Grouping patients in clusters exhibits
+
+5
+00:00:10,670 --> 00:00:13,610
+temporal diagnostic patterns within nine months
+
+6
+00:00:13,610 --> 00:00:14,840
+of a heart attack.
+
+7
+00:00:14,840 --> 00:00:16,450
+These patterns can be incorporated
+
+8
+00:00:16,450 --> 00:00:18,920
+in the diagnostic rules for heart attacks.
+
+9
+00:00:18,920 --> 00:00:22,690
+The approach shows that using analytics for early heart
+
+10
+00:00:22,690 --> 00:00:25,500
+failure detection through pattern recognition
+
+11
+00:00:25,500 --> 00:00:27,245
+can lead to interesting new insights.
+
+12
+00:00:27,245 --> 00:00:29,820
+
+
+13
+00:00:29,820 --> 00:00:35,230
+The findings here are reinforced by results from our research.
+
+14
+00:00:35,230 --> 00:00:40,650
+IBM, Sutter Health, and Geisinger Health Systems
+
+15
+00:00:40,650 --> 00:00:44,490
+partnered in 2009 to research analytics tools
+
+16
+00:00:44,490 --> 00:00:46,790
+in view of early detection.
+
+17
+00:00:46,790 --> 00:00:50,110
+Steve Steinhubl, a cardiologist from Geisinger,
+
+18
+00:00:50,110 --> 00:00:52,670
+wrote, "our early research showed
+
+19
+00:00:52,670 --> 00:00:56,240
+the signs and symptoms of heart failure in patients
+
+20
+00:00:56,240 --> 00:00:59,670
+are often documented years before diagnosis.
+
+21
+00:00:59,670 --> 00:01:04,290
+The pattern of documentation can offer clinically useful signals
+
+22
+00:01:04,290 --> 00:01:07,550
+for early detection of this deadly disease."
+

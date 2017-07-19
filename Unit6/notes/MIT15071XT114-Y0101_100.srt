@@ -1,0 +1,192 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:02,070
+In this lecture, we discuss the idea
+
+2
+00:00:02,070 --> 00:00:03,930
+of predictive analytics in medicine.
+
+3
+00:00:03,930 --> 00:00:05,690
+Specifically, we introduce the idea
+
+4
+00:00:05,690 --> 00:00:08,770
+of using clustering methods for better predicting heart
+
+5
+00:00:08,770 --> 00:00:11,090
+attacks.
+
+6
+00:00:11,090 --> 00:00:14,510
+Heart attacks are a common complication of coronary heart
+
+7
+00:00:14,510 --> 00:00:18,120
+disease, resulting from the interruption of blood supply
+
+8
+00:00:18,120 --> 00:00:20,162
+to part of the heart.
+
+9
+00:00:20,162 --> 00:00:21,620
+Heart attack is the number one cause
+
+10
+00:00:21,620 --> 00:00:24,830
+of death for both men and women in the United States.
+
+11
+00:00:24,830 --> 00:00:29,080
+About one in every four deaths is due to heart attack.
+
+12
+00:00:29,080 --> 00:00:32,110
+A 2012 report from the American Heart Association
+
+13
+00:00:32,110 --> 00:00:36,340
+estimates about 715,000 Americans have a heart attack
+
+14
+00:00:36,340 --> 00:00:37,720
+every year.
+
+15
+00:00:37,720 --> 00:00:39,680
+To put this number into perspective,
+
+16
+00:00:39,680 --> 00:00:42,220
+this means that every 20 seconds, a person
+
+17
+00:00:42,220 --> 00:00:44,160
+has a heart attack in the United States.
+
+18
+00:00:44,160 --> 00:00:46,880
+It is also equivalent of September the 11th
+
+19
+00:00:46,880 --> 00:00:52,190
+repeating itself every 24 hours, 365 days a year.
+
+20
+00:00:52,190 --> 00:00:53,840
+Nearly half of these attacks occur
+
+21
+00:00:53,840 --> 00:00:56,300
+without prior warning signs.
+
+22
+00:00:56,300 --> 00:01:00,620
+In fact, 250,000 Americans die of sudden cardiac death
+
+23
+00:01:00,620 --> 00:01:05,710
+yearly, which means 680 people every day die
+
+24
+00:01:05,710 --> 00:01:07,200
+of sudden cardiac death.
+
+25
+00:01:07,200 --> 00:01:10,360
+
+
+26
+00:01:10,360 --> 00:01:13,550
+A heart attack has well-known symptoms-- chest pain,
+
+27
+00:01:13,550 --> 00:01:17,770
+shortness of breath, upper body pain, nausea.
+
+28
+00:01:17,770 --> 00:01:19,340
+The nature of heart attacks, however,
+
+29
+00:01:19,340 --> 00:01:22,450
+makes it hard to predict, prevent, and even diagnose.
+
+30
+00:01:22,450 --> 00:01:24,380
+Here are some statistics.
+
+31
+00:01:24,380 --> 00:01:27,000
+25% of heart attacks are silent.
+
+32
+00:01:27,000 --> 00:01:30,900
+47% of sudden cardiac deaths occur outside hospitals,
+
+33
+00:01:30,900 --> 00:01:36,270
+suggesting that many patients do not act on early warning signs.
+
+34
+00:01:36,270 --> 00:01:40,250
+Only 27% percent of respondents to a 2005 survey
+
+35
+00:01:40,250 --> 00:01:48,190
+recognized the symptoms and called 911 for help.
+
+36
+00:01:48,190 --> 00:01:50,190
+How can analytics help?
+
+37
+00:01:50,190 --> 00:01:52,390
+The key to helping patients is to understand
+
+38
+00:01:52,390 --> 00:01:54,430
+the clinical characteristics of patients
+
+39
+00:01:54,430 --> 00:01:57,700
+in whom heart attacks was missed.
+
+40
+00:01:57,700 --> 00:02:00,500
+We need to better understand the patterns in a patient's
+
+41
+00:02:00,500 --> 00:02:03,867
+diagnostic history that link to heart attack
+
+42
+00:02:03,867 --> 00:02:05,450
+and to predicting whether a patient is
+
+43
+00:02:05,450 --> 00:02:07,300
+at risk for a heart attack.
+
+44
+00:02:07,300 --> 00:02:09,770
+We'll see, in this lecture, how analytics
+
+45
+00:02:09,770 --> 00:02:12,390
+helps to understand patterns of heart attacks
+
+46
+00:02:12,390 --> 00:02:16,160
+and to provide good predictions that in turn lead to improved
+
+47
+00:02:16,160 --> 00:02:20,280
+monitoring and taking action early and effectively.
+

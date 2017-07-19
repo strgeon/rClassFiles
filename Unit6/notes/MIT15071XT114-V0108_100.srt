@@ -1,0 +1,240 @@
+0
+00:00:00,000 --> 00:00:00,580
+
+
+1
+00:00:00,580 --> 00:00:04,280
+Recommendation systems are used in many different areas
+
+2
+00:00:04,280 --> 00:00:06,150
+other than movies.
+
+3
+00:00:06,150 --> 00:00:09,960
+Jeff Bezos, the CEO of Amazon, said
+
+4
+00:00:09,960 --> 00:00:13,110
+that, "If I have 3 million customers on the web,
+
+5
+00:00:13,110 --> 00:00:16,430
+I should have 3 million stores on the web."
+
+6
+00:00:16,430 --> 00:00:19,700
+The internet allows for mass personalization,
+
+7
+00:00:19,700 --> 00:00:23,440
+and recommendation systems are a key part of that.
+
+8
+00:00:23,440 --> 00:00:25,560
+Recommendation systems build models
+
+9
+00:00:25,560 --> 00:00:28,990
+about users' preferences to personalize the user
+
+10
+00:00:28,990 --> 00:00:30,620
+experience.
+
+11
+00:00:30,620 --> 00:00:34,340
+This helps users find items they might not have searched for,
+
+12
+00:00:34,340 --> 00:00:36,990
+like a new favorite band, an old friend who
+
+13
+00:00:36,990 --> 00:00:40,740
+uses the same social media network, or a book or song
+
+14
+00:00:40,740 --> 00:00:43,730
+that they're likely to enjoy.
+
+15
+00:00:43,730 --> 00:00:46,260
+Recommendation systems are a cornerstone
+
+16
+00:00:46,260 --> 00:00:48,450
+of these top businesses.
+
+17
+00:00:48,450 --> 00:00:51,170
+Social networking sites, like Facebook,
+
+18
+00:00:51,170 --> 00:00:55,150
+music streaming sites, like Pandora, and retail companies,
+
+19
+00:00:55,150 --> 00:00:58,610
+like Amazon, all provide recommendation systems
+
+20
+00:00:58,610 --> 00:01:00,860
+for their users.
+
+21
+00:01:00,860 --> 00:01:03,840
+Both collaborative filtering and content filtering
+
+22
+00:01:03,840 --> 00:01:05,740
+are used in practice.
+
+23
+00:01:05,740 --> 00:01:08,230
+Collaborative filtering is used by companies
+
+24
+00:01:08,230 --> 00:01:11,850
+like Amazon, Facebook, and Google News.
+
+25
+00:01:11,850 --> 00:01:14,080
+Content filtering is used by companies
+
+26
+00:01:14,080 --> 00:01:18,380
+like Pandora, Rotten Tomatoes, and See This Next.
+
+27
+00:01:18,380 --> 00:01:21,420
+And Netflix uses both collaborative filtering
+
+28
+00:01:21,420 --> 00:01:24,890
+and content filtering.
+
+29
+00:01:24,890 --> 00:01:28,120
+So now let's go back to the Netflix prize.
+
+30
+00:01:28,120 --> 00:01:33,790
+29 days after last call was announced, on July 25, 2009,
+
+31
+00:01:33,790 --> 00:01:40,020
+the team The Ensemble submitted a 10.09% improvement, beating
+
+32
+00:01:40,020 --> 00:01:43,700
+the 10.05% improvement that was submitted by Bellkor's
+
+33
+00:01:43,700 --> 00:01:47,190
+Pragmatic Chaos to signal last call.
+
+34
+00:01:47,190 --> 00:01:50,680
+But by the time Netflix stopped accepting submissions the next
+
+35
+00:01:50,680 --> 00:01:55,830
+day, Bellkor's Pragmatic Chaos had also submitted a 10.09%
+
+36
+00:01:55,830 --> 00:01:59,930
+improvement, and The Ensemble had submitted a 10.10%
+
+37
+00:01:59,930 --> 00:02:01,620
+improvement.
+
+38
+00:02:01,620 --> 00:02:04,340
+To really test the algorithms, Netflix
+
+39
+00:02:04,340 --> 00:02:06,470
+tested them on a private test set
+
+40
+00:02:06,470 --> 00:02:08,800
+that the teams had never seen before.
+
+41
+00:02:08,800 --> 00:02:12,840
+This is the true test of predictive ability.
+
+42
+00:02:12,840 --> 00:02:17,480
+On September 18, 2009, Netflix announced that the winning team
+
+43
+00:02:17,480 --> 00:02:20,200
+was Bellkor's Pragmatic Chaos.
+
+44
+00:02:20,200 --> 00:02:25,490
+They won the competition and the $1 million grand prize.
+
+45
+00:02:25,490 --> 00:02:28,470
+Recommendation systems provide a significant edge
+
+46
+00:02:28,470 --> 00:02:30,310
+to many companies.
+
+47
+00:02:30,310 --> 00:02:33,860
+In today's digital age, businesses often have hundreds
+
+48
+00:02:33,860 --> 00:02:36,980
+of thousands of items to offer their customers,
+
+49
+00:02:36,980 --> 00:02:40,645
+whether they're movies, songs , or people they might know
+
+50
+00:02:40,645 --> 00:02:42,340
+on Facebook.
+
+51
+00:02:42,340 --> 00:02:45,160
+Excellent recommendation systems can make or break
+
+52
+00:02:45,160 --> 00:02:47,140
+these businesses.
+
+53
+00:02:47,140 --> 00:02:49,430
+Clustering algorithms, which are tailored
+
+54
+00:02:49,430 --> 00:02:52,970
+to find similar customers or similar items,
+
+55
+00:02:52,970 --> 00:02:57,030
+form the backbone of many of these recommendation systems.
+
+56
+00:02:57,030 --> 00:03:01,050
+Clustering also has many other interesting applications.
+
+57
+00:03:01,050 --> 00:03:03,720
+In the next lecture, we'll see how clustering
+
+58
+00:03:03,720 --> 00:03:07,060
+can be used to improve the predictive ability
+
+59
+00:03:07,060 --> 00:03:09,650
+of classification methods.
+

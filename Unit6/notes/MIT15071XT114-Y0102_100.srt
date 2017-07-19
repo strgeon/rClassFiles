@@ -1,0 +1,448 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:03,247
+Claims data offers an expansive view of the patient's health
+
+2
+00:00:03,247 --> 00:00:04,230
+history.
+
+3
+00:00:04,230 --> 00:00:06,855
+Specifically, claims data include information
+
+4
+00:00:06,855 --> 00:00:10,710
+on demographics, medical history, and medications.
+
+5
+00:00:10,710 --> 00:00:13,240
+They offer insights regarding a patient's risk.
+
+6
+00:00:13,240 --> 00:00:17,710
+And as I will demonstrate, may reveal indicative signals
+
+7
+00:00:17,710 --> 00:00:19,050
+and patterns.
+
+8
+00:00:19,050 --> 00:00:21,980
+We'll use health insurance claims
+
+9
+00:00:21,980 --> 00:00:25,695
+filed for about 7,000 members from January 2000
+
+10
+00:00:25,695 --> 00:00:30,620
+until November 2007.
+
+11
+00:00:30,620 --> 00:00:33,980
+We concentrated on members with the following attributes.
+
+12
+00:00:33,980 --> 00:00:37,200
+At least five claims with coronary artery disease
+
+13
+00:00:37,200 --> 00:00:40,720
+diagnosis, at least five claims with hypertension
+
+14
+00:00:40,720 --> 00:00:44,480
+diagnostic codes, at least 100 total medical claims,
+
+15
+00:00:44,480 --> 00:00:47,420
+at least five pharmacy claims, and data
+
+16
+00:00:47,420 --> 00:00:49,740
+from at least five years.
+
+17
+00:00:49,740 --> 00:00:53,020
+These selections yield patients with a high risk
+
+18
+00:00:53,020 --> 00:00:54,030
+of heart attack,
+
+19
+00:00:54,030 --> 00:00:56,746
+and a reasonably rich medical history with continuous
+
+20
+00:00:56,746 --> 00:00:57,245
+coverage.
+
+21
+00:00:57,245 --> 00:01:00,820
+
+
+22
+00:01:00,820 --> 00:01:04,360
+Let us discuss how we aggregated this data.
+
+23
+00:01:04,360 --> 00:01:07,930
+The resulting data sets includes about 20 million health
+
+24
+00:01:07,930 --> 00:01:10,520
+insurance entries, including individual, medical,
+
+25
+00:01:10,520 --> 00:01:12,150
+and pharmaceutical records.
+
+26
+00:01:12,150 --> 00:01:15,600
+Diagnosis, procedures, and drug codes in the data
+
+27
+00:01:15,600 --> 00:01:18,640
+set comprised tens of thousands of attributes.
+
+28
+00:01:18,640 --> 00:01:21,460
+The codes were aggregated into groups.
+
+29
+00:01:21,460 --> 00:01:25,500
+218 diagnosis groups, 180 procedure groups,
+
+30
+00:01:25,500 --> 00:01:29,150
+538 drug groups.
+
+31
+00:01:29,150 --> 00:01:31,350
+46 diagnosis groups were considered
+
+32
+00:01:31,350 --> 00:01:34,720
+by clinicians as possible risk factors for heart attacks.
+
+33
+00:01:34,720 --> 00:01:39,240
+
+
+34
+00:01:39,240 --> 00:01:42,760
+Let us discuss how we view the data over time.
+
+35
+00:01:42,760 --> 00:01:45,940
+It is important in this study to view the medical records
+
+36
+00:01:45,940 --> 00:01:49,100
+chronologically, and to represent a patient's diagnosis
+
+37
+00:01:49,100 --> 00:01:50,770
+profile over time.
+
+38
+00:01:50,770 --> 00:01:55,970
+So we record the cost and number of medical claims and hospital
+
+39
+00:01:55,970 --> 00:01:58,390
+visits by a diagnosis.
+
+40
+00:01:58,390 --> 00:02:02,440
+All the observations we have span over five years of data.
+
+41
+00:02:02,440 --> 00:02:07,890
+They were split into 21 periods, each 90 days in length.
+
+42
+00:02:07,890 --> 00:02:11,110
+We examine nine months of diagnostic history,
+
+43
+00:02:11,110 --> 00:02:14,440
+leading up to heart attack or no heart attack event,
+
+44
+00:02:14,440 --> 00:02:19,980
+and align the data to make observations that are date-independent,
+
+45
+00:02:19,980 --> 00:02:22,910
+while preserving the order of events.
+
+46
+00:02:22,910 --> 00:02:25,950
+We recorded the diagnostic history in three periods.
+
+47
+00:02:25,950 --> 00:02:29,230
+Zero to three months before the event,
+
+48
+00:02:29,230 --> 00:02:31,090
+three to six months before the event,
+
+49
+00:02:31,090 --> 00:02:33,600
+and six to nine months before the event.
+
+50
+00:02:33,600 --> 00:02:36,280
+
+
+51
+00:02:36,280 --> 00:02:38,940
+What was the target variable we were trying to predict?
+
+52
+00:02:38,940 --> 00:02:40,940
+The target prediction variable is the occurrence
+
+53
+00:02:40,940 --> 00:02:42,350
+of a heart attack.
+
+54
+00:02:42,350 --> 00:02:45,730
+We define this from a combination of several claims.
+
+55
+00:02:45,730 --> 00:02:48,060
+Namely, diagnosis of a heart attack,
+
+56
+00:02:48,060 --> 00:02:50,700
+alongside a trip to the emergency room,
+
+57
+00:02:50,700 --> 00:02:54,000
+followed by subsequent hospitalization.
+
+58
+00:02:54,000 --> 00:02:56,510
+Only considering heart attack diagnosis
+
+59
+00:02:56,510 --> 00:02:59,340
+that are associated with a visit to the emergency room,
+
+60
+00:02:59,340 --> 00:03:01,810
+and following hospitalization helps
+
+61
+00:03:01,810 --> 00:03:05,055
+ensure that the target outcome is in fact a heart attack
+
+62
+00:03:05,055 --> 00:03:06,100
+event.
+
+63
+00:03:06,100 --> 00:03:08,190
+The target variable is binary.
+
+64
+00:03:08,190 --> 00:03:10,670
+It is denoted by plus 1 or minus 1
+
+65
+00:03:10,670 --> 00:03:12,790
+for the occurrence or non-occurrence of a heart
+
+66
+00:03:12,790 --> 00:03:15,790
+attack in the targeted period of 90 days.
+
+67
+00:03:15,790 --> 00:03:18,720
+
+
+68
+00:03:18,720 --> 00:03:20,090
+How is the data organized?
+
+69
+00:03:20,090 --> 00:03:22,690
+There were 147 variables.
+
+70
+00:03:22,690 --> 00:03:25,650
+Variable one is the patient's identification number,
+
+71
+00:03:25,650 --> 00:03:28,030
+and variable two is the patient's gender.
+
+72
+00:03:28,030 --> 00:03:31,160
+There were variables related to the diagnoses group
+
+73
+00:03:31,160 --> 00:03:34,410
+counts nine, six, and three months before the heart attack
+
+74
+00:03:34,410 --> 00:03:35,660
+target period.
+
+75
+00:03:35,660 --> 00:03:40,952
+There were variables related to the total cost nine, six,
+
+76
+00:03:40,952 --> 00:03:42,910
+and three months before the heart attack target
+
+77
+00:03:42,910 --> 00:03:47,630
+period, and the final variable 147,
+
+78
+00:03:47,630 --> 00:03:50,870
+includes the classification of whether the event was a heart
+
+79
+00:03:50,870 --> 00:03:52,020
+attack or not.
+
+80
+00:03:52,020 --> 00:03:54,860
+
+
+81
+00:03:54,860 --> 00:03:58,940
+Cost of medical care is a good summary of a person's health.
+
+82
+00:03:58,940 --> 00:04:04,110
+In our database, the total cost of medical care in the three 90
+
+83
+00:04:04,110 --> 00:04:11,160
+day periods preceding the heart attack target event ranged from
+
+84
+00:04:11,160 --> 00:04:16,769
+$0 to $636,000 and approximately 70%
+
+85
+00:04:16,769 --> 00:04:20,880
+of the overall cost was generated by only 11%
+
+86
+00:04:20,880 --> 00:04:22,360
+of the population.
+
+87
+00:04:22,360 --> 00:04:24,920
+This means that the highest patients
+
+88
+00:04:24,920 --> 00:04:28,460
+with high medical expenses are a very small proportion
+
+89
+00:04:28,460 --> 00:04:31,810
+of the data, and could skew our final results.
+
+90
+00:04:31,810 --> 00:04:35,700
+According to the American Medical Association, only 10%
+
+91
+00:04:35,700 --> 00:04:38,640
+of individuals have projected medical expenses
+
+92
+00:04:38,640 --> 00:04:41,790
+of approximately $10,000 or greater
+
+93
+00:04:41,790 --> 00:04:44,960
+per year, which is more than four times greater
+
+94
+00:04:44,960 --> 00:04:48,476
+than the average projected medical expenses of $2,400
+
+95
+00:04:48,476 --> 00:04:49,880
+per year.
+
+96
+00:04:49,880 --> 00:04:53,090
+To lessen the effects of these high-cost outliers,
+
+97
+00:04:53,090 --> 00:04:55,960
+we divided the data into different cost buckets,
+
+98
+00:04:55,960 --> 00:04:59,770
+based on the findings of the American Medical Association.
+
+99
+00:04:59,770 --> 00:05:02,140
+We did not want to have too many cost bins
+
+100
+00:05:02,140 --> 00:05:04,840
+because the size of the data set.
+
+101
+00:05:04,840 --> 00:05:08,140
+The table in the slide gives a summary
+
+102
+00:05:08,140 --> 00:05:09,990
+of the cost bucket partitions.
+
+103
+00:05:09,990 --> 00:05:13,550
+Patients with expenses over $10,000 in the nine month
+
+104
+00:05:13,550 --> 00:05:16,980
+period were allocated to cost bucket 3.
+
+105
+00:05:16,980 --> 00:05:19,840
+Patients with less than $2,000 in expenses
+
+106
+00:05:19,840 --> 00:05:21,910
+were allocated to cost bucket 1.
+
+107
+00:05:21,910 --> 00:05:26,170
+And the remaining patients with costs between $2,000 and $10,000
+
+108
+00:05:26,170 --> 00:05:27,850
+to cost bucket 2.
+
+109
+00:05:27,850 --> 00:05:36,360
+Please note that the majority of patients, 4,400 out of 6,500,
+
+110
+00:05:36,360 --> 00:05:40,590
+or 67.5% of all patients fell into the first bucket
+
+111
+00:05:40,590 --> 00:05:42,470
+of low expenses.
+

@@ -1,0 +1,236 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,950
+Let us see what we learned about the patterns that emerge.
+
+2
+00:00:04,950 --> 00:00:08,180
+We will show that the clusters are interpretable
+
+3
+00:00:08,180 --> 00:00:10,990
+and reveal unique patterns of diagnostic history
+
+4
+00:00:10,990 --> 00:00:12,670
+among the population.
+
+5
+00:00:12,670 --> 00:00:18,350
+We selected six patterns to present in this lecture--
+
+6
+00:00:18,350 --> 00:00:21,860
+Cluster 1, 6, and 7, in Cost Bucket 2,
+
+7
+00:00:21,860 --> 00:00:24,930
+and Clusters 4, 5, and 10, in Cost Bucket 3.
+
+8
+00:00:24,930 --> 00:00:28,330
+
+
+9
+00:00:28,330 --> 00:00:31,310
+The first pattern shows the occurrence of chest pain
+
+10
+00:00:31,310 --> 00:00:33,890
+three months before the heart attack.
+
+11
+00:00:33,890 --> 00:00:38,420
+Note that the red dots depict the visits per diagnosis
+
+12
+00:00:38,420 --> 00:00:40,720
+for patients in Cluster 1-- this is, we think,
+
+13
+00:00:40,720 --> 00:00:44,350
+Bucket 2-- and the blue dots depict the visits
+
+14
+00:00:44,350 --> 00:00:48,260
+per diagnosis for patients in Bucket 2 throughout.
+
+15
+00:00:48,260 --> 00:00:50,430
+Note the very significant increase
+
+16
+00:00:50,430 --> 00:00:52,850
+for visits related to chest pains
+
+17
+00:00:52,850 --> 00:00:55,290
+three months before the event.
+
+18
+00:00:55,290 --> 00:01:00,910
+About 17, three months before for the red patients,
+
+19
+00:01:00,910 --> 00:01:04,469
+and about 1 and 1/2 visits for the blue patients.
+
+20
+00:01:04,469 --> 00:01:08,710
+
+
+21
+00:01:08,710 --> 00:01:11,650
+The next pattern reveals an increasing occurrence
+
+22
+00:01:11,650 --> 00:01:17,570
+of chronic obstructive pulmonary disease, COPD, for short.
+
+23
+00:01:17,570 --> 00:01:20,240
+Patients from Cluster 7 in Bucket 2
+
+24
+00:01:20,240 --> 00:01:23,640
+have regular doctor visits for COPD.
+
+25
+00:01:23,640 --> 00:01:29,030
+Note that nine months before, we have
+
+26
+00:01:29,030 --> 00:01:34,160
+4 and 1/2 visits versus 0.5 visits.
+
+27
+00:01:34,160 --> 00:01:39,110
+Six months before, we have almost 7 visits versus 1/2
+
+28
+00:01:39,110 --> 00:01:41,680
+a visit, and three months before, we
+
+29
+00:01:41,680 --> 00:01:46,510
+have 9 visits versus 1/2 a visit for COPD,
+
+30
+00:01:46,510 --> 00:01:50,190
+so a clear increasing pattern.
+
+31
+00:01:50,190 --> 00:01:53,910
+The next pattern shows gradually increasing occurrence
+
+32
+00:01:53,910 --> 00:01:55,350
+of anemia.
+
+33
+00:01:55,350 --> 00:01:58,500
+The red line shows the patients in Cluster 4
+
+34
+00:01:58,500 --> 00:02:02,530
+increasingly visit the doctor for anemia from nine months
+
+35
+00:02:02,530 --> 00:02:04,390
+on before the event.
+
+36
+00:02:04,390 --> 00:02:07,600
+Nine months before, members have an average of 9 visits
+
+37
+00:02:07,600 --> 00:02:08,740
+to the doctor for anemia.
+
+38
+00:02:08,740 --> 00:02:13,430
+
+
+39
+00:02:13,430 --> 00:02:19,620
+This increases to an average of 11 visits six months
+
+40
+00:02:19,620 --> 00:02:21,970
+before the event, and then an average of 15
+
+41
+00:02:21,970 --> 00:02:25,606
+visits three months before the event, a clear increasing
+
+42
+00:02:25,606 --> 00:02:26,106
+pattern.
+
+43
+00:02:26,106 --> 00:02:32,430
+
+
+44
+00:02:32,430 --> 00:02:35,375
+The final pattern shows the occurrence of diabetes
+
+45
+00:02:35,375 --> 00:02:37,210
+as a pattern for heart attacks.
+
+46
+00:02:37,210 --> 00:02:41,320
+It is well known that both types 1 and 2
+
+47
+00:02:41,320 --> 00:02:45,170
+diabetes are associated with accelerated atherosclerosis,
+
+48
+00:02:45,170 --> 00:02:49,250
+one of the main causes of myocardial infarction-- heart
+
+49
+00:02:49,250 --> 00:02:50,800
+attacks, that is.
+
+50
+00:02:50,800 --> 00:02:53,180
+Well known diagnoses associated with heart attacks,
+
+51
+00:02:53,180 --> 00:02:56,430
+such as diabetes, hypertension, and hyperlipidemia,
+
+52
+00:02:56,430 --> 00:02:59,700
+characterize many of the patterns of the consistency
+
+53
+00:02:59,700 --> 00:03:04,735
+of care throughout all of the cost buckets and clustering
+
+54
+00:03:04,735 --> 00:03:05,235
+models.
+
+55
+00:03:05,235 --> 00:03:09,630
+
+
+56
+00:03:09,630 --> 00:03:11,970
+You observe a difference, here, of the number
+
+57
+00:03:11,970 --> 00:03:15,480
+of visits for diabetes for the population
+
+58
+00:03:15,480 --> 00:03:19,090
+that had the event versus the average population.
+
