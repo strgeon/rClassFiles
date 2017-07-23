@@ -1,0 +1,596 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,560
+Let us try to understand the format of the data handed
+
+2
+00:00:03,560 --> 00:00:06,030
+to us in the CSV files.
+
+3
+00:00:06,030 --> 00:00:09,760
+Grayscale images are represented as a matrix of pixel intensity
+
+4
+00:00:09,760 --> 00:00:12,740
+values that range from zero to one.
+
+5
+00:00:12,740 --> 00:00:15,845
+The intensity value zero corresponds to the absence
+
+6
+00:00:15,845 --> 00:00:20,530
+of color, or black, and the value one corresponds to white.
+
+7
+00:00:20,530 --> 00:00:25,250
+For 8 bits per pixel images, we have 256 color levels
+
+8
+00:00:25,250 --> 00:00:27,680
+ranging from zero to one.
+
+9
+00:00:27,680 --> 00:00:30,640
+For instance, if we have the following grayscale image,
+
+10
+00:00:30,640 --> 00:00:33,000
+the pixel information can be translated
+
+11
+00:00:33,000 --> 00:00:36,290
+to a matrix of values between zero and one.
+
+12
+00:00:36,290 --> 00:00:40,050
+It is exactly this matrix that we are given in our datasets.
+
+13
+00:00:40,050 --> 00:00:42,680
+In other words, the datasets contain a table
+
+14
+00:00:42,680 --> 00:00:45,000
+of values between zero and one.
+
+15
+00:00:45,000 --> 00:00:46,800
+And the number of columns corresponds
+
+16
+00:00:46,800 --> 00:00:49,590
+to the width of the image, whereas the number of rows
+
+17
+00:00:49,590 --> 00:00:52,150
+corresponds to the height of the image.
+
+18
+00:00:52,150 --> 00:00:56,950
+In this example, the resolution is 7 by 7 pixels.
+
+19
+00:00:56,950 --> 00:01:00,370
+We have to be careful when reading the dataset in R.
+
+20
+00:01:00,370 --> 00:01:02,075
+We need to make sure that R reads
+
+21
+00:01:02,075 --> 00:01:04,150
+in the matrix appropriately.
+
+22
+00:01:04,150 --> 00:01:06,150
+Until now in this class, our datasets
+
+23
+00:01:06,150 --> 00:01:10,090
+were structured in a way where the rows refer to observations
+
+24
+00:01:10,090 --> 00:01:12,560
+and the columns refer to variables.
+
+25
+00:01:12,560 --> 00:01:15,870
+But this is not the case for the intensity matrix.
+
+26
+00:01:15,870 --> 00:01:18,580
+So keep in mind that we need to do some maneuvering
+
+27
+00:01:18,580 --> 00:01:23,380
+to make sure that R recognizes the data as a matrix.
+
+28
+00:01:23,380 --> 00:01:27,120
+Grayscale image segmentation can be done by clustering pixels
+
+29
+00:01:27,120 --> 00:01:29,560
+according to their intensity values.
+
+30
+00:01:29,560 --> 00:01:31,630
+So we can think of our clustering algorithm
+
+31
+00:01:31,630 --> 00:01:34,870
+as trying to divide the spectrum of intensity values
+
+32
+00:01:34,870 --> 00:01:38,600
+from zero to one into intervals, or clusters.
+
+33
+00:01:38,600 --> 00:01:40,840
+For instance, the red cluster corresponds
+
+34
+00:01:40,840 --> 00:01:44,970
+to the darkest shades, and the green cluster to the lightest.
+
+35
+00:01:44,970 --> 00:01:49,030
+Now, what should the input be to the clustering algorithm?
+
+36
+00:01:49,030 --> 00:01:51,540
+Well, our observations should be all of the 7
+
+37
+00:01:51,540 --> 00:01:53,860
+by 7 intensity values.
+
+38
+00:01:53,860 --> 00:01:56,740
+Hence, we should have 49 observations.
+
+39
+00:01:56,740 --> 00:01:58,600
+And we only have one variable, which
+
+40
+00:01:58,600 --> 00:02:00,790
+is the pixel intensity value.
+
+41
+00:02:00,790 --> 00:02:03,830
+So in other words, the input to the clustering algorithm
+
+42
+00:02:03,830 --> 00:02:08,410
+should be a vector containing 49 elements, or intensity values.
+
+43
+00:02:08,410 --> 00:02:11,780
+But what we have is a 7 by 7 matrix.
+
+44
+00:02:11,780 --> 00:02:14,230
+A crucial step before feeding the intensity
+
+45
+00:02:14,230 --> 00:02:18,380
+values to the clustering algorithm is morphing our data.
+
+46
+00:02:18,380 --> 00:02:20,670
+We should modify the matrix structure
+
+47
+00:02:20,670 --> 00:02:24,640
+and lump all the intensity values into a single vector.
+
+48
+00:02:24,640 --> 00:02:26,640
+We will see that we can do this in R
+
+49
+00:02:26,640 --> 00:02:29,650
+using the as.vector function.
+
+50
+00:02:29,650 --> 00:02:32,060
+Now, once we have the vector, we can simply
+
+51
+00:02:32,060 --> 00:02:33,910
+feed it into the clustering algorithm
+
+52
+00:02:33,910 --> 00:02:38,160
+and assign each element in the vector to a cluster.
+
+53
+00:02:38,160 --> 00:02:40,620
+Let us first use hierarchical clustering
+
+54
+00:02:40,620 --> 00:02:42,690
+since we are familiar with it.
+
+55
+00:02:42,690 --> 00:02:45,770
+The first step is to calculate the distance matrix, which
+
+56
+00:02:45,770 --> 00:02:48,390
+computes the pairwise distances among the elements
+
+57
+00:02:48,390 --> 00:02:50,290
+of the intensity vector.
+
+58
+00:02:50,290 --> 00:02:53,400
+How many such distances do we need to calculate?
+
+59
+00:02:53,400 --> 00:02:55,980
+Well, for each element in the intensity vector,
+
+60
+00:02:55,980 --> 00:02:59,020
+we need to calculate its distance from the other 48
+
+61
+00:02:59,020 --> 00:02:59,920
+elements.
+
+62
+00:02:59,920 --> 00:03:03,450
+So this makes 48 calculations per element.
+
+63
+00:03:03,450 --> 00:03:07,030
+And we have 49 such elements in the intensity vector.
+
+64
+00:03:07,030 --> 00:03:12,310
+In total, we should compute 49 times 48 pairwise distances.
+
+65
+00:03:12,310 --> 00:03:16,340
+But due to symmetry, we really need to calculate half of them.
+
+66
+00:03:16,340 --> 00:03:19,380
+So the number of pairwise distance calculations is
+
+67
+00:03:19,380 --> 00:03:20,215
+actually (49*48)/2.
+
+68
+00:03:20,215 --> 00:03:23,060
+
+
+69
+00:03:23,060 --> 00:03:26,990
+In general, if we call the size of the intensity vector n,
+
+70
+00:03:26,990 --> 00:03:32,320
+then we need to compute n*(n-1)/2 pairwise distances
+
+71
+00:03:32,320 --> 00:03:35,320
+and store them in the distance matrix.
+
+72
+00:03:35,320 --> 00:03:38,780
+Now we should be ready to go to R.
+
+73
+00:03:38,780 --> 00:03:41,070
+I already navigated to the directory
+
+74
+00:03:41,070 --> 00:03:44,370
+where we saved the flower.csv file, which
+
+75
+00:03:44,370 --> 00:03:48,020
+contains the matrix of pixel intensities of a flower image.
+
+76
+00:03:48,020 --> 00:03:50,860
+Let us read in the matrix and save it to a data frame
+
+77
+00:03:50,860 --> 00:03:55,170
+and call it flower, then use the read.csv function
+
+78
+00:03:55,170 --> 00:03:58,690
+to instruct R to read in the flower dataset.
+
+79
+00:03:58,690 --> 00:04:01,060
+And then we have to explicitly mention
+
+80
+00:04:01,060 --> 00:04:03,805
+that we have no headers in the CSV file
+
+81
+00:04:03,805 --> 00:04:07,610
+because it only contains a matrix of intensity values.
+
+82
+00:04:07,610 --> 00:04:09,200
+So we're going to type header=FALSE.
+
+83
+00:04:09,200 --> 00:04:12,240
+
+
+84
+00:04:12,240 --> 00:04:14,280
+Note that the default in R assumes
+
+85
+00:04:14,280 --> 00:04:17,140
+that the first row in the dataset is the header.
+
+86
+00:04:17,140 --> 00:04:21,034
+So if we didn't specify that we have no headers in this case,
+
+87
+00:04:21,034 --> 00:04:22,450
+we would have lost the information
+
+88
+00:04:22,450 --> 00:04:25,880
+from the first row of the pixel intensity matrix.
+
+89
+00:04:25,880 --> 00:04:30,460
+Now let us look at the structure of the flower data frame.
+
+90
+00:04:30,460 --> 00:04:32,810
+We realize that the way the data is stored
+
+91
+00:04:32,810 --> 00:04:36,340
+does not reflect that this is a matrix of intensity values.
+
+92
+00:04:36,340 --> 00:04:40,410
+Actually, R treats the rows as observations and the columns
+
+93
+00:04:40,410 --> 00:04:42,340
+as variables.
+
+94
+00:04:42,340 --> 00:04:44,820
+Let's try to change the data type to a matrix
+
+95
+00:04:44,820 --> 00:04:47,630
+by using the as.matrix function.
+
+96
+00:04:47,630 --> 00:04:51,790
+So let's define our variable flowerMatrix
+
+97
+00:04:51,790 --> 00:04:54,670
+and then use the as.matrix function, which
+
+98
+00:04:54,670 --> 00:04:58,120
+takes as an input the flower data frame.
+
+99
+00:04:58,120 --> 00:05:02,930
+And now if we look at the structure of the flower matrix,
+
+100
+00:05:02,930 --> 00:05:07,770
+we realize that we have 50 rows and 50 columns.
+
+101
+00:05:07,770 --> 00:05:10,130
+What this suggests is that the resolution of the image
+
+102
+00:05:10,130 --> 00:05:13,670
+is 50 pixels in width and 50 pixels in height.
+
+103
+00:05:13,670 --> 00:05:16,850
+This is actually a very, very small picture.
+
+104
+00:05:16,850 --> 00:05:20,290
+I am very curious to see how this image looks like, but lets
+
+105
+00:05:20,290 --> 00:05:23,110
+hold off now and do our clustering first.
+
+106
+00:05:23,110 --> 00:05:25,730
+We do not want to be influenced by how the image looks
+
+107
+00:05:25,730 --> 00:05:28,240
+like in our decision of the numbers of clusters
+
+108
+00:05:28,240 --> 00:05:30,840
+we want to pick.
+
+109
+00:05:30,840 --> 00:05:32,480
+To perform any type of clustering,
+
+110
+00:05:32,480 --> 00:05:34,070
+we saw earlier that we would need
+
+111
+00:05:34,070 --> 00:05:36,470
+to convert the matrix of pixel intensities
+
+112
+00:05:36,470 --> 00:05:40,500
+to a vector that contains all the intensity values ranging
+
+113
+00:05:40,500 --> 00:05:41,930
+from zero to one.
+
+114
+00:05:41,930 --> 00:05:45,550
+And the clustering algorithm divides the intensity spectrum,
+
+115
+00:05:45,550 --> 00:05:48,490
+the interval zero to one, into these joint clusters
+
+116
+00:05:48,490 --> 00:05:49,490
+or intervals.
+
+117
+00:05:49,490 --> 00:05:54,100
+So let us define the vector flowerVector,
+
+118
+00:05:54,100 --> 00:05:58,650
+and then now we're going to use the function as.vector, which
+
+119
+00:05:58,650 --> 00:06:02,240
+takes as an input the flowerMatrix.
+
+120
+00:06:02,240 --> 00:06:07,020
+And now if we look at the structure of the flowerVector,
+
+121
+00:06:07,020 --> 00:06:12,570
+we realize that we have 2,500 numerical values, which
+
+122
+00:06:12,570 --> 00:06:14,110
+range between zero and one.
+
+123
+00:06:14,110 --> 00:06:18,310
+And this totally makes sense because this reflects the 50
+
+124
+00:06:18,310 --> 00:06:22,830
+times 50 intensity values that we had in our matrix.
+
+125
+00:06:22,830 --> 00:06:25,680
+Now you might be wondering why we can't immediately
+
+126
+00:06:25,680 --> 00:06:29,000
+convert the data frame flower to a vector.
+
+127
+00:06:29,000 --> 00:06:30,340
+Let's try to do this.
+
+128
+00:06:30,340 --> 00:06:33,700
+So let's go back to our as.vector function
+
+129
+00:06:33,700 --> 00:06:36,620
+and then have the input be the flower data
+
+130
+00:06:36,620 --> 00:06:38,850
+frame instead of the flower matrix.
+
+131
+00:06:38,850 --> 00:06:42,990
+And then, let's name this variable flowerVector2, simply
+
+132
+00:06:42,990 --> 00:06:45,791
+so that we don't overwrite the flower vector.
+
+133
+00:06:45,791 --> 00:06:47,290
+And now let's look at its structure.
+
+134
+00:06:47,290 --> 00:06:49,930
+
+
+135
+00:06:49,930 --> 00:06:53,750
+It seems that R reads it exactly like the flower data frame
+
+136
+00:06:53,750 --> 00:06:58,360
+and sees it as 50 observations and 50 variables.
+
+137
+00:06:58,360 --> 00:07:02,010
+So converting the data to a matrix and then to the vector
+
+138
+00:07:02,010 --> 00:07:04,210
+is a crucial step.
+
+139
+00:07:04,210 --> 00:07:07,660
+Now we should be ready to start our hierarchical clustering.
+
+140
+00:07:07,660 --> 00:07:10,850
+The first step is to create the distance matrix, as you already
+
+141
+00:07:10,850 --> 00:07:12,850
+know, which in this case computes
+
+142
+00:07:12,850 --> 00:07:15,970
+the difference between every two intensity values in our flower
+
+143
+00:07:15,970 --> 00:07:16,470
+vector.
+
+144
+00:07:16,470 --> 00:07:18,345
+So let's type distance=dist(flowerVector,
+
+145
+00:07:18,345 --> 00:07:19,178
+method="euclidean").
+
+146
+00:07:19,178 --> 00:07:31,930
+
+
+147
+00:07:31,930 --> 00:07:34,020
+Now that we have the distance, next
+
+148
+00:07:34,020 --> 00:07:37,540
+we will be computing the hierarchical clusters.
+

@@ -1,0 +1,44 @@
+0
+00:00:00,000 --> 00:00:00,140
+
+
+1
+00:00:00,140 --> 00:00:00,810
+Hi.
+
+2
+00:00:00,810 --> 00:00:04,400
+My name is Nataly, and I will be leading this recitation.
+
+3
+00:00:04,400 --> 00:00:08,000
+We will review hierarchical and k-means clustering techniques
+
+4
+00:00:08,000 --> 00:00:10,700
+and apply them to segment gray scale images--
+
+5
+00:00:10,700 --> 00:00:13,430
+in particular, MRI brain images.
+
+6
+00:00:13,430 --> 00:00:16,470
+Then we will conclude by overviewing all the analytics
+
+7
+00:00:16,470 --> 00:00:18,610
+tools we have seen so far in this class
+
+8
+00:00:18,610 --> 00:00:20,760
+to prepare for the class competition.
+
+9
+00:00:20,760 --> 00:00:22,700
+Let's get started.
+
+10
+00:00:22,700 --> 00:00:23,254
+
+

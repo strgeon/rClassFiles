@@ -1,0 +1,572 @@
+0
+00:00:00,000 --> 00:00:01,230
+
+
+1
+00:00:01,230 --> 00:00:04,340
+In the previous video we identified clusters, or tissue
+
+2
+00:00:04,340 --> 00:00:07,050
+substances, in a healthy brain image.
+
+3
+00:00:07,050 --> 00:00:08,780
+It would be really helpful if we can
+
+4
+00:00:08,780 --> 00:00:11,460
+use these clusters to automatically detect
+
+5
+00:00:11,460 --> 00:00:14,950
+tumors in MRI images of sick patients.
+
+6
+00:00:14,950 --> 00:00:18,620
+The tumor.csv file corresponds to an MRI brain image
+
+7
+00:00:18,620 --> 00:00:21,560
+of a patient with oligodendroglioma,
+
+8
+00:00:21,560 --> 00:00:25,540
+a tumor that commonly occurs in the front lobe of the brain.
+
+9
+00:00:25,540 --> 00:00:28,500
+Since brain biopsy is the only definite diagnosis
+
+10
+00:00:28,500 --> 00:00:33,260
+of this tumor, MRI guidance is key in determining its location
+
+11
+00:00:33,260 --> 00:00:34,680
+and geometry.
+
+12
+00:00:34,680 --> 00:00:37,450
+Now, make sure that the tumor.csv file
+
+13
+00:00:37,450 --> 00:00:39,450
+is in your current directory.
+
+14
+00:00:39,450 --> 00:00:42,280
+Let's go to the console, and clear it, and then
+
+15
+00:00:42,280 --> 00:00:44,990
+read the data, and save it to a data frame
+
+16
+00:00:44,990 --> 00:00:49,560
+that we're going to call tumor, and use the read.csv function,
+
+17
+00:00:49,560 --> 00:00:52,330
+which takes as an input the tumor dataset,
+
+18
+00:00:52,330 --> 00:00:55,040
+and make sure to turn off the header using header
+
+19
+00:00:55,040 --> 00:00:56,790
+equals FALSE.
+
+20
+00:00:56,790 --> 00:01:00,350
+And let's quickly create our tumorMatrix,
+
+21
+00:01:00,350 --> 00:01:04,699
+using the as.matrix function over the tumor data
+
+22
+00:01:04,699 --> 00:01:09,600
+frame, and the tumorVector, using the as.vector
+
+23
+00:01:09,600 --> 00:01:11,650
+function over the tumorMatrix.
+
+24
+00:01:11,650 --> 00:01:16,560
+
+
+25
+00:01:16,560 --> 00:01:19,210
+Now, we will not run the k-means algorithm again
+
+26
+00:01:19,210 --> 00:01:20,880
+on the tumor vector.
+
+27
+00:01:20,880 --> 00:01:24,260
+Instead, we will apply the k-means clustering results
+
+28
+00:01:24,260 --> 00:01:26,370
+that we found using the healthy brain
+
+29
+00:01:26,370 --> 00:01:28,650
+image on the tumor vector.
+
+30
+00:01:28,650 --> 00:01:31,180
+In other words, we treat the healthy vector
+
+31
+00:01:31,180 --> 00:01:35,430
+as training set and the tumor vector as a testing set.
+
+32
+00:01:35,430 --> 00:01:37,520
+To do this, we first need to install
+
+33
+00:01:37,520 --> 00:01:40,092
+a new package that is called flexclust.
+
+34
+00:01:40,092 --> 00:01:41,925
+So let us type install.packages("flexclust").
+
+35
+00:01:41,925 --> 00:01:48,550
+
+
+36
+00:01:48,550 --> 00:01:50,300
+And then the first thing R will ask
+
+37
+00:01:50,300 --> 00:01:52,790
+us is to set the region that is closest
+
+38
+00:01:52,790 --> 00:01:54,970
+to our geographical location.
+
+39
+00:01:54,970 --> 00:01:58,280
+And after that, press OK, and the installation
+
+40
+00:01:58,280 --> 00:02:02,311
+shouldn't take more than two seconds to complete.
+
+41
+00:02:02,311 --> 00:02:02,810
+OK.
+
+42
+00:02:02,810 --> 00:02:04,710
+Now that the package is installed,
+
+43
+00:02:04,710 --> 00:02:06,925
+let us load it by typing library(flexclust).
+
+44
+00:02:06,925 --> 00:02:13,020
+
+
+45
+00:02:13,020 --> 00:02:16,920
+The flexclust package contains the object class KCCA,
+
+46
+00:02:16,920 --> 00:02:20,890
+which stands for K-Centroids Cluster Analysis.
+
+47
+00:02:20,890 --> 00:02:23,450
+We need to convert the information from the clustering
+
+48
+00:02:23,450 --> 00:02:27,500
+algorithm to an object of the class KCCA.
+
+49
+00:02:27,500 --> 00:02:29,480
+And this conversion is needed before we
+
+50
+00:02:29,480 --> 00:02:32,770
+can use the predict function on the test set tumorVector.
+
+51
+00:02:32,770 --> 00:02:37,670
+So calling our new variable KMC.kcca
+
+52
+00:02:37,670 --> 00:02:41,120
+and then using the as.kcca function, which
+
+53
+00:02:41,120 --> 00:02:46,500
+takes as a first input the original KMC variable that
+
+54
+00:02:46,500 --> 00:02:49,230
+stored all the information from the k-means clustering
+
+55
+00:02:49,230 --> 00:02:53,220
+function, and the second input is the data that we clustered.
+
+56
+00:02:53,220 --> 00:02:55,460
+And in this case, it's the training set,
+
+57
+00:02:55,460 --> 00:02:56,810
+which is the healthyVector.
+
+58
+00:02:56,810 --> 00:03:00,000
+
+
+59
+00:03:00,000 --> 00:03:02,300
+And now, be aware that this data conversion
+
+60
+00:03:02,300 --> 00:03:05,350
+will take some time to run.
+
+61
+00:03:05,350 --> 00:03:10,070
+Now that R finally finished creating the object KMC.kcca,
+
+62
+00:03:10,070 --> 00:03:12,900
+we can cluster the pixels in the tumorVector
+
+63
+00:03:12,900 --> 00:03:14,930
+using the predict function.
+
+64
+00:03:14,930 --> 00:03:17,130
+Let us call the cluster vector tumorClusters =
+
+65
+00:03:17,130 --> 00:03:18,755
+predict(KMC.kcca, newdata=tumorVector).
+
+66
+00:03:18,755 --> 00:03:38,070
+
+
+67
+00:03:38,070 --> 00:03:40,870
+And now, the tumorClusters is a vector
+
+68
+00:03:40,870 --> 00:03:44,940
+that assigns a value 1 through 5 to each of the intensity
+
+69
+00:03:44,940 --> 00:03:47,550
+values in the tumorVector, as predicted
+
+70
+00:03:47,550 --> 00:03:49,880
+by the k-means algorithm.
+
+71
+00:03:49,880 --> 00:03:52,340
+To output the segmented image, we first
+
+72
+00:03:52,340 --> 00:03:55,270
+need to convert the tumor clusters to a matrix.
+
+73
+00:03:55,270 --> 00:03:57,860
+So let's use the dimension function,
+
+74
+00:03:57,860 --> 00:04:01,155
+and then the input is simply tumorClusters,
+
+75
+00:04:01,155 --> 00:04:03,640
+and then using the c function with the first input
+
+76
+00:04:03,640 --> 00:04:08,060
+as the number of rows in the tumorMatrix
+
+77
+00:04:08,060 --> 00:04:09,800
+and the second input as the number
+
+78
+00:04:09,800 --> 00:04:13,540
+of columns in the tumorMatrix.
+
+79
+00:04:13,540 --> 00:04:15,780
+And now, we can visualize the clusters
+
+80
+00:04:15,780 --> 00:04:20,649
+by using the image function with the input tumorClusters matrix,
+
+81
+00:04:20,649 --> 00:04:23,570
+and make sure to set the axes to FALSE,
+
+82
+00:04:23,570 --> 00:04:27,750
+and let's use again these fancy rainbow colors, here.
+
+83
+00:04:27,750 --> 00:04:29,055
+So col=rainbow(k).
+
+84
+00:04:29,055 --> 00:04:33,010
+
+
+85
+00:04:33,010 --> 00:04:35,850
+Again, k is equal to 5.
+
+86
+00:04:35,850 --> 00:04:36,520
+Alright.
+
+87
+00:04:36,520 --> 00:04:38,500
+Let's navigate to the graphics window,
+
+88
+00:04:38,500 --> 00:04:41,540
+now, to see if we can detect the tumor.
+
+89
+00:04:41,540 --> 00:04:42,840
+Oh, and yes, we do!
+
+90
+00:04:42,840 --> 00:04:45,010
+It is this abnormal substance here
+
+91
+00:04:45,010 --> 00:04:47,070
+that is highlighted in blue that was not
+
+92
+00:04:47,070 --> 00:04:49,700
+present in the healthy MRI image.
+
+93
+00:04:49,700 --> 00:04:53,800
+So we were successfully able to identify, more or less,
+
+94
+00:04:53,800 --> 00:04:57,390
+the geometry of the malignant structure.
+
+95
+00:04:57,390 --> 00:05:00,160
+We see that we did a good job capturing the major tissue
+
+96
+00:05:00,160 --> 00:05:02,040
+substances of the brain.
+
+97
+00:05:02,040 --> 00:05:05,230
+The grey matter is highlighted in purple and the white matter
+
+98
+00:05:05,230 --> 00:05:06,480
+in yellow.
+
+99
+00:05:06,480 --> 00:05:08,860
+For the sick patient, the substance highlighted in blue
+
+100
+00:05:08,860 --> 00:05:11,440
+is the oligodendroglioma tumor.
+
+101
+00:05:11,440 --> 00:05:14,200
+Notice that we do not see substantial blue regions
+
+102
+00:05:14,200 --> 00:05:16,200
+in the healthy brain image, apart
+
+103
+00:05:16,200 --> 00:05:18,610
+from the region around the eyes.
+
+104
+00:05:18,610 --> 00:05:21,260
+Actually, looking at the eyes regions,
+
+105
+00:05:21,260 --> 00:05:24,410
+we notice that the two images were not taken precisely
+
+106
+00:05:24,410 --> 00:05:26,620
+at the same section of the brain.
+
+107
+00:05:26,620 --> 00:05:28,340
+This might explain some differences
+
+108
+00:05:28,340 --> 00:05:31,230
+in shapes between the two images.
+
+109
+00:05:31,230 --> 00:05:34,390
+Let's see how the images look like originally.
+
+110
+00:05:34,390 --> 00:05:38,260
+We see that the tumor region has a lighter color intensity,
+
+111
+00:05:38,260 --> 00:05:40,740
+which is very similar to the region around the eyes
+
+112
+00:05:40,740 --> 00:05:42,620
+in the healthy brain image.
+
+113
+00:05:42,620 --> 00:05:46,070
+This might explain highlighting this region in blue.
+
+114
+00:05:46,070 --> 00:05:49,140
+Of course, we cannot claim that we did a wonderful job
+
+115
+00:05:49,140 --> 00:05:52,670
+obtaining the exact geometries of all the tissue substances,
+
+116
+00:05:52,670 --> 00:05:55,440
+but we are definitely on the right track.
+
+117
+00:05:55,440 --> 00:05:59,010
+In fact, to do so, we need to use more advanced algorithms
+
+118
+00:05:59,010 --> 00:06:01,600
+and fine-tune our clustering technique.
+
+119
+00:06:01,600 --> 00:06:05,490
+MRI image segmentation is an ongoing field of research.
+
+120
+00:06:05,490 --> 00:06:08,350
+While k-means clustering is a good starting point,
+
+121
+00:06:08,350 --> 00:06:09,850
+more advanced techniques have been
+
+122
+00:06:09,850 --> 00:06:13,270
+proposed in the literature, such as the modified fuzzy k-means
+
+123
+00:06:13,270 --> 00:06:14,970
+clustering method.
+
+124
+00:06:14,970 --> 00:06:17,430
+Also, if you are interested, R has
+
+125
+00:06:17,430 --> 00:06:22,300
+packages that are specialized for analyzing medical images.
+
+126
+00:06:22,300 --> 00:06:25,100
+Now, if we had MRI axial images taken
+
+127
+00:06:25,100 --> 00:06:27,140
+at different sections of the brain,
+
+128
+00:06:27,140 --> 00:06:30,230
+we could segment each image and capture the geometries
+
+129
+00:06:30,230 --> 00:06:32,800
+of the substances at different levels.
+
+130
+00:06:32,800 --> 00:06:36,490
+Then, by interpolating between the segmented images,
+
+131
+00:06:36,490 --> 00:06:39,320
+we can estimate the missing slices,
+
+132
+00:06:39,320 --> 00:06:42,400
+and we can then obtain a 3D reconstruction
+
+133
+00:06:42,400 --> 00:06:46,900
+of the anatomy of the brain from 2D MRI cross-sections.
+
+134
+00:06:46,900 --> 00:06:50,440
+In fact, 3D reconstruction is particularly
+
+135
+00:06:50,440 --> 00:06:53,290
+important in the medical field for diagnosis,
+
+136
+00:06:53,290 --> 00:06:57,642
+surgical planning, and biological research purposes.
+
+137
+00:06:57,642 --> 00:06:59,780
+I hope that this recitation gave you
+
+138
+00:06:59,780 --> 00:07:03,770
+a flavor of this fascinating field of image segmentation.
+
+139
+00:07:03,770 --> 00:07:07,110
+In our next video, we will review all the analytics tools
+
+140
+00:07:07,110 --> 00:07:09,160
+we have covered so far in this class
+
+141
+00:07:09,160 --> 00:07:13,240
+and discuss their uses, pros, and cons.
+
+142
+00:07:13,240 --> 00:07:13,840
+
+

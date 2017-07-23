@@ -1,0 +1,304 @@
+0
+00:00:00,000 --> 00:00:01,130
+
+
+1
+00:00:01,130 --> 00:00:03,990
+In this video we will compare all the different methods
+
+2
+00:00:03,990 --> 00:00:06,800
+we have seen so far in this course and review what
+
+3
+00:00:06,800 --> 00:00:11,040
+they are used for, their benefits, and limitations.
+
+4
+00:00:11,040 --> 00:00:14,878
+Linear regression is used to predict a continuous outcome.
+
+5
+00:00:14,878 --> 00:00:17,530
+Linear regression is simple and commonly used,
+
+6
+00:00:17,530 --> 00:00:20,380
+and it works on small and large data sets.
+
+7
+00:00:20,380 --> 00:00:24,130
+The downside is that it assumes a linear relationship.
+
+8
+00:00:24,130 --> 00:00:26,220
+If we have a nonlinear relationship,
+
+9
+00:00:26,220 --> 00:00:29,170
+we need to add variables to our analysis.
+
+10
+00:00:29,170 --> 00:00:34,390
+For instance, suppose y = a*log(X)+b, where x is data,
+
+11
+00:00:34,390 --> 00:00:36,660
+and y is what we need to predict.
+
+12
+00:00:36,660 --> 00:00:39,270
+To be able to find the coefficients a and b
+
+13
+00:00:39,270 --> 00:00:41,070
+through linear regression, we need
+
+14
+00:00:41,070 --> 00:00:43,990
+to view log(X) as a new variable.
+
+15
+00:00:43,990 --> 00:00:48,500
+Remember that we did this in the Google homework problem.
+
+16
+00:00:48,500 --> 00:00:52,450
+Logistic regression is used to predict a categorical outcome.
+
+17
+00:00:52,450 --> 00:00:56,470
+We mainly focused on binary outcomes, like yes or no,
+
+18
+00:00:56,470 --> 00:01:00,810
+sell or buy, accept or reject, and so on.
+
+19
+00:01:00,810 --> 00:01:04,019
+We have seen it applied to predict the quality of care,
+
+20
+00:01:04,019 --> 00:01:07,930
+good or bad; the winner of the US presidential election,
+
+21
+00:01:07,930 --> 00:01:12,030
+Republican or Democrat; parole violation and loan payment, yes
+
+22
+00:01:12,030 --> 00:01:13,400
+or no.
+
+23
+00:01:13,400 --> 00:01:15,790
+In addition to its relative simplicity,
+
+24
+00:01:15,790 --> 00:01:18,200
+logistic regression computes probabilities
+
+25
+00:01:18,200 --> 00:01:21,850
+that can be used to assess the confidence of our prediction.
+
+26
+00:01:21,850 --> 00:01:26,300
+The downside is again similar to that of linear regression.
+
+27
+00:01:26,300 --> 00:01:28,370
+In the trees week we learned CART,
+
+28
+00:01:28,370 --> 00:01:30,950
+which is used to predict a categorical outcome,
+
+29
+00:01:30,950 --> 00:01:34,000
+with possibly more than two categories, like quality
+
+30
+00:01:34,000 --> 00:01:36,710
+rating, from one to five, and three decisions,
+
+31
+00:01:36,710 --> 00:01:38,910
+say, buy, sell, or hold.
+
+32
+00:01:38,910 --> 00:01:41,620
+It can also predict a continuous outcome,
+
+33
+00:01:41,620 --> 00:01:44,090
+such as salary or price.
+
+34
+00:01:44,090 --> 00:01:45,730
+We have seen it applied to predict
+
+35
+00:01:45,730 --> 00:01:49,000
+life expectancy, earnings from census data,
+
+36
+00:01:49,000 --> 00:01:51,370
+and letter recognition.
+
+37
+00:01:51,370 --> 00:01:53,320
+The power of CART lies in the fact
+
+38
+00:01:53,320 --> 00:01:55,560
+that it can handle nonlinear relationships
+
+39
+00:01:55,560 --> 00:01:57,220
+between variables.
+
+40
+00:01:57,220 --> 00:02:00,960
+The tree representation makes it easy to visualize and interpret
+
+41
+00:02:00,960 --> 00:02:02,260
+the results.
+
+42
+00:02:02,260 --> 00:02:04,370
+The downside is that CART may not
+
+43
+00:02:04,370 --> 00:02:07,820
+work very well on small data sets.
+
+44
+00:02:07,820 --> 00:02:10,190
+Random forest is also used to predict
+
+45
+00:02:10,190 --> 00:02:13,550
+categorical outcomes or continuous outcomes.
+
+46
+00:02:13,550 --> 00:02:16,880
+Its benefit over CART is that it can improve the prediction
+
+47
+00:02:16,880 --> 00:02:18,090
+accuracy.
+
+48
+00:02:18,090 --> 00:02:20,440
+However, we need to adjust many parameters
+
+49
+00:02:20,440 --> 00:02:24,080
+and it's not as easy to explain as CART
+
+50
+00:02:24,080 --> 00:02:26,860
+This week, we learned hierarchical clustering,
+
+51
+00:02:26,860 --> 00:02:29,520
+which is used to find similar groups.
+
+52
+00:02:29,520 --> 00:02:31,900
+An important aspect of clustering data
+
+53
+00:02:31,900 --> 00:02:34,730
+into smaller groups is that we can improve our prediction
+
+54
+00:02:34,730 --> 00:02:37,720
+accuracy by applying our predictive methods,
+
+55
+00:02:37,720 --> 00:02:41,730
+like logistic regression for instance, on each cluster.
+
+56
+00:02:41,730 --> 00:02:44,720
+We expand on this cluster-then-predict idea
+
+57
+00:02:44,720 --> 00:02:47,450
+in one of our homework problems.
+
+58
+00:02:47,450 --> 00:02:50,330
+Hierarchical clustering is an attractive technique,
+
+59
+00:02:50,330 --> 00:02:53,060
+because we do not need to select the number of clusters
+
+60
+00:02:53,060 --> 00:02:55,110
+before running the algorithm.
+
+61
+00:02:55,110 --> 00:02:58,935
+Also, we can visualize the clusters using a dendrogram.
+
+62
+00:02:58,935 --> 00:03:01,680
+The drawback though, is that hierarchical clustering
+
+63
+00:03:01,680 --> 00:03:03,890
+is hard to use on large data sets,
+
+64
+00:03:03,890 --> 00:03:06,570
+because of the pairwise distance calculation,
+
+65
+00:03:06,570 --> 00:03:09,320
+as we saw in this recitation.
+
+66
+00:03:09,320 --> 00:03:12,110
+An alternative method is k-means clustering,
+
+67
+00:03:12,110 --> 00:03:15,180
+which works well on data sets of any size.
+
+68
+00:03:15,180 --> 00:03:17,200
+However, k-means requires selecting
+
+69
+00:03:17,200 --> 00:03:20,900
+the number of clusters before running the algorithm.
+
+70
+00:03:20,900 --> 00:03:22,910
+This may not be a limitation if we
+
+71
+00:03:22,910 --> 00:03:26,410
+have an intuition of the number of clusters we want to look at,
+
+72
+00:03:26,410 --> 00:03:30,570
+as in the medical image segmentation example.
+
+73
+00:03:30,570 --> 00:03:33,310
+I hope that this quick review gave you a good refresher
+
+74
+00:03:33,310 --> 00:03:35,115
+before the competition week.
+
+75
+00:03:35,115 --> 00:03:37,020
+Good luck.
+

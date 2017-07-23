@@ -1,0 +1,324 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,670
+In this recitation, we will see how
+
+2
+00:00:02,670 --> 00:00:06,150
+to apply clustering techniques to segment images,
+
+3
+00:00:06,150 --> 00:00:09,190
+with the main application being geared towards medical image
+
+4
+00:00:09,190 --> 00:00:10,770
+segmentation.
+
+5
+00:00:10,770 --> 00:00:12,900
+At the end of this recitation, you
+
+6
+00:00:12,900 --> 00:00:16,379
+will get a head start on how to cluster an MRI brain
+
+7
+00:00:16,379 --> 00:00:21,442
+image by tissue substances and locate pathological anatomies.
+
+8
+00:00:21,442 --> 00:00:23,500
+Image segmentation is the process
+
+9
+00:00:23,500 --> 00:00:27,200
+of partitioning digital images into regions, or segments,
+
+10
+00:00:27,200 --> 00:00:30,750
+that share the same visual characteristics, such as color,
+
+11
+00:00:30,750 --> 00:00:32,890
+intensity, or texture.
+
+12
+00:00:32,890 --> 00:00:35,250
+The segments should also be meaningful,
+
+13
+00:00:35,250 --> 00:00:39,040
+as in they should correspond to particular surfaces, objects,
+
+14
+00:00:39,040 --> 00:00:41,430
+or even parts of an object.
+
+15
+00:00:41,430 --> 00:00:43,490
+Think of having an image of a water pond,
+
+16
+00:00:43,490 --> 00:00:46,290
+a mountain chain in the backdrop, and the sky.
+
+17
+00:00:46,290 --> 00:00:48,430
+Segmenting this image should ideally
+
+18
+00:00:48,430 --> 00:00:50,690
+detect the three different objects
+
+19
+00:00:50,690 --> 00:00:52,600
+and assign their corresponding pixels
+
+20
+00:00:52,600 --> 00:00:55,000
+to three different regions.
+
+21
+00:00:55,000 --> 00:00:57,830
+In few words, the goal of image segmentation
+
+22
+00:00:57,830 --> 00:01:01,810
+is to modify the representation of an image from pixel data
+
+23
+00:01:01,810 --> 00:01:05,980
+into something meaningful to us and easier to analyze.
+
+24
+00:01:05,980 --> 00:01:09,110
+Image segmentation has a wide applicability.
+
+25
+00:01:09,110 --> 00:01:11,595
+A major practical application is in the field
+
+26
+00:01:11,595 --> 00:01:14,670
+of medical imaging, where image segments often
+
+27
+00:01:14,670 --> 00:01:19,140
+correspond to different tissues, organs, pathologies, or tumors.
+
+28
+00:01:19,140 --> 00:01:22,530
+Image segmentation helps locate these geometrically complex
+
+29
+00:01:22,530 --> 00:01:25,530
+objects and measure their volume.
+
+30
+00:01:25,530 --> 00:01:27,950
+Another application is detecting instances
+
+31
+00:01:27,950 --> 00:01:32,110
+of semantic objects such as humans, buildings, and others.
+
+32
+00:01:32,110 --> 00:01:34,850
+The two major domains that have seen much attention
+
+33
+00:01:34,850 --> 00:01:38,560
+recently include face and pedestrian detection.
+
+34
+00:01:38,560 --> 00:01:40,870
+The main uses of facial detection, for instance,
+
+35
+00:01:40,870 --> 00:01:44,640
+include the development of the auto-focus in digital cameras
+
+36
+00:01:44,640 --> 00:01:49,150
+and face recognition commonly used in video surveillance.
+
+37
+00:01:49,150 --> 00:01:52,290
+Other important applications are fingerprint and iris
+
+38
+00:01:52,290 --> 00:01:53,470
+recognition.
+
+39
+00:01:53,470 --> 00:01:55,800
+For instance, fingerprint recognition
+
+40
+00:01:55,800 --> 00:01:58,450
+tries to identify print patterns, including
+
+41
+00:01:58,450 --> 00:02:02,520
+aggregate characteristics of ridges and minutiae points.
+
+42
+00:02:02,520 --> 00:02:05,270
+In this recitation, we will look in particular
+
+43
+00:02:05,270 --> 00:02:08,960
+at the medical imaging application.
+
+44
+00:02:08,960 --> 00:02:11,860
+Various methods have been proposed to segment images.
+
+45
+00:02:11,860 --> 00:02:14,160
+Clustering methods are used to group the points
+
+46
+00:02:14,160 --> 00:02:17,520
+into clusters according to their characteristic features,
+
+47
+00:02:17,520 --> 00:02:19,910
+for instance, intensity values.
+
+48
+00:02:19,910 --> 00:02:21,930
+These clusters are then mapped back
+
+49
+00:02:21,930 --> 00:02:24,740
+to the original spatial domain to produce
+
+50
+00:02:24,740 --> 00:02:27,380
+a segmentation of the image.
+
+51
+00:02:27,380 --> 00:02:29,960
+Another technique is edge detection,
+
+52
+00:02:29,960 --> 00:02:34,020
+which is based on detecting discontinuities or boundaries.
+
+53
+00:02:34,020 --> 00:02:36,230
+For instance, in a gray-scale image,
+
+54
+00:02:36,230 --> 00:02:38,600
+a boundary would correspond to an abrupt change
+
+55
+00:02:38,600 --> 00:02:41,180
+in the gray level.
+
+56
+00:02:41,180 --> 00:02:43,570
+Instead of finding boundaries of regions in the image,
+
+57
+00:02:43,570 --> 00:02:45,560
+there are other techniques called region
+
+58
+00:02:45,560 --> 00:02:47,760
+growing methods, which start dividing
+
+59
+00:02:47,760 --> 00:02:50,180
+the image into small regions.
+
+60
+00:02:50,180 --> 00:02:53,540
+Then, they sequentially merge these regions together
+
+61
+00:02:53,540 --> 00:02:56,340
+if they are sufficiently similar.
+
+62
+00:02:56,340 --> 00:03:00,350
+In this recitation, our focus is on clustering methods.
+
+63
+00:03:00,350 --> 00:03:03,560
+In particular, we will review hierarchical and k-means
+
+64
+00:03:03,560 --> 00:03:07,160
+clustering techniques and how to use them in R.
+
+65
+00:03:07,160 --> 00:03:10,530
+We will restrict ourselves to gray-scale images.
+
+66
+00:03:10,530 --> 00:03:13,890
+Our first example is a low-resolution flower image
+
+67
+00:03:13,890 --> 00:03:15,920
+whose pixel intensity information
+
+68
+00:03:15,920 --> 00:03:19,360
+is given the data set flower.csv.
+
+69
+00:03:19,360 --> 00:03:23,240
+Our second and major example involves two weighted MRI
+
+70
+00:03:23,240 --> 00:03:24,810
+images of the brain.
+
+71
+00:03:24,810 --> 00:03:27,590
+One image corresponds to a healthy patient,
+
+72
+00:03:27,590 --> 00:03:30,610
+and the other one corresponds to a patient with a tumor
+
+73
+00:03:30,610 --> 00:03:32,950
+called oligodendroglioma.
+
+74
+00:03:32,950 --> 00:03:35,990
+The pixel intensity information of these two images
+
+75
+00:03:35,990 --> 00:03:40,410
+are given in the data sets healthy and tumor.csv.
+
+76
+00:03:40,410 --> 00:03:43,370
+The last video will compare the use, pros,
+
+77
+00:03:43,370 --> 00:03:47,430
+and cons of all the analytics tools that we have seen so far.
+
+78
+00:03:47,430 --> 00:03:50,160
+I hope that this will help you synthesize all
+
+79
+00:03:50,160 --> 00:03:52,460
+that you've learned to give you an edge in the class
+
+80
+00:03:52,460 --> 00:03:55,590
+competition that is coming up soon.
+

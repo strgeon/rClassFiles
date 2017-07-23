@@ -1,0 +1,528 @@
+0
+00:00:00,000 --> 00:00:01,050
+
+
+1
+00:00:01,050 --> 00:00:04,400
+Recall from our last video that it was impossible for us
+
+2
+00:00:04,400 --> 00:00:06,775
+to use hierarchical clustering because
+
+3
+00:00:06,775 --> 00:00:09,380
+of the high resolution of our image.
+
+4
+00:00:09,380 --> 00:00:11,660
+So in this video, we will try to segment
+
+5
+00:00:11,660 --> 00:00:16,250
+the MRI image using the k-means clustering algorithm.
+
+6
+00:00:16,250 --> 00:00:18,210
+The first step in k-means clustering
+
+7
+00:00:18,210 --> 00:00:21,250
+involves specifying the number of clusters, k.
+
+8
+00:00:21,250 --> 00:00:23,650
+But how do we select k?
+
+9
+00:00:23,650 --> 00:00:27,370
+Well, our clusters would ideally assign each point in the image
+
+10
+00:00:27,370 --> 00:00:28,390
+to a tissue class
+
+11
+00:00:28,390 --> 00:00:31,340
+or a particular substance, for instance,
+
+12
+00:00:31,340 --> 00:00:34,460
+grey matter or white matter, and so on.
+
+13
+00:00:34,460 --> 00:00:37,650
+And these substances are known to the medical community.
+
+14
+00:00:37,650 --> 00:00:40,120
+So setting the number of clusters
+
+15
+00:00:40,120 --> 00:00:42,070
+depends on exactly what you're trying
+
+16
+00:00:42,070 --> 00:00:44,310
+to extract from the image.
+
+17
+00:00:44,310 --> 00:00:46,770
+For the sake of our example, let's set the number
+
+18
+00:00:46,770 --> 00:00:50,740
+of clusters here, k, to five.
+
+19
+00:00:50,740 --> 00:00:53,000
+And since the k-means clustering algorithm
+
+20
+00:00:53,000 --> 00:00:56,100
+starts by randomly assigning points to clusters,
+
+21
+00:00:56,100 --> 00:00:58,090
+we should set the seed, so that we all
+
+22
+00:00:58,090 --> 00:00:59,720
+obtain the same clusters.
+
+23
+00:00:59,720 --> 00:01:04,660
+So let's type set.seed, and give it a value of 1.
+
+24
+00:01:04,660 --> 00:01:09,350
+To run the k-means clustering algorithm, or KMC in short,
+
+25
+00:01:09,350 --> 00:01:12,140
+we need to use the kmeans function in R.
+
+26
+00:01:12,140 --> 00:01:15,490
+And the first input is whatever we are trying to cluster.
+
+27
+00:01:15,490 --> 00:01:19,430
+In this case it is the healthy vector.
+
+28
+00:01:19,430 --> 00:01:22,670
+The second argument is the number of clusters,
+
+29
+00:01:22,670 --> 00:01:26,840
+and we can specify it using the argument centers,
+
+30
+00:01:26,840 --> 00:01:29,060
+and that would be equal to k.
+
+31
+00:01:29,060 --> 00:01:32,195
+And then finally, since the k-means is an iterative method
+
+32
+00:01:32,195 --> 00:01:34,880
+that could take very long to converge,
+
+33
+00:01:34,880 --> 00:01:37,570
+we need to set a maximum number of iterations.
+
+34
+00:01:37,570 --> 00:01:41,200
+And we can do this by typing iter.max,
+
+35
+00:01:41,200 --> 00:01:44,540
+and give it, for instance, the value 1,000.
+
+36
+00:01:44,540 --> 00:01:47,620
+And now let's run the k-means algorithm.
+
+37
+00:01:47,620 --> 00:01:50,290
+The k-means algorithm is actually quite fast,
+
+38
+00:01:50,290 --> 00:01:53,680
+even though we have a high resolution image.
+
+39
+00:01:53,680 --> 00:01:56,980
+Now to see the result of the k-means clustering algorithm,
+
+40
+00:01:56,980 --> 00:02:01,160
+we can output the structure of the KMC variable.
+
+41
+00:02:01,160 --> 00:02:03,640
+The first, and most important, piece of information
+
+42
+00:02:03,640 --> 00:02:05,890
+that we get, is the cluster vector.
+
+43
+00:02:05,890 --> 00:02:09,020
+Which assigns each intensity value in the healthy vector
+
+44
+00:02:09,020 --> 00:02:10,250
+to a cluster.
+
+45
+00:02:10,250 --> 00:02:12,690
+In this case, it will be giving them values 1
+
+46
+00:02:12,690 --> 00:02:15,950
+through 5, since we have 5 clusters.
+
+47
+00:02:15,950 --> 00:02:18,330
+Now recall that to output the segmented image,
+
+48
+00:02:18,330 --> 00:02:20,440
+we need to extract this vector.
+
+49
+00:02:20,440 --> 00:02:23,470
+The way to do this is by using the dollar notation.
+
+50
+00:02:23,470 --> 00:02:27,900
+For instance, let us define healthyClusters,
+
+51
+00:02:27,900 --> 00:02:29,860
+and then set it equal to KMC$cluster.
+
+52
+00:02:29,860 --> 00:02:33,380
+
+
+53
+00:02:33,380 --> 00:02:35,050
+And what we're basically doing here
+
+54
+00:02:35,050 --> 00:02:37,410
+is that we are taking the information,
+
+55
+00:02:37,410 --> 00:02:40,340
+extracting the information of the cluster vector,
+
+56
+00:02:40,340 --> 00:02:42,630
+and putting it in the new variable that
+
+57
+00:02:42,630 --> 00:02:45,200
+is called healthyClusters.
+
+58
+00:02:45,200 --> 00:02:48,310
+Now how can we obtain the mean intensity value
+
+59
+00:02:48,310 --> 00:02:50,850
+within each of our 5 clusters?
+
+60
+00:02:50,850 --> 00:02:54,480
+In hierarchical clustering, we needed to do some manual work,
+
+61
+00:02:54,480 --> 00:02:58,350
+and use the tapply function to extract this information.
+
+62
+00:02:58,350 --> 00:03:01,036
+In this case, we have the answers ready,
+
+63
+00:03:01,036 --> 00:03:03,360
+under the vector centers.
+
+64
+00:03:03,360 --> 00:03:06,490
+In fact, for instance, the mean intensity value
+
+65
+00:03:06,490 --> 00:03:10,460
+of the first cluster is 0.48, and the mean intensity value
+
+66
+00:03:10,460 --> 00:03:13,510
+of the last cluster is 0.18.
+
+67
+00:03:13,510 --> 00:03:16,230
+We can also extract this information using the dollar
+
+68
+00:03:16,230 --> 00:03:16,730
+sign.
+
+69
+00:03:16,730 --> 00:03:18,160
+For instance, KMC$centers[2].
+
+70
+00:03:18,160 --> 00:03:23,010
+
+
+71
+00:03:23,010 --> 00:03:25,540
+This should give us the mean intensity value
+
+72
+00:03:25,540 --> 00:03:28,390
+of the second cluster, which is 0.1.
+
+73
+00:03:28,390 --> 00:03:31,345
+And indeed, this is what we obtain.
+
+74
+00:03:31,345 --> 00:03:34,280
+Before we move on, I would like to point your attention
+
+75
+00:03:34,280 --> 00:03:37,020
+to one last interesting piece of information
+
+76
+00:03:37,020 --> 00:03:38,380
+that we can get here.
+
+77
+00:03:38,380 --> 00:03:41,060
+And that is the size of the cluster.
+
+78
+00:03:41,060 --> 00:03:43,870
+For instance, the largest cluster that we have
+
+79
+00:03:43,870 --> 00:03:49,060
+is the third one, which combines 133,000 values in it.
+
+80
+00:03:49,060 --> 00:03:51,330
+And interestingly, it's the one that
+
+81
+00:03:51,330 --> 00:03:54,540
+has the smallest mean intensity value, which
+
+82
+00:03:54,540 --> 00:03:58,370
+means that it corresponds to the darkest shade in our image.
+
+83
+00:03:58,370 --> 00:04:01,390
+Actually, if we look at all the mean intensity values,
+
+84
+00:04:01,390 --> 00:04:04,390
+we can see that they are all less than 0.5.
+
+85
+00:04:04,390 --> 00:04:06,660
+So they're all pretty close to 0.
+
+86
+00:04:06,660 --> 00:04:09,330
+And this means that our images is pretty dark.
+
+87
+00:04:09,330 --> 00:04:12,730
+If we look at our image again, it's indeed very dark.
+
+88
+00:04:12,730 --> 00:04:16,730
+And we have very few points that are actually white.
+
+89
+00:04:16,730 --> 00:04:18,760
+Now the exciting part.
+
+90
+00:04:18,760 --> 00:04:22,290
+Let us output the segmented image and see what we get.
+
+91
+00:04:22,290 --> 00:04:24,050
+Recall that we first need to convert
+
+92
+00:04:24,050 --> 00:04:26,720
+the vector healthy clusters to a matrix.
+
+93
+00:04:26,720 --> 00:04:29,630
+To do this, we will use the dimension function,
+
+94
+00:04:29,630 --> 00:04:33,140
+that takes as an input the healthyClusters vector.
+
+95
+00:04:33,140 --> 00:04:36,490
+And now we're going to turn it into a matrix.
+
+96
+00:04:36,490 --> 00:04:40,510
+So we have to specify using the combine function, the number
+
+97
+00:04:40,510 --> 00:04:44,100
+of rows, and the number of columns that we want.
+
+98
+00:04:44,100 --> 00:04:45,820
+We should make sure that it corresponds
+
+99
+00:04:45,820 --> 00:04:48,420
+to the same size as the healthy matrix.
+
+100
+00:04:48,420 --> 00:04:51,040
+And since we've forgot the number of rows and the number
+
+101
+00:04:51,040 --> 00:04:52,960
+columns in the healthy matrix, we
+
+102
+00:04:52,960 --> 00:04:57,360
+can simply use the nrow and ncol function to get them.
+
+103
+00:04:57,360 --> 00:04:59,620
+So the first input right now would
+
+104
+00:04:59,620 --> 00:05:04,070
+be nrow of healthyMatrix.
+
+105
+00:05:04,070 --> 00:05:06,470
+And then the second input would be the number
+
+106
+00:05:06,470 --> 00:05:10,340
+of columns of the healthy matrix.
+
+107
+00:05:10,340 --> 00:05:13,670
+And now we are assigning these numbers of rows and columns
+
+108
+00:05:13,670 --> 00:05:17,670
+to our new matrix, healthyClusters.
+
+109
+00:05:17,670 --> 00:05:19,910
+And now we can visualize our clusters
+
+110
+00:05:19,910 --> 00:05:23,790
+by using the function image, which takes as an input
+
+111
+00:05:23,790 --> 00:05:26,420
+the healthyClusters matrix.
+
+112
+00:05:26,420 --> 00:05:28,870
+And let's turn off the axes.
+
+113
+00:05:28,870 --> 00:05:32,450
+And then let's be creative and use a fancy color scheme.
+
+114
+00:05:32,450 --> 00:05:37,070
+We're going to invoke for color here, the rainbow palette in R.
+
+115
+00:05:37,070 --> 00:05:40,670
+And the rainbow palette, or the function rainbow,
+
+116
+00:05:40,670 --> 00:05:43,880
+takes as an input the number of colors that we want.
+
+117
+00:05:43,880 --> 00:05:45,730
+In this case, the number of colors
+
+118
+00:05:45,730 --> 00:05:48,290
+would correspond to the number of clusters.
+
+119
+00:05:48,290 --> 00:05:51,800
+So the input would be k.
+
+120
+00:05:51,800 --> 00:05:55,060
+And now let's output the segmented image.
+
+121
+00:05:55,060 --> 00:05:56,880
+Going back to the graphics window,
+
+122
+00:05:56,880 --> 00:05:59,170
+we see that k-means algorithm was
+
+123
+00:05:59,170 --> 00:06:02,730
+able to segment the image in 5 different clusters.
+
+124
+00:06:02,730 --> 00:06:05,850
+More refinement maybe needs to be made to our clustering
+
+125
+00:06:05,850 --> 00:06:08,360
+algorithm to appropriately capture
+
+126
+00:06:08,360 --> 00:06:10,620
+all the anatomical structures.
+
+127
+00:06:10,620 --> 00:06:13,380
+But this seems like a good starting point.
+
+128
+00:06:13,380 --> 00:06:17,760
+The question now is, can we use the clusters, or the classes,
+
+129
+00:06:17,760 --> 00:06:21,830
+found by our k-means algorithm on the healthy MRI image
+
+130
+00:06:21,830 --> 00:06:27,070
+to identify tumors in another MRI image of a sick patient?
+
+131
+00:06:27,070 --> 00:06:31,410
+We will see if this is possible in the next video.
+
