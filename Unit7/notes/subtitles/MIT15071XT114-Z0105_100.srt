@@ -1,0 +1,528 @@
+0
+00:00:00,000 --> 00:00:00,710
+
+
+1
+00:00:00,710 --> 00:00:04,720
+In this video, we'll see how to color our points by region
+
+2
+00:00:04,720 --> 00:00:08,830
+and how to add a linear regression line to our plot.
+
+3
+00:00:08,830 --> 00:00:11,360
+Here we have our plot from the last video,
+
+4
+00:00:11,360 --> 00:00:14,300
+where we've colored the points dark red.
+
+5
+00:00:14,300 --> 00:00:18,020
+Now, let's color the points by region instead.
+
+6
+00:00:18,020 --> 00:00:21,910
+This time, we want to add a color option to our aesthetic,
+
+7
+00:00:21,910 --> 00:00:26,360
+since we're assigning a variable in our data set to the colors.
+
+8
+00:00:26,360 --> 00:00:30,540
+To do this, we can type ggplot, and then first give
+
+9
+00:00:30,540 --> 00:00:32,750
+the name of our data, like before,
+
+10
+00:00:32,750 --> 00:00:39,870
+WHO, and then in our aesthetic, we again specify that x = GNI
+
+11
+00:00:39,870 --> 00:00:43,720
+and y = FertilityRate.
+
+12
+00:00:43,720 --> 00:00:48,620
+But then we want to add the option color = Region,
+
+13
+00:00:48,620 --> 00:00:52,130
+which will color the points by the Region variable.
+
+14
+00:00:52,130 --> 00:00:56,840
+And then we just want to add the geom_point function and hit
+
+15
+00:00:56,840 --> 00:00:58,760
+Enter.
+
+16
+00:00:58,760 --> 00:01:02,630
+Now, in our plot, we should see that each point is colored
+
+17
+00:01:02,630 --> 00:01:06,320
+corresponding to the region that country belongs in.
+
+18
+00:01:06,320 --> 00:01:09,580
+So the countries in Africa are colored red,
+
+19
+00:01:09,580 --> 00:01:13,070
+the countries in the Americas are colored gold,
+
+20
+00:01:13,070 --> 00:01:15,350
+the countries in the Eastern Mediterranean
+
+21
+00:01:15,350 --> 00:01:18,320
+are colored green, etc.
+
+22
+00:01:18,320 --> 00:01:19,960
+This really helps us see something
+
+23
+00:01:19,960 --> 00:01:21,940
+that we didn't see before.
+
+24
+00:01:21,940 --> 00:01:24,210
+The points from the different regions
+
+25
+00:01:24,210 --> 00:01:28,790
+are really located in different areas on the plot.
+
+26
+00:01:28,790 --> 00:01:30,970
+Let's now instead color the points
+
+27
+00:01:30,970 --> 00:01:33,970
+according to the country's life expectancy.
+
+28
+00:01:33,970 --> 00:01:36,510
+To do this, we just have to hit the up arrow
+
+29
+00:01:36,510 --> 00:01:39,520
+to get back to our ggplot line, and then
+
+30
+00:01:39,520 --> 00:01:43,415
+delete Region and type LifeExpectancy.
+
+31
+00:01:43,415 --> 00:01:47,080
+
+
+32
+00:01:47,080 --> 00:01:50,250
+Now, we should see that each point is colored according
+
+33
+00:01:50,250 --> 00:01:53,630
+to the life expectancy in that country.
+
+34
+00:01:53,630 --> 00:01:55,570
+Notice that before, we were coloring
+
+35
+00:01:55,570 --> 00:01:57,930
+by a factor variable, Region.
+
+36
+00:01:57,930 --> 00:02:00,800
+So we had exactly seven different colors
+
+37
+00:02:00,800 --> 00:02:04,070
+corresponding to the seven different regions.
+
+38
+00:02:04,070 --> 00:02:06,930
+Here, we're coloring by LifeExpectancy instead,
+
+39
+00:02:06,930 --> 00:02:10,729
+which is a numerical variable, so we get a gradient of colors,
+
+40
+00:02:10,729 --> 00:02:12,090
+like this.
+
+41
+00:02:12,090 --> 00:02:16,020
+Lighter blue corresponds to a higher life expectancy,
+
+42
+00:02:16,020 --> 00:02:21,350
+and darker blue corresponds to a lower life expectancy.
+
+43
+00:02:21,350 --> 00:02:23,740
+Let's take a look at a different plot now.
+
+44
+00:02:23,740 --> 00:02:26,870
+Suppose we were interested in seeing whether the fertility
+
+45
+00:02:26,870 --> 00:02:30,130
+rate of a country was a good predictor of the percentage
+
+46
+00:02:30,130 --> 00:02:32,850
+of the population under 15.
+
+47
+00:02:32,850 --> 00:02:35,450
+Intuitively, we would expect these variables
+
+48
+00:02:35,450 --> 00:02:37,260
+to be highly correlated.
+
+49
+00:02:37,260 --> 00:02:39,980
+But before trying any statistical models,
+
+50
+00:02:39,980 --> 00:02:42,800
+let's explore our data with a plot.
+
+51
+00:02:42,800 --> 00:02:47,640
+So now, let's use the ggplot function on the WHO data again,
+
+52
+00:02:47,640 --> 00:02:49,730
+but we're going to specify in our aesthetic
+
+53
+00:02:49,730 --> 00:02:53,750
+that the x variable should be FertilityRate,
+
+54
+00:02:53,750 --> 00:02:58,390
+and the y variable should be the variable, Under15.
+
+55
+00:02:58,390 --> 00:03:00,724
+Again, we want to add geom_point,
+
+56
+00:03:00,724 --> 00:03:01,890
+since we want a scatterplot.
+
+57
+00:03:01,890 --> 00:03:05,250
+
+
+58
+00:03:05,250 --> 00:03:06,620
+This is really interesting.
+
+59
+00:03:06,620 --> 00:03:09,710
+It looks like the variables are certainly correlated,
+
+60
+00:03:09,710 --> 00:03:13,340
+but as the fertility rate increases, the variable,
+
+61
+00:03:13,340 --> 00:03:17,770
+Under15 starts increasing less.
+
+62
+00:03:17,770 --> 00:03:20,720
+So this doesn't really look like a linear relationship.
+
+63
+00:03:20,720 --> 00:03:24,390
+But we suspect that a log transformation of FertilityRate
+
+64
+00:03:24,390 --> 00:03:25,740
+will be better.
+
+65
+00:03:25,740 --> 00:03:27,390
+Let's give it a shot.
+
+66
+00:03:27,390 --> 00:03:29,840
+So go ahead and scroll up in your R console
+
+67
+00:03:29,840 --> 00:03:34,260
+to the previous line, and instead of x = FertilityRate,
+
+68
+00:03:34,260 --> 00:03:35,685
+we want x = log(FertilityRate).
+
+69
+00:03:35,685 --> 00:03:38,990
+
+
+70
+00:03:38,990 --> 00:03:41,180
+And hit Enter.
+
+71
+00:03:41,180 --> 00:03:44,160
+Now this looks like a linear relationship.
+
+72
+00:03:44,160 --> 00:03:47,000
+Let's try building in a simple linear regression model
+
+73
+00:03:47,000 --> 00:03:50,320
+to predict the percentage of the population under 15,
+
+74
+00:03:50,320 --> 00:03:52,960
+using the log of the fertility rate.
+
+75
+00:03:52,960 --> 00:03:57,700
+So let's call our model, model, and use the lm function
+
+76
+00:03:57,700 --> 00:04:02,404
+to predict Under15 using as an independent variable
+
+77
+00:04:02,404 --> 00:04:03,195
+log(FertilityRate).
+
+78
+00:04:03,195 --> 00:04:05,810
+
+
+79
+00:04:05,810 --> 00:04:09,870
+And our data set will be WHO.
+
+80
+00:04:09,870 --> 00:04:11,520
+Let's look at the summary of our model.
+
+81
+00:04:11,520 --> 00:04:14,190
+
+
+82
+00:04:14,190 --> 00:04:16,190
+It looks like the log of FertilityRate
+
+83
+00:04:16,190 --> 00:04:18,890
+is indeed a great predictor of Under15.
+
+84
+00:04:18,890 --> 00:04:21,230
+The variable is highly significant,
+
+85
+00:04:21,230 --> 00:04:25,320
+and our R-squared is 0.9391.
+
+86
+00:04:25,320 --> 00:04:27,370
+Visualization was a great way for us
+
+87
+00:04:27,370 --> 00:04:30,830
+to realize that the log transformation would be better.
+
+88
+00:04:30,830 --> 00:04:33,600
+If we instead had just used the FertilityRate,
+
+89
+00:04:33,600 --> 00:04:36,650
+the R-squared would have been 0.87.
+
+90
+00:04:36,650 --> 00:04:40,610
+That's a pretty significant decrease in R-squared.
+
+91
+00:04:40,610 --> 00:04:43,800
+So now, let's add this regression line to our plot.
+
+92
+00:04:43,800 --> 00:04:45,730
+This is pretty easy in ggplot.
+
+93
+00:04:45,730 --> 00:04:48,420
+We just have to add another layer.
+
+94
+00:04:48,420 --> 00:04:51,030
+So use the up arrow in your R console to get back
+
+95
+00:04:51,030 --> 00:05:02,640
+to the plotting line, and then add stat_smooth(method = "lm"),
+
+96
+00:05:02,640 --> 00:05:04,620
+and hit Enter.
+
+97
+00:05:04,620 --> 00:05:08,120
+Now, you should see a blue line going through the data.
+
+98
+00:05:08,120 --> 00:05:10,320
+This is our regression line.
+
+99
+00:05:10,320 --> 00:05:14,200
+By default, ggplot will draw a 95% confidence
+
+100
+00:05:14,200 --> 00:05:16,760
+interval shaded around the line.
+
+101
+00:05:16,760 --> 00:05:19,600
+We can change this by specifying options
+
+102
+00:05:19,600 --> 00:05:21,730
+within the statistics layer.
+
+103
+00:05:21,730 --> 00:05:24,920
+So go ahead and scroll up in the R console,
+
+104
+00:05:24,920 --> 00:05:32,330
+and after method = "lm", type level = 0.99, and hit Enter.
+
+105
+00:05:32,330 --> 00:05:36,060
+This will give a 99% confidence interval.
+
+106
+00:05:36,060 --> 00:05:40,430
+We could instead take away the confidence interval altogether
+
+107
+00:05:40,430 --> 00:05:48,670
+by deleting level = 0.99 and typing se = FALSE.
+
+108
+00:05:48,670 --> 00:05:52,270
+Now, we just have the regression line in blue.
+
+109
+00:05:52,270 --> 00:05:55,920
+We could also change the color of the regression line
+
+110
+00:05:55,920 --> 00:06:03,130
+by typing as an option, color = "orange".
+
+111
+00:06:03,130 --> 00:06:07,250
+Now, we have an orange linear regression line.
+
+112
+00:06:07,250 --> 00:06:09,980
+As we've seen in this lecture, scatterplots
+
+113
+00:06:09,980 --> 00:06:12,340
+are great for exploring data.
+
+114
+00:06:12,340 --> 00:06:14,300
+However, there are many other ways
+
+115
+00:06:14,300 --> 00:06:18,650
+to represent data visually, such as box plots, line charts,
+
+116
+00:06:18,650 --> 00:06:22,520
+histograms, heat maps, and geographic maps.
+
+117
+00:06:22,520 --> 00:06:24,920
+In some cases, it may be better to choose
+
+118
+00:06:24,920 --> 00:06:27,980
+one of these other ways of visualizing your data.
+
+119
+00:06:27,980 --> 00:06:30,550
+Luckily, ggplot makes it easy to go
+
+120
+00:06:30,550 --> 00:06:33,900
+from one type of visualization to another, simply
+
+121
+00:06:33,900 --> 00:06:36,860
+by adding the appropriate layer to the plot.
+
+122
+00:06:36,860 --> 00:06:39,440
+We'll learn more about other types of visualizations
+
+123
+00:06:39,440 --> 00:06:43,050
+and how to create them in the next lecture.
+
+124
+00:06:43,050 --> 00:06:46,420
+So what is the edge of visualizations?
+
+125
+00:06:46,420 --> 00:06:48,720
+The WHO data that we used here is
+
+126
+00:06:48,720 --> 00:06:52,600
+used by citizens, policymakers, and organizations
+
+127
+00:06:52,600 --> 00:06:54,300
+around the world.
+
+128
+00:06:54,300 --> 00:06:57,600
+Visualizing the data facilitates the understanding
+
+129
+00:06:57,600 --> 00:07:00,730
+of global health trends at a glance.
+
+130
+00:07:00,730 --> 00:07:04,820
+By using ggplot in R, we're able to visualize data
+
+131
+00:07:04,820 --> 00:07:10,110
+for exploration, modeling, and sharing analytics results.
+

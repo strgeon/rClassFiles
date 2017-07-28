@@ -1,0 +1,60 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,350
+This week, we'll be discussing the power of visualizations
+
+2
+00:00:04,350 --> 00:00:06,950
+for understanding worldwide trends
+
+3
+00:00:06,950 --> 00:00:09,970
+and for using analytics to stop crime.
+
+4
+00:00:09,970 --> 00:00:13,310
+In the first lecture, we'll use data from the World Health
+
+5
+00:00:13,310 --> 00:00:16,129
+Organization to create visualizations
+
+6
+00:00:16,129 --> 00:00:18,790
+that help us understand and communicate
+
+7
+00:00:18,790 --> 00:00:20,410
+global health trends.
+
+8
+00:00:20,410 --> 00:00:24,070
+In the second lecture, we'll discuss predictive policing,
+
+9
+00:00:24,070 --> 00:00:26,810
+and how police departments across the country
+
+10
+00:00:26,810 --> 00:00:31,180
+are using data and analytics to improve decision making.
+
+11
+00:00:31,180 --> 00:00:34,980
+Through these examples, we'll create visualizations in R
+
+12
+00:00:34,980 --> 00:00:38,560
+that help us understand our data and our models.
+
+13
+00:00:38,560 --> 00:00:40,530
+Let's get started.
+
+14
+00:00:40,530 --> 00:00:41,110
+
+

@@ -1,0 +1,88 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,000
+The World Health Organization, WHO for short,
+
+2
+00:00:04,000 --> 00:00:06,820
+is the authority for health within the United Nations
+
+3
+00:00:06,820 --> 00:00:08,000
+system.
+
+4
+00:00:08,000 --> 00:00:11,330
+It is responsible for providing leadership on global health
+
+5
+00:00:11,330 --> 00:00:14,460
+matters, shaping the health research agenda,
+
+6
+00:00:14,460 --> 00:00:16,960
+setting norms and standards, articulating
+
+7
+00:00:16,960 --> 00:00:20,540
+evidence-based policy options, providing technical support
+
+8
+00:00:20,540 --> 00:00:25,710
+to countries, and monitoring and assessing health trends.
+
+9
+00:00:25,710 --> 00:00:29,820
+WHO communicates information about global health in order
+
+10
+00:00:29,820 --> 00:00:34,430
+to inform citizens, donors, policymakers, and organizations
+
+11
+00:00:34,430 --> 00:00:35,850
+around the world.
+
+12
+00:00:35,850 --> 00:00:39,150
+Their primary publication is World Health Report.
+
+13
+00:00:39,150 --> 00:00:43,190
+Each issue focuses on a specific aspect of global health,
+
+14
+00:00:43,190 --> 00:00:47,770
+and includes statistics and experts' assessments.
+
+15
+00:00:47,770 --> 00:00:51,660
+WHO also maintains an open, online repository
+
+16
+00:00:51,660 --> 00:00:54,010
+of global health data.
+
+17
+00:00:54,010 --> 00:00:56,810
+WHO provides some data visualizations,
+
+18
+00:00:56,810 --> 00:00:58,620
+which helps them communicate more
+
+19
+00:00:58,620 --> 00:01:00,310
+effectively with the public.
+
+20
+00:01:00,310 --> 00:01:04,690
+As an example, the graph shows the World Energy Consumption
+
+21
+00:01:04,690 --> 00:01:08,120
+during 2001 to 2003.
+

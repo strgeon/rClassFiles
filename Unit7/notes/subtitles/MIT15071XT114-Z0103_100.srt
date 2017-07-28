@@ -1,0 +1,324 @@
+0
+00:00:00,000 --> 00:00:00,660
+
+
+1
+00:00:00,660 --> 00:00:05,190
+In this video, we'll discuss the meaning of data visualization,
+
+2
+00:00:05,190 --> 00:00:09,020
+and why it's often useful to visualize your data to discover
+
+3
+00:00:09,020 --> 00:00:12,540
+hidden trends and properties.
+
+4
+00:00:12,540 --> 00:00:17,320
+Data visualization is defined as a mapping of data properties
+
+5
+00:00:17,320 --> 00:00:19,820
+to visual properties.
+
+6
+00:00:19,820 --> 00:00:24,190
+Data properties are usually numerical or categorical,
+
+7
+00:00:24,190 --> 00:00:28,590
+like the mean of a variable, the maximum value of a variable,
+
+8
+00:00:28,590 --> 00:00:32,610
+or the number of observations with a certain property.
+
+9
+00:00:32,610 --> 00:00:36,740
+Visual properties can be (x,y) coordinates to plot points
+
+10
+00:00:36,740 --> 00:00:43,250
+on a graph, colors to assign labels, sizes, shapes, heights,
+
+11
+00:00:43,250 --> 00:00:44,790
+etc.
+
+12
+00:00:44,790 --> 00:00:47,950
+Both types of properties are used to better understand
+
+13
+00:00:47,950 --> 00:00:51,540
+the data, but in different ways.
+
+14
+00:00:51,540 --> 00:00:54,640
+To motivate the need for data visualization,
+
+15
+00:00:54,640 --> 00:00:59,100
+let's look at a famous example called Anscombe's Quartet.
+
+16
+00:00:59,100 --> 00:01:03,120
+Each of these tables corresponds to a different data set.
+
+17
+00:01:03,120 --> 00:01:08,650
+We have four data sets, each with two variables, x and y.
+
+18
+00:01:08,650 --> 00:01:10,890
+Just looking at the tables of data,
+
+19
+00:01:10,890 --> 00:01:14,370
+it's hard to notice anything special about it.
+
+20
+00:01:14,370 --> 00:01:18,540
+It turns out that the mean and variance of the x variable
+
+21
+00:01:18,540 --> 00:01:21,250
+is the same for all four data sets,
+
+22
+00:01:21,250 --> 00:01:23,960
+the mean and variance of the y variable
+
+23
+00:01:23,960 --> 00:01:26,820
+is the same for all four data sets,
+
+24
+00:01:26,820 --> 00:01:29,950
+and the correlation between x and y, as well as
+
+25
+00:01:29,950 --> 00:01:32,070
+the regression equation to predict y
+
+26
+00:01:32,070 --> 00:01:37,520
+from x, is the exact same for all four data sets.
+
+27
+00:01:37,520 --> 00:01:40,140
+So just by looking at data properties,
+
+28
+00:01:40,140 --> 00:01:44,640
+we might conclude that these data sets are very similar.
+
+29
+00:01:44,640 --> 00:01:48,710
+But if we plot the four data sets, they're very different.
+
+30
+00:01:48,710 --> 00:01:51,090
+These plots show the four data sets,
+
+31
+00:01:51,090 --> 00:01:54,080
+with the x variable on the x-axis,
+
+32
+00:01:54,080 --> 00:01:57,380
+and the y variable on the y-axis.
+
+33
+00:01:57,380 --> 00:02:00,670
+Visually, these data sets look very different.
+
+34
+00:02:00,670 --> 00:02:04,695
+But without visualizing them, we might not have noticed this.
+
+35
+00:02:04,695 --> 00:02:08,130
+This is one example of why visualizing data can
+
+36
+00:02:08,130 --> 00:02:10,970
+be very important.
+
+37
+00:02:10,970 --> 00:02:14,155
+We'll use the ggplot2 package in R
+
+38
+00:02:14,155 --> 00:02:17,160
+to create data visualizations.
+
+39
+00:02:17,160 --> 00:02:20,500
+This package was created by Hadley Wickham, who
+
+40
+00:02:20,500 --> 00:02:24,570
+described ggplot as "a plotting system for R
+
+41
+00:02:24,570 --> 00:02:27,510
+based on the grammar of graphics, which
+
+42
+00:02:27,510 --> 00:02:31,500
+tries to take the good parts of base and lattice graphics
+
+43
+00:02:31,500 --> 00:02:34,230
+and none of the bad parts.
+
+44
+00:02:34,230 --> 00:02:37,070
+It takes care of many of the fiddly details that
+
+45
+00:02:37,070 --> 00:02:40,560
+make plotting a hassle (like drawing legends)
+
+46
+00:02:40,560 --> 00:02:44,740
+as well as providing a powerful model of graphics that makes it
+
+47
+00:02:44,740 --> 00:02:49,860
+easy to produce complex multi-layered graphics."
+
+48
+00:02:49,860 --> 00:02:52,400
+So what do we gain from using ggplot
+
+49
+00:02:52,400 --> 00:02:55,990
+over just making plots using the basic R functions,
+
+50
+00:02:55,990 --> 00:02:59,210
+or what's referred to as base R?
+
+51
+00:02:59,210 --> 00:03:03,180
+Well, in base R, each mapping of data properties
+
+52
+00:03:03,180 --> 00:03:06,890
+to visual properties is its own special case.
+
+53
+00:03:06,890 --> 00:03:11,350
+When we create a scatter plot, or a box plot, or a histogram,
+
+54
+00:03:11,350 --> 00:03:15,210
+we have to use a completely different function.
+
+55
+00:03:15,210 --> 00:03:20,010
+Additionally, the graphics are composed of simple elements,
+
+56
+00:03:20,010 --> 00:03:22,100
+like points or lines.
+
+57
+00:03:22,100 --> 00:03:27,020
+It's challenging to create any sophisticated visualizations.
+
+58
+00:03:27,020 --> 00:03:31,920
+It's also difficult to add elements to existing plots.
+
+59
+00:03:31,920 --> 00:03:35,540
+But in ggplot, the mapping of data properties
+
+60
+00:03:35,540 --> 00:03:40,370
+to visual properties is done by just adding layers to the plot.
+
+61
+00:03:40,370 --> 00:03:43,960
+This makes it much easier to create sophisticated plots
+
+62
+00:03:43,960 --> 00:03:45,770
+and to add to existing plots.
+
+63
+00:03:45,770 --> 00:03:48,540
+
+
+64
+00:03:48,540 --> 00:03:50,470
+So what is the grammar of graphics
+
+65
+00:03:50,470 --> 00:03:52,980
+that ggplot is based on?
+
+66
+00:03:52,980 --> 00:03:57,070
+All ggplot graphics consist of three elements.
+
+67
+00:03:57,070 --> 00:04:01,100
+The first is data, in a data frame.
+
+68
+00:04:01,100 --> 00:04:04,040
+The second is an aesthetic mapping,
+
+69
+00:04:04,040 --> 00:04:07,280
+which describes how variables in the data frame
+
+70
+00:04:07,280 --> 00:04:10,500
+are mapped to graphical attributes.
+
+71
+00:04:10,500 --> 00:04:13,770
+This is where we'll define which variables are on the x-
+
+72
+00:04:13,770 --> 00:04:17,279
+and y-axes, whether or not points should be colored
+
+73
+00:04:17,279 --> 00:04:21,430
+or shaped by certain attributes, etc.
+
+74
+00:04:21,430 --> 00:04:25,250
+The third element is which geometric objects
+
+75
+00:04:25,250 --> 00:04:27,770
+we want to determine how the data values
+
+76
+00:04:27,770 --> 00:04:30,150
+are rendered graphically.
+
+77
+00:04:30,150 --> 00:04:34,160
+This is where we indicate if the plot should have points, lines,
+
+78
+00:04:34,160 --> 00:04:37,640
+bars, boxes, etc.
+
+79
+00:04:37,640 --> 00:04:41,820
+In the next video, we'll load the WHO data into R
+
+80
+00:04:41,820 --> 00:04:46,250
+and create some data visualizations using ggplot.
+

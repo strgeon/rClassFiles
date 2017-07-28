@@ -1,0 +1,596 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:05,950
+In this video, we'll create a basic scatterplot using ggplot.
+
+2
+00:00:05,950 --> 00:00:08,570
+Let's start by reading in our data.
+
+3
+00:00:08,570 --> 00:00:10,500
+We'll be using the same data set we
+
+4
+00:00:10,500 --> 00:00:14,370
+used during week one, WHO.csv.
+
+5
+00:00:14,370 --> 00:00:18,850
+So let's call it WHO and use the read.csv function
+
+6
+00:00:18,850 --> 00:00:22,550
+to read in the data file WHO.csv.
+
+7
+00:00:22,550 --> 00:00:24,670
+Make sure you're in the directory containing
+
+8
+00:00:24,670 --> 00:00:26,910
+this file first.
+
+9
+00:00:26,910 --> 00:00:29,610
+Now, let's take a look at the structure of the data
+
+10
+00:00:29,610 --> 00:00:33,040
+using the str function.
+
+11
+00:00:33,040 --> 00:00:38,110
+We can see that we have 194 observations, or countries,
+
+12
+00:00:38,110 --> 00:00:43,090
+and 13 different variables-- the name of the country, the region
+
+13
+00:00:43,090 --> 00:00:46,750
+the country's in, the population in thousands,
+
+14
+00:00:46,750 --> 00:00:51,500
+the percentage of the population under 15 or over 60,
+
+15
+00:00:51,500 --> 00:00:56,190
+the fertility rate or average number of children per woman,
+
+16
+00:00:56,190 --> 00:01:00,950
+the life expectancy in years, the child mortality rate,
+
+17
+00:01:00,950 --> 00:01:04,840
+which is the number of children who die by age five per 1,000
+
+18
+00:01:04,840 --> 00:01:11,790
+births, the number of cellular subscribers per 100 population,
+
+19
+00:01:11,790 --> 00:01:15,960
+the literacy rate among adults older than 15,
+
+20
+00:01:15,960 --> 00:01:19,300
+the gross national income per capita,
+
+21
+00:01:19,300 --> 00:01:23,080
+the percentage of male children enrolled in primary school,
+
+22
+00:01:23,080 --> 00:01:25,470
+and the percentage of female children enrolled
+
+23
+00:01:25,470 --> 00:01:27,620
+in primary school.
+
+24
+00:01:27,620 --> 00:01:30,940
+In week one, the very first plot we made in R
+
+25
+00:01:30,940 --> 00:01:33,750
+was a scatterplot of fertility rate
+
+26
+00:01:33,750 --> 00:01:36,320
+versus gross national income.
+
+27
+00:01:36,320 --> 00:01:39,920
+Let's make this plot again, just like we did in week one.
+
+28
+00:01:39,920 --> 00:01:44,170
+So we'll use the plot function and give as the first variable
+
+29
+00:01:44,170 --> 00:01:48,680
+WHO$GNI, and then give as the second variable,
+
+30
+00:01:48,680 --> 00:01:49,430
+WHO$FertilityRate.
+
+31
+00:01:49,430 --> 00:01:54,750
+
+
+32
+00:01:54,750 --> 00:01:58,140
+This plot shows us that a higher fertility rate
+
+33
+00:01:58,140 --> 00:02:01,520
+is correlated with a lower income.
+
+34
+00:02:01,520 --> 00:02:04,380
+Now, let's redo this scatterplot,
+
+35
+00:02:04,380 --> 00:02:07,110
+but this time using ggplot.
+
+36
+00:02:07,110 --> 00:02:10,270
+We'll see how ggplot can be used to make more visually
+
+37
+00:02:10,270 --> 00:02:13,770
+appealing and complex scatterplots.
+
+38
+00:02:13,770 --> 00:02:19,050
+First, we need to install and load the ggplot2 package.
+
+39
+00:02:19,050 --> 00:02:20,950
+So first type install.packages("ggplot2").
+
+40
+00:02:20,950 --> 00:02:28,570
+
+
+41
+00:02:28,570 --> 00:02:30,850
+When the CRAN mirror window pops up,
+
+42
+00:02:30,850 --> 00:02:32,840
+make sure to pick a location near you.
+
+43
+00:02:32,840 --> 00:02:36,500
+
+
+44
+00:02:36,500 --> 00:02:39,070
+Then, as soon as the package is done installing
+
+45
+00:02:39,070 --> 00:02:41,260
+and you're back at the blinking cursor,
+
+46
+00:02:41,260 --> 00:02:43,175
+load the package with the library function.
+
+47
+00:02:43,175 --> 00:02:47,110
+
+
+48
+00:02:47,110 --> 00:02:49,800
+Now, remember we need at least three things
+
+49
+00:02:49,800 --> 00:02:54,680
+to create a plot using ggplot-- data, an aesthetic mapping
+
+50
+00:02:54,680 --> 00:02:58,020
+of variables in the data frame to visual output,
+
+51
+00:02:58,020 --> 00:03:00,510
+and a geometric object.
+
+52
+00:03:00,510 --> 00:03:03,140
+So first, let's create the ggplot
+
+53
+00:03:03,140 --> 00:03:06,640
+object with the data and the aesthetic mapping.
+
+54
+00:03:06,640 --> 00:03:10,360
+We'll save it to the variable scatterplot,
+
+55
+00:03:10,360 --> 00:03:13,330
+and then use the ggplot function, where
+
+56
+00:03:13,330 --> 00:03:17,470
+the first argument is the name of our data set, WHO,
+
+57
+00:03:17,470 --> 00:03:21,590
+which specifies the data to use, and the second argument
+
+58
+00:03:21,590 --> 00:03:24,750
+is the aesthetic mapping, aes.
+
+59
+00:03:24,750 --> 00:03:27,070
+In parentheses, we have to decide
+
+60
+00:03:27,070 --> 00:03:30,960
+what we want on the x-axis and what we want on the y-axis.
+
+61
+00:03:30,960 --> 00:03:34,380
+We want the x-axis to be GNI, and we
+
+62
+00:03:34,380 --> 00:03:38,810
+want the y-axis to be FertilityRate.
+
+63
+00:03:38,810 --> 00:03:43,400
+Go ahead and close both sets of parentheses, and hit Enter.
+
+64
+00:03:43,400 --> 00:03:46,440
+Now, we need to tell ggplot what geometric
+
+65
+00:03:46,440 --> 00:03:48,480
+objects to put in the plot.
+
+66
+00:03:48,480 --> 00:03:53,060
+We could use bars, lines, points, or something else.
+
+67
+00:03:53,060 --> 00:03:56,560
+This is a big difference between ggplot and regular plotting
+
+68
+00:03:56,560 --> 00:03:59,690
+in R. You can build different types of graphs
+
+69
+00:03:59,690 --> 00:04:02,670
+by using the same ggplot object.
+
+70
+00:04:02,670 --> 00:04:04,820
+There's no need to learn one function for bar
+
+71
+00:04:04,820 --> 00:04:10,290
+graphs, a completely different function for line graphs, etc.
+
+72
+00:04:10,290 --> 00:04:14,840
+So first, let's just create a straightforward scatterplot.
+
+73
+00:04:14,840 --> 00:04:18,459
+So the geometry we want to add is points.
+
+74
+00:04:18,459 --> 00:04:22,430
+We can do this by typing the name of our ggplot object,
+
+75
+00:04:22,430 --> 00:04:26,690
+scatterplot, and then adding the function, geom_point().
+
+76
+00:04:26,690 --> 00:04:30,750
+
+
+77
+00:04:30,750 --> 00:04:34,120
+If you hit Enter, you should see a new plot in the Graphics
+
+78
+00:04:34,120 --> 00:04:37,080
+window that looks similar to our original plot,
+
+79
+00:04:37,080 --> 00:04:39,980
+but there are already a few nice improvements.
+
+80
+00:04:39,980 --> 00:04:43,270
+One is that we don't have the data set name with a dollar
+
+81
+00:04:43,270 --> 00:04:47,140
+sign in front of the label on each axis, just
+
+82
+00:04:47,140 --> 00:04:49,030
+the variable name.
+
+83
+00:04:49,030 --> 00:04:50,970
+Another is that we have these nice grid
+
+84
+00:04:50,970 --> 00:04:53,640
+lines in the background and solid points
+
+85
+00:04:53,640 --> 00:04:56,880
+that pop out from the background.
+
+86
+00:04:56,880 --> 00:04:59,690
+We could have made a line graph just as easily
+
+87
+00:04:59,690 --> 00:05:01,780
+by changing point to line.
+
+88
+00:05:01,780 --> 00:05:05,750
+So in your R console, hit the up arrow, and then just
+
+89
+00:05:05,750 --> 00:05:09,410
+delete "point" and type "line" and hit Enter.
+
+90
+00:05:09,410 --> 00:05:13,020
+Now, you can see a line graph in the Graphics window.
+
+91
+00:05:13,020 --> 00:05:15,290
+However, a line doesn't really make sense
+
+92
+00:05:15,290 --> 00:05:17,880
+for this particular plot, so let's switch back
+
+93
+00:05:17,880 --> 00:05:21,200
+to our points, just by hitting the up arrow twice and hitting
+
+94
+00:05:21,200 --> 00:05:23,890
+Enter.
+
+95
+00:05:23,890 --> 00:05:27,630
+In addition to specifying that the geometry we want is points,
+
+96
+00:05:27,630 --> 00:05:31,010
+we can add other options, like the color, shape,
+
+97
+00:05:31,010 --> 00:05:33,080
+and size of the points.
+
+98
+00:05:33,080 --> 00:05:37,460
+Let's redo our plot with blue triangles instead of circles.
+
+99
+00:05:37,460 --> 00:05:41,240
+To do that, go ahead and hit the up arrow in your R console,
+
+100
+00:05:41,240 --> 00:05:44,640
+and then in the empty parentheses for geom_point,
+
+101
+00:05:44,640 --> 00:05:47,850
+we're going to specify some properties of the points.
+
+102
+00:05:47,850 --> 00:05:53,920
+We want the color to be equal to "blue", the size to equal 3--
+
+103
+00:05:53,920 --> 00:05:56,110
+we'll make the points a little bigger --
+
+104
+00:05:56,110 --> 00:05:59,190
+and the shape equals 17.
+
+105
+00:05:59,190 --> 00:06:02,760
+This is the shape number corresponding to triangles.
+
+106
+00:06:02,760 --> 00:06:05,760
+If you hit Enter, you should now see in your plot
+
+107
+00:06:05,760 --> 00:06:09,320
+blue triangles instead of black dots.
+
+108
+00:06:09,320 --> 00:06:11,120
+Let's try another option.
+
+109
+00:06:11,120 --> 00:06:17,310
+Hit the up arrow again, and change "blue" to "darkred",
+
+110
+00:06:17,310 --> 00:06:20,460
+and change shape to 8.
+
+111
+00:06:20,460 --> 00:06:23,720
+Now, you should see dark red stars.
+
+112
+00:06:23,720 --> 00:06:25,840
+There are many different colors and shapes
+
+113
+00:06:25,840 --> 00:06:27,480
+that you can specify.
+
+114
+00:06:27,480 --> 00:06:32,320
+We've provided some information in the text below this video.
+
+115
+00:06:32,320 --> 00:06:34,430
+Now, let's add a title to the plot.
+
+116
+00:06:34,430 --> 00:06:37,010
+You can do that by hitting the up arrow,
+
+117
+00:06:37,010 --> 00:06:41,740
+and then at the very end of everything, add ggtitle,
+
+118
+00:06:41,740 --> 00:06:44,210
+and then in parentheses and quotes, the title
+
+119
+00:06:44,210 --> 00:06:45,750
+you want to give your plot.
+
+120
+00:06:45,750 --> 00:06:49,200
+In our case, we'll call it "Fertility Rate
+
+121
+00:06:49,200 --> 00:06:52,240
+vs. Gross National Income".
+
+122
+00:06:52,240 --> 00:06:55,612
+
+
+123
+00:06:55,612 --> 00:06:57,070
+If you look at your plot again, you
+
+124
+00:06:57,070 --> 00:07:01,610
+should now see that it has a nice title at the top.
+
+125
+00:07:01,610 --> 00:07:04,160
+Now, let's save our plot to a file.
+
+126
+00:07:04,160 --> 00:07:08,450
+We can do this by first saving our plot to a variable.
+
+127
+00:07:08,450 --> 00:07:11,190
+So in your R console, hit the up arrow,
+
+128
+00:07:11,190 --> 00:07:14,430
+and scroll to the beginning of the line.
+
+129
+00:07:14,430 --> 00:07:17,268
+Before scatterplot, type fertilityGNIplot
+
+130
+00:07:17,268 --> 00:07:25,080
+= and then everything else.
+
+131
+00:07:25,080 --> 00:07:27,422
+This will save our scatterplot to the variable,
+
+132
+00:07:27,422 --> 00:07:28,130
+fertilityGNIplot.
+
+133
+00:07:28,130 --> 00:07:31,190
+
+
+134
+00:07:31,190 --> 00:07:34,830
+Now, let's create a file we want to save our plot to.
+
+135
+00:07:34,830 --> 00:07:37,120
+We can do that with the pdf function.
+
+136
+00:07:37,120 --> 00:07:39,700
+And then in parentheses and quotes, type the name
+
+137
+00:07:39,700 --> 00:07:41,080
+you want your file to have.
+
+138
+00:07:41,080 --> 00:07:42,180
+We'll call it MyPlot.pdf.
+
+139
+00:07:42,180 --> 00:07:46,160
+
+
+140
+00:07:46,160 --> 00:07:49,106
+Now, let's just print our plot to that file with the print
+
+141
+00:07:49,106 --> 00:07:50,730
+function -- so print(fertilityGNIplot).
+
+142
+00:07:50,730 --> 00:07:55,930
+
+
+143
+00:07:55,930 --> 00:08:03,890
+And lastly, we just have to type dev.off() to close the file.
+
+144
+00:08:03,890 --> 00:08:07,670
+Now, if you look at the folder where WHO.csv is,
+
+145
+00:08:07,670 --> 00:08:11,330
+you should see another file called MyPlot.pdf,
+
+146
+00:08:11,330 --> 00:08:13,850
+containing the plot we made.
+
+147
+00:08:13,850 --> 00:08:16,350
+In the next video, we'll see how to create
+
+148
+00:08:16,350 --> 00:08:19,990
+more advanced scatterplots using ggplot.
+
