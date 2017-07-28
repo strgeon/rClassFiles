@@ -1,0 +1,632 @@
+0
+00:00:00,000 --> 00:00:00,580
+
+
+1
+00:00:00,580 --> 00:00:03,280
+In this video, we'll add the hour of the day
+
+2
+00:00:03,280 --> 00:00:05,640
+to our line plot, and then create
+
+3
+00:00:05,640 --> 00:00:09,310
+an alternative visualization using a heat map.
+
+4
+00:00:09,310 --> 00:00:13,870
+We can do this by creating a line for each day of the week
+
+5
+00:00:13,870 --> 00:00:17,570
+and making the x-axis the hour of the day.
+
+6
+00:00:17,570 --> 00:00:19,860
+We first need to create a counts table
+
+7
+00:00:19,860 --> 00:00:22,070
+for the weekday, and hour.
+
+8
+00:00:22,070 --> 00:00:26,500
+So we'll use the table function and give as the first variable,
+
+9
+00:00:26,500 --> 00:00:29,170
+the Weekday variable in our data frame.
+
+10
+00:00:29,170 --> 00:00:33,650
+and as the second variable, the Hour variable.
+
+11
+00:00:33,650 --> 00:00:37,640
+This table gives, for each day of the week and each hour,
+
+12
+00:00:37,640 --> 00:00:41,080
+the total number of motor vehicle thefts that occurred.
+
+13
+00:00:41,080 --> 00:00:44,650
+For example, on Friday at 4 AM, there
+
+14
+00:00:44,650 --> 00:00:49,300
+were 473 motor vehicle thefts, whereas on Saturday
+
+15
+00:00:49,300 --> 00:00:54,860
+at midnight, there were 2,050 motor vehicle thefts.
+
+16
+00:00:54,860 --> 00:00:57,260
+Let's save this table to a data frame
+
+17
+00:00:57,260 --> 00:00:59,960
+so that we can use it in our visualizations.
+
+18
+00:00:59,960 --> 00:01:07,490
+We'll call it DayHourCounts and use the as.data.frame function,
+
+19
+00:01:07,490 --> 00:01:12,140
+run on our table, where the first variable is the Weekday
+
+20
+00:01:12,140 --> 00:01:14,430
+and the second variable is the Hour.
+
+21
+00:01:14,430 --> 00:01:17,290
+
+
+22
+00:01:17,290 --> 00:01:19,309
+Let's take a look at the structure of the data
+
+23
+00:01:19,309 --> 00:01:20,225
+frame we just created.
+
+24
+00:01:20,225 --> 00:01:24,220
+
+
+25
+00:01:24,220 --> 00:01:28,360
+We can see that we have 168 observations-- one
+
+26
+00:01:28,360 --> 00:01:31,266
+for each day of the week and hour pair,
+
+27
+00:01:31,266 --> 00:01:33,490
+and three different variables.
+
+28
+00:01:33,490 --> 00:01:36,930
+The first variable, Var1, gives the day of the week.
+
+29
+00:01:36,930 --> 00:01:41,230
+The second variable, Var2, gives the hour of the day.
+
+30
+00:01:41,230 --> 00:01:44,620
+And the third variable, Freq for frequency,
+
+31
+00:01:44,620 --> 00:01:47,100
+gives the total crime count.
+
+32
+00:01:47,100 --> 00:01:50,440
+Let's convert the second variable, Var2,
+
+33
+00:01:50,440 --> 00:01:53,010
+to actual numbers and call it Hour,
+
+34
+00:01:53,010 --> 00:01:54,760
+since this is the hour of the day,
+
+35
+00:01:54,760 --> 00:01:57,430
+and it makes sense that it's numerical.
+
+36
+00:01:57,430 --> 00:02:03,525
+So we'll add a new variable to our data frame called Hour =
+
+37
+00:02:03,525 --> 00:02:05,400
+as.numeric(as.character(DayHourCounts$Var2)).
+
+38
+00:02:05,400 --> 00:02:17,910
+
+
+39
+00:02:17,910 --> 00:02:23,920
+This is how we convert a factor variable to a numeric variable.
+
+40
+00:02:23,920 --> 00:02:26,410
+Now we're ready to create our plot.
+
+41
+00:02:26,410 --> 00:02:29,840
+We just need to change the group to Var1,
+
+42
+00:02:29,840 --> 00:02:31,620
+which is the day of the week.
+
+43
+00:02:31,620 --> 00:02:34,510
+So we'll use the ggplot function where
+
+44
+00:02:34,510 --> 00:02:39,860
+our data frame is DayHourCounts, and then in our aesthetic,
+
+45
+00:02:39,860 --> 00:02:43,420
+we want the x-axis to be Hour this time,
+
+46
+00:02:43,420 --> 00:02:49,620
+the y-axis to be Freq, and then in the geom_line option,
+
+47
+00:02:49,620 --> 00:02:52,100
+like we used in the previous video,
+
+48
+00:02:52,100 --> 00:02:57,740
+we want the aesthetic to have the group equal to Var1,
+
+49
+00:02:57,740 --> 00:02:59,790
+which is the day of the week.
+
+50
+00:02:59,790 --> 00:03:00,970
+Go ahead and hit Enter.
+
+51
+00:03:00,970 --> 00:03:05,570
+You should see a new plot show up in the graphics window.
+
+52
+00:03:05,570 --> 00:03:09,860
+It has seven lines, one for each day of the week.
+
+53
+00:03:09,860 --> 00:03:11,670
+While this is interesting, we can't
+
+54
+00:03:11,670 --> 00:03:14,280
+tell which line is which day, so let's change
+
+55
+00:03:14,280 --> 00:03:16,570
+the colors of the lines to correspond
+
+56
+00:03:16,570 --> 00:03:18,410
+to the days of the week.
+
+57
+00:03:18,410 --> 00:03:22,320
+To do that, just scroll up in your R console,
+
+58
+00:03:22,320 --> 00:03:28,630
+and after group = Var1, add color = Var1.
+
+59
+00:03:28,630 --> 00:03:30,370
+This will make the colors of the lines
+
+60
+00:03:30,370 --> 00:03:33,050
+correspond to the day of the week.
+
+61
+00:03:33,050 --> 00:03:36,040
+After that parenthesis, go ahead and type comma,
+
+62
+00:03:36,040 --> 00:03:37,827
+and then size = 2.
+
+63
+00:03:37,827 --> 00:03:39,410
+We'll make our lines a little thicker.
+
+64
+00:03:39,410 --> 00:03:42,000
+
+
+65
+00:03:42,000 --> 00:03:45,580
+Now in our plot, each line is colored corresponding
+
+66
+00:03:45,580 --> 00:03:47,600
+to the day of the week.
+
+67
+00:03:47,600 --> 00:03:50,290
+This helps us see that on Saturday and Sunday,
+
+68
+00:03:50,290 --> 00:03:53,790
+for example, the green and the teal lines,
+
+69
+00:03:53,790 --> 00:03:57,570
+there's less motor vehicle thefts in the morning.
+
+70
+00:03:57,570 --> 00:04:00,630
+While we can get some information from this plot,
+
+71
+00:04:00,630 --> 00:04:02,870
+it's still quite hard to interpret.
+
+72
+00:04:02,870 --> 00:04:05,020
+Seven lines is a lot.
+
+73
+00:04:05,020 --> 00:04:10,170
+Let's instead visualize the same information with a heat map.
+
+74
+00:04:10,170 --> 00:04:12,520
+To make a heat map, we'll use our data
+
+75
+00:04:12,520 --> 00:04:15,230
+in our data frame DayHourCounts.
+
+76
+00:04:15,230 --> 00:04:19,050
+First, though, we need to fix the order of the days
+
+77
+00:04:19,050 --> 00:04:22,140
+so that they'll show up in chronological order
+
+78
+00:04:22,140 --> 00:04:24,240
+instead of in alphabetical order.
+
+79
+00:04:24,240 --> 00:04:27,620
+We'll do the same thing we did in the previous video.
+
+80
+00:04:27,620 --> 00:04:33,110
+So for DayHourCounts$Var1, which is the day of the week,
+
+81
+00:04:33,110 --> 00:04:37,090
+we're going to use the factor function where the first
+
+82
+00:04:37,090 --> 00:04:42,850
+argument is our variable, DayHourCounts$Var1,
+
+83
+00:04:42,850 --> 00:04:47,210
+the second argument is ordered = TRUE,
+
+84
+00:04:47,210 --> 00:04:50,000
+and the third argument is the order we want the days
+
+85
+00:04:50,000 --> 00:04:51,760
+of the week to show up in.
+
+86
+00:04:51,760 --> 00:04:56,660
+So we'll set levels, equals, and then c,
+
+87
+00:04:56,660 --> 00:04:58,800
+and then list your days of the week.
+
+88
+00:04:58,800 --> 00:05:02,440
+Let's put the weekdays first and the weekends at the end.
+
+89
+00:05:02,440 --> 00:05:07,290
+So we'll start with Monday, and then Tuesday, then
+
+90
+00:05:07,290 --> 00:05:18,600
+Wednesday, then Thursday, Friday, Saturday and Sunday.
+
+91
+00:05:18,600 --> 00:05:22,450
+
+
+92
+00:05:22,450 --> 00:05:24,490
+Now let's make our heat map.
+
+93
+00:05:24,490 --> 00:05:28,280
+We'll use the ggplot function like we always do,
+
+94
+00:05:28,280 --> 00:05:32,570
+and give our data frame name, DayHourCounts.
+
+95
+00:05:32,570 --> 00:05:35,980
+Then in our aesthetic, we want the x-axis
+
+96
+00:05:35,980 --> 00:05:39,410
+to be the hour of the day, and the y-axis
+
+97
+00:05:39,410 --> 00:05:42,860
+to be the day of the week, which is Var1.
+
+98
+00:05:42,860 --> 00:05:44,680
+Then we're going to add geom_tile.
+
+99
+00:05:44,680 --> 00:05:47,230
+
+
+100
+00:05:47,230 --> 00:05:50,210
+This is the function we use to make a heat map.
+
+101
+00:05:50,210 --> 00:05:53,040
+And then in the aesthetic for our tiles,
+
+102
+00:05:53,040 --> 00:05:56,930
+we want the fill to be equal to Freq.
+
+103
+00:05:56,930 --> 00:06:01,000
+This will define the colors of the rectangles in our heat map
+
+104
+00:06:01,000 --> 00:06:04,850
+to correspond to the total crime.
+
+105
+00:06:04,850 --> 00:06:08,530
+You should see a heat map pop up in your graphics window.
+
+106
+00:06:08,530 --> 00:06:10,500
+So how do we read this?
+
+107
+00:06:10,500 --> 00:06:13,440
+For each hour and each day of the week,
+
+108
+00:06:13,440 --> 00:06:16,150
+we have a rectangle in our heat map.
+
+109
+00:06:16,150 --> 00:06:19,450
+The color of that rectangle indicates the frequency,
+
+110
+00:06:19,450 --> 00:06:22,420
+or the number of crimes that occur in that hour
+
+111
+00:06:22,420 --> 00:06:24,070
+and on that day.
+
+112
+00:06:24,070 --> 00:06:27,120
+Our legend tells us that lighter colors
+
+113
+00:06:27,120 --> 00:06:29,680
+correspond to more crime.
+
+114
+00:06:29,680 --> 00:06:32,250
+So we can see that a lot of crime
+
+115
+00:06:32,250 --> 00:06:37,720
+happens around midnight, particularly on the weekends.
+
+116
+00:06:37,720 --> 00:06:41,090
+We can change the label on the legend,
+
+117
+00:06:41,090 --> 00:06:45,510
+and get rid of the y label to make our plot a little nicer.
+
+118
+00:06:45,510 --> 00:06:48,930
+We can do this by just scrolling up to our previous command
+
+119
+00:06:48,930 --> 00:06:52,660
+in our R console and then adding scale_fill_gradient.
+
+120
+00:06:52,660 --> 00:06:58,180
+
+
+121
+00:06:58,180 --> 00:07:00,960
+This defines properties of the legend,
+
+122
+00:07:00,960 --> 00:07:07,400
+and we want name = "Total MV Thefts",
+
+123
+00:07:07,400 --> 00:07:08,935
+for total motor vehicle thefts.
+
+124
+00:07:08,935 --> 00:07:11,930
+
+
+125
+00:07:11,930 --> 00:07:13,822
+Then let's add, in the theme(axis.title.y =
+
+126
+00:07:13,822 --> 00:07:14,530
+element_blank()).
+
+127
+00:07:14,530 --> 00:07:24,202
+
+
+128
+00:07:24,202 --> 00:07:25,660
+This is what you can do if you want
+
+129
+00:07:25,660 --> 00:07:29,100
+to get rid of one of the axis labels.
+
+130
+00:07:29,100 --> 00:07:31,090
+Go ahead and hit Enter.
+
+131
+00:07:31,090 --> 00:07:33,130
+And now on our heat map, the legend
+
+132
+00:07:33,130 --> 00:07:39,010
+is titled "Total MV Thefts" and the y-axis label is gone.
+
+133
+00:07:39,010 --> 00:07:41,880
+We can also change the color scheme.
+
+134
+00:07:41,880 --> 00:07:45,360
+We can do this by scrolling up in our R console,
+
+135
+00:07:45,360 --> 00:07:48,490
+and going to that scale_fill_gradient function,
+
+136
+00:07:48,490 --> 00:07:51,610
+the one that defines properties of our legend,
+
+137
+00:07:51,610 --> 00:07:56,890
+and after name = "Total MV Thefts",
+
+138
+00:07:56,890 --> 00:08:04,230
+low = "white", high = "red".
+
+139
+00:08:04,230 --> 00:08:06,510
+We'll make lower values correspond
+
+140
+00:08:06,510 --> 00:08:09,020
+to white colors and higher values
+
+141
+00:08:09,020 --> 00:08:11,060
+correspond to red colors.
+
+142
+00:08:11,060 --> 00:08:14,350
+If you hit enter, a new plot should show up
+
+143
+00:08:14,350 --> 00:08:16,610
+with different colors.
+
+144
+00:08:16,610 --> 00:08:19,340
+This is a common color scheme in policing.
+
+145
+00:08:19,340 --> 00:08:23,950
+It shows the hot spots, or the places with more crime, in red.
+
+146
+00:08:23,950 --> 00:08:27,480
+So now the most crime is shown by the red spots
+
+147
+00:08:27,480 --> 00:08:31,280
+and the least crime is shown by the lighter areas.
+
+148
+00:08:31,280 --> 00:08:34,570
+It looks like Friday night is a pretty common time
+
+149
+00:08:34,570 --> 00:08:36,220
+for motor vehicle thefts.
+
+150
+00:08:36,220 --> 00:08:39,200
+We saw something that we didn't really see in the heat map
+
+151
+00:08:39,200 --> 00:08:40,750
+before.
+
+152
+00:08:40,750 --> 00:08:44,010
+It's often useful to change the color scheme depending
+
+153
+00:08:44,010 --> 00:08:46,610
+on whether you want high values or low values
+
+154
+00:08:46,610 --> 00:08:51,340
+to pop out, and the feeling you want the plot to portray.
+
+155
+00:08:51,340 --> 00:08:55,710
+In this video, we've seen how to create some new types of plots.
+
+156
+00:08:55,710 --> 00:08:58,940
+In the next video, we'll see how to add data
+
+157
+00:08:58,940 --> 00:09:01,470
+to geographical maps.
+

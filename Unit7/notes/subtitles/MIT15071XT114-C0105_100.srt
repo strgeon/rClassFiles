@@ -1,0 +1,508 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:05,030
+In this video, we'll plot crime on a map of Chicago.
+
+2
+00:00:05,030 --> 00:00:09,790
+First, we need to install and load two new packages, the maps
+
+3
+00:00:09,790 --> 00:00:12,700
+package and the ggmap package.
+
+4
+00:00:12,700 --> 00:00:16,305
+So start by installing the package maps.
+
+5
+00:00:16,305 --> 00:00:17,680
+So type install.packages("maps").
+
+6
+00:00:17,680 --> 00:00:22,810
+
+
+7
+00:00:22,810 --> 00:00:25,150
+When the CRAN mirror window pops up,
+
+8
+00:00:25,150 --> 00:00:27,160
+go ahead and pick a location near you.
+
+9
+00:00:27,160 --> 00:00:35,920
+
+
+10
+00:00:35,920 --> 00:00:38,260
+When the package is done installing and you're back
+
+11
+00:00:38,260 --> 00:00:41,135
+at the blinking cursor, also type install.packages("ggmap").
+
+12
+00:00:41,135 --> 00:00:49,530
+
+
+13
+00:00:49,530 --> 00:00:51,890
+When that package is also done installing,
+
+14
+00:00:51,890 --> 00:00:55,150
+load both packages using the library command.
+
+15
+00:00:55,150 --> 00:00:58,500
+So type library(maps), and then library(ggmap).
+
+16
+00:00:58,500 --> 00:01:01,680
+
+
+17
+00:01:01,680 --> 00:01:05,150
+Now, let's load a map of Chicago into R.
+
+18
+00:01:05,150 --> 00:01:07,967
+We can easily do this by using the get_map function.
+
+19
+00:01:07,967 --> 00:01:10,300
+So we'll call it chicago = get_map(location = "chicago",
+
+20
+00:01:10,300 --> 00:01:10,800
+zoom = 11).
+
+21
+00:01:10,800 --> 00:01:26,230
+
+
+22
+00:01:26,230 --> 00:01:29,905
+Let's take a look at the map by using the ggmap function.
+
+23
+00:01:29,905 --> 00:01:33,570
+
+
+24
+00:01:33,570 --> 00:01:35,720
+Now, in your R graphics window, you
+
+25
+00:01:35,720 --> 00:01:40,350
+should see a geographical map of the city of Chicago.
+
+26
+00:01:40,350 --> 00:01:43,250
+Now let's plot the first 100 motor vehicle
+
+27
+00:01:43,250 --> 00:01:46,130
+thefts in our data set on this map.
+
+28
+00:01:46,130 --> 00:01:49,615
+To do this, we start by typing ggmap(chicago).
+
+29
+00:01:49,615 --> 00:01:52,570
+
+
+30
+00:01:52,570 --> 00:01:55,030
+This is instead of using ggplot like we've
+
+31
+00:01:55,030 --> 00:01:57,650
+been using in the previous videos.
+
+32
+00:01:57,650 --> 00:02:02,780
+Then we want to add geom_point, and here, we'll
+
+33
+00:02:02,780 --> 00:02:06,880
+define our data set to be equal to motor vehicle thefts, where
+
+34
+00:02:06,880 --> 00:02:13,130
+we'll take the first through 100th observations,
+
+35
+00:02:13,130 --> 00:02:16,700
+and in our aesthetic, we'll define our x-axis
+
+36
+00:02:16,700 --> 00:02:20,270
+to be the longitude of the points and our y-axis
+
+37
+00:02:20,270 --> 00:02:21,700
+to be the latitude of the points.
+
+38
+00:02:21,700 --> 00:02:25,740
+
+
+39
+00:02:25,740 --> 00:02:27,560
+Now, in your R graphics window, you
+
+40
+00:02:27,560 --> 00:02:31,530
+should see the map of Chicago with black points marking where
+
+41
+00:02:31,530 --> 00:02:35,150
+the first 100 motor vehicle thefts were.
+
+42
+00:02:35,150 --> 00:02:39,140
+If we plotted all 190,000 motor vehicle thefts,
+
+43
+00:02:39,140 --> 00:02:41,130
+we would just see a big black box,
+
+44
+00:02:41,130 --> 00:02:43,070
+which wouldn't be helpful at all.
+
+45
+00:02:43,070 --> 00:02:45,170
+We're more interested in whether or not
+
+46
+00:02:45,170 --> 00:02:47,860
+an area has a high amount of crime,
+
+47
+00:02:47,860 --> 00:02:50,210
+so let's round our latitude and longitude
+
+48
+00:02:50,210 --> 00:02:54,580
+to two digits of accuracy and create a crime counts data
+
+49
+00:02:54,580 --> 00:02:56,460
+frame for each area.
+
+50
+00:02:56,460 --> 00:03:05,510
+We'll call it LatLonCounts, and use the as.data.frame function
+
+51
+00:03:05,510 --> 00:03:10,010
+run on the table that compares the latitude and longitude
+
+52
+00:03:10,010 --> 00:03:12,859
+rounded to two digits of accuracy.
+
+53
+00:03:12,859 --> 00:03:15,275
+So our first argument to table is round(mvt$Longitude, 2).
+
+54
+00:03:15,275 --> 00:03:23,880
+
+
+55
+00:03:23,880 --> 00:03:26,110
+And our second argument is round(mvt$Latitude, 2).
+
+56
+00:03:26,110 --> 00:03:37,470
+
+
+57
+00:03:37,470 --> 00:03:41,970
+This gives us the total crimes at every point on a grid.
+
+58
+00:03:41,970 --> 00:03:45,015
+Let's take a look at our data frame using the str function.
+
+59
+00:03:45,015 --> 00:03:49,500
+
+
+60
+00:03:49,500 --> 00:03:54,830
+We have 1,638 observations and three variables.
+
+61
+00:03:54,830 --> 00:03:58,280
+The first two variables, Var1 and Var2,
+
+62
+00:03:58,280 --> 00:04:00,910
+are the latitude and longitude coordinates,
+
+63
+00:04:00,910 --> 00:04:04,150
+and the third variable is the number of motor vehicle thefts
+
+64
+00:04:04,150 --> 00:04:07,010
+that occur in that area.
+
+65
+00:04:07,010 --> 00:04:11,300
+Let's convert our longitude and latitude variables to numbers
+
+66
+00:04:11,300 --> 00:04:13,550
+and call them Lat and Long.
+
+67
+00:04:13,550 --> 00:04:18,930
+So first, we'll define the variable in our LatLonCounts
+
+68
+00:04:18,930 --> 00:04:26,090
+data frame, called Long, and set that equal to as.numeric, run
+
+69
+00:04:26,090 --> 00:04:29,050
+on as.character.
+
+70
+00:04:29,050 --> 00:04:32,040
+Remember, this is how we convert a factor variable
+
+71
+00:04:32,040 --> 00:04:34,250
+to a numerical variable.
+
+72
+00:04:34,250 --> 00:04:36,490
+And we'll give the variable, LatLonCounts$Var1.
+
+73
+00:04:36,490 --> 00:04:41,390
+
+
+74
+00:04:41,390 --> 00:04:43,800
+Now let's just repeat this for latitude.
+
+75
+00:04:43,800 --> 00:04:46,591
+So LatLonCounts$Lat =  as.numeric(as.character(LatLonCounts$Var2)).
+
+76
+00:04:46,591 --> 00:05:05,310
+
+
+77
+00:05:05,310 --> 00:05:07,860
+Now, let's plot these points on our map,
+
+78
+00:05:07,860 --> 00:05:10,690
+making the size and color of the points
+
+79
+00:05:10,690 --> 00:05:13,980
+depend on the total number of motor vehicle thefts.
+
+80
+00:05:13,980 --> 00:05:22,530
+So first, again we type ggmap(chicago) +
+
+81
+00:05:22,530 --> 00:05:40,510
+geom_point(LatLonCounts, aes(x = Long, y = Lat, color = Freq,
+
+82
+00:05:40,510 --> 00:05:42,040
+size = Freq)).
+
+83
+00:05:42,040 --> 00:05:45,360
+
+
+84
+00:05:45,360 --> 00:05:48,340
+Now, in our R graphics window, our plot
+
+85
+00:05:48,340 --> 00:05:52,810
+should have a point for every area defined by our latitude
+
+86
+00:05:52,810 --> 00:05:55,770
+and longitude areas, and the points
+
+87
+00:05:55,770 --> 00:05:58,400
+have a size and color corresponding
+
+88
+00:05:58,400 --> 00:06:01,060
+to the number of crimes in that area.
+
+89
+00:06:01,060 --> 00:06:04,620
+So we can see that the lighter and larger points correspond
+
+90
+00:06:04,620 --> 00:06:06,920
+to more motor vehicle thefts.
+
+91
+00:06:06,920 --> 00:06:11,590
+This helps us see where in Chicago more crimes occur.
+
+92
+00:06:11,590 --> 00:06:13,780
+If we want to change the color scheme,
+
+93
+00:06:13,780 --> 00:06:17,400
+we can do that too by just hitting the up arrow in our R
+
+94
+00:06:17,400 --> 00:06:19,990
+console and then adding  scale_color_gradient(low="yellow",
+
+95
+00:06:19,990 --> 00:06:20,490
+high="red").
+
+96
+00:06:20,490 --> 00:06:35,040
+
+
+97
+00:06:35,040 --> 00:06:38,560
+If you hit Enter, you should see the same plot as before,
+
+98
+00:06:38,560 --> 00:06:43,600
+but this time, the areas with more crime are closer to red
+
+99
+00:06:43,600 --> 00:06:48,230
+and the areas with less crime are closer to yellow.
+
+100
+00:06:48,230 --> 00:06:52,280
+We can also use geom_tile to make something that looks more
+
+101
+00:06:52,280 --> 00:06:54,580
+like a traditional heat map.
+
+102
+00:06:54,580 --> 00:06:59,400
+To do this, we type ggmap(chicago), just
+
+103
+00:06:59,400 --> 00:07:05,100
+like before, but now we're going to use geom_tile, where
+
+104
+00:07:05,100 --> 00:07:07,120
+our data frame again is LatLonCounts.
+
+105
+00:07:07,120 --> 00:07:09,790
+
+
+106
+00:07:09,790 --> 00:07:14,040
+And in our aesthetic, we have that the x-axis is Long,
+
+107
+00:07:14,040 --> 00:07:18,180
+the y-axis is Lat, and then we have alpha=Freq.
+
+108
+00:07:18,180 --> 00:07:20,880
+
+
+109
+00:07:20,880 --> 00:07:25,350
+This will define how to scale the colors on the heat map
+
+110
+00:07:25,350 --> 00:07:27,710
+according to the crime counts.
+
+111
+00:07:27,710 --> 00:07:30,620
+Then close the parentheses and type a comma,
+
+112
+00:07:30,620 --> 00:07:36,210
+and then type fill="red", defining our color scheme.
+
+113
+00:07:36,210 --> 00:07:39,790
+Close the parentheses and hit Enter.
+
+114
+00:07:39,790 --> 00:07:41,650
+This map takes a minute to load.
+
+115
+00:07:41,650 --> 00:07:43,810
+While we're waiting, let's discuss
+
+116
+00:07:43,810 --> 00:07:45,890
+what we've done in this video.
+
+117
+00:07:45,890 --> 00:07:50,610
+We've created a geographical heat map, which in our case
+
+118
+00:07:50,610 --> 00:07:53,400
+shows a visualization of the data,
+
+119
+00:07:53,400 --> 00:07:57,620
+but it could also show the predictions of a model.
+
+120
+00:07:57,620 --> 00:08:00,540
+Now that our heat map is loaded, let's take a look.
+
+121
+00:08:00,540 --> 00:08:04,420
+In each area of Chicago, now that area
+
+122
+00:08:04,420 --> 00:08:08,140
+is colored in red by the amount of crime there.
+
+123
+00:08:08,140 --> 00:08:10,490
+This looks more like a map that people
+
+124
+00:08:10,490 --> 00:08:13,310
+use for predictive policing.
+
+125
+00:08:13,310 --> 00:08:17,050
+In the next video, we'll use data from the FBI
+
+126
+00:08:17,050 --> 00:08:21,230
+to make a heat map on a map of the United States.
+
