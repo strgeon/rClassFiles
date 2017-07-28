@@ -1,0 +1,320 @@
+0
+00:00:00,000 --> 00:00:00,630
+
+
+1
+00:00:00,630 --> 00:00:02,715
+There are a lot of visualizations in the world
+
+2
+00:00:02,715 --> 00:00:04,640
+and we don't have time for them all.
+
+3
+00:00:04,640 --> 00:00:07,620
+So let's focus on one particularly abused plot
+
+4
+00:00:07,620 --> 00:00:09,780
+type, the pie chart.
+
+5
+00:00:09,780 --> 00:00:12,160
+We have a specimen right here.
+
+6
+00:00:12,160 --> 00:00:14,982
+This is a pie chart of phone application crashes,
+
+7
+00:00:14,982 --> 00:00:16,790
+showing what percentage of all crashes
+
+8
+00:00:16,790 --> 00:00:19,710
+took place in each mobile operating system.
+
+9
+00:00:19,710 --> 00:00:21,260
+This data set contains information
+
+10
+00:00:21,260 --> 00:00:25,570
+for all versions of Apple's iOS, which is used in the iPhone,
+
+11
+00:00:25,570 --> 00:00:28,839
+as well as the various versions of Google's Android.
+
+12
+00:00:28,839 --> 00:00:30,630
+There are many things wrong with this plot,
+
+13
+00:00:30,630 --> 00:00:33,105
+but let's break down exactly what.
+
+14
+00:00:33,105 --> 00:00:35,230
+Putting aside, for a moment, that there are far too
+
+15
+00:00:35,230 --> 00:00:37,950
+many labels, check out the ordering of the labels
+
+16
+00:00:37,950 --> 00:00:40,670
+corresponding to iOS.
+
+17
+00:00:40,670 --> 00:00:43,260
+Two sensible ways of ordering iOS data
+
+18
+00:00:43,260 --> 00:00:44,750
+might be by decreasing percentage
+
+19
+00:00:44,750 --> 00:00:46,880
+or by version number.
+
+20
+00:00:46,880 --> 00:00:52,050
+Instead, we start at the top with iOS 3.13, with 0%,
+
+21
+00:00:52,050 --> 00:00:57,090
+and then jump to iOS 4.2.10, with 12.64%,
+
+22
+00:00:57,090 --> 00:01:04,050
+before going back down to iOS 3.2, with 0.00% again.
+
+23
+00:01:04,050 --> 00:01:06,517
+Which brings us to the number of labels.
+
+24
+00:01:06,517 --> 00:01:08,350
+Many of the segments are so narrow that they
+
+25
+00:01:08,350 --> 00:01:11,200
+can't be seen, although technically, all data is
+
+26
+00:01:11,200 --> 00:01:14,100
+retained, because every segment is labeled.
+
+27
+00:01:14,100 --> 00:01:16,080
+If we look at iOS, we see that there
+
+28
+00:01:16,080 --> 00:01:20,090
+are only three major versions, 3, 4, and 5, suggesting
+
+29
+00:01:20,090 --> 00:01:22,970
+we can compress down the iOS segments to just three
+
+30
+00:01:22,970 --> 00:01:26,744
+segments, while retaining most of the information.
+
+31
+00:01:26,744 --> 00:01:29,160
+At the least, the versions that differ in the third number
+
+32
+00:01:29,160 --> 00:01:34,240
+should be combined, and all data points of 0% should be removed.
+
+33
+00:01:34,240 --> 00:01:36,464
+The more fundamental concern of this visualization
+
+34
+00:01:36,464 --> 00:01:37,880
+is that it might really be showing
+
+35
+00:01:37,880 --> 00:01:39,296
+the percentage of the phone market
+
+36
+00:01:39,296 --> 00:01:42,460
+using each operating system, and says nothing about whether one
+
+37
+00:01:42,460 --> 00:01:44,730
+operating system crashes more than the other, which
+
+38
+00:01:44,730 --> 00:01:47,190
+is the focus of this visualization.
+
+39
+00:01:47,190 --> 00:01:50,420
+Our next pie chart has its own share of problems.
+
+40
+00:01:50,420 --> 00:01:52,745
+This is a plot of how many shark attacks have
+
+41
+00:01:52,745 --> 00:01:55,890
+been attributed to each type of shark.
+
+42
+00:01:55,890 --> 00:01:58,050
+Firstly, the pie chart is, for some reason,
+
+43
+00:01:58,050 --> 00:02:00,780
+plotted on a hemisphere, a graphical effect that
+
+44
+00:02:00,780 --> 00:02:03,710
+adds nothing, but has the effect of vertically compressing
+
+45
+00:02:03,710 --> 00:02:05,660
+the pie chart.
+
+46
+00:02:05,660 --> 00:02:08,639
+Next, there is the issue of label orientation.
+
+47
+00:02:08,639 --> 00:02:12,370
+While the caption, "Shark species (total/deaths)",
+
+48
+00:02:12,370 --> 00:02:14,840
+and the label, "White shark", are horizontal,
+
+49
+00:02:14,840 --> 00:02:17,570
+the rest are vertical and hard to read.
+
+50
+00:02:17,570 --> 00:02:20,330
+They are in order, however, which does help.
+
+51
+00:02:20,330 --> 00:02:23,190
+Although the "Others" segment is unfortunately large,
+
+52
+00:02:23,190 --> 00:02:26,240
+which is unclear if it is due to there being a lot of attacks
+
+53
+00:02:26,240 --> 00:02:28,570
+by many species, or if the species is not
+
+54
+00:02:28,570 --> 00:02:31,580
+known for many attacks.
+
+55
+00:02:31,580 --> 00:02:34,090
+Finally, at a glance, it is hard to distinguish
+
+56
+00:02:34,090 --> 00:02:37,030
+the magnitude of differences between the orange, green,
+
+57
+00:02:37,030 --> 00:02:40,250
+blue, and brown segments in the top part of the pie chart,
+
+58
+00:02:40,250 --> 00:02:43,770
+and we must resort to the labels to distinguish between them.
+
+59
+00:02:43,770 --> 00:02:47,380
+There is no meaning in the colors, they are arbitrary.
+
+60
+00:02:47,380 --> 00:02:49,790
+Finally, we'll look at a pie chart I made,
+
+61
+00:02:49,790 --> 00:02:53,440
+of the origins of the international students at MIT.
+
+62
+00:02:53,440 --> 00:02:55,370
+I made this chart with the default settings
+
+63
+00:02:55,370 --> 00:02:57,430
+in Google Sheets.
+
+64
+00:02:57,430 --> 00:02:59,090
+First of all, not all of the segments
+
+65
+00:02:59,090 --> 00:03:00,945
+are labeled, so that data is lost,
+
+66
+00:03:00,945 --> 00:03:03,680
+for the Middle East, Africa, Oceania,
+
+67
+00:03:03,680 --> 00:03:05,940
+and the unknown regions.
+
+68
+00:03:05,940 --> 00:03:09,460
+Second, again, we have colors that are arbitrary and almost
+
+69
+00:03:09,460 --> 00:03:11,090
+close enough to be confusing.
+
+70
+00:03:11,090 --> 00:03:14,940
+The difference between Asia and Africa's colors is subtle.
+
+71
+00:03:14,940 --> 00:03:17,005
+And of course, the 3D-effect on the pie
+
+72
+00:03:17,005 --> 00:03:20,626
+chart adds nothing, but does play a subtle trick on the eye.
+
+73
+00:03:20,626 --> 00:03:23,210
+Due to the 3D-effect, the blue and red segments
+
+74
+00:03:23,210 --> 00:03:25,990
+are actually larger looking, which at a glance,
+
+75
+00:03:25,990 --> 00:03:29,730
+may lead the viewer to overestimate their size.
+
+76
+00:03:29,730 --> 00:03:32,150
+What we are going to do now is, switch over to R
+
+77
+00:03:32,150 --> 00:03:35,690
+and plot this data more appropriately, using ggplot.
+
+78
+00:03:35,690 --> 00:03:37,190
+And then we'll return to the slides,
+
+79
+00:03:37,190 --> 00:03:40,670
+to discuss some more possibilities for this data.
+

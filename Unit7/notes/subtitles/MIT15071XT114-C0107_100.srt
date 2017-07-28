@@ -1,0 +1,84 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,930
+Let me comment on the merits of heatmaps
+
+2
+00:00:02,930 --> 00:00:06,710
+as a way of representing data in the context of representing
+
+3
+00:00:06,710 --> 00:00:08,660
+crime activity.
+
+4
+00:00:08,660 --> 00:00:10,350
+Criminal activity-related data often
+
+5
+00:00:10,350 --> 00:00:13,200
+has both components of time and location.
+
+6
+00:00:13,200 --> 00:00:16,880
+Sometimes, all that is required is a line chart,
+
+7
+00:00:16,880 --> 00:00:19,180
+but heatmaps can visualize data that
+
+8
+00:00:19,180 --> 00:00:21,190
+will be too big for a table.
+
+9
+00:00:21,190 --> 00:00:24,075
+Plotting data on maps is much more effective
+
+10
+00:00:24,075 --> 00:00:29,900
+than a table for location based data, and is eye catching.
+
+11
+00:00:29,900 --> 00:00:32,560
+What is the edge of predictive policing?
+
+12
+00:00:32,560 --> 00:00:35,970
+Many police forces are exploiting their databases
+
+13
+00:00:35,970 --> 00:00:40,020
+to focus finite resources on problem areas.
+
+14
+00:00:40,020 --> 00:00:43,720
+Not only do analytics help improve policework,
+
+15
+00:00:43,720 --> 00:00:46,940
+the outputs are also good communication tools
+
+16
+00:00:46,940 --> 00:00:49,590
+to decision makers in government, and the wider
+
+17
+00:00:49,590 --> 00:00:50,690
+public.
+
+18
+00:00:50,690 --> 00:00:54,210
+The application of analytics to data like this
+
+19
+00:00:54,210 --> 00:00:57,180
+is new and growing, with companies
+
+20
+00:00:57,180 --> 00:01:02,790
+like PredPol and Palantir leading the effort.
+

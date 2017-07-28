@@ -1,0 +1,556 @@
+0
+00:00:00,000 --> 00:00:01,880
+
+
+1
+00:00:01,880 --> 00:00:04,420
+Okay, so now we're going to start with a simple bar
+
+2
+00:00:04,420 --> 00:00:07,230
+plot of the MIT international student data.
+
+3
+00:00:07,230 --> 00:00:14,180
+So first, let's load the ggplot library, ggplot2,
+
+4
+00:00:14,180 --> 00:00:16,239
+and load the data frame.
+
+5
+00:00:16,239 --> 00:00:18,020
+So intl = read.csv("intl.csv").
+
+6
+00:00:18,020 --> 00:00:24,490
+
+
+7
+00:00:24,490 --> 00:00:27,160
+Now, the structure of this data frame is very simple.
+
+8
+00:00:27,160 --> 00:00:29,680
+There are two columns, two variables.
+
+9
+00:00:29,680 --> 00:00:32,670
+The first one, the region, and the second one
+
+10
+00:00:32,670 --> 00:00:34,720
+is the percentage of international students
+
+11
+00:00:34,720 --> 00:00:37,450
+who came from that region.
+
+12
+00:00:37,450 --> 00:00:41,970
+So making a bar plot from this data isn't too hard.
+
+13
+00:00:41,970 --> 00:00:43,940
+We start off with a ggplot command,
+
+14
+00:00:43,940 --> 00:00:47,970
+of course, the first argument being the data frame.
+
+15
+00:00:47,970 --> 00:00:52,740
+The aesthetic in this case is to have Region on the x-axis,
+
+16
+00:00:52,740 --> 00:00:56,070
+and on the y-axis, to have the percentage
+
+17
+00:00:56,070 --> 00:00:59,290
+of international students.
+
+18
+00:00:59,290 --> 00:01:01,050
+Now, the geometry we're going to use
+
+19
+00:01:01,050 --> 00:01:05,470
+is, as you might guess, bar, geom_bar.
+
+20
+00:01:05,470 --> 00:01:08,850
+We have to pass one argument to this geom_bar,
+
+21
+00:01:08,850 --> 00:01:11,410
+and it's called stat = "identity" .
+
+22
+00:01:11,410 --> 00:01:14,920
+I'm going to come back and explain what that means.
+
+23
+00:01:14,920 --> 00:01:18,000
+I also want to label my bars with the value,
+
+24
+00:01:18,000 --> 00:01:21,210
+so it's easy to read in closer detail.
+
+25
+00:01:21,210 --> 00:01:25,560
+So I'm going to use geom_text to do that.
+
+26
+00:01:25,560 --> 00:01:28,160
+And the aesthetic of our text is simply
+
+27
+00:01:28,160 --> 00:01:32,130
+to have the value of a label, the text of a label,
+
+28
+00:01:32,130 --> 00:01:35,115
+to be the value of our percentages.
+
+29
+00:01:35,115 --> 00:01:38,850
+
+
+30
+00:01:38,850 --> 00:01:41,270
+Let's look at that.
+
+31
+00:01:41,270 --> 00:01:46,670
+So yes, we have a bar for each region.
+
+32
+00:01:46,670 --> 00:01:48,170
+The values are between zero and one,
+
+33
+00:01:48,170 --> 00:01:50,530
+which looks kind of strange.
+
+34
+00:01:50,530 --> 00:01:53,600
+The labels are actually lying over
+
+35
+00:01:53,600 --> 00:01:57,030
+the top of the columns, which isn't very nice,
+
+36
+00:01:57,030 --> 00:01:59,040
+and the regions aren't really ordered
+
+37
+00:01:59,040 --> 00:02:00,495
+in any way that's useful.
+
+38
+00:02:00,495 --> 00:02:02,470
+They're actually ordered in alphabetical order,
+
+39
+00:02:02,470 --> 00:02:04,886
+but I think it would be much more interesting to have them
+
+40
+00:02:04,886 --> 00:02:07,300
+in descending order.
+
+41
+00:02:07,300 --> 00:02:10,150
+So we can work on this.
+
+42
+00:02:10,150 --> 00:02:12,640
+First of all, though, what is this stat = "identity"?
+
+43
+00:02:12,640 --> 00:02:14,270
+Well, it's pretty simple.
+
+44
+00:02:14,270 --> 00:02:18,400
+Geometry bar has multiple modes of operation,
+
+45
+00:02:18,400 --> 00:02:22,450
+and stat = "identity" says, use the value of the y variable
+
+46
+00:02:22,450 --> 00:02:24,400
+as is, which is what we want.
+
+47
+00:02:24,400 --> 00:02:27,759
+The height of the bar is the value of the y variable.
+
+48
+00:02:27,759 --> 00:02:29,300
+Now, there are other modes, including
+
+49
+00:02:29,300 --> 00:02:31,430
+one that counts the number of rows
+
+50
+00:02:31,430 --> 00:02:35,860
+for each value of x, and plots that instead.
+
+51
+00:02:35,860 --> 00:02:38,460
+So you can look at the documentation for ggplot
+
+52
+00:02:38,460 --> 00:02:40,910
+to see the different options and how they work.
+
+53
+00:02:40,910 --> 00:02:44,880
+But stat = "identity" is what we want right now.
+
+54
+00:02:44,880 --> 00:02:47,230
+Now, the x-axis is out of order.
+
+55
+00:02:47,230 --> 00:02:49,650
+And the reason for this is that ggplot defaults
+
+56
+00:02:49,650 --> 00:02:52,490
+to alphabetical order for the x-axis.
+
+57
+00:02:52,490 --> 00:02:55,570
+What we need to do is make Region an ordered factor
+
+58
+00:02:55,570 --> 00:02:58,220
+instead of an unordered factor.
+
+59
+00:02:58,220 --> 00:03:00,105
+We can do this with the reorder command
+
+60
+00:03:00,105 --> 00:03:02,290
+and the transform command.
+
+61
+00:03:02,290 --> 00:03:04,170
+So let's write this out.
+
+62
+00:03:04,170 --> 00:03:10,730
+So we're going to transform the international data frame.
+
+63
+00:03:10,730 --> 00:03:14,780
+And what we're going to do is say, Region, it's
+
+64
+00:03:14,780 --> 00:03:18,820
+going to be a reordering of itself,
+
+65
+00:03:18,820 --> 00:03:21,696
+based on decreasing order of PercentOfIntl.
+
+66
+00:03:21,696 --> 00:03:28,910
+
+
+67
+00:03:28,910 --> 00:03:33,110
+So if we look at the structure of the data frame now,
+
+68
+00:03:33,110 --> 00:03:36,980
+we see there's something going on in the Region column that
+
+69
+00:03:36,980 --> 00:03:37,950
+wasn't going before.
+
+70
+00:03:37,950 --> 00:03:40,230
+And that's that ordering.
+
+71
+00:03:40,230 --> 00:03:43,560
+So you might have also noticed that I put a negative sign
+
+72
+00:03:43,560 --> 00:03:46,410
+in front of PercentOfIntl.
+
+73
+00:03:46,410 --> 00:03:49,172
+So that negative sign means decreasing order.
+
+74
+00:03:49,172 --> 00:03:51,130
+If we had left that out, it would have actually
+
+75
+00:03:51,130 --> 00:03:53,230
+ordered them in increasing order.
+
+76
+00:03:53,230 --> 00:03:55,580
+So unknown or stateless would have been first,
+
+77
+00:03:55,580 --> 00:04:00,230
+and Oceania would have been second, and so on.
+
+78
+00:04:00,230 --> 00:04:03,199
+So that's one thing fixed.
+
+79
+00:04:03,199 --> 00:04:05,240
+Another thing we didn't like was that the numbers
+
+80
+00:04:05,240 --> 00:04:10,210
+were between zero and one, which looks a little bit messy.
+
+81
+00:04:10,210 --> 00:04:13,440
+So let's just simply multiply all the values by 100.
+
+82
+00:04:13,440 --> 00:04:26,564
+So intl$PercentOfIntl = intl$PercentOfIntl*100.
+
+83
+00:04:26,564 --> 00:04:28,230
+And now the other things we have to fix,
+
+84
+00:04:28,230 --> 00:04:32,310
+like the text overlying and the x-axis being all bunched up
+
+85
+00:04:32,310 --> 00:04:35,750
+like that, we're going to do that in a new ggplot command.
+
+86
+00:04:35,750 --> 00:04:38,170
+So I'm going to break it across multiple lines.
+
+87
+00:04:38,170 --> 00:04:43,230
+So we start up with the ggplot command, as we did before,
+
+88
+00:04:43,230 --> 00:04:45,840
+actually identical to what we had before.
+
+89
+00:04:45,840 --> 00:04:50,410
+So the aesthetic is x-axis is the region,
+
+90
+00:04:50,410 --> 00:04:56,390
+and the y-axis is the percentage of international students.
+
+91
+00:04:56,390 --> 00:05:00,805
+We break it into multiple lines, so put the plus at the end
+
+92
+00:05:00,805 --> 00:05:03,145
+there, and press Shift Enter.
+
+93
+00:05:03,145 --> 00:05:04,930
+We're going to do a bar plot.
+
+94
+00:05:04,930 --> 00:05:11,400
+
+
+95
+00:05:11,400 --> 00:05:16,722
+The stat = "identity", as before.
+
+96
+00:05:16,722 --> 00:05:18,096
+And this time though, we're going
+
+97
+00:05:18,096 --> 00:05:20,946
+to manually specify a fill.
+
+98
+00:05:20,946 --> 00:05:22,645
+I'm going to say "dark blue".
+
+99
+00:05:22,645 --> 00:05:26,170
+I quite like how that looks.
+
+100
+00:05:26,170 --> 00:05:29,470
+Now, we need the text, and the aesthetic of that
+
+101
+00:05:29,470 --> 00:05:32,355
+is to have the label equal the value of the column.
+
+102
+00:05:32,355 --> 00:05:35,680
+
+
+103
+00:05:35,680 --> 00:05:37,530
+I'm going to add one more thing to this.
+
+104
+00:05:37,530 --> 00:05:42,050
+I'm going to say vjust = -0.4.
+
+105
+00:05:42,050 --> 00:05:45,070
+And what this does is, it moves the labels up a little bit
+
+106
+00:05:45,070 --> 00:05:46,652
+and off the top of the bars.
+
+107
+00:05:46,652 --> 00:05:47,610
+You can play with that.
+
+108
+00:05:47,610 --> 00:05:49,509
+So a positive value will move it down,
+
+109
+00:05:49,509 --> 00:05:51,050
+and a negative value will move it up.
+
+110
+00:05:51,050 --> 00:05:54,270
+
+
+111
+00:05:54,270 --> 00:05:57,580
+Next, I'm going to set the y-axis label
+
+112
+00:05:57,580 --> 00:06:00,090
+to be something a bit more sensible--
+
+113
+00:06:00,090 --> 00:06:06,490
+so "Percent of International Students".
+
+114
+00:06:06,490 --> 00:06:09,290
+
+
+115
+00:06:09,290 --> 00:06:11,730
+And finally, I'd like to fix up that x-axis.
+
+116
+00:06:11,730 --> 00:06:14,260
+So I want to get rid of the word "Region," because it's
+
+117
+00:06:14,260 --> 00:06:16,560
+pretty obvious these are regions.
+
+118
+00:06:16,560 --> 00:06:19,900
+And I also want to rotate the text at a bit of an angle,
+
+119
+00:06:19,900 --> 00:06:24,442
+so you can read it all on a plot like this.
+
+120
+00:06:24,442 --> 00:06:25,900
+That's done with the theme command.
+
+121
+00:06:25,900 --> 00:06:28,690
+So the theming we're going to do is
+
+122
+00:06:28,690 --> 00:06:33,720
+we're going to say the axis title, the x-axis,
+
+123
+00:06:33,720 --> 00:06:34,500
+should be blank.
+
+124
+00:06:34,500 --> 00:06:39,190
+
+
+125
+00:06:39,190 --> 00:06:46,520
+And the axis text on the x-axis should be rotated,
+
+126
+00:06:46,520 --> 00:06:51,850
+so it's a text element that's angle is 45.
+
+127
+00:06:51,850 --> 00:06:54,820
+And I'll move it sideways just a little bit-- hjust = 1.
+
+128
+00:06:54,820 --> 00:06:58,280
+
+
+129
+00:06:58,280 --> 00:06:59,500
+And there we go.
+
+130
+00:06:59,500 --> 00:07:03,900
+So we've got our labels vjust-ed above the columns.
+
+131
+00:07:03,900 --> 00:07:06,540
+The bars themselves are dark blue.
+
+132
+00:07:06,540 --> 00:07:08,340
+The numbers are now between 0 and 100,
+
+133
+00:07:08,340 --> 00:07:10,440
+instead of zero and one.
+
+134
+00:07:10,440 --> 00:07:13,140
+We can read all the text labels.
+
+135
+00:07:13,140 --> 00:07:14,940
+And it's generally a lot more readable
+
+136
+00:07:14,940 --> 00:07:21,320
+than the pie plot or our original ggplot, at that.
+
+137
+00:07:21,320 --> 00:07:23,300
+Let's go back to the slides now and talk
+
+138
+00:07:23,300 --> 00:07:26,020
+about what we've just done.
+

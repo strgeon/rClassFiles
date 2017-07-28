@@ -1,0 +1,144 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,280
+So we just made this plot in ggplot2.
+
+2
+00:00:04,280 --> 00:00:06,070
+When we compare it back to the pie graph,
+
+3
+00:00:06,070 --> 00:00:10,050
+the first thing I notice is that now all the data is visible.
+
+4
+00:00:10,050 --> 00:00:11,840
+We haven't lost the small regions
+
+5
+00:00:11,840 --> 00:00:13,840
+and we can read out the exact share that
+
+6
+00:00:13,840 --> 00:00:16,940
+comes from Africa, Oceania, and the unknown or stateless
+
+7
+00:00:16,940 --> 00:00:19,400
+column.
+
+8
+00:00:19,400 --> 00:00:22,660
+I believe it is also easier to compare the relative sizes
+
+9
+00:00:22,660 --> 00:00:25,530
+of each region because they're all
+
+10
+00:00:25,530 --> 00:00:27,525
+put side by side on a similar scale.
+
+11
+00:00:27,525 --> 00:00:29,150
+There's no tricks, or three dimensions,
+
+12
+00:00:29,150 --> 00:00:33,350
+or colors to create a perception issue.
+
+13
+00:00:33,350 --> 00:00:35,520
+But, I will say that something to consider
+
+14
+00:00:35,520 --> 00:00:39,020
+is, for some people and some applications,
+
+15
+00:00:39,020 --> 00:00:42,190
+being not as visually exciting is a negative.
+
+16
+00:00:42,190 --> 00:00:45,620
+This plot, while very readable and correct,
+
+17
+00:00:45,620 --> 00:00:47,626
+is certainly a little bit dull.
+
+18
+00:00:47,626 --> 00:00:50,000
+In some applications, this is an important consideration.
+
+19
+00:00:50,000 --> 00:00:52,790
+
+
+20
+00:00:52,790 --> 00:00:55,220
+Now, wouldn't it be interesting if we
+
+21
+00:00:55,220 --> 00:00:58,130
+could plot this data on a world map?
+
+22
+00:00:58,130 --> 00:01:00,000
+It would be possible, but a bit tedious
+
+23
+00:01:00,000 --> 00:01:01,950
+to create because we need to determine
+
+24
+00:01:01,950 --> 00:01:05,000
+which country lies in which region.
+
+25
+00:01:05,000 --> 00:01:07,530
+Shading all countries in a region of the same color
+
+26
+00:01:07,530 --> 00:01:09,560
+might be misleading though.
+
+27
+00:01:09,560 --> 00:01:12,040
+For example, countries in Latin America
+
+28
+00:01:12,040 --> 00:01:15,440
+will send students at different rates, naturally.
+
+29
+00:01:15,440 --> 00:01:17,270
+But, if we color them all the same color,
+
+30
+00:01:17,270 --> 00:01:20,810
+it kind of gives a false impression.
+
+31
+00:01:20,810 --> 00:01:22,600
+As it turns out, we actually have access
+
+32
+00:01:22,600 --> 00:01:24,780
+to per country data.
+
+33
+00:01:24,780 --> 00:01:26,560
+So we will plot that on a world map
+
+34
+00:01:26,560 --> 00:01:29,300
+instead and see if it is an effective way of communicating
+
+35
+00:01:29,300 --> 00:01:32,100
+where students come from to MIT.
+

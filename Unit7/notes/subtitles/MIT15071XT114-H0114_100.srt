@@ -1,0 +1,380 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:04,140
+In this video, we're going to look at scales.
+
+2
+00:00:04,140 --> 00:00:06,260
+This first plot shows the average height
+
+3
+00:00:06,260 --> 00:00:09,980
+of a 21-year-old male in centimeters.
+
+4
+00:00:09,980 --> 00:00:16,309
+The x-axis is time, starting in 1871, and ending in 1975.
+
+5
+00:00:16,309 --> 00:00:18,270
+Each person represents the height,
+
+6
+00:00:18,270 --> 00:00:21,320
+at a different point in time, and the points are evenly
+
+7
+00:00:21,320 --> 00:00:25,530
+spaced in time, so the x-axis is OK.
+
+8
+00:00:25,530 --> 00:00:30,820
+The y-axis ranges from just under 160 to 180 centimeters,
+
+9
+00:00:30,820 --> 00:00:35,030
+which isn't inherently bad, but does overstate the change.
+
+10
+00:00:35,030 --> 00:00:37,216
+The real problem is the bars.
+
+11
+00:00:37,216 --> 00:00:38,590
+If it was accurate, we would only
+
+12
+00:00:38,590 --> 00:00:40,940
+really see the heads of the men, but instead we
+
+13
+00:00:40,940 --> 00:00:43,770
+see their whole bodies, making it seem as if people have not
+
+14
+00:00:43,770 --> 00:00:46,320
+only doubled in height, but they've also double in width.
+
+15
+00:00:46,320 --> 00:00:50,440
+
+
+16
+00:00:50,440 --> 00:00:53,590
+This next plot also has issues with scale.
+
+17
+00:00:53,590 --> 00:00:56,850
+The total range of the plot is 8% to 10%,
+
+18
+00:00:56,850 --> 00:01:02,360
+although all the numbers fall in the range of 8.6% to 9.2%.
+
+19
+00:01:02,360 --> 00:01:05,499
+If we plotted the y-axis on a 0% to 10% scale,
+
+20
+00:01:05,499 --> 00:01:07,520
+the conclusion would be that nothing is really
+
+21
+00:01:07,520 --> 00:01:09,520
+changing at all.
+
+22
+00:01:09,520 --> 00:01:12,190
+The last point in the chart is at the wrong height,
+
+23
+00:01:12,190 --> 00:01:14,810
+and the size of the markers makes the relative locations
+
+24
+00:01:14,810 --> 00:01:16,860
+hard to distinguish.
+
+25
+00:01:16,860 --> 00:01:22,770
+Also notice that the gap between 9.0% and the 8.9% markers
+
+26
+00:01:22,770 --> 00:01:27,820
+on the far left side, and the 8.9% and 8.8% markers,
+
+27
+00:01:27,820 --> 00:01:29,790
+have a different gap.
+
+28
+00:01:29,790 --> 00:01:32,550
+This plot shows the relative breakdown of teachers
+
+29
+00:01:32,550 --> 00:01:35,430
+by race in a certain teaching program.
+
+30
+00:01:35,430 --> 00:01:38,560
+The Caucasian bar is truncated, which is a risky choice,
+
+31
+00:01:38,560 --> 00:01:41,760
+but could be appropriate in some situations.
+
+32
+00:01:41,760 --> 00:01:44,620
+A much bigger problem is that the scale of each blue bar
+
+33
+00:01:44,620 --> 00:01:46,500
+is entirely different.
+
+34
+00:01:46,500 --> 00:01:49,450
+For example, the Native American bar is about a third
+
+35
+00:01:49,450 --> 00:01:51,775
+of the length of the African American bar,
+
+36
+00:01:51,775 --> 00:01:54,680
+but there are more than 10 times as many African Americans
+
+37
+00:01:54,680 --> 00:01:57,170
+in this program as Native Americans.
+
+38
+00:01:57,170 --> 00:02:00,860
+In fact, visually, this plot is completely meaningless.
+
+39
+00:02:00,860 --> 00:02:02,960
+The only useful thing about it is the numbers.
+
+40
+00:02:02,960 --> 00:02:05,750
+But even there, there is a bit of confusion,
+
+41
+00:02:05,750 --> 00:02:09,020
+as Native Americans are given to one decimal place,
+
+42
+00:02:09,020 --> 00:02:10,470
+but the others are rounded.
+
+43
+00:02:10,470 --> 00:02:12,820
+Which when combined with the confusing scales,
+
+44
+00:02:12,820 --> 00:02:14,800
+casts doubt on the correctness of the numbers.
+
+45
+00:02:14,800 --> 00:02:18,950
+
+
+46
+00:02:18,950 --> 00:02:22,300
+Here is a before and after of the same data.
+
+47
+00:02:22,300 --> 00:02:24,930
+On the left, we see the US military expense
+
+48
+00:02:24,930 --> 00:02:28,530
+in the right axis, and troop count on the left axis.
+
+49
+00:02:28,530 --> 00:02:31,890
+Both the line and bar plots are individually OK,
+
+50
+00:02:31,890 --> 00:02:34,280
+but the combination is misleading.
+
+51
+00:02:34,280 --> 00:02:37,394
+Because you have mixed two units, dollars and people,
+
+52
+00:02:37,394 --> 00:02:39,060
+there is a false impression of some sort
+
+53
+00:02:39,060 --> 00:02:43,850
+of crossover point in 1995 that does not exist.
+
+54
+00:02:43,850 --> 00:02:47,650
+On the right is the same data presented in a different way.
+
+55
+00:02:47,650 --> 00:02:49,430
+We now have troops on the x-axis,
+
+56
+00:02:49,430 --> 00:02:51,710
+and dollars on the y-axis.
+
+57
+00:02:51,710 --> 00:02:53,740
+The line moves through time now, allowing
+
+58
+00:02:53,740 --> 00:02:56,990
+us to see when moments of change occurred, such as decreases
+
+59
+00:02:56,990 --> 00:03:00,510
+in troop count, through the 90s, at the end of the Cold War,
+
+60
+00:03:00,510 --> 00:03:02,690
+the increase in spending of the 2000s,
+
+61
+00:03:02,690 --> 00:03:05,850
+and the recent decreases in military spending.
+
+62
+00:03:05,850 --> 00:03:08,500
+The final visualization I want to show you today
+
+63
+00:03:08,500 --> 00:03:11,280
+is all about the different types of household.
+
+64
+00:03:11,280 --> 00:03:13,280
+The US Census Bureau periodically
+
+65
+00:03:13,280 --> 00:03:16,905
+determines how many households are comprised, for example,
+
+66
+00:03:16,905 --> 00:03:19,560
+of married couples with and without children,
+
+67
+00:03:19,560 --> 00:03:23,320
+people living alone, and so on.
+
+68
+00:03:23,320 --> 00:03:26,730
+First of all, I'm not saying this is a bad visualization.
+
+69
+00:03:26,730 --> 00:03:29,280
+In fact, if we are interested in the relative share
+
+70
+00:03:29,280 --> 00:03:32,370
+of each type of household in a particular year,
+
+71
+00:03:32,370 --> 00:03:34,620
+it's actually pretty good.
+
+72
+00:03:34,620 --> 00:03:36,630
+However, if what we're interested in
+
+73
+00:03:36,630 --> 00:03:38,940
+is the rates of change across the years,
+
+74
+00:03:38,940 --> 00:03:41,010
+this is next to useless.
+
+75
+00:03:41,010 --> 00:03:44,790
+The key problem is that the x-axis is completely off.
+
+76
+00:03:44,790 --> 00:03:47,690
+The gap between the first two columns is 10 years,
+
+77
+00:03:47,690 --> 00:03:49,590
+but the gap between the last two columns
+
+78
+00:03:49,590 --> 00:03:52,090
+is only 2 years, meaning that the rates are
+
+79
+00:03:52,090 --> 00:03:54,150
+hard to read from this.
+
+80
+00:03:54,150 --> 00:03:56,515
+If we're not interested in the rates of changes,
+
+81
+00:03:56,515 --> 00:04:00,920
+but just want to compare two years at a time, it's not bad,
+
+82
+00:04:00,920 --> 00:04:03,070
+but it's not easy either.
+
+83
+00:04:03,070 --> 00:04:06,170
+Try comparing 1970 married without children
+
+84
+00:04:06,170 --> 00:04:09,100
+to 2010 married without children,
+
+85
+00:04:09,100 --> 00:04:11,250
+without looking at the numbers.
+
+86
+00:04:11,250 --> 00:04:14,100
+Can you tell if it has grown or shrunk?
+
+87
+00:04:14,100 --> 00:04:16,490
+Finally, and more generally, this chart
+
+88
+00:04:16,490 --> 00:04:18,500
+shows relative numbers.
+
+89
+00:04:18,500 --> 00:04:20,380
+If you look at absolute numbers, we
+
+90
+00:04:20,380 --> 00:04:23,530
+might find the total number of couples married with children
+
+91
+00:04:23,530 --> 00:04:26,560
+is actually constant, but the number of other households
+
+92
+00:04:26,560 --> 00:04:29,350
+has increased.
+
+93
+00:04:29,350 --> 00:04:31,140
+We are now going to change into R
+
+94
+00:04:31,140 --> 00:04:34,350
+to try plotting this data as a line chart.
+

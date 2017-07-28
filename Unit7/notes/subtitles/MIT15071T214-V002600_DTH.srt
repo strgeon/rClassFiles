@@ -1,0 +1,604 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:02,910
+In this video, we'll create a heat map
+
+2
+00:00:02,910 --> 00:00:05,690
+on a map of the United States.
+
+3
+00:00:05,690 --> 00:00:09,760
+We'll be using the data set murders.csv, which
+
+4
+00:00:09,760 --> 00:00:12,460
+is data provided by the FBI giving
+
+5
+00:00:12,460 --> 00:00:17,080
+the total number of murders in the United States by state.
+
+6
+00:00:17,080 --> 00:00:19,720
+Let's start by reading in our data set.
+
+7
+00:00:19,720 --> 00:00:27,020
+We'll call it murders, and we'll use the read.csv function
+
+8
+00:00:27,020 --> 00:00:29,425
+to read in the data file murders.csv.
+
+9
+00:00:29,425 --> 00:00:32,610
+
+
+10
+00:00:32,610 --> 00:00:35,470
+Let's take a look at the structure of this data
+
+11
+00:00:35,470 --> 00:00:38,600
+using the str function.
+
+12
+00:00:38,600 --> 00:00:42,110
+We have 51 observations for the 50 states
+
+13
+00:00:42,110 --> 00:00:46,460
+plus Washington, DC, and six different variables:
+
+14
+00:00:46,460 --> 00:00:50,490
+the name of the state, the population, the population
+
+15
+00:00:50,490 --> 00:00:54,040
+density, the number of murders, the number
+
+16
+00:00:54,040 --> 00:00:59,230
+of murders that used guns, and the rate of gun ownership.
+
+17
+00:00:59,230 --> 00:01:02,060
+A map of the United States is included
+
+18
+00:01:02,060 --> 00:01:08,720
+in R. Let's load the map and call it statesMap.
+
+19
+00:01:08,720 --> 00:01:14,360
+We can do so using the map_data function,
+
+20
+00:01:14,360 --> 00:01:20,390
+where the only argument is "state" in quotes.
+
+21
+00:01:20,390 --> 00:01:23,020
+Let's see what this looks like by typing in str(statesMap).
+
+22
+00:01:23,020 --> 00:01:28,930
+
+
+23
+00:01:28,930 --> 00:01:31,250
+This is just a data frame summarizing
+
+24
+00:01:31,250 --> 00:01:33,830
+how to draw the United States.
+
+25
+00:01:33,830 --> 00:01:39,470
+To plot the map, we'll use the polygons geometry of ggplot.
+
+26
+00:01:39,470 --> 00:01:45,040
+So type ggplot, and then in parentheses, our data frame
+
+27
+00:01:45,040 --> 00:01:51,000
+is statesMap, and then our aesthetic is x = long,
+
+28
+00:01:51,000 --> 00:01:55,750
+the longitude variable in statesMap, y = lat,
+
+29
+00:01:55,750 --> 00:02:00,660
+the latitude variable, and then group = group.
+
+30
+00:02:00,660 --> 00:02:02,590
+This is the variable defining how
+
+31
+00:02:02,590 --> 00:02:06,780
+to draw the United States into groups by state.
+
+32
+00:02:06,780 --> 00:02:09,479
+Then close both parentheses here,
+
+33
+00:02:09,479 --> 00:02:15,780
+and we'll add geom_polygon where our arguments here will be
+
+34
+00:02:15,780 --> 00:02:21,410
+fill="white"-- we'll just fill all states in white--
+
+35
+00:02:21,410 --> 00:02:27,950
+and color="black" to outline the states in black.
+
+36
+00:02:27,950 --> 00:02:30,110
+Now in your R graphics window, you
+
+37
+00:02:30,110 --> 00:02:33,790
+should see a map of the United States.
+
+38
+00:02:33,790 --> 00:02:36,500
+Before we can plot our data on this map,
+
+39
+00:02:36,500 --> 00:02:38,630
+we need to make sure that the state names are
+
+40
+00:02:38,630 --> 00:02:41,630
+the same in the murders data frame
+
+41
+00:02:41,630 --> 00:02:44,820
+and in the statesMap data frame.
+
+42
+00:02:44,820 --> 00:02:47,470
+In the murders data frame, our state names
+
+43
+00:02:47,470 --> 00:02:49,490
+are in the State variable, and they
+
+44
+00:02:49,490 --> 00:02:51,510
+start with a capital letter.
+
+45
+00:02:51,510 --> 00:02:54,540
+But in the statesMap data frame, our state names
+
+46
+00:02:54,540 --> 00:02:58,550
+are in the region variable, and they're all lowercase.
+
+47
+00:02:58,550 --> 00:03:03,020
+So let's create a new variable called region in our murders
+
+48
+00:03:03,020 --> 00:03:07,050
+data frame to match the state name variable in the statesMap
+
+49
+00:03:07,050 --> 00:03:08,580
+data frame.
+
+50
+00:03:08,580 --> 00:03:14,380
+So we'll add to our murders data frame the variable region,
+
+51
+00:03:14,380 --> 00:03:18,000
+which will be equal to the lowercase version--
+
+52
+00:03:18,000 --> 00:03:21,400
+using the tolower function that we used in the text analytics
+
+53
+00:03:21,400 --> 00:03:25,320
+lectures-- and the argument will be murders$State.
+
+54
+00:03:25,320 --> 00:03:30,820
+
+
+55
+00:03:30,820 --> 00:03:33,140
+This will just convert the State variable
+
+56
+00:03:33,140 --> 00:03:35,940
+to all lowercase letters and store it
+
+57
+00:03:35,940 --> 00:03:39,220
+as a new variable called region.
+
+58
+00:03:39,220 --> 00:03:43,070
+Now we can join the statesMap data frame with the murders
+
+59
+00:03:43,070 --> 00:03:46,460
+data frame by using the merge function, which
+
+60
+00:03:46,460 --> 00:03:50,970
+matches rows of a data frame based on a shared identifier.
+
+61
+00:03:50,970 --> 00:03:53,320
+We just defined the variable region,
+
+62
+00:03:53,320 --> 00:03:56,140
+which exists in both data frames.
+
+63
+00:03:56,140 --> 00:04:02,580
+So we'll call our new data frame murderMap,
+
+64
+00:04:02,580 --> 00:04:04,790
+and we'll use the merge function,
+
+65
+00:04:04,790 --> 00:04:10,430
+where the first argument is our first data frame, statesMap,
+
+66
+00:04:10,430 --> 00:04:15,040
+the second argument is our second data frame, murders,
+
+67
+00:04:15,040 --> 00:04:19,410
+and the third argument is by="region".
+
+68
+00:04:19,410 --> 00:04:23,570
+This is the identifier to use to merge the rows.
+
+69
+00:04:23,570 --> 00:04:25,160
+Let's take a look at the data frame
+
+70
+00:04:25,160 --> 00:04:27,865
+we just created using the str function.
+
+71
+00:04:27,865 --> 00:04:30,580
+
+
+72
+00:04:30,580 --> 00:04:32,740
+We have the same number of observations
+
+73
+00:04:32,740 --> 00:04:35,490
+here that we had in the statesMap data frame,
+
+74
+00:04:35,490 --> 00:04:38,750
+but now we have both the variables from the statesMap
+
+75
+00:04:38,750 --> 00:04:42,100
+data frame and the variables from the murders data
+
+76
+00:04:42,100 --> 00:04:46,540
+frame, which were matched up based on the region variable.
+
+77
+00:04:46,540 --> 00:04:49,180
+So now, let's plot the number of murders
+
+78
+00:04:49,180 --> 00:04:51,720
+on our map of the United States.
+
+79
+00:04:51,720 --> 00:04:55,870
+We'll again use the ggplot function, but this time,
+
+80
+00:04:55,870 --> 00:05:02,020
+our data frame is murderMap, and in our aesthetic we want
+
+81
+00:05:02,020 --> 00:05:10,540
+to again say x=long, y=lat, and group=group,
+
+82
+00:05:10,540 --> 00:05:12,750
+but we'll add one more argument this time,
+
+83
+00:05:12,750 --> 00:05:18,370
+which is fill=Murders so that the states will be colored
+
+84
+00:05:18,370 --> 00:05:21,030
+according to the Murders variable.
+
+85
+00:05:21,030 --> 00:05:26,840
+Then we need to add the polygon geometry where the only
+
+86
+00:05:26,840 --> 00:05:29,910
+argument here will be color="black"
+
+87
+00:05:29,910 --> 00:05:33,880
+to outline the states in black, like before.
+
+88
+00:05:33,880 --> 00:05:42,790
+And lastly, we'll add scale_fill_gradient where
+
+89
+00:05:42,790 --> 00:05:52,450
+the arguments here, we'll put low="black" and high="red"
+
+90
+00:05:52,450 --> 00:05:56,980
+to make our color scheme range from black to red,
+
+91
+00:05:56,980 --> 00:06:04,350
+and then guide="legend" to make sure we get a legend
+
+92
+00:06:04,350 --> 00:06:06,220
+on our plot.
+
+93
+00:06:06,220 --> 00:06:10,400
+If you hit Enter and look at your graphics window now,
+
+94
+00:06:10,400 --> 00:06:12,060
+you should see that each of the states
+
+95
+00:06:12,060 --> 00:06:15,480
+is colored by the number of murders in that state.
+
+96
+00:06:15,480 --> 00:06:19,010
+States with a larger number of murders are more red.
+
+97
+00:06:19,010 --> 00:06:21,440
+So it looks like California and Texas
+
+98
+00:06:21,440 --> 00:06:23,750
+have the largest number of murders.
+
+99
+00:06:23,750 --> 00:06:27,470
+But is that just because they're the most populous states?
+
+100
+00:06:27,470 --> 00:06:30,390
+Let's create a map of the population of each state
+
+101
+00:06:30,390 --> 00:06:31,750
+to check.
+
+102
+00:06:31,750 --> 00:06:35,780
+So back in the R Console, hit the Up arrow, and then,
+
+103
+00:06:35,780 --> 00:06:43,740
+instead of fill=Murders, we want to put fill=Population to color
+
+104
+00:06:43,740 --> 00:06:47,820
+each state according to the Population variable.
+
+105
+00:06:47,820 --> 00:06:49,320
+If you look at the graphics window,
+
+106
+00:06:49,320 --> 00:06:51,930
+we have a population map here which
+
+107
+00:06:51,930 --> 00:06:55,340
+looks exactly the same as our murders map.
+
+108
+00:06:55,340 --> 00:06:57,990
+So we need to plot the murder rate instead
+
+109
+00:06:57,990 --> 00:07:00,860
+of the number of murders to make sure we're not just
+
+110
+00:07:00,860 --> 00:07:03,470
+plotting a population map.
+
+111
+00:07:03,470 --> 00:07:05,600
+So in our R Console, let's create
+
+112
+00:07:05,600 --> 00:07:08,130
+a new variable for the murder rate.
+
+113
+00:07:08,130 --> 00:07:13,580
+So in our murderMap data frame, we'll create the MurderRate
+
+114
+00:07:13,580 --> 00:07:19,550
+variable, which is equal to murderMap$Murders--
+
+115
+00:07:19,550 --> 00:07:28,760
+the number of murders-- divided by murderMap$Population times
+
+116
+00:07:28,760 --> 00:07:30,940
+100,000.
+
+117
+00:07:30,940 --> 00:07:33,160
+So we've created a new variable that's
+
+118
+00:07:33,160 --> 00:07:37,480
+the number of murders per 100,000 population.
+
+119
+00:07:37,480 --> 00:07:41,590
+Now let's redo our plot with the fill equal to MurderRate.
+
+120
+00:07:41,590 --> 00:07:45,640
+So hit the Up arrow twice to get back to the plotting command,
+
+121
+00:07:45,640 --> 00:07:49,754
+and instead of fill=Population, this time we'll put
+
+122
+00:07:49,754 --> 00:07:50,420
+fill=MurderRate.
+
+123
+00:07:50,420 --> 00:07:56,310
+
+
+124
+00:07:56,310 --> 00:07:58,660
+If you look at your graphics window now,
+
+125
+00:07:58,660 --> 00:08:02,320
+you should see that the plot is surprisingly maroon-looking.
+
+126
+00:08:02,320 --> 00:08:04,530
+There aren't really any red states.
+
+127
+00:08:04,530 --> 00:08:05,770
+Why?
+
+128
+00:08:05,770 --> 00:08:08,270
+It turns out that Washington, DC is
+
+129
+00:08:08,270 --> 00:08:11,210
+an outlier with a very high murder rate,
+
+130
+00:08:11,210 --> 00:08:13,510
+but it's such a small region on the map
+
+131
+00:08:13,510 --> 00:08:15,610
+that we can't even see it.
+
+132
+00:08:15,610 --> 00:08:19,360
+So let's redo our plot, removing any observations
+
+133
+00:08:19,360 --> 00:08:21,620
+with murder rates above 10, which
+
+134
+00:08:21,620 --> 00:08:25,160
+we know will only exclude Washington, DC.
+
+135
+00:08:25,160 --> 00:08:27,720
+Keep in mind that when interpreting and explaining
+
+136
+00:08:27,720 --> 00:08:30,160
+the resulting plot, you should always
+
+137
+00:08:30,160 --> 00:08:32,610
+note what you did to create it: removed
+
+138
+00:08:32,610 --> 00:08:36,210
+Washington, DC from the data.
+
+139
+00:08:36,210 --> 00:08:40,740
+So in your R Console, hit the Up arrow again, and this time,
+
+140
+00:08:40,740 --> 00:08:51,670
+after guide="legend", we'll type limits=c(0,10) and hit Enter.
+
+141
+00:08:51,670 --> 00:08:54,520
+Now if you look back at your graphics window,
+
+142
+00:08:54,520 --> 00:08:57,930
+you can see a range of colors on the map.
+
+143
+00:08:57,930 --> 00:09:00,860
+In this video, we saw how we can make a heat map
+
+144
+00:09:00,860 --> 00:09:03,340
+on a map of the United States, which
+
+145
+00:09:03,340 --> 00:09:06,340
+is very useful for organizations like the World Health
+
+146
+00:09:06,340 --> 00:09:10,520
+Organization or government entities who want to show data
+
+147
+00:09:10,520 --> 00:09:14,510
+to the public organized by state or country.
+
+148
+00:09:14,510 --> 00:09:16,780
+In the next video, we'll conclude
+
+149
+00:09:16,780 --> 00:09:20,748
+by discussing the analytics edge of predictive policing.
+
+150
+00:09:20,748 --> 00:09:21,248
+
+

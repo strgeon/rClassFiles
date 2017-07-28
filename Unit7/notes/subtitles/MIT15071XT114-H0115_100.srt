@@ -1,0 +1,412 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,420
+First, let's make sure we have ggplot2 loaded.
+
+2
+00:00:04,420 --> 00:00:06,113
+So library(ggplot2).
+
+3
+00:00:06,113 --> 00:00:12,420
+
+
+4
+00:00:12,420 --> 00:00:16,460
+Now let's load our data frame, which is in households.csv.
+
+5
+00:00:16,460 --> 00:00:18,880
+So read.csv(households.csv).
+
+6
+00:00:18,880 --> 00:00:27,190
+
+
+7
+00:00:27,190 --> 00:00:32,189
+If we look at the structure of households,
+
+8
+00:00:32,189 --> 00:00:35,020
+we see that there is a year column and then
+
+9
+00:00:35,020 --> 00:00:40,220
+six other columns for each of the different household types.
+
+10
+00:00:40,220 --> 00:00:42,740
+So this is actually a problem for us.
+
+11
+00:00:42,740 --> 00:00:45,190
+Given this structure of a data frame,
+
+12
+00:00:45,190 --> 00:00:46,845
+what would we put in the aesthetic
+
+13
+00:00:46,845 --> 00:00:50,370
+for our ggplot command?
+
+14
+00:00:50,370 --> 00:00:52,710
+It's not obvious, to me at least,
+
+15
+00:00:52,710 --> 00:00:55,970
+and in fact, I don't think it's really possible.
+
+16
+00:00:55,970 --> 00:00:58,040
+The reason is that ggplot needs it
+
+17
+00:00:58,040 --> 00:01:04,754
+in the form of: year, group, and fraction.
+
+18
+00:01:04,754 --> 00:01:07,330
+
+
+19
+00:01:07,330 --> 00:01:10,150
+The solution is to use the melt function
+
+20
+00:01:10,150 --> 00:01:12,720
+from the reshape package.
+
+21
+00:01:12,720 --> 00:01:15,920
+Melt will take a 2-dimensional data frame like ours,
+
+22
+00:01:15,920 --> 00:01:20,550
+and convert it into exactly the right form we need for ggplot2.
+
+23
+00:01:20,550 --> 00:01:24,495
+So first, let's load reshape2 -- library(reshape2).
+
+24
+00:01:24,495 --> 00:01:27,820
+
+
+25
+00:01:27,820 --> 00:01:31,230
+Now, let's look at the first two columns of our households data
+
+26
+00:01:31,230 --> 00:01:33,883
+frame -- households[,1:2].
+
+27
+00:01:33,883 --> 00:01:41,750
+
+
+28
+00:01:41,750 --> 00:01:45,610
+So there's a Year and a MarriedWChild for each year.
+
+29
+00:01:45,610 --> 00:01:49,390
+Now, let's look at the first few rows of our melted households
+
+30
+00:01:49,390 --> 00:01:50,324
+data frame.
+
+31
+00:01:50,324 --> 00:01:51,865
+So head(melt(households, id="Year")).
+
+32
+00:01:51,865 --> 00:02:05,990
+
+
+33
+00:02:05,990 --> 00:02:06,930
+And there you have it.
+
+34
+00:02:06,930 --> 00:02:09,009
+So, basically, what's happened is
+
+35
+00:02:09,009 --> 00:02:12,730
+that each value of MarriedWChild has
+
+36
+00:02:12,730 --> 00:02:15,870
+turned into its own row in the new data frame.
+
+37
+00:02:15,870 --> 00:02:18,810
+
+
+38
+00:02:18,810 --> 00:02:20,615
+To make it more clear, perhaps, let's look
+
+39
+00:02:20,615 --> 00:02:22,610
+at the first three columns of households.
+
+40
+00:02:22,610 --> 00:02:28,890
+
+
+41
+00:02:28,890 --> 00:02:31,250
+Now we have MarriedWOChild.
+
+42
+00:02:31,250 --> 00:02:35,500
+Now let's look at, instead of just the first rows
+
+43
+00:02:35,500 --> 00:02:39,290
+of our melted data frame, let's look at the first 10 rows.
+
+44
+00:02:39,290 --> 00:02:42,075
+So rows 1 to 10, all columns.
+
+45
+00:02:42,075 --> 00:02:49,420
+
+
+46
+00:02:49,420 --> 00:02:51,750
+There we go.
+
+47
+00:02:51,750 --> 00:02:57,110
+So there you can see the eight values of MarriedWChild,
+
+48
+00:02:57,110 --> 00:02:59,810
+and the first two values of MarriedWOChild.
+
+49
+00:02:59,810 --> 00:03:05,020
+So there's that 30.3 up there, gone down to 30.3 here,
+
+50
+00:03:05,020 --> 00:03:07,540
+29.9 gone to down here.
+
+51
+00:03:07,540 --> 00:03:09,280
+So every value in our data frame now
+
+52
+00:03:09,280 --> 00:03:13,470
+corresponds to a new row in our melted data frame,
+
+53
+00:03:13,470 --> 00:03:16,070
+which is exactly what we need for ggplot.
+
+54
+00:03:16,070 --> 00:03:22,060
+So let's try plotting this melted data frame -- ggplot,
+
+55
+00:03:22,060 --> 00:03:29,435
+melt, households, using the Year column as an id column,
+
+56
+00:03:29,435 --> 00:03:31,674
+the key column.
+
+57
+00:03:31,674 --> 00:03:37,910
+Our aesthetic is going to be now to use Year on the x-axis.
+
+58
+00:03:37,910 --> 00:03:41,260
+Our y-axis will be the value column of our melted data
+
+59
+00:03:41,260 --> 00:03:43,970
+frame.
+
+60
+00:03:43,970 --> 00:03:46,580
+And the color of the line will depend
+
+61
+00:03:46,580 --> 00:03:49,856
+on the group, which is called variable in the melted data
+
+62
+00:03:49,856 --> 00:03:50,355
+frame.
+
+63
+00:03:50,355 --> 00:03:56,080
+
+
+64
+00:03:56,080 --> 00:03:57,430
+So that's our aesthetic.
+
+65
+00:03:57,430 --> 00:04:01,220
+Our geometry is going to be lines.
+
+66
+00:04:01,220 --> 00:04:03,610
+And I want to make the lines a little bit thicker.
+
+67
+00:04:03,610 --> 00:04:08,380
+So let's say line size is 2.
+
+68
+00:04:08,380 --> 00:04:12,060
+And I also want to have points for each year
+
+69
+00:04:12,060 --> 00:04:14,470
+in the data frame, so I'm going to have lines and points.
+
+70
+00:04:14,470 --> 00:04:16,821
+So geom_point.
+
+71
+00:04:16,821 --> 00:04:19,279
+And I'm going to make the size of these a little bit bigger
+
+72
+00:04:19,279 --> 00:04:22,010
+than normal too, size = 5.
+
+73
+00:04:22,010 --> 00:04:24,140
+And we should put a y-axis label.
+
+74
+00:04:24,140 --> 00:04:25,640
+So ylab("Percentage of Households").
+
+75
+00:04:25,640 --> 00:04:33,710
+
+
+76
+00:04:33,710 --> 00:04:35,970
+And there you go.
+
+77
+00:04:35,970 --> 00:04:38,350
+Now, this is actually quite interesting
+
+78
+00:04:38,350 --> 00:04:41,670
+when we compare it back to the chart we had in the slides.
+
+79
+00:04:41,670 --> 00:04:44,160
+Now you can see just how quickly MarriedWChild
+
+80
+00:04:44,160 --> 00:04:45,760
+is decreasing as a relative share.
+
+81
+00:04:45,760 --> 00:04:49,960
+You can also more clearly see that MarriedWOChild
+
+82
+00:04:49,960 --> 00:04:53,490
+is pretty much flat, and that the differences being made up
+
+83
+00:04:53,490 --> 00:04:55,790
+by the other four types of households
+
+84
+00:04:55,790 --> 00:04:57,430
+is steadily increasing over the years.
+
+85
+00:04:57,430 --> 00:04:59,990
+
+
+86
+00:04:59,990 --> 00:05:01,820
+So there you have it, the same data,
+
+87
+00:05:01,820 --> 00:05:03,780
+plotted in two different ways.
+
+88
+00:05:03,780 --> 00:05:07,410
+Now, I'm not saying one of these is better than the other one.
+
+89
+00:05:07,410 --> 00:05:09,940
+For example, if I want to compare inside a given year,
+
+90
+00:05:09,940 --> 00:05:14,330
+say 1970, it's not the most easy thing, at a glance,
+
+91
+00:05:14,330 --> 00:05:18,370
+to see just how much of a total hundred percent
+
+92
+00:05:18,370 --> 00:05:20,282
+is taken up by each.
+
+93
+00:05:20,282 --> 00:05:22,980
+But if I want to see across years, it's far superior.
+
+94
+00:05:22,980 --> 00:05:25,980
+And I can clearly see that the last data point is pretty much
+
+95
+00:05:25,980 --> 00:05:27,730
+right next to the second to last data
+
+96
+00:05:27,730 --> 00:05:29,150
+point, which is something that was
+
+97
+00:05:29,150 --> 00:05:32,690
+hard to tell with the other visualization.
+
+98
+00:05:32,690 --> 00:05:34,970
+So I hope this has made you think a little bit more
+
+99
+00:05:34,970 --> 00:05:37,560
+about the different ways you can plot the same data.
+
+100
+00:05:37,560 --> 00:05:39,690
+And hopefully improved your ggplot2 skills
+
+101
+00:05:39,690 --> 00:05:41,270
+a little bit more.
+
+102
+00:05:41,270 --> 00:05:43,140
+Thanks for watching.
+

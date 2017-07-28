@@ -1,0 +1,176 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,890
+The good, the bad, and the ugly.
+
+2
+00:00:02,890 --> 00:00:07,540
+This is a recitation for the visualization week.
+
+3
+00:00:07,540 --> 00:00:10,570
+With great power comes great responsibility.
+
+4
+00:00:10,570 --> 00:00:13,580
+There are many ways to visualize the same data.
+
+5
+00:00:13,580 --> 00:00:17,210
+You have just seen how to make quite attractive visualizations
+
+6
+00:00:17,210 --> 00:00:20,590
+with ggplot2, which has good default settings,
+
+7
+00:00:20,590 --> 00:00:23,230
+but judgment is still required from the user.
+
+8
+00:00:23,230 --> 00:00:26,860
+For example, do I decide to vary the size of a point
+
+9
+00:00:26,860 --> 00:00:29,810
+or do I vary the color of a point?
+
+10
+00:00:29,810 --> 00:00:31,960
+It is worth noting at this point that Excel
+
+11
+00:00:31,960 --> 00:00:33,670
+and other similar programs can also
+
+12
+00:00:33,670 --> 00:00:36,810
+be used to make perfectly acceptable visualizations,
+
+13
+00:00:36,810 --> 00:00:38,560
+or terrible ones.
+
+14
+00:00:38,560 --> 00:00:41,150
+The tool can help, but it's ultimately up to the user
+
+15
+00:00:41,150 --> 00:00:44,040
+to make decisions.
+
+16
+00:00:44,040 --> 00:00:46,290
+So what is the difference between a good visualization
+
+17
+00:00:46,290 --> 00:00:49,020
+and a bad visualization then?
+
+18
+00:00:49,020 --> 00:00:51,430
+I would argue that a good visualization
+
+19
+00:00:51,430 --> 00:00:56,570
+clearly and accurately conveys the key messages in the data.
+
+20
+00:00:56,570 --> 00:00:59,740
+A bad visualization will obfuscate the data either
+
+21
+00:00:59,740 --> 00:01:03,020
+through ignorance or malice.
+
+22
+00:01:03,020 --> 00:01:05,480
+So what does this mean?
+
+23
+00:01:05,480 --> 00:01:07,850
+Visualizations can be used by an analyst
+
+24
+00:01:07,850 --> 00:01:12,180
+for their own consumption to gain insights into the data.
+
+25
+00:01:12,180 --> 00:01:15,370
+Visualizations can also be used to provide information
+
+26
+00:01:15,370 --> 00:01:20,150
+to a decision maker and/or to convince someone of something.
+
+27
+00:01:20,150 --> 00:01:22,060
+Now, a bad visualization can hide
+
+28
+00:01:22,060 --> 00:01:26,766
+patterns that could give insight or mislead decision makers.
+
+29
+00:01:26,766 --> 00:01:28,390
+This is where the malice part comes in.
+
+30
+00:01:28,390 --> 00:01:31,310
+
+
+31
+00:01:31,310 --> 00:01:35,640
+So today, we will look at a few examples of visualizations
+
+32
+00:01:35,640 --> 00:01:38,200
+taken from a variety of sources.
+
+33
+00:01:38,200 --> 00:01:41,530
+We'll discuss what is good and what is bad about them.
+
+34
+00:01:41,530 --> 00:01:44,490
+Then we will switch into R to build better versions of them
+
+35
+00:01:44,490 --> 00:01:46,540
+for ourselves.
+
+36
+00:01:46,540 --> 00:01:49,434
+But I want you to think for yourself in this recitation.
+
+37
+00:01:49,434 --> 00:01:51,350
+You might not agree with all the points I make
+
+38
+00:01:51,350 --> 00:01:53,990
+or my opinions about these visualizations.
+
+39
+00:01:53,990 --> 00:01:56,890
+Visualization is inherently subjective
+
+40
+00:01:56,890 --> 00:02:00,750
+and the right visualization will depend on the situation.
+
+41
+00:02:00,750 --> 00:02:02,930
+So use your own judgment and think
+
+42
+00:02:02,930 --> 00:02:05,675
+about what I talked about before with a good visualization
+
+43
+00:02:05,675 --> 00:02:07,920
+and a bad visualization.
+
