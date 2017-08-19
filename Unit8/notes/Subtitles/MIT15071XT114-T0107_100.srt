@@ -1,0 +1,372 @@
+0
+00:00:00,000 --> 00:00:00,590
+
+
+1
+00:00:00,590 --> 00:00:04,240
+In this lecture, we'll discuss how linear optimization
+
+2
+00:00:04,240 --> 00:00:08,320
+is used to design radiation therapy treatments for cancer
+
+3
+00:00:08,320 --> 00:00:10,560
+patients.
+
+4
+00:00:10,560 --> 00:00:12,480
+Cancer is the second leading cause
+
+5
+00:00:12,480 --> 00:00:16,680
+of death in the United States, second only to heart disease.
+
+6
+00:00:16,680 --> 00:00:23,690
+There were an estimated 570,000 deaths in 2013 due to cancer.
+
+7
+00:00:23,690 --> 00:00:28,110
+Additionally, over 1.6 million new cases of cancer
+
+8
+00:00:28,110 --> 00:00:32,560
+will be diagnosed in the United States in 2013.
+
+9
+00:00:32,560 --> 00:00:35,580
+These trends are also seen throughout the world.
+
+10
+00:00:35,580 --> 00:00:38,670
+Worldwide, cancer is a leading cause of death,
+
+11
+00:00:38,670 --> 00:00:43,570
+with 8.2 million deaths in 2012.
+
+12
+00:00:43,570 --> 00:00:46,690
+Cancer can be treated using radiation therapy,
+
+13
+00:00:46,690 --> 00:00:48,960
+where beams of high-energy photons
+
+14
+00:00:48,960 --> 00:00:52,930
+are fired into the patient to kill cancerous cells.
+
+15
+00:00:52,930 --> 00:00:55,060
+This is a very common form of treatment
+
+16
+00:00:55,060 --> 00:00:58,510
+for many types of cancers, and in the United States,
+
+17
+00:00:58,510 --> 00:01:00,790
+about half of all cancer patients
+
+18
+00:01:00,790 --> 00:01:05,319
+undergo some form of radiation therapy.
+
+19
+00:01:05,319 --> 00:01:10,630
+Radiation therapy has a history going back to the late 1800s.
+
+20
+00:01:10,630 --> 00:01:15,590
+X-rays were discovered by Wilhelm Rontgen in 1895,
+
+21
+00:01:15,590 --> 00:01:20,110
+who was later awarded the first Nobel Prize in Physics.
+
+22
+00:01:20,110 --> 00:01:22,550
+Shortly after the discovery, X-rays
+
+23
+00:01:22,550 --> 00:01:26,130
+started being used to treat skin cancers.
+
+24
+00:01:26,130 --> 00:01:30,290
+This image shows an x-ray of Rontgen's wife's hand.
+
+25
+00:01:30,290 --> 00:01:32,330
+You can see the bones in her hand
+
+26
+00:01:32,330 --> 00:01:35,610
+as well as her wedding ring on her finger.
+
+27
+00:01:35,610 --> 00:01:39,090
+A few years later in 1898, radium
+
+28
+00:01:39,090 --> 00:01:42,710
+was discovered by Marie and Pierre Curie.
+
+29
+00:01:42,710 --> 00:01:47,480
+They won the Nobel Prize for this discovery in 1911.
+
+30
+00:01:47,480 --> 00:01:50,720
+Radium started being used to treat cancer, as well
+
+31
+00:01:50,720 --> 00:01:51,485
+as other diseases.
+
+32
+00:01:51,485 --> 00:01:54,210
+
+
+33
+00:01:54,210 --> 00:01:58,760
+Later in the 1900s, the first radiation delivery machines,
+
+34
+00:01:58,760 --> 00:02:02,200
+called linear accelerators, were developed.
+
+35
+00:02:02,200 --> 00:02:08,930
+Then computed tomography, or CT scans, were invented in 1971.
+
+36
+00:02:08,930 --> 00:02:11,520
+These discoveries led to the invention
+
+37
+00:02:11,520 --> 00:02:16,510
+of Intensity Modulated Radiation Therapy, or IMRT,
+
+38
+00:02:16,510 --> 00:02:20,190
+in the early 1980s.
+
+39
+00:02:20,190 --> 00:02:22,910
+The invention of IMRT significantly
+
+40
+00:02:22,910 --> 00:02:25,780
+improved the ability of radiation therapy
+
+41
+00:02:25,780 --> 00:02:28,290
+to target cancerous cells.
+
+42
+00:02:28,290 --> 00:02:31,020
+To reach the tumor, radiation passes
+
+43
+00:02:31,020 --> 00:02:33,760
+through healthy tissue and therefore damages
+
+44
+00:02:33,760 --> 00:02:37,370
+both healthy and cancerous tissue.
+
+45
+00:02:37,370 --> 00:02:39,280
+This damage to healthy tissue can
+
+46
+00:02:39,280 --> 00:02:41,810
+lead to undesirable side effects that
+
+47
+00:02:41,810 --> 00:02:44,520
+reduce post-treatment quality of life.
+
+48
+00:02:44,520 --> 00:02:47,980
+For example, blistering and burning of skin
+
+49
+00:02:47,980 --> 00:02:52,160
+can occur because of the damage to healthy skin cells.
+
+50
+00:02:52,160 --> 00:02:54,300
+For this reason, we want the dose
+
+51
+00:02:54,300 --> 00:02:57,140
+to fit the tumor as closely as possible
+
+52
+00:02:57,140 --> 00:02:59,810
+to reduce the dose to healthy tissue.
+
+53
+00:02:59,810 --> 00:03:02,700
+This became possible with the invention of IMRT.
+
+54
+00:03:02,700 --> 00:03:05,430
+
+
+55
+00:03:05,430 --> 00:03:11,670
+In IMRT, the intensity profile of each beam is non-uniform.
+
+56
+00:03:11,670 --> 00:03:16,360
+Before IMRT, each beam had to have the same intensity,
+
+57
+00:03:16,360 --> 00:03:19,460
+so the tumor could not be targeted very well.
+
+58
+00:03:19,460 --> 00:03:23,060
+But by using non-uniform intensity profiles,
+
+59
+00:03:23,060 --> 00:03:26,190
+the radiation dose can better fit the tumor.
+
+60
+00:03:26,190 --> 00:03:28,930
+Let's see what this looks like.
+
+61
+00:03:28,930 --> 00:03:32,620
+In this image, we have a person's body outlined
+
+62
+00:03:32,620 --> 00:03:36,010
+in black, and then the target, or tumor,
+
+63
+00:03:36,010 --> 00:03:39,750
+and two critical structures also outlined.
+
+64
+00:03:39,750 --> 00:03:43,400
+We would like to maximize the radiation to the target,
+
+65
+00:03:43,400 --> 00:03:46,110
+while minimizing the dose to healthy tissue,
+
+66
+00:03:46,110 --> 00:03:49,230
+and especially to the critical structures.
+
+67
+00:03:49,230 --> 00:03:51,820
+Using traditional radiation therapy,
+
+68
+00:03:51,820 --> 00:03:54,690
+each of the three beams has the same intensity
+
+69
+00:03:54,690 --> 00:03:58,010
+throughout the beam.
+
+70
+00:03:58,010 --> 00:04:01,030
+So to deliver enough radiation to the tumor,
+
+71
+00:04:01,030 --> 00:04:04,870
+we also have to deliver a significant amount of radiation
+
+72
+00:04:04,870 --> 00:04:09,970
+to the critical structures and to other healthy tissue.
+
+73
+00:04:09,970 --> 00:04:13,830
+But by using IMRT, we can change the intensity
+
+74
+00:04:13,830 --> 00:04:17,160
+throughout each beam to make it non-uniform.
+
+75
+00:04:17,160 --> 00:04:18,829
+Some pieces of the beam will have
+
+76
+00:04:18,829 --> 00:04:21,620
+a higher intensity than others.
+
+77
+00:04:21,620 --> 00:04:24,740
+This allows us to deliver the necessary amount of radiation
+
+78
+00:04:24,740 --> 00:04:28,120
+to the tumor, while minimizing the total radiation
+
+79
+00:04:28,120 --> 00:04:31,680
+to healthy tissue, and thus, the critical structures
+
+80
+00:04:31,680 --> 00:04:35,440
+get significantly less radiation.
+
+81
+00:04:35,440 --> 00:04:39,450
+Each of the pieces of the beam is referred to as a beamlet.
+
+82
+00:04:39,450 --> 00:04:42,390
+So in IMRT, we decide the intensity
+
+83
+00:04:42,390 --> 00:04:44,410
+of each of the beamlets so that we
+
+84
+00:04:44,410 --> 00:04:46,730
+can target the tumor with radiation
+
+85
+00:04:46,730 --> 00:04:51,170
+while minimizing the radiation to healthy tissue.
+
+86
+00:04:51,170 --> 00:04:53,820
+So in designing an IMRT treatment,
+
+87
+00:04:53,820 --> 00:04:56,950
+the fundamental problem is -- how should the beamlet
+
+88
+00:04:56,950 --> 00:05:00,850
+intensities be selected to deliver a therapeutic dose
+
+89
+00:05:00,850 --> 00:05:05,670
+to the tumor and to minimize damage to healthy tissue?
+
+90
+00:05:05,670 --> 00:05:08,440
+This is the problem that we'll address in this lecture,
+
+91
+00:05:08,440 --> 00:05:10,576
+using linear optimization.
+
+92
+00:05:10,576 --> 00:05:11,076
+
+

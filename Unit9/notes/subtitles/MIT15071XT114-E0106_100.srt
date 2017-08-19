@@ -1,0 +1,272 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,175
+In this lecture, we'll discuss how
+
+2
+00:00:02,175 --> 00:00:05,050
+analytics and, in particular, optimization
+
+3
+00:00:05,050 --> 00:00:06,920
+is used in online dating.
+
+4
+00:00:06,920 --> 00:00:10,890
+Specifically, we'll discuss the story of the company eHarmony
+
+5
+00:00:10,890 --> 00:00:12,970
+that uses optimization to maximize
+
+6
+00:00:12,970 --> 00:00:15,430
+the probability of a successful match
+
+7
+00:00:15,430 --> 00:00:19,030
+between compatible adults.
+
+8
+00:00:19,030 --> 00:00:22,350
+The goal of eHarmony is to take a scientific approach
+
+9
+00:00:22,350 --> 00:00:25,390
+to love and marriage and offer it to the masses
+
+10
+00:00:25,390 --> 00:00:29,110
+through an online dating website focused
+
+11
+00:00:29,110 --> 00:00:31,760
+on long term relationships.
+
+12
+00:00:31,760 --> 00:00:33,950
+Indicators of success for eHarmony
+
+13
+00:00:33,950 --> 00:00:38,560
+include the fact that nearly 4% of U.S. marriages in 2012
+
+14
+00:00:38,560 --> 00:00:41,840
+are a result of eHarmony.
+
+15
+00:00:41,840 --> 00:00:45,740
+Furthermore, the company has generated, by 2009,
+
+16
+00:00:45,740 --> 00:00:48,460
+over $1 billion in revenue.
+
+17
+00:00:48,460 --> 00:00:51,620
+
+
+18
+00:00:51,620 --> 00:00:53,650
+How is eHarmony different?
+
+19
+00:00:53,650 --> 00:00:56,640
+Unlike other online dating websites,
+
+20
+00:00:56,640 --> 00:01:01,610
+eHarmony does not have users browse other users' profiles.
+
+21
+00:01:01,610 --> 00:01:04,970
+Instead, eHarmony uses a compatibility score
+
+22
+00:01:04,970 --> 00:01:08,460
+between two people and uses optimization algorithms
+
+23
+00:01:08,460 --> 00:01:10,855
+to determine the user's best matches.
+
+24
+00:01:10,855 --> 00:01:13,390
+
+
+25
+00:01:13,390 --> 00:01:16,560
+How does eHarmony compute the compatibility score?
+
+26
+00:01:16,560 --> 00:01:19,820
+The score is based on 29 different dimensions
+
+27
+00:01:19,820 --> 00:01:24,460
+of personality including character, emotions, values,
+
+28
+00:01:24,460 --> 00:01:26,620
+traits, etc.
+
+29
+00:01:26,620 --> 00:01:31,340
+The calculation involves a 436 questionnaire.
+
+30
+00:01:31,340 --> 00:01:33,540
+The matches must meet at least 25
+
+31
+00:01:33,540 --> 00:01:36,580
+out of 29 compatibility areas.
+
+32
+00:01:36,580 --> 00:01:41,680
+The graph from eHarmony's website shown in this slide
+
+33
+00:01:41,680 --> 00:01:45,890
+describes one such question regarding character.
+
+34
+00:01:45,890 --> 00:01:48,210
+Let us discuss the history of the company.
+
+35
+00:01:48,210 --> 00:01:51,230
+The founder of the company is Dr. Neil Clark Warren,
+
+36
+00:01:51,230 --> 00:01:55,400
+a clinical psychologist who counseled couples and began
+
+37
+00:01:55,400 --> 00:01:59,650
+to see that many marriages ended in divorce because couples
+
+38
+00:01:59,650 --> 00:02:02,160
+were not initially compatible.
+
+39
+00:02:02,160 --> 00:02:05,560
+Warren has written many relationship books.
+
+40
+00:02:05,560 --> 00:02:09,780
+Finding the Love of your Life, The Triumphant Marriage,
+
+41
+00:02:09,780 --> 00:02:12,790
+Learning to Live with the Love of Your Life and Loving It,
+
+42
+00:02:12,790 --> 00:02:17,610
+Finding Commitment, and many others.
+
+43
+00:02:17,610 --> 00:02:21,310
+In the late 1990s, after more than 35 years
+
+44
+00:02:21,310 --> 00:02:24,230
+of work as a clinical psychologist and marriage
+
+45
+00:02:24,230 --> 00:02:27,660
+counselor, Warren decided to test his theory
+
+46
+00:02:27,660 --> 00:02:31,320
+that certain characteristics can predict compatibility and lead
+
+47
+00:02:31,320 --> 00:02:33,890
+to more satisfying relationships.
+
+48
+00:02:33,890 --> 00:02:36,080
+After three years of research Warren
+
+49
+00:02:36,080 --> 00:02:37,570
+developed a model of compatibility
+
+50
+00:02:37,570 --> 00:02:42,010
+that is now the basis of the company's matching system.
+
+51
+00:02:42,010 --> 00:02:45,220
+The service launched its matching service for singles
+
+52
+00:02:45,220 --> 00:02:46,500
+in 2000.
+
+53
+00:02:46,500 --> 00:02:50,150
+Since then, the company has had about 33 million members,
+
+54
+00:02:50,150 --> 00:02:54,010
+and as of 2008, about 15,000 people
+
+55
+00:02:54,010 --> 00:02:57,210
+take the eHarmony questionnaire each day.
+
+56
+00:02:57,210 --> 00:02:59,960
+Interested users may fill out the compatibility quiz,
+
+57
+00:02:59,960 --> 00:03:02,340
+but in order to see matches members
+
+58
+00:03:02,340 --> 00:03:07,170
+must pay a membership fee to eHarmony.
+
+59
+00:03:07,170 --> 00:03:10,050
+What is a distinguishing characteristic of eHarmony?
+
+60
+00:03:10,050 --> 00:03:13,800
+While eHarmony was not the first online dating website
+
+61
+00:03:13,800 --> 00:03:15,880
+and faced serious competition, there
+
+62
+00:03:15,880 --> 00:03:19,080
+is a key difference from other dating websites.
+
+63
+00:03:19,080 --> 00:03:21,550
+eHarmony takes a quantitative optimization approach
+
+64
+00:03:21,550 --> 00:03:23,650
+to matchmaking rather than letting
+
+65
+00:03:23,650 --> 00:03:26,280
+users browse their website.
+
+66
+00:03:26,280 --> 00:03:28,110
+In this lecture, we'll explore some
+
+67
+00:03:28,110 --> 00:03:31,400
+of the analytics eHarmony uses.
+

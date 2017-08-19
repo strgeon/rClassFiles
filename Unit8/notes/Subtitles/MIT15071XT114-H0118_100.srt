@@ -1,0 +1,236 @@
+0
+00:00:00,000 --> 00:00:00,990
+
+
+1
+00:00:00,990 --> 00:00:03,250
+In the previous video, we introduced the concept
+
+2
+00:00:03,250 --> 00:00:05,700
+of price-per-click and click-through-rate.
+
+3
+00:00:05,700 --> 00:00:07,740
+Once we know both of these quantities,
+
+4
+00:00:07,740 --> 00:00:11,150
+we can calculate the average price per display.
+
+5
+00:00:11,150 --> 00:00:12,760
+This is simply the average amount
+
+6
+00:00:12,760 --> 00:00:16,309
+that an advertiser pays when a user is shown their ad.
+
+7
+00:00:16,309 --> 00:00:20,710
+We can compute this by multiplying the price-per-click
+
+8
+00:00:20,710 --> 00:00:23,250
+with the click-through-rate.
+
+9
+00:00:23,250 --> 00:00:27,330
+Let's go through an example to see how this works.
+
+10
+00:00:27,330 --> 00:00:30,730
+Suppose we have 10 users who search for "best LTE network".
+
+11
+00:00:30,730 --> 00:00:34,290
+
+
+12
+00:00:34,290 --> 00:00:37,220
+Google decides to display Verizon's ad to all of them.
+
+13
+00:00:37,220 --> 00:00:42,310
+
+
+14
+00:00:42,310 --> 00:00:44,540
+We know that the click-through-rate for Verizon
+
+15
+00:00:44,540 --> 00:00:48,800
+and for the "best LTE network" query is 0.2, so only two users
+
+16
+00:00:48,800 --> 00:00:49,470
+click on the ad.
+
+17
+00:00:49,470 --> 00:00:54,950
+
+
+18
+00:00:54,950 --> 00:00:56,950
+Verizon must now pay the price-per-click
+
+19
+00:00:56,950 --> 00:00:58,860
+for each of these users.
+
+20
+00:00:58,860 --> 00:01:02,770
+Since there were two clicks and each click costs $25,
+
+21
+00:01:02,770 --> 00:01:05,390
+Verizon must pay a total of $50 to Google.
+
+22
+00:01:05,390 --> 00:01:07,920
+
+
+23
+00:01:07,920 --> 00:01:10,710
+If we consider how much Verizon paid to Google on average,
+
+24
+00:01:10,710 --> 00:01:14,400
+per user, or equivalently how much Verizon paid per display
+
+25
+00:01:14,400 --> 00:01:17,200
+of the ad, we just divide the total amount
+
+26
+00:01:17,200 --> 00:01:20,890
+of $50 for the 10 users who saw the ad.
+
+27
+00:01:20,890 --> 00:01:23,380
+Doing this, we see that the average price per display
+
+28
+00:01:23,380 --> 00:01:23,985
+was $5.
+
+29
+00:01:23,985 --> 00:01:27,120
+
+
+30
+00:01:27,120 --> 00:01:29,780
+We could have obtained this amount in a simpler way.
+
+31
+00:01:29,780 --> 00:01:32,610
+In particular, as we defined in the previous slide,
+
+32
+00:01:32,610 --> 00:01:35,859
+this turns out to be exactly the same as the price-per-click
+
+33
+00:01:35,859 --> 00:01:37,400
+multiplied by the click-through-rate.
+
+34
+00:01:37,400 --> 00:01:41,220
+
+
+35
+00:01:41,220 --> 00:01:44,460
+For our data then, to obtain the average price per display
+
+36
+00:01:44,460 --> 00:01:46,999
+we simply need to multiply the price-per-click table
+
+37
+00:01:46,999 --> 00:01:48,790
+and the click-through-rate tables together.
+
+38
+00:01:48,790 --> 00:01:54,150
+
+
+39
+00:01:54,150 --> 00:01:55,710
+The last piece of data that we need
+
+40
+00:01:55,710 --> 00:01:57,650
+before we can define our problem is
+
+41
+00:01:57,650 --> 00:02:00,450
+we need to know how popular the queries are.
+
+42
+00:02:00,450 --> 00:02:02,790
+Obviously, Google does not control how many times
+
+43
+00:02:02,790 --> 00:02:05,460
+a search query will be searched because the users are
+
+44
+00:02:05,460 --> 00:02:07,240
+the ones who submit the queries.
+
+45
+00:02:07,240 --> 00:02:09,360
+However, Google does have an estimate
+
+46
+00:02:09,360 --> 00:02:11,310
+of the number of times, on average,
+
+47
+00:02:11,310 --> 00:02:15,340
+the query will be requested over a given day.
+
+48
+00:02:15,340 --> 00:02:17,820
+For the example that we have been building so far,
+
+49
+00:02:17,820 --> 00:02:22,900
+let's suppose that we expect to see "4G LTE" 140 times,
+
+50
+00:02:22,900 --> 00:02:27,951
+"largest LTE" 80 times, and "best LTE network" 80 times,
+
+51
+00:02:27,951 --> 00:02:28,450
+as well.
+
+52
+00:02:28,450 --> 00:02:31,780
+
+
+53
+00:02:31,780 --> 00:02:34,590
+We're now ready to start modeling this problem.
+
+54
+00:02:34,590 --> 00:02:37,140
+The problem that we will consider is this.
+
+55
+00:02:37,140 --> 00:02:40,980
+How many times should Google display each ad for each query,
+
+56
+00:02:40,980 --> 00:02:43,970
+so as to maximize their total revenue?
+
+57
+00:02:43,970 --> 00:02:45,860
+In the next video, we will formulate
+
+58
+00:02:45,860 --> 00:02:49,090
+this as a linear optimization problem.
+

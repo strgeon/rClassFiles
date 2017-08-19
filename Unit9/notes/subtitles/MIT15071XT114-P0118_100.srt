@@ -1,0 +1,44 @@
+0
+00:00:00,000 --> 00:00:00,610
+
+
+1
+00:00:00,610 --> 00:00:01,880
+Hi, this is Angie.
+
+2
+00:00:01,880 --> 00:00:03,520
+I'll be giving the recitation this week
+
+3
+00:00:03,520 --> 00:00:05,486
+on integer optimization.
+
+4
+00:00:05,486 --> 00:00:06,860
+In the sports scheduling lecture,
+
+5
+00:00:06,860 --> 00:00:09,290
+we saw how integer optimization was a great way
+
+6
+00:00:09,290 --> 00:00:11,160
+to design an optimal schedule.
+
+7
+00:00:11,160 --> 00:00:13,620
+Today, we'll see how Mount Sinai Hospital in Toronto
+
+8
+00:00:13,620 --> 00:00:16,950
+uses integer optimization to schedule their operating rooms.
+
+9
+00:00:16,950 --> 00:00:18,820
+Let's get started.
+
+10
+00:00:18,820 --> 00:00:19,776
+
+

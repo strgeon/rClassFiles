@@ -1,0 +1,244 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,060
+In this lecture, we'll introduce linear optimization
+
+2
+00:00:03,060 --> 00:00:05,725
+and apply it to airline revenue management.
+
+3
+00:00:05,725 --> 00:00:09,560
+
+
+4
+00:00:09,560 --> 00:00:13,230
+Air transportation became a reality in the United States
+
+5
+00:00:13,230 --> 00:00:14,650
+in the 20th century.
+
+6
+00:00:14,650 --> 00:00:19,250
+From 1938 to 1978, the Civil Aeronautics Board
+
+7
+00:00:19,250 --> 00:00:23,420
+set fares, routes, and schedules for all interstate air
+
+8
+00:00:23,420 --> 00:00:24,570
+transport.
+
+9
+00:00:24,570 --> 00:00:27,680
+Most airlines were very positive on this system,
+
+10
+00:00:27,680 --> 00:00:29,520
+as it guaranteed their profits.
+
+11
+00:00:29,520 --> 00:00:32,479
+However, this system led to higher costs for a traveling
+
+12
+00:00:32,479 --> 00:00:35,210
+public as well as to various inefficiencies.
+
+13
+00:00:35,210 --> 00:00:38,600
+For example, applications for new routes and fares
+
+14
+00:00:38,600 --> 00:00:42,500
+were often delayed or dismissed.
+
+15
+00:00:42,500 --> 00:00:45,060
+In response to these inefficiencies,
+
+16
+00:00:45,060 --> 00:00:47,650
+the administration of President Carter
+
+17
+00:00:47,650 --> 00:00:51,310
+passed the Airline Deregulation Act in 1978.
+
+18
+00:00:51,310 --> 00:00:54,070
+The act encouraged more competition.
+
+19
+00:00:54,070 --> 00:00:57,140
+As a result, 52 new airlines were
+
+20
+00:00:57,140 --> 00:01:00,490
+formed between 1980 and 2000.
+
+21
+00:01:00,490 --> 00:01:05,209
+Also, new air routes appeared.
+
+22
+00:01:05,209 --> 00:01:07,270
+Correspondingly, it saved passengers
+
+23
+00:01:07,270 --> 00:01:12,810
+an estimated $10.3 billion each year in travel time.
+
+24
+00:01:12,810 --> 00:01:16,110
+Lower fares was another outcome.
+
+25
+00:01:16,110 --> 00:01:22,690
+Ticket prices are now 40% lower than they were in 1978.
+
+26
+00:01:22,690 --> 00:01:25,960
+This led to more passengers.
+
+27
+00:01:25,960 --> 00:01:30,190
+The number of air passengers increased from over 200 million
+
+28
+00:01:30,190 --> 00:01:39,490
+in 1974 to over 720 million in 2010.
+
+29
+00:01:39,490 --> 00:01:41,820
+More competition led to lower fares,
+
+30
+00:01:41,820 --> 00:01:44,700
+as we discussed, while meeting operating costs.
+
+31
+00:01:44,700 --> 00:01:48,210
+This further led to heavy losses by air carriers.
+
+32
+00:01:48,210 --> 00:01:52,690
+Nine major carriers and more than a hundred smaller airlines
+
+33
+00:01:52,690 --> 00:01:56,700
+went bankrupt between 1978 and 2002.
+
+34
+00:01:56,700 --> 00:02:00,175
+So it is natural to ask how did airlines compete?
+
+35
+00:02:00,175 --> 00:02:03,710
+
+
+36
+00:02:03,710 --> 00:02:06,000
+In their attempt to sell more seats,
+
+37
+00:02:06,000 --> 00:02:09,320
+airlines started to offer deep discounts.
+
+38
+00:02:09,320 --> 00:02:13,240
+For example, on January 17, 1985,
+
+39
+00:02:13,240 --> 00:02:17,820
+American Airlines launched its Ultimate Super Saver fares
+
+40
+00:02:17,820 --> 00:02:20,450
+to compete with PeopleExpress.
+
+41
+00:02:20,450 --> 00:02:23,540
+The key strategy involved selling enough seats
+
+42
+00:02:23,540 --> 00:02:27,600
+to cover fixed operating costs while selling remaining
+
+43
+00:02:27,600 --> 00:02:31,200
+seats at higher rates to maximize revenues.
+
+44
+00:02:31,200 --> 00:02:34,010
+This led to the science of revenue management
+
+45
+00:02:34,010 --> 00:02:35,790
+that we'll study in this lecture.
+
+46
+00:02:35,790 --> 00:02:39,430
+
+
+47
+00:02:39,430 --> 00:02:41,810
+The key question in revenue management
+
+48
+00:02:41,810 --> 00:02:45,190
+is how many seats to sell on discount.
+
+49
+00:02:45,190 --> 00:02:47,320
+The key consideration is that passengers
+
+50
+00:02:47,320 --> 00:02:48,950
+have different valuations.
+
+51
+00:02:48,950 --> 00:02:52,700
+For example, business people value flexibility,
+
+52
+00:02:52,700 --> 00:02:57,300
+whereas people seeking a vacation value good deals.
+
+53
+00:02:57,300 --> 00:02:59,900
+So if we sell too many discounted seats,
+
+54
+00:02:59,900 --> 00:03:01,440
+then there would not be enough seats
+
+55
+00:03:01,440 --> 00:03:03,200
+for high-paying passengers.
+
+56
+00:03:03,200 --> 00:03:06,470
+At the same time, if we sell too few discounted seats,
+
+57
+00:03:06,470 --> 00:03:12,170
+then we will have empty seats, which lead to lost revenue.
+
+58
+00:03:12,170 --> 00:03:15,530
+So the key question is how airlines like American
+
+59
+00:03:15,530 --> 00:03:18,460
+can allocate their seats among customers in order
+
+60
+00:03:18,460 --> 00:03:21,030
+to maximize their revenue.
+

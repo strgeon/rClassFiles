@@ -1,0 +1,240 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,800
+Radiation therapy is one of the most well used applications
+
+2
+00:00:04,800 --> 00:00:07,490
+of optimization in health care.
+
+3
+00:00:07,490 --> 00:00:10,130
+In practice, radiation machines are
+
+4
+00:00:10,130 --> 00:00:13,090
+connected to treatment planning software that
+
+5
+00:00:13,090 --> 00:00:15,320
+implements and solves optimization
+
+6
+00:00:15,320 --> 00:00:19,810
+models, both linear optimization models, like we saw here,
+
+7
+00:00:19,810 --> 00:00:23,080
+and other types of optimization models.
+
+8
+00:00:23,080 --> 00:00:25,360
+Some examples of radiation machines
+
+9
+00:00:25,360 --> 00:00:30,720
+that use optimization software are Pinnacle by Philips,
+
+10
+00:00:30,720 --> 00:00:34,560
+RayStation by RaySearch Labs, and Eclipse by Varian.
+
+11
+00:00:34,560 --> 00:00:37,400
+
+
+12
+00:00:37,400 --> 00:00:40,230
+There are many extensions to the optimization model
+
+13
+00:00:40,230 --> 00:00:41,990
+we described here.
+
+14
+00:00:41,990 --> 00:00:45,660
+One is the selection of beam angles.
+
+15
+00:00:45,660 --> 00:00:48,970
+The beam angles can be selected jointly with the intensity
+
+16
+00:00:48,970 --> 00:00:52,970
+profiles by using integer optimization.
+
+17
+00:00:52,970 --> 00:00:55,960
+This allows the treatment to be further personalized
+
+18
+00:00:55,960 --> 00:01:01,040
+to the specific tumor and person receiving the radiation.
+
+19
+00:01:01,040 --> 00:01:04,650
+Integer optimization is another type of optimization model
+
+20
+00:01:04,650 --> 00:01:08,020
+and will be the topic of next week.
+
+21
+00:01:08,020 --> 00:01:11,900
+Another extension is accounting for uncertainty.
+
+22
+00:01:11,900 --> 00:01:14,560
+Often, the quality of IMRT treatments
+
+23
+00:01:14,560 --> 00:01:18,420
+is degraded due to uncertain organ motion.
+
+24
+00:01:18,420 --> 00:01:21,880
+For example, in lung cancer the target area
+
+25
+00:01:21,880 --> 00:01:23,800
+is around the lungs.
+
+26
+00:01:23,800 --> 00:01:25,380
+But since the patient is breathing
+
+27
+00:01:25,380 --> 00:01:28,390
+throughout the treatment, the target area is moving
+
+28
+00:01:28,390 --> 00:01:31,800
+and the location is slightly uncertain.
+
+29
+00:01:31,800 --> 00:01:34,100
+We can manage this uncertainty using
+
+30
+00:01:34,100 --> 00:01:37,770
+a method known as robust optimization.
+
+31
+00:01:37,770 --> 00:01:40,770
+There is a significant amount of literature on this method
+
+32
+00:01:40,770 --> 00:01:42,945
+and its application to radiation therapy.
+
+33
+00:01:42,945 --> 00:01:45,590
+
+
+34
+00:01:45,590 --> 00:01:47,940
+Linear optimization significantly
+
+35
+00:01:47,940 --> 00:01:51,580
+improves the efficiency of radiation therapy.
+
+36
+00:01:51,580 --> 00:01:54,520
+Manually designing an IMRT treatment
+
+37
+00:01:54,520 --> 00:01:57,450
+would be inefficient and impractical.
+
+38
+00:01:57,450 --> 00:02:00,610
+By using linear optimization, IMRT
+
+39
+00:02:00,610 --> 00:02:04,780
+can be designed in an efficient and systematic way.
+
+40
+00:02:04,780 --> 00:02:07,650
+As we saw in this lecture, clinical criteria
+
+41
+00:02:07,650 --> 00:02:10,289
+can be modeled using constraints,
+
+42
+00:02:10,289 --> 00:02:12,780
+and the treatment planner can explore trade-offs
+
+43
+00:02:12,780 --> 00:02:15,650
+by changing the model.
+
+44
+00:02:15,650 --> 00:02:19,330
+But ultimately, IMRT and the use of optimization
+
+45
+00:02:19,330 --> 00:02:21,280
+benefits the patient.
+
+46
+00:02:21,280 --> 00:02:24,280
+In head and neck cancers, saliva glands
+
+47
+00:02:24,280 --> 00:02:27,450
+were rarely spared prior to IMRT.
+
+48
+00:02:27,450 --> 00:02:30,780
+But by using optimized IMRT treatments,
+
+49
+00:02:30,780 --> 00:02:34,040
+saliva glands can now be spared.
+
+50
+00:02:34,040 --> 00:02:37,130
+In prostate cancer, IMRT treatments
+
+51
+00:02:37,130 --> 00:02:40,710
+reduce toxicities and allow for higher tumor doses
+
+52
+00:02:40,710 --> 00:02:43,110
+to be delivered safely.
+
+53
+00:02:43,110 --> 00:02:46,540
+And in lung cancer, optimized IMRT
+
+54
+00:02:46,540 --> 00:02:51,000
+reduced the risk of radiation induced pneumonitis.
+
+55
+00:02:51,000 --> 00:02:55,570
+These are just three examples of the benefits of IMRT.
+
+56
+00:02:55,570 --> 00:02:59,330
+Overall, optimized IMRT allows clinicians
+
+57
+00:02:59,330 --> 00:03:02,930
+to deliver treatment that was previously impossible
+
+58
+00:03:02,930 --> 00:03:06,815
+and to improve the quality of life for patients.
+
+59
+00:03:06,815 --> 00:03:07,314
+
+

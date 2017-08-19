@@ -1,0 +1,352 @@
+0
+00:00:00,000 --> 00:00:00,960
+
+
+1
+00:00:00,960 --> 00:00:02,620
+So let's begin modeling this problem
+
+2
+00:00:02,620 --> 00:00:05,460
+as a linear optimization problem.
+
+3
+00:00:05,460 --> 00:00:08,150
+In terms of the framework that we have seen in the lectures,
+
+4
+00:00:08,150 --> 00:00:11,960
+our objective is to maximize the revenue to Google.
+
+5
+00:00:11,960 --> 00:00:15,430
+Our decision is for each advertiser and each query
+
+6
+00:00:15,430 --> 00:00:18,910
+to decide the number of times that advertiser's ad will
+
+7
+00:00:18,910 --> 00:00:21,940
+be displayed for that query.
+
+8
+00:00:21,940 --> 00:00:23,970
+Our constraints are of two types.
+
+9
+00:00:23,970 --> 00:00:26,800
+Our first constraint is that the average amount paid by each
+
+10
+00:00:26,800 --> 00:00:29,920
+advertiser, based on the number of times Google displays
+
+11
+00:00:29,920 --> 00:00:34,580
+their ad for each query, cannot exceed the budget of that
+
+12
+00:00:34,580 --> 00:00:36,430
+advertiser.
+
+13
+00:00:36,430 --> 00:00:38,880
+Our second constraint is that the total number of ads we
+
+14
+00:00:38,880 --> 00:00:42,510
+display for a query cannot exceed our estimate
+
+15
+00:00:42,510 --> 00:00:45,570
+of the number of requests that we expect to see for that
+
+16
+00:00:45,570 --> 00:00:47,990
+query.
+
+17
+00:00:47,990 --> 00:00:50,240
+Let's quickly review our problem data.
+
+18
+00:00:50,240 --> 00:00:52,570
+We have the average price per display
+
+19
+00:00:52,570 --> 00:00:55,700
+for each advertiser and each query.
+
+20
+00:00:55,700 --> 00:00:58,720
+We have the budget of each advertiser.
+
+21
+00:00:58,720 --> 00:01:01,150
+And we have estimates of the number
+
+22
+00:01:01,150 --> 00:01:03,830
+of requests for each query.
+
+23
+00:01:03,830 --> 00:01:05,580
+So let's now think about how to model
+
+24
+00:01:05,580 --> 00:01:08,490
+all the pieces of our problem.
+
+25
+00:01:08,490 --> 00:01:11,700
+First, how should we define our decision variables?
+
+26
+00:01:11,700 --> 00:01:15,240
+Well, we should define them for each advertiser and each query.
+
+27
+00:01:15,240 --> 00:01:17,940
+So for example, one of our decision variables
+
+28
+00:01:17,940 --> 00:01:19,070
+will be x_A1.
+
+29
+00:01:19,070 --> 00:01:22,510
+
+
+30
+00:01:22,510 --> 00:01:24,680
+x_A1 is the number of times we will
+
+31
+00:01:24,680 --> 00:01:28,520
+display AT&T's ad for query 1.
+
+32
+00:01:28,520 --> 00:01:34,740
+Similarly, we can define x_A2 and x_A3.
+
+33
+00:01:34,740 --> 00:01:37,960
+These are the numbers of times that we will display AT&T's ad
+
+34
+00:01:37,960 --> 00:01:40,700
+for queries 2 and 3, respectively.
+
+35
+00:01:40,700 --> 00:01:43,040
+Now, of course, we have three different advertisers,
+
+36
+00:01:43,040 --> 00:01:48,530
+so we will have variables x_T1, x_T2, and x_T3.
+
+37
+00:01:48,530 --> 00:01:51,120
+
+
+38
+00:01:51,120 --> 00:01:53,080
+These variables represent the number of times
+
+39
+00:01:53,080 --> 00:01:56,580
+that we display T-Mobile's ad for queries 1, 2,
+
+40
+00:01:56,580 --> 00:01:58,390
+and 3, respectively.
+
+41
+00:01:58,390 --> 00:02:00,850
+And, of course, our last advertiser's Verizon.
+
+42
+00:02:00,850 --> 00:02:07,973
+So we will have variables x_V1, x_V2, and x_V3, which
+
+43
+00:02:07,973 --> 00:02:09,639
+are the numbers of times that we display
+
+44
+00:02:09,639 --> 00:02:13,320
+Verizon's ad for queries 1, 2, and 3, respectively.
+
+45
+00:02:13,320 --> 00:02:15,886
+
+
+46
+00:02:15,886 --> 00:02:17,760
+Now, how do we compute the revenue to Google,
+
+47
+00:02:17,760 --> 00:02:19,260
+which is our objective?
+
+48
+00:02:19,260 --> 00:02:21,820
+Well, we know the average price per display,
+
+49
+00:02:21,820 --> 00:02:24,850
+and our decision variables tell us exactly how many times
+
+50
+00:02:24,850 --> 00:02:27,420
+we'll display each ad for each query.
+
+51
+00:02:27,420 --> 00:02:30,680
+So all we need to do is we need to multiply each decision
+
+52
+00:02:30,680 --> 00:02:33,950
+variable with its corresponding average price per display
+
+53
+00:02:33,950 --> 00:02:35,610
+and add them all up.
+
+54
+00:02:35,610 --> 00:02:52,550
+If we did this, we would have 0.5*x_A1 + 0.5*x_A2 + 1.6*x_A3
+
+55
+00:02:52,550 --> 00:02:54,207
++ 1*x_T1.
+
+56
+00:02:54,207 --> 00:02:57,010
+
+
+57
+00:02:57,010 --> 00:02:58,220
+And we can continue this.
+
+58
+00:02:58,220 --> 00:03:03,480
+And the last term in our sum will be 5*x_V3.
+
+59
+00:03:03,480 --> 00:03:06,850
+
+
+60
+00:03:06,850 --> 00:03:10,110
+To get the constraints, we use a similar process.
+
+61
+00:03:10,110 --> 00:03:12,850
+For instance, to get how much AT&T pays,
+
+62
+00:03:12,850 --> 00:03:16,100
+we multiply the AT&T variables by their average prices
+
+63
+00:03:16,100 --> 00:03:18,210
+per display and add them up.
+
+64
+00:03:18,210 --> 00:03:28,406
+So we'd get 0.5*x_A1 + 0.5*x_A2 + 1.6*x_A3.
+
+65
+00:03:28,406 --> 00:03:32,510
+
+
+66
+00:03:32,510 --> 00:03:34,510
+Now, one of our constraints, as you will recall,
+
+67
+00:03:34,510 --> 00:03:39,410
+is that this cannot exceed AT&T's budget, which is $170.
+
+68
+00:03:39,410 --> 00:03:45,170
+So our model would have the constraint 0.5*x_A1 + 0.5*x_A2
+
+69
+00:03:45,170 --> 00:03:53,580
++ 1.6*x_A3, is less than 170.
+
+70
+00:03:53,580 --> 00:03:56,330
+We can repeat this to get the same kind of budget constraint
+
+71
+00:03:56,330 --> 00:03:58,890
+for T-Mobile and Verizon.
+
+72
+00:03:58,890 --> 00:04:02,160
+Now, to get the number of times query 2 is used,
+
+73
+00:04:02,160 --> 00:04:05,470
+we add up the decision variables corresponding to query 2.
+
+74
+00:04:05,470 --> 00:04:08,900
+So we have x_A2, the number of times
+
+75
+00:04:08,900 --> 00:04:11,880
+AT&T is paired with query 2.
+
+76
+00:04:11,880 --> 00:04:15,110
+We have x_T2, which is the number of times
+
+77
+00:04:15,110 --> 00:04:19,700
+T-Mobile is paired with query 2, and x_V2,
+
+78
+00:04:19,700 --> 00:04:23,660
+which is the number of times Verizon is paired with query 2.
+
+79
+00:04:23,660 --> 00:04:25,920
+Now, one of our constraints is that this cannot exceed
+
+80
+00:04:25,920 --> 00:04:29,310
+the estimated number of requests for query 2, which is 80.
+
+81
+00:04:29,310 --> 00:04:35,150
+So our model would have the constraint x_A2 + x_T2 + x_V2
+
+82
+00:04:35,150 --> 00:04:38,530
+all less than 80.
+
+83
+00:04:38,530 --> 00:04:40,560
+We can do this for the other queries.
+
+84
+00:04:40,560 --> 00:04:43,350
+So we can do this for query 1 and query 3.
+
+85
+00:04:43,350 --> 00:04:45,410
+And this is all that we really need.
+
+86
+00:04:45,410 --> 00:04:48,290
+So now, let's take this problem to LibreOffice
+
+87
+00:04:48,290 --> 00:04:50,650
+and actually solve it.
+

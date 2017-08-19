@@ -1,0 +1,384 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:03,590
+In this recitation, we'll be going over the basic steps
+
+2
+00:00:03,590 --> 00:00:07,420
+in building, solving, and analyzing a linear optimization
+
+3
+00:00:07,420 --> 00:00:08,920
+model.
+
+4
+00:00:08,920 --> 00:00:11,380
+The problem we will use to demonstrate this
+
+5
+00:00:11,380 --> 00:00:15,005
+comes from Google AdWords, which is the advertising system used
+
+6
+00:00:15,005 --> 00:00:16,720
+by Google.
+
+7
+00:00:16,720 --> 00:00:19,830
+Let's begin by talking a little bit about Google.
+
+8
+00:00:19,830 --> 00:00:22,740
+As you may know, Google is a major company in the United
+
+9
+00:00:22,740 --> 00:00:25,740
+States that provides products and services related
+
+10
+00:00:25,740 --> 00:00:27,330
+to the internet.
+
+11
+00:00:27,330 --> 00:00:29,280
+Google's official mission statement
+
+12
+00:00:29,280 --> 00:00:31,350
+is to organize the world's information,
+
+13
+00:00:31,350 --> 00:00:35,350
+and to make it universally accessible and useful.
+
+14
+00:00:35,350 --> 00:00:38,480
+Although Google today develops a variety of products
+
+15
+00:00:38,480 --> 00:00:40,590
+that includes things such as the Android operating
+
+16
+00:00:40,590 --> 00:00:44,020
+system, the Google Glass wearable computer, and even
+
+17
+00:00:44,020 --> 00:00:47,390
+self-driving cars, Google became famous--
+
+18
+00:00:47,390 --> 00:00:50,250
+and is still most widely known-- for its search engine, which
+
+19
+00:00:50,250 --> 00:00:55,491
+can be found at www.google.com.
+
+20
+00:00:55,491 --> 00:00:58,980
+The search engine lets the user enter a query.
+
+21
+00:00:58,980 --> 00:01:00,790
+Google then searches through the web pages
+
+22
+00:01:00,790 --> 00:01:03,700
+accessible on the internet, to return links to websites
+
+23
+00:01:03,700 --> 00:01:07,120
+that best fit the search query.
+
+24
+00:01:07,120 --> 00:01:09,370
+Now, how did Google come about?
+
+25
+00:01:09,370 --> 00:01:11,650
+Well, the idea of Google originated
+
+26
+00:01:11,650 --> 00:01:13,800
+as a research project of two people--
+
+27
+00:01:13,800 --> 00:01:16,770
+Sergey Brin and Larry Page.
+
+28
+00:01:16,770 --> 00:01:19,030
+This was in 1996, while they were still
+
+29
+00:01:19,030 --> 00:01:22,030
+graduate students at Stanford University.
+
+30
+00:01:22,030 --> 00:01:24,910
+Their idea, in a nut shell, was to measure the importance
+
+31
+00:01:24,910 --> 00:01:27,120
+of a web page to a particular query,
+
+32
+00:01:27,120 --> 00:01:29,920
+not just by measuring how much that query occurs in that web
+
+33
+00:01:29,920 --> 00:01:33,610
+page, but also by considering the links to that web page
+
+34
+00:01:33,610 --> 00:01:35,626
+from other web pages.
+
+35
+00:01:35,626 --> 00:01:37,250
+They quickly found that this idea could
+
+36
+00:01:37,250 --> 00:01:39,080
+form the core of a search engine,
+
+37
+00:01:39,080 --> 00:01:41,010
+and they found that the search engine actually
+
+38
+00:01:41,010 --> 00:01:42,700
+worked quite well.
+
+39
+00:01:42,700 --> 00:01:44,560
+They eventually named it Google.
+
+40
+00:01:44,560 --> 00:01:48,830
+And in 1998, they incorporated Google as a company.
+
+41
+00:01:48,830 --> 00:01:51,380
+In the same year, they received their first funding.
+
+42
+00:01:51,380 --> 00:01:55,360
+At the time, they had a database of 60 million web pages.
+
+43
+00:01:55,360 --> 00:01:58,000
+Six years later, Google's initial public offering
+
+44
+00:01:58,000 --> 00:02:02,090
+took place, and Google became a publicly traded company.
+
+45
+00:02:02,090 --> 00:02:04,020
+After going public, Google has continued
+
+46
+00:02:04,020 --> 00:02:06,880
+to grow at an immense pace, acquiring other internet
+
+47
+00:02:06,880 --> 00:02:09,979
+companies like YouTube in 2007.
+
+48
+00:02:09,979 --> 00:02:13,800
+In 2013, Google's traffic reached more than a billion
+
+49
+00:02:13,800 --> 00:02:15,850
+unique monthly visitors.
+
+50
+00:02:15,850 --> 00:02:18,610
+Today, more than two-thirds of all the searches
+
+51
+00:02:18,610 --> 00:02:22,890
+done on the internet are powered by Google's search engine.
+
+52
+00:02:22,890 --> 00:02:26,240
+Now, you may be rather surprised to hear that Google does not
+
+53
+00:02:26,240 --> 00:02:29,400
+actually make any money directly from its search engine.
+
+54
+00:02:29,400 --> 00:02:33,930
+In fact, Google's search engine is free for anyone to use.
+
+55
+00:02:33,930 --> 00:02:36,920
+So then, how does Google make money?
+
+56
+00:02:36,920 --> 00:02:41,030
+And the answer is -- through online advertising.
+
+57
+00:02:41,030 --> 00:02:45,790
+Basically, Google sells space on its web pages-- in particular,
+
+58
+00:02:45,790 --> 00:02:49,120
+results of its search queries-- to outside companies.
+
+59
+00:02:49,120 --> 00:02:51,660
+These companies can then place advertisements, or ads,
+
+60
+00:02:51,660 --> 00:02:53,090
+on these spaces.
+
+61
+00:02:53,090 --> 00:02:55,940
+Let's take a look at a concrete example.
+
+62
+00:02:55,940 --> 00:02:59,540
+So here we have a screen shot of the results of a Google search.
+
+63
+00:02:59,540 --> 00:03:02,260
+The query here was "nine inch nails tickets".
+
+64
+00:03:02,260 --> 00:03:04,680
+Nine Inch Nails-- if you're not familiar with it--
+
+65
+00:03:04,680 --> 00:03:06,710
+is a critically acclaimed industrial rock band
+
+66
+00:03:06,710 --> 00:03:10,760
+from the United States, that recently toured North America.
+
+67
+00:03:10,760 --> 00:03:17,860
+On this page, there are only two search results-- here and here.
+
+68
+00:03:17,860 --> 00:03:19,910
+The first is a link to Ticketmaster,
+
+69
+00:03:19,910 --> 00:03:22,590
+which is a company that sells concert tickets.
+
+70
+00:03:22,590 --> 00:03:25,280
+The second is to the tour page of Nine Inch Nails'
+
+71
+00:03:25,280 --> 00:03:26,990
+official website.
+
+72
+00:03:26,990 --> 00:03:32,130
+All the remaining links on this web page are ads.
+
+73
+00:03:32,130 --> 00:03:33,820
+In this case, these are mostly links
+
+74
+00:03:33,820 --> 00:03:37,530
+to other third-party companies that resell tickets.
+
+75
+00:03:37,530 --> 00:03:40,930
+Now, you may be asking, why do companies
+
+76
+00:03:40,930 --> 00:03:42,560
+advertise with Google?
+
+77
+00:03:42,560 --> 00:03:44,480
+Well, there are several reasons.
+
+78
+00:03:44,480 --> 00:03:46,860
+As you saw a few slides back, Google
+
+79
+00:03:46,860 --> 00:03:49,260
+receives a lot of internet traffic, as a lot of users
+
+80
+00:03:49,260 --> 00:03:50,980
+conduct searches on Google.
+
+81
+00:03:50,980 --> 00:03:52,550
+So an ad placed on Google could be
+
+82
+00:03:52,550 --> 00:03:55,630
+seen by a very large number of users.
+
+83
+00:03:55,630 --> 00:03:58,960
+At the same time, Google's web pages-- and the ads in them--
+
+84
+00:03:58,960 --> 00:04:02,830
+are formatted in a very clean, visually appealing way.
+
+85
+00:04:02,830 --> 00:04:05,720
+Lastly, companies that advertise with Google
+
+86
+00:04:05,720 --> 00:04:08,930
+can select which queries their ads will be displayed for.
+
+87
+00:04:08,930 --> 00:04:11,350
+This is a very useful feature, because a company can then
+
+88
+00:04:11,350 --> 00:04:13,420
+target specific customers that they
+
+89
+00:04:13,420 --> 00:04:15,360
+think are likely to buy their product,
+
+90
+00:04:15,360 --> 00:04:17,540
+or to use their service.
+
+91
+00:04:17,540 --> 00:04:21,649
+Google's online advertising system is known as AdWords
+
+92
+00:04:21,649 --> 00:04:24,440
+and is responsible for more than 97%
+
+93
+00:04:24,440 --> 00:04:27,820
+percent of Google's revenues.
+
+94
+00:04:27,820 --> 00:04:30,190
+In the next video, we'll go into more detail
+
+95
+00:04:30,190 --> 00:04:33,410
+about the components of the AdWords system.
+

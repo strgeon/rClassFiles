@@ -1,0 +1,816 @@
+0
+00:00:00,000 --> 00:00:01,210
+
+
+1
+00:00:01,210 --> 00:00:02,990
+Okay, so solving successfully finished,
+
+2
+00:00:02,990 --> 00:00:04,990
+and we've got the results.
+
+3
+00:00:04,990 --> 00:00:07,690
+If you had any trouble solving this problem,
+
+4
+00:00:07,690 --> 00:00:11,280
+then you should go into Options in the Solver
+
+5
+00:00:11,280 --> 00:00:15,240
+and select that you want to edit the length of solution time
+
+6
+00:00:15,240 --> 00:00:18,480
+and increase it past 100 seconds.
+
+7
+00:00:18,480 --> 00:00:21,680
+The LibreOffice Solver is not incredibly powerful,
+
+8
+00:00:21,680 --> 00:00:24,550
+so it may need more time to find the solution.
+
+9
+00:00:24,550 --> 00:00:27,120
+We do recommend that if you have access to Excel,
+
+10
+00:00:27,120 --> 00:00:30,590
+that you use Excel instead for integer optimization problems,
+
+11
+00:00:30,590 --> 00:00:32,619
+because Excel is a little bit better
+
+12
+00:00:32,619 --> 00:00:35,660
+with integer optimization.
+
+13
+00:00:35,660 --> 00:00:38,370
+However, you probably got the solution just fine.
+
+14
+00:00:38,370 --> 00:00:42,500
+So you'll want to go ahead and click Keep Result.
+
+15
+00:00:42,500 --> 00:00:45,980
+So now, we can take a look at our solution.
+
+16
+00:00:45,980 --> 00:00:49,470
+So we've got the objective of 4.46.
+
+17
+00:00:49,470 --> 00:00:51,310
+This is not particularly interpretable,
+
+18
+00:00:51,310 --> 00:00:54,596
+until you remember that what our objective is,
+
+19
+00:00:54,596 --> 00:00:59,560
+is the total of all departments percent of target allocation
+
+20
+00:00:59,560 --> 00:01:01,570
+hours reached.
+
+21
+00:01:01,570 --> 00:01:03,730
+So the best possible number that we could get here
+
+22
+00:01:03,730 --> 00:01:06,230
+would be 5, if every department had
+
+23
+00:01:06,230 --> 00:01:11,020
+100% of their target allocation hours reached.
+
+24
+00:01:11,020 --> 00:01:13,017
+So we've got 4.46.
+
+25
+00:01:13,017 --> 00:01:14,975
+So let's go up and take a look at the solution.
+
+26
+00:01:14,975 --> 00:01:17,630
+
+
+27
+00:01:17,630 --> 00:01:20,690
+So we're giving ophthalmology a total of four operating
+
+28
+00:01:20,690 --> 00:01:24,050
+rooms per week, which is 32 weekly hours,
+
+29
+00:01:24,050 --> 00:01:26,380
+or 81% of their target.
+
+30
+00:01:26,380 --> 00:01:29,420
+We're giving gynecology 14, which
+
+31
+00:01:29,420 --> 00:01:33,410
+is 112 weekly hours, 95% of their target.
+
+32
+00:01:33,410 --> 00:01:36,050
+We're giving oral surgery two, and as we see,
+
+33
+00:01:36,050 --> 00:01:38,240
+the constraints restricted us so that we only
+
+34
+00:01:38,240 --> 00:01:41,190
+gave oral surgery operating rooms on Tuesdays
+
+35
+00:01:41,190 --> 00:01:43,035
+and Thursdays.
+
+36
+00:01:43,035 --> 00:01:44,890
+This is 80% of the target.
+
+37
+00:01:44,890 --> 00:01:51,820
+
+
+38
+00:01:51,820 --> 00:01:55,180
+We gave otolaryngology three operating rooms
+
+39
+00:01:55,180 --> 00:01:58,010
+and general surgery 23 operating rooms,
+
+40
+00:01:58,010 --> 00:02:01,830
+getting 91% and 97% of their target allocation hours.
+
+41
+00:02:01,830 --> 00:02:04,570
+
+
+42
+00:02:04,570 --> 00:02:07,300
+So suppose that you were the operating room manager, who
+
+43
+00:02:07,300 --> 00:02:09,769
+knows integer optimization.
+
+44
+00:02:09,769 --> 00:02:12,060
+In practice, what would happen is that you would go off
+
+45
+00:02:12,060 --> 00:02:13,490
+and you would design what we just
+
+46
+00:02:13,490 --> 00:02:16,150
+did here in the recitation.
+
+47
+00:02:16,150 --> 00:02:17,760
+You would have this optimization model
+
+48
+00:02:17,760 --> 00:02:20,560
+for operating room scheduling in the hospital.
+
+49
+00:02:20,560 --> 00:02:21,490
+You'd solve it.
+
+50
+00:02:21,490 --> 00:02:23,355
+You'd find the optimal solution.
+
+51
+00:02:23,355 --> 00:02:27,800
+And you'd come back and present it to the surgical departments.
+
+52
+00:02:27,800 --> 00:02:29,560
+And they'll look at the schedule.
+
+53
+00:02:29,560 --> 00:02:31,580
+And all of a sudden, they'll tell you
+
+54
+00:02:31,580 --> 00:02:34,310
+it doesn't work for them.
+
+55
+00:02:34,310 --> 00:02:35,610
+And you'll say, why not?
+
+56
+00:02:35,610 --> 00:02:38,990
+I incorporated everything that you asked for.
+
+57
+00:02:38,990 --> 00:02:39,720
+And it's true.
+
+58
+00:02:39,720 --> 00:02:40,640
+You did.
+
+59
+00:02:40,640 --> 00:02:43,030
+But oftentimes, there are actually other constraints
+
+60
+00:02:43,030 --> 00:02:45,690
+that they forgot to tell you about.
+
+61
+00:02:45,690 --> 00:02:47,590
+So what would you do in that case?
+
+62
+00:02:47,590 --> 00:02:50,710
+Well, you'd listen to their additional constraints
+
+63
+00:02:50,710 --> 00:02:53,300
+and go back and add them to the model.
+
+64
+00:02:53,300 --> 00:02:55,970
+So that's exactly what we'll do here.
+
+65
+00:02:55,970 --> 00:02:57,750
+Suppose the general surgery department
+
+66
+00:02:57,750 --> 00:03:00,210
+took a look at the schedule and said, "Oh, great, we
+
+67
+00:03:00,210 --> 00:03:03,580
+have 23 operating rooms per week.
+
+68
+00:03:03,580 --> 00:03:08,127
+That's exactly two less than actually our maximum.
+
+69
+00:03:08,127 --> 00:03:10,210
+It's right in between our minimum and our maximum.
+
+70
+00:03:10,210 --> 00:03:12,280
+And we're getting 97% of our weekly target.
+
+71
+00:03:12,280 --> 00:03:13,920
+We think that's wonderful.
+
+72
+00:03:13,920 --> 00:03:16,070
+However, it's a little bit uneven-- six
+
+73
+00:03:16,070 --> 00:03:19,150
+on Wednesday, three on Thursday.
+
+74
+00:03:19,150 --> 00:03:23,830
+Can we just have at least four per day?"
+
+75
+00:03:23,830 --> 00:03:25,020
+We can do that.
+
+76
+00:03:25,020 --> 00:03:27,790
+So let's go up to the minimum number
+
+77
+00:03:27,790 --> 00:03:29,540
+of operating rooms per day.
+
+78
+00:03:29,540 --> 00:03:33,961
+And for general surgery, let's change this from zero to four.
+
+79
+00:03:33,961 --> 00:03:35,960
+This will help them balance throughout the week.
+
+80
+00:03:35,960 --> 00:03:39,200
+
+
+81
+00:03:39,200 --> 00:03:42,925
+And potentially, ophthalmology will look at their schedule,
+
+82
+00:03:42,925 --> 00:03:44,300
+and they'll think the same thing.
+
+83
+00:03:44,300 --> 00:03:45,674
+They'll think, "Well, we actually
+
+84
+00:03:45,674 --> 00:03:48,330
+would prefer to balance it throughout the week.
+
+85
+00:03:48,330 --> 00:03:51,280
+We want at most one operating room per day.
+
+86
+00:03:51,280 --> 00:03:53,100
+We don't want to have two on Monday.
+
+87
+00:03:53,100 --> 00:03:57,130
+Let's put one of those on Thursday or Friday."
+
+88
+00:03:57,130 --> 00:03:57,770
+So that's OK.
+
+89
+00:03:57,770 --> 00:03:59,720
+We can do that too.
+
+90
+00:03:59,720 --> 00:04:02,300
+We just go to the maximum number of operating rooms per day.
+
+91
+00:04:02,300 --> 00:04:04,680
+And for ophthalmology, we change it to one.
+
+92
+00:04:04,680 --> 00:04:09,470
+
+
+93
+00:04:09,470 --> 00:04:13,710
+Let's re-solve the model and see what we get.
+
+94
+00:04:13,710 --> 00:04:16,860
+Again, we select the objective.
+
+95
+00:04:16,860 --> 00:04:20,040
+Go to Tools, pull down the Solver.
+
+96
+00:04:20,040 --> 00:04:22,432
+It should have everything already loaded up,
+
+97
+00:04:22,432 --> 00:04:23,640
+and we just get to hit Solve.
+
+98
+00:04:23,640 --> 00:04:26,630
+
+
+99
+00:04:26,630 --> 00:04:27,470
+So that was quick.
+
+100
+00:04:27,470 --> 00:04:29,600
+Solving successfully finished.
+
+101
+00:04:29,600 --> 00:04:32,180
+And it looks like we actually have exactly the same results
+
+102
+00:04:32,180 --> 00:04:34,180
+as we had before.
+
+103
+00:04:34,180 --> 00:04:38,290
+Let's hit Keep Result and take a closer look at this.
+
+104
+00:04:38,290 --> 00:04:41,540
+So our objective function stayed exactly the same.
+
+105
+00:04:41,540 --> 00:04:44,380
+But we were able to incorporate the new constraints,
+
+106
+00:04:44,380 --> 00:04:47,270
+the new requirement that the general surgery department have
+
+107
+00:04:47,270 --> 00:04:49,930
+at least four operating rooms per day,
+
+108
+00:04:49,930 --> 00:04:52,190
+and that the ophthalmology department have
+
+109
+00:04:52,190 --> 00:04:55,670
+at most one operating room per day.
+
+110
+00:04:55,670 --> 00:04:57,880
+This means that within the solution
+
+111
+00:04:57,880 --> 00:05:01,770
+we had before, there's actually a little bit of wiggle room.
+
+112
+00:05:01,770 --> 00:05:04,760
+We could move some things around without changing
+
+113
+00:05:04,760 --> 00:05:06,730
+the optimality of the solution, that is,
+
+114
+00:05:06,730 --> 00:05:08,880
+without changing the percent of target
+
+115
+00:05:08,880 --> 00:05:11,699
+that each department received.
+
+116
+00:05:11,699 --> 00:05:13,240
+And as you see, this is a little more
+
+117
+00:05:13,240 --> 00:05:15,392
+balanced for the ophthalmology department
+
+118
+00:05:15,392 --> 00:05:16,850
+and the general surgery department.
+
+119
+00:05:16,850 --> 00:05:19,970
+
+
+120
+00:05:19,970 --> 00:05:25,020
+So great-- so maybe seeing that this was available,
+
+121
+00:05:25,020 --> 00:05:27,140
+then you'd go back, you'd present it,
+
+122
+00:05:27,140 --> 00:05:31,580
+and general surgery would say, well, maybe
+
+123
+00:05:31,580 --> 00:05:34,660
+could we have at least five per day?
+
+124
+00:05:34,660 --> 00:05:36,840
+So if you went up and changed this,
+
+125
+00:05:36,840 --> 00:05:41,490
+made it five all the way across instead of four
+
+126
+00:05:41,490 --> 00:05:48,270
+and you solved it again, what would happen?
+
+127
+00:05:48,270 --> 00:05:49,730
+You probably have an idea already.
+
+128
+00:05:49,730 --> 00:05:53,549
+
+
+129
+00:05:53,549 --> 00:05:55,340
+And this is exactly what you were thinking.
+
+130
+00:05:55,340 --> 00:05:57,100
+No solution was found.
+
+131
+00:05:57,100 --> 00:05:58,390
+The model is infeasible.
+
+132
+00:05:58,390 --> 00:06:00,560
+Check limiting conditions.
+
+133
+00:06:00,560 --> 00:06:02,750
+So why is the model infeasible?
+
+134
+00:06:02,750 --> 00:06:07,710
+Well, let's take a look.
+
+135
+00:06:07,710 --> 00:06:08,540
+Scroll back over.
+
+136
+00:06:08,540 --> 00:06:11,210
+
+
+137
+00:06:11,210 --> 00:06:15,060
+The model is infeasible because, let's see--
+
+138
+00:06:15,060 --> 00:06:17,130
+so it's not because of the minimum
+
+139
+00:06:17,130 --> 00:06:20,850
+and maximum weekly department requirements,
+
+140
+00:06:20,850 --> 00:06:23,630
+because general surgery said that they were willing to have
+
+141
+00:06:23,630 --> 00:06:28,060
+up to 25 operating rooms per week.
+
+142
+00:06:28,060 --> 00:06:33,710
+However, if you look at the weekly targets, 25 times 8
+
+143
+00:06:33,710 --> 00:06:35,240
+is 200.
+
+144
+00:06:35,240 --> 00:06:39,450
+So if we were to actually assign general surgery five operating
+
+145
+00:06:39,450 --> 00:06:41,190
+rooms per day, we would be assigning
+
+146
+00:06:41,190 --> 00:06:44,800
+them 200 hours per week, which exceeds their weekly target.
+
+147
+00:06:44,800 --> 00:06:47,420
+And our optimization model says we cannot exceed the weekly
+
+148
+00:06:47,420 --> 00:06:49,106
+targets.
+
+149
+00:06:49,106 --> 00:06:50,855
+So just right there, we can tell that it's
+
+150
+00:06:50,855 --> 00:06:53,370
+infeasible because of this constraint.
+
+151
+00:06:53,370 --> 00:06:54,880
+So let's change this back to four.
+
+152
+00:06:54,880 --> 00:07:00,630
+
+
+153
+00:07:00,630 --> 00:07:03,390
+So suppose you've come up with a solution,
+
+154
+00:07:03,390 --> 00:07:05,860
+you've gone back to the surgical departments,
+
+155
+00:07:05,860 --> 00:07:08,670
+you've presented your solution, they've maybe
+
+156
+00:07:08,670 --> 00:07:10,470
+requested additional changes, and we've
+
+157
+00:07:10,470 --> 00:07:12,800
+made those changes here.
+
+158
+00:07:12,800 --> 00:07:15,810
+So does this mean that your job is done?
+
+159
+00:07:15,810 --> 00:07:18,980
+Well, no, not really.
+
+160
+00:07:18,980 --> 00:07:21,582
+Of course, you could go back to the surgical departments
+
+161
+00:07:21,582 --> 00:07:23,540
+and tell them that this is the schedule they're
+
+162
+00:07:23,540 --> 00:07:25,580
+going to have every week.
+
+163
+00:07:25,580 --> 00:07:28,820
+But I bet if did that, you'd hear some complaints.
+
+164
+00:07:28,820 --> 00:07:33,330
+Let's go into our solution and take a closer look to see why.
+
+165
+00:07:33,330 --> 00:07:36,346
+So for example, let's look at the ophthalmology department.
+
+166
+00:07:36,346 --> 00:07:38,990
+In our solution, we're assigning them
+
+167
+00:07:38,990 --> 00:07:41,680
+four operating rooms per week.
+
+168
+00:07:41,680 --> 00:07:44,380
+That gives them 32 weekly hours, which
+
+169
+00:07:44,380 --> 00:07:49,250
+is 81% of their target allocation hours.
+
+170
+00:07:49,250 --> 00:07:54,310
+If you assigned the schedule to ophthalmology every week, then
+
+171
+00:07:54,310 --> 00:07:56,310
+they would never get more than 81%
+
+172
+00:07:56,310 --> 00:07:58,220
+of their target allocation hours.
+
+173
+00:07:58,220 --> 00:08:02,090
+And over time, this would lead to a real shortage.
+
+174
+00:08:02,090 --> 00:08:04,810
+The reason why we never assign them more than four
+
+175
+00:08:04,810 --> 00:08:08,130
+in our optimization model is because their weekly target
+
+176
+00:08:08,130 --> 00:08:11,740
+number of hours was 39.4.
+
+177
+00:08:11,740 --> 00:08:14,340
+If we had assigned them five operating rooms,
+
+178
+00:08:14,340 --> 00:08:16,830
+it would be giving them 40 hours per week,
+
+179
+00:08:16,830 --> 00:08:19,440
+which exceeds their weekly target.
+
+180
+00:08:19,440 --> 00:08:21,490
+So the way our optimization model is set up,
+
+181
+00:08:21,490 --> 00:08:23,550
+we will never give them more than four
+
+182
+00:08:23,550 --> 00:08:26,610
+operating rooms per week.
+
+183
+00:08:26,610 --> 00:08:29,410
+But if you were the OR manager, you
+
+184
+00:08:29,410 --> 00:08:31,970
+would realize that this is actually something
+
+185
+00:08:31,970 --> 00:08:34,737
+that we should be a little more flexible about.
+
+186
+00:08:34,737 --> 00:08:36,320
+Perhaps you would consider giving them
+
+187
+00:08:36,320 --> 00:08:38,760
+five operating rooms one week, or maybe
+
+188
+00:08:38,760 --> 00:08:44,110
+five operating rooms every two weeks out of the month.
+
+189
+00:08:44,110 --> 00:08:46,800
+This is feasible because we have extra operating
+
+190
+00:08:46,800 --> 00:08:52,510
+rooms on Thursday and Friday, as you can see down here.
+
+191
+00:08:52,510 --> 00:08:56,370
+Plus, it seems like it's a more efficient and fair solution.
+
+192
+00:08:56,370 --> 00:08:59,140
+Yes, although they do exceed their weekly target
+
+193
+00:08:59,140 --> 00:09:04,000
+by 0.6 hours, it means that on the weeks when they only
+
+194
+00:09:04,000 --> 00:09:09,230
+get to have 81% of their target allocation,
+
+195
+00:09:09,230 --> 00:09:10,950
+they know that the next week, they'll
+
+196
+00:09:10,950 --> 00:09:14,380
+be able to make up for it.
+
+197
+00:09:14,380 --> 00:09:16,427
+So it seems like a more fair solution, as well as
+
+198
+00:09:16,427 --> 00:09:17,510
+a more efficient solution.
+
+199
+00:09:17,510 --> 00:09:20,670
+
+
+200
+00:09:20,670 --> 00:09:23,490
+By combining the power of integer optimization
+
+201
+00:09:23,490 --> 00:09:27,130
+with the understanding and flexibility of human judgment,
+
+202
+00:09:27,130 --> 00:09:29,641
+you really get the best of both worlds.
+
+203
+00:09:29,641 --> 00:09:30,141
+
+

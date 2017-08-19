@@ -1,0 +1,384 @@
+0
+00:00:00,000 --> 00:00:01,190
+
+
+1
+00:00:01,190 --> 00:00:02,970
+The process by which Google determines
+
+2
+00:00:02,970 --> 00:00:05,220
+which ads to display for which queries
+
+3
+00:00:05,220 --> 00:00:07,870
+consists of three key steps.
+
+4
+00:00:07,870 --> 00:00:12,670
+First, Google runs an auction where advertisers place bids
+
+5
+00:00:12,670 --> 00:00:16,329
+for different queries that they want to display their ads on.
+
+6
+00:00:16,329 --> 00:00:20,260
+Next, Google uses each bid in a metric known
+
+7
+00:00:20,260 --> 00:00:23,220
+as the Quality Score, which basically measures
+
+8
+00:00:23,220 --> 00:00:25,980
+how well a particular ad fits a particular query
+
+9
+00:00:25,980 --> 00:00:29,060
+to decide a quantity known as the price-per-click.
+
+10
+00:00:29,060 --> 00:00:32,650
+Google does this for each advertiser and each query.
+
+11
+00:00:32,650 --> 00:00:37,070
+Finally, and this is where optimization plays a key role,
+
+12
+00:00:37,070 --> 00:00:42,080
+Google decides how often to display each ad for each query.
+
+13
+00:00:42,080 --> 00:00:44,120
+This problem, as we'll see shortly,
+
+14
+00:00:44,120 --> 00:00:47,427
+can be formulated as a linear optimization model.
+
+15
+00:00:47,427 --> 00:00:49,010
+Let's begin by thinking about the data
+
+16
+00:00:49,010 --> 00:00:50,530
+that we need for this model.
+
+17
+00:00:50,530 --> 00:00:54,090
+In particular, let's think about the price-per-click.
+
+18
+00:00:54,090 --> 00:00:56,490
+So as we just discussed, Google decides
+
+19
+00:00:56,490 --> 00:00:59,000
+each advertiser's price-per-click.
+
+20
+00:00:59,000 --> 00:01:01,470
+The price-per-click is how much each advertiser
+
+21
+00:01:01,470 --> 00:01:06,800
+pays Google when a user clicks on the ad for that query.
+
+22
+00:01:06,800 --> 00:01:09,860
+Each advertiser also specifies a budget.
+
+23
+00:01:09,860 --> 00:01:11,340
+This is the total amount of money
+
+24
+00:01:11,340 --> 00:01:13,650
+that the advertiser has available to pay
+
+25
+00:01:13,650 --> 00:01:15,750
+for all the clicks on their ad.
+
+26
+00:01:15,750 --> 00:01:18,320
+Every time a user clicks on the advertiser's ad,
+
+27
+00:01:18,320 --> 00:01:21,410
+the advertiser's budget is depleted by the price-per-click
+
+28
+00:01:21,410 --> 00:01:24,510
+for that ad for that user's query.
+
+29
+00:01:24,510 --> 00:01:27,410
+Let's illustrate this with a small example.
+
+30
+00:01:27,410 --> 00:01:30,700
+So suppose that we are Google, and three of the major wireless
+
+31
+00:01:30,700 --> 00:01:35,700
+service providers in the United States -- AT&T, T-Mobile,
+
+32
+00:01:35,700 --> 00:01:39,030
+and Verizon -- come to us wanting to place ads on three
+
+33
+00:01:39,030 --> 00:01:45,190
+different search queries: query 1, which is "4G LTE"; query 2,
+
+34
+00:01:45,190 --> 00:01:48,330
+which is the "largest LTE"; and query 3,
+
+35
+00:01:48,330 --> 00:01:50,730
+which is "best LTE network".
+
+36
+00:01:50,730 --> 00:01:52,510
+If you're not familiar with these terms,
+
+37
+00:01:52,510 --> 00:01:55,900
+4G and LTE basically refer to different standards
+
+38
+00:01:55,900 --> 00:01:57,705
+of high speed wireless data communication.
+
+39
+00:01:57,705 --> 00:02:01,650
+
+
+40
+00:02:01,650 --> 00:02:04,340
+The table here shows the price-per-click
+
+41
+00:02:04,340 --> 00:02:06,980
+of each advertiser in each query.
+
+42
+00:02:06,980 --> 00:02:09,970
+So for example, this 10 here means
+
+43
+00:02:09,970 --> 00:02:14,430
+that T-Mobile will pay Google $10
+
+44
+00:02:14,430 --> 00:02:17,450
+every time a user searches for query 1
+
+45
+00:02:17,450 --> 00:02:20,700
+and clicks on T-Mobile's advertisement.
+
+46
+00:02:20,700 --> 00:02:24,380
+In this example, T-Mobile's budget is $100.
+
+47
+00:02:24,380 --> 00:02:27,102
+If T-Mobile begins advertising and by some point
+
+48
+00:02:27,102 --> 00:02:28,810
+five people have clicked on T-Mobile's ad
+
+49
+00:02:28,810 --> 00:02:33,280
+when they search for "4G LTE", then T-Mobile
+
+50
+00:02:33,280 --> 00:02:41,290
+will need to pay five times $10, or a total of $50.
+
+51
+00:02:41,290 --> 00:02:44,150
+If T-Mobile's budget is $100, this
+
+52
+00:02:44,150 --> 00:02:50,660
+means that T-Mobile is left with $100 minus $50,
+
+53
+00:02:50,660 --> 00:02:52,045
+for a remaining budget of $50.
+
+54
+00:02:52,045 --> 00:02:54,790
+
+
+55
+00:02:54,790 --> 00:02:58,320
+Now, while the price-per-click is important to know,
+
+56
+00:02:58,320 --> 00:03:00,820
+we must remember that the price-per-click is exactly
+
+57
+00:03:00,820 --> 00:03:03,445
+that, the price that the advertiser pays
+
+58
+00:03:03,445 --> 00:03:08,380
+to Google for a single click of a given ad, on a given query.
+
+59
+00:03:08,380 --> 00:03:13,840
+This price is paid only if the user clicks on the ad.
+
+60
+00:03:13,840 --> 00:03:16,880
+But typically, the people who use Google search engine, who
+
+61
+00:03:16,880 --> 00:03:19,110
+are you and me, will not click on every ad
+
+62
+00:03:19,110 --> 00:03:20,610
+that is shown to them.
+
+63
+00:03:20,610 --> 00:03:22,330
+Therefore, we need a way to capture
+
+64
+00:03:22,330 --> 00:03:25,030
+how often users click on ads.
+
+65
+00:03:25,030 --> 00:03:27,260
+This is where the idea of click-through-rate
+
+66
+00:03:27,260 --> 00:03:28,790
+becomes useful.
+
+67
+00:03:28,790 --> 00:03:30,610
+The click-through-rate is the probability
+
+68
+00:03:30,610 --> 00:03:33,010
+that a user clicks on an advertiser's ad for a given
+
+69
+00:03:33,010 --> 00:03:34,010
+query.
+
+70
+00:03:34,010 --> 00:03:37,160
+You can also think of this as the average number of clicks
+
+71
+00:03:37,160 --> 00:03:39,520
+that we expect per user.
+
+72
+00:03:39,520 --> 00:03:41,900
+And this quantity is defined, as we said,
+
+73
+00:03:41,900 --> 00:03:45,160
+per advertiser and per query.
+
+74
+00:03:45,160 --> 00:03:49,040
+So to illustrate this, for the example that we just introduced
+
+75
+00:03:49,040 --> 00:03:51,680
+a few slides ago, suppose that we
+
+76
+00:03:51,680 --> 00:03:54,230
+have the following click-through-rates.
+
+77
+00:03:54,230 --> 00:03:58,580
+The number 0.08 here means that there is an 8% chance
+
+78
+00:03:58,580 --> 00:04:02,310
+that a user who searches for best LTE network
+
+79
+00:04:02,310 --> 00:04:06,140
+will click on AT&T's ad if it is shown to them.
+
+80
+00:04:06,140 --> 00:04:08,910
+In terms of the number of users who click on an ad for a given
+
+81
+00:04:08,910 --> 00:04:14,410
+query, this means that for 50 users,
+
+82
+00:04:14,410 --> 00:04:17,839
+if the click-through-rate is 0.08,
+
+83
+00:04:17,839 --> 00:04:23,580
+we expect to see 4 users clicking on the ad.
+
+84
+00:04:23,580 --> 00:04:27,060
+Similarly, if there are a hundred users who
+
+85
+00:04:27,060 --> 00:04:33,340
+view the ad and 8% of them click on the ad,
+
+86
+00:04:33,340 --> 00:04:36,040
+we expect to see eight users clicking
+
+87
+00:04:36,040 --> 00:04:38,360
+on AT&T's ad for query 3.
+
+88
+00:04:38,360 --> 00:04:40,900
+
+
+89
+00:04:40,900 --> 00:04:43,360
+In the next video, we'll define additional data
+
+90
+00:04:43,360 --> 00:04:45,450
+that we'll need to formulate the problem.
+
+91
+00:04:45,450 --> 00:04:48,400
+In particular, we will see how the click-through-rate
+
+92
+00:04:48,400 --> 00:04:50,880
+and the price-per-click can be combined together
+
+93
+00:04:50,880 --> 00:04:54,880
+to obtain a new quantity called the average price per display.
+
+94
+00:04:54,880 --> 00:04:57,390
+This derived quantity will form a crucial part
+
+95
+00:04:57,390 --> 00:05:00,200
+of our linear optimization model.
+

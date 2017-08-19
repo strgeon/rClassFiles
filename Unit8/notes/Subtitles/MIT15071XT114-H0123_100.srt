@@ -1,0 +1,476 @@
+0
+00:00:00,000 --> 00:00:00,660
+
+
+1
+00:00:00,660 --> 00:00:02,370
+The problem that we have studied so far
+
+2
+00:00:02,370 --> 00:00:05,380
+captures the essential features of the AdWords problem,
+
+3
+00:00:05,380 --> 00:00:07,710
+but it can be extended in several ways.
+
+4
+00:00:07,710 --> 00:00:09,500
+We will shortly talk in some more detail
+
+5
+00:00:09,500 --> 00:00:12,055
+about two of these, which relate to the idea of slates
+
+6
+00:00:12,055 --> 00:00:17,097
+or positions, and which relate to the idea of personalization.
+
+7
+00:00:17,097 --> 00:00:18,680
+Aside from these two extensions, there
+
+8
+00:00:18,680 --> 00:00:20,340
+are also many other issues that Google
+
+9
+00:00:20,340 --> 00:00:22,440
+deals with on a daily basis.
+
+10
+00:00:22,440 --> 00:00:25,620
+One of these is related to click-through-rates.
+
+11
+00:00:25,620 --> 00:00:28,150
+In particular, how does Google know the chance
+
+12
+00:00:28,150 --> 00:00:30,550
+that a user clicks on a given ad?
+
+13
+00:00:30,550 --> 00:00:33,800
+Google does this by analyzing large amounts of user data
+
+14
+00:00:33,800 --> 00:00:36,190
+and building predictive models, similar to those
+
+15
+00:00:36,190 --> 00:00:39,630
+we studied in this class, to predict how often users click
+
+16
+00:00:39,630 --> 00:00:43,390
+on different ads when they're shown with different queries.
+
+17
+00:00:43,390 --> 00:00:46,060
+Another issue is related to the advertisers.
+
+18
+00:00:46,060 --> 00:00:48,670
+We saw earlier that the price-per-click depends
+
+19
+00:00:48,670 --> 00:00:52,810
+on how the advertisers place their bids.
+
+20
+00:00:52,810 --> 00:00:54,930
+So understanding the behavior of advertisers
+
+21
+00:00:54,930 --> 00:00:57,650
+and incorporating this behavior in the optimization model
+
+22
+00:00:57,650 --> 00:01:00,790
+is also another important consideration.
+
+23
+00:01:00,790 --> 00:01:04,650
+Let's move on to discuss the idea of slates.
+
+24
+00:01:04,650 --> 00:01:07,950
+In our example with AT&T, T-Mobile, and Verizon,
+
+25
+00:01:07,950 --> 00:01:10,380
+we assume that the search page for each query
+
+26
+00:01:10,380 --> 00:01:12,420
+has space for only one ad.
+
+27
+00:01:12,420 --> 00:01:14,170
+Now typically, as we saw in Video 1
+
+28
+00:01:14,170 --> 00:01:16,410
+when we searched for Nine Inch Nails tickets,
+
+29
+00:01:16,410 --> 00:01:20,660
+there's usually space for many ads.
+
+30
+00:01:20,660 --> 00:01:22,520
+In this case, Google has to decide
+
+31
+00:01:22,520 --> 00:01:25,310
+which combination of ads, or slate,
+
+32
+00:01:25,310 --> 00:01:28,110
+to display with each query.
+
+33
+00:01:28,110 --> 00:01:30,570
+Although this would seem to be a more complicated problem,
+
+34
+00:01:30,570 --> 00:01:33,540
+it can still be solved using linear optimization.
+
+35
+00:01:33,540 --> 00:01:36,140
+Before, our variables were defined
+
+36
+00:01:36,140 --> 00:01:43,500
+as x of a given advertiser and a given query.
+
+37
+00:01:43,500 --> 00:01:45,380
+But now, we would instead define them
+
+38
+00:01:45,380 --> 00:01:51,150
+as x for a given slate and a given query.
+
+39
+00:01:51,150 --> 00:01:54,550
+So for example, for our wireless service provider example,
+
+40
+00:01:54,550 --> 00:01:58,500
+if we had two spaces on our results page, then for query 1,
+
+41
+00:01:58,500 --> 00:02:07,130
+we'd still have x_A1, x_T1, and x_V1, where here, for example,
+
+42
+00:02:07,130 --> 00:02:09,910
+x_V1 is the number of times that we
+
+43
+00:02:09,910 --> 00:02:13,150
+display Verizon with query 1.
+
+44
+00:02:13,150 --> 00:02:22,370
+But we would also have x_AT1, x_AV1, and x_TV1.
+
+45
+00:02:22,370 --> 00:02:26,040
+Here, for example, x_AV1, represents the number of times
+
+46
+00:02:26,040 --> 00:02:29,790
+that we display the slate containing AT&T and Verizon
+
+47
+00:02:29,790 --> 00:02:31,750
+with query 1.
+
+48
+00:02:31,750 --> 00:02:33,760
+Now, this can become even more complicated
+
+49
+00:02:33,760 --> 00:02:36,950
+as the position of the ad within the slate is important.
+
+50
+00:02:36,950 --> 00:02:39,690
+For example, ads to the right of the search results
+
+51
+00:02:39,690 --> 00:02:42,390
+might not attract as many clicks as those above the search
+
+52
+00:02:42,390 --> 00:02:43,340
+results.
+
+53
+00:02:43,340 --> 00:02:50,620
+In this case, we would also consider x_TA1, x_VA1,
+
+54
+00:02:50,620 --> 00:02:51,330
+and x_VT1.
+
+55
+00:02:51,330 --> 00:02:53,910
+
+
+56
+00:02:53,910 --> 00:02:57,580
+And here, the first ad in the combination
+
+57
+00:02:57,580 --> 00:02:59,540
+is the ad that is placed in the first position.
+
+58
+00:02:59,540 --> 00:03:01,560
+So, for example, here T-Mobile is
+
+59
+00:03:01,560 --> 00:03:04,080
+placed in the first position for x_TA1
+
+60
+00:03:04,080 --> 00:03:07,040
+and AT&T is placed in the second position.
+
+61
+00:03:07,040 --> 00:03:09,580
+
+
+62
+00:03:09,580 --> 00:03:11,650
+We would formulate our objective and our budget
+
+63
+00:03:11,650 --> 00:03:14,110
+and query constraints in the same way as before,
+
+64
+00:03:14,110 --> 00:03:17,140
+but making sure that slates that contain a certain advertiser
+
+65
+00:03:17,140 --> 00:03:19,570
+use up that advertiser's budget.
+
+66
+00:03:19,570 --> 00:03:21,370
+And slates in a given query counts
+
+67
+00:03:21,370 --> 00:03:25,170
+towards that query's estimated number of requests.
+
+68
+00:03:25,170 --> 00:03:29,140
+Let's now discuss the idea of personalization.
+
+69
+00:03:29,140 --> 00:03:32,330
+In addition to the query, Google can use other information
+
+70
+00:03:32,330 --> 00:03:34,300
+to decide which ad to display.
+
+71
+00:03:34,300 --> 00:03:37,220
+For example, Google might know the geographic location
+
+72
+00:03:37,220 --> 00:03:41,200
+of the user as determined from their IP address.
+
+73
+00:03:41,200 --> 00:03:42,910
+Google might also know other information,
+
+74
+00:03:42,910 --> 00:03:46,060
+such as different Google searches that the user has
+
+75
+00:03:46,060 --> 00:03:50,530
+conducted, and browser activity on Google's website.
+
+76
+00:03:50,530 --> 00:03:53,600
+The question then is, how can Google take this into account
+
+77
+00:03:53,600 --> 00:03:56,840
+when deciding which ads display for which queries?
+
+78
+00:03:56,840 --> 00:03:59,820
+Well, just like slates, we could also incorporate this
+
+79
+00:03:59,820 --> 00:04:02,220
+into our linear optimization model.
+
+80
+00:04:02,220 --> 00:04:03,940
+Rather than working with queries,
+
+81
+00:04:03,940 --> 00:04:07,390
+we would work with combinations of queries and user profiles.
+
+82
+00:04:07,390 --> 00:04:10,160
+So rather than having x defined for a given
+
+83
+00:04:10,160 --> 00:04:14,980
+advertiser and a given query, we would
+
+84
+00:04:14,980 --> 00:04:21,920
+define x for a given advertiser, a given query, and a given user
+
+85
+00:04:21,920 --> 00:04:22,420
+profile.
+
+86
+00:04:22,420 --> 00:04:25,530
+
+
+87
+00:04:25,530 --> 00:04:28,670
+So here, a user profile just describes the type of user.
+
+88
+00:04:28,670 --> 00:04:32,392
+For instance, a profile might be men aged 20 to 25
+
+89
+00:04:32,392 --> 00:04:34,350
+who live in Boston, Massachusetts in the United
+
+90
+00:04:34,350 --> 00:04:35,540
+States.
+
+91
+00:04:35,540 --> 00:04:43,100
+If we had three user profiles, we could name them P1, P2, P3.
+
+92
+00:04:43,100 --> 00:04:46,550
+And then for AT&T for query 1, we
+
+93
+00:04:46,550 --> 00:04:52,310
+would use x_A1P1 to denote the number of times
+
+94
+00:04:52,310 --> 00:04:55,830
+that we display AT&T's ad with query 1
+
+95
+00:04:55,830 --> 00:04:59,950
+for a user of profile P1.
+
+96
+00:04:59,950 --> 00:05:03,642
+The rest of the model could then be easily accommodated
+
+97
+00:05:03,642 --> 00:05:05,475
+for this new type of modeling consideration.
+
+98
+00:05:05,475 --> 00:05:10,100
+
+
+99
+00:05:10,100 --> 00:05:11,960
+We'll just now summarize the salient points
+
+100
+00:05:11,960 --> 00:05:13,650
+of this recitation.
+
+101
+00:05:13,650 --> 00:05:15,760
+So, so far, we've studied a small instance
+
+102
+00:05:15,760 --> 00:05:17,740
+of Google's ad allocation problem, where
+
+103
+00:05:17,740 --> 00:05:22,050
+we had just three advertisers or bidders and three queries.
+
+104
+00:05:22,050 --> 00:05:25,450
+We saw how an optimization solution increases revenue
+
+105
+00:05:25,450 --> 00:05:30,690
+by 16% over a simple common sense solution.
+
+106
+00:05:30,690 --> 00:05:33,850
+What I'd like you to remember is that in reality, this problem
+
+107
+00:05:33,850 --> 00:05:36,930
+is much larger.
+
+108
+00:05:36,930 --> 00:05:39,970
+For each query that Google receives on its search engine,
+
+109
+00:05:39,970 --> 00:05:41,600
+there may be hundreds to thousands
+
+110
+00:05:41,600 --> 00:05:43,580
+of advertisers bidding on it.
+
+111
+00:05:43,580 --> 00:05:46,270
+In terms of dollar amounts, in 2012,
+
+112
+00:05:46,270 --> 00:05:48,410
+Google's total revenue from advertising
+
+113
+00:05:48,410 --> 00:05:51,195
+was over $40 billion.
+
+114
+00:05:51,195 --> 00:05:54,270
+At this scale, the gains that are possible from optimization
+
+115
+00:05:54,270 --> 00:05:57,040
+become enormous, and I hope this convinces you
+
+116
+00:05:57,040 --> 00:05:59,480
+of the value of linear optimization
+
+117
+00:05:59,480 --> 00:06:01,335
+in online advertising.
+
+118
+00:06:01,335 --> 00:06:01,835
+
+

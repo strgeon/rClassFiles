@@ -1,0 +1,196 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,380
+So we saw in the previous video how
+
+2
+00:00:02,380 --> 00:00:07,240
+we can solve linear optimization problems in LibreOffice.
+
+3
+00:00:07,240 --> 00:00:09,680
+Let's now try to get some intuition for what's
+
+4
+00:00:09,680 --> 00:00:12,770
+going on by visualizing our problem.
+
+5
+00:00:12,770 --> 00:00:16,230
+Since we only have two decisions, R and D,
+
+6
+00:00:16,230 --> 00:00:19,570
+we can visualize our constraints in two dimensions.
+
+7
+00:00:19,570 --> 00:00:24,620
+We'll plot D on the x-axis, and R on the y-axis.
+
+8
+00:00:24,620 --> 00:00:27,370
+We first have non-negativity constraints,
+
+9
+00:00:27,370 --> 00:00:32,090
+so R and D are both greater than zero.
+
+10
+00:00:32,090 --> 00:00:36,530
+We can plot the capacity constraint, R + D less than
+
+11
+00:00:36,530 --> 00:00:41,330
+or equal to 166, which is shown as the red line here.
+
+12
+00:00:41,330 --> 00:00:44,260
+Our solution has to be to the left of this line
+
+13
+00:00:44,260 --> 00:00:47,530
+according to this constraint.
+
+14
+00:00:47,530 --> 00:00:50,460
+Now, let's add in our demand constraints.
+
+15
+00:00:50,460 --> 00:00:53,960
+The regular seats should be less than the demand of 100, which
+
+16
+00:00:53,960 --> 00:00:58,250
+requires the solution to be below this blue line.
+
+17
+00:00:58,250 --> 00:01:02,180
+And the discount seats should be less than the demand of 150,
+
+18
+00:01:02,180 --> 00:01:04,140
+which requires the solution to be
+
+19
+00:01:04,140 --> 00:01:07,220
+to the left of this green line.
+
+20
+00:01:07,220 --> 00:01:09,660
+Taken together, our constraints define
+
+21
+00:01:09,660 --> 00:01:12,820
+what we call our "feasible space" or the space
+
+22
+00:01:12,820 --> 00:01:15,170
+of all possible values that our decisions can
+
+23
+00:01:15,170 --> 00:01:18,620
+take according to our constraints.
+
+24
+00:01:18,620 --> 00:01:22,430
+To find the optimal solution now in our feasible space,
+
+25
+00:01:22,430 --> 00:01:29,990
+we have to use the objective, 617*R + 238*D.
+
+26
+00:01:29,990 --> 00:01:34,410
+We can plot this objective in our feasible space.
+
+27
+00:01:34,410 --> 00:01:36,050
+So to know how many seats we should
+
+28
+00:01:36,050 --> 00:01:38,560
+sell to achieve a certain revenue,
+
+29
+00:01:38,560 --> 00:01:41,430
+we can see different values of this line.
+
+30
+00:01:41,430 --> 00:01:44,800
+So to achieve a revenue of $20,000,
+
+31
+00:01:44,800 --> 00:01:47,730
+our solution has to be somewhere on this line in our feasible
+
+32
+00:01:47,730 --> 00:01:49,120
+space.
+
+33
+00:01:49,120 --> 00:01:52,440
+To achieve a revenue of $40,000, our solution
+
+34
+00:01:52,440 --> 00:01:55,940
+has to be somewhere on this line in our feasible space.
+
+35
+00:01:55,940 --> 00:01:59,110
+And to achieve a revenue of $60,000,
+
+36
+00:01:59,110 --> 00:02:02,300
+our solution has to be somewhere on this line in our feasible
+
+37
+00:02:02,300 --> 00:02:04,120
+space.
+
+38
+00:02:04,120 --> 00:02:07,690
+Since the revenue is increasing as we move this line up
+
+39
+00:02:07,690 --> 00:02:10,620
+and our goal is to maximize the revenue,
+
+40
+00:02:10,620 --> 00:02:13,000
+our optimal solution will be where
+
+41
+00:02:13,000 --> 00:02:16,000
+this line can't go any further and still
+
+42
+00:02:16,000 --> 00:02:17,970
+be in our feasible space.
+
+43
+00:02:17,970 --> 00:02:21,100
+So our optimal solution is at this point
+
+44
+00:02:21,100 --> 00:02:26,430
+with a revenue of $77,408.
+
+45
+00:02:26,430 --> 00:02:28,730
+As we can see here, the solution is
+
+46
+00:02:28,730 --> 00:02:31,850
+dependent on how the feasible space was defined.
+
+47
+00:02:31,850 --> 00:02:33,940
+In the next video, we'll see what
+
+48
+00:02:33,940 --> 00:02:37,720
+happens if our capacity and demands change.
+

@@ -1,0 +1,532 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,010
+In this video, we'll solve our linear optimization problem
+
+2
+00:00:04,010 --> 00:00:06,980
+in the software LibreOffice.
+
+3
+00:00:06,980 --> 00:00:10,280
+LibreOffice is similar to Microsoft Excel,
+
+4
+00:00:10,280 --> 00:00:12,240
+but it's an open source software,
+
+5
+00:00:12,240 --> 00:00:15,300
+and is available for free on the internet.
+
+6
+00:00:15,300 --> 00:00:18,630
+Another option we could use is OpenOffice.
+
+7
+00:00:18,630 --> 00:00:22,180
+You're welcome to use Excel, OpenOffice, or LibreOffice
+
+8
+00:00:22,180 --> 00:00:25,750
+in this course, and whenever we mention LibreOffice,
+
+9
+00:00:25,750 --> 00:00:27,400
+keep in mind that you could be using
+
+10
+00:00:27,400 --> 00:00:30,070
+one of the other softwares instead.
+
+11
+00:00:30,070 --> 00:00:32,450
+For more information about the options,
+
+12
+00:00:32,450 --> 00:00:35,980
+see the download instructions on edX.
+
+13
+00:00:35,980 --> 00:00:38,580
+You should have already downloaded and installed
+
+14
+00:00:38,580 --> 00:00:39,960
+LibreOffice.
+
+15
+00:00:39,960 --> 00:00:42,640
+If not, follow the instructions on edX
+
+16
+00:00:42,640 --> 00:00:46,400
+before continuing with this video.
+
+17
+00:00:46,400 --> 00:00:48,600
+Go ahead and open the file, Week9_AirlineRM.ods.
+
+18
+00:00:48,600 --> 00:00:52,550
+
+
+19
+00:00:52,550 --> 00:00:55,440
+I've already set up the data for our problem and places
+
+20
+00:00:55,440 --> 00:00:58,520
+for us to build our decisions, our objective,
+
+21
+00:00:58,520 --> 00:01:01,060
+and our constraints.
+
+22
+00:01:01,060 --> 00:01:03,680
+The decisions are highlighted in yellow.
+
+23
+00:01:03,680 --> 00:01:06,100
+These are the number of regular seats to sell,
+
+24
+00:01:06,100 --> 00:01:08,600
+and the number of discount seats to sell.
+
+25
+00:01:08,600 --> 00:01:10,850
+We'll just leave these cells blank for now,
+
+26
+00:01:10,850 --> 00:01:15,000
+since the solver will be finding the optimal values.
+
+27
+00:01:15,000 --> 00:01:18,320
+Our objective, which we saw in the previous video,
+
+28
+00:01:18,320 --> 00:01:20,820
+is to maximize total revenue.
+
+29
+00:01:20,820 --> 00:01:24,530
+Let's go ahead and build the objective in this blue cell.
+
+30
+00:01:24,530 --> 00:01:27,900
+It should equal the price of regular seats,
+
+31
+00:01:27,900 --> 00:01:30,020
+times the number of regular seats
+
+32
+00:01:30,020 --> 00:01:34,490
+we sell, plus the price the discount seats,
+
+33
+00:01:34,490 --> 00:01:38,220
+times the number of discount seats we sell.
+
+34
+00:01:38,220 --> 00:01:40,330
+Go ahead and hit Enter.
+
+35
+00:01:40,330 --> 00:01:42,830
+You should see 0 in this cell.
+
+36
+00:01:42,830 --> 00:01:45,870
+That's because right now, we're not selling any seats.
+
+37
+00:01:45,870 --> 00:01:48,980
+Our decision cells are blank.
+
+38
+00:01:48,980 --> 00:01:50,840
+This could be a little tedious if we
+
+39
+00:01:50,840 --> 00:01:52,850
+had more than two decisions.
+
+40
+00:01:52,850 --> 00:01:55,690
+To make it easier, we can use a nice function
+
+41
+00:01:55,690 --> 00:01:58,840
+called sumproduct to build our objective.
+
+42
+00:01:58,840 --> 00:02:01,970
+So go ahead and clear the objective.
+
+43
+00:02:01,970 --> 00:02:04,980
+Now in the objective cell, let's type
+
+44
+00:02:04,980 --> 00:02:10,710
+equals, and then sumproduct, and then in parentheses,
+
+45
+00:02:10,710 --> 00:02:15,030
+select the two prices, type a semicolon,
+
+46
+00:02:15,030 --> 00:02:17,250
+and then select the two seats.
+
+47
+00:02:17,250 --> 00:02:20,710
+This will multiply the first price times the first decision
+
+48
+00:02:20,710 --> 00:02:23,740
+variable, and the second price times the second decision
+
+49
+00:02:23,740 --> 00:02:26,160
+variable, and add them up.
+
+50
+00:02:26,160 --> 00:02:28,850
+Close the parentheses and hit Enter.
+
+51
+00:02:28,850 --> 00:02:30,850
+Note that if you're using Excel, you
+
+52
+00:02:30,850 --> 00:02:34,720
+should use a comma instead of a semicolon.
+
+53
+00:02:34,720 --> 00:02:37,280
+We should again see 0 in our objective.
+
+54
+00:02:37,280 --> 00:02:41,860
+This is going to have the exact same value it did before.
+
+55
+00:02:41,860 --> 00:02:44,790
+Now let's construct our constraints.
+
+56
+00:02:44,790 --> 00:02:48,280
+The first constraint is the capacity constraint.
+
+57
+00:02:48,280 --> 00:02:51,050
+The green table here allows us to easily write out
+
+58
+00:02:51,050 --> 00:02:54,810
+our constraints in terms of what's on the left-hand side,
+
+59
+00:02:54,810 --> 00:02:59,680
+LHS, what the sign is, like equals, less than
+
+60
+00:02:59,680 --> 00:03:02,160
+or equals, or greater than or equals,
+
+61
+00:03:02,160 --> 00:03:04,880
+and what's on the right-hand side, or RHS,
+
+62
+00:03:04,880 --> 00:03:06,550
+of the constraint.
+
+63
+00:03:06,550 --> 00:03:10,010
+So for the capacity constraint, the left-hand side
+
+64
+00:03:10,010 --> 00:03:13,110
+is equal to the number of regular seats
+
+65
+00:03:13,110 --> 00:03:17,030
+plus the number of discount seats.
+
+66
+00:03:17,030 --> 00:03:21,300
+The sign is less than or equals, and the right-hand side
+
+67
+00:03:21,300 --> 00:03:26,030
+is 166, the capacity of our aircraft.
+
+68
+00:03:26,030 --> 00:03:29,620
+The regular demand constraint should be the regular number
+
+69
+00:03:29,620 --> 00:03:32,200
+of seats, which should be less than
+
+70
+00:03:32,200 --> 00:03:37,500
+or equal to the regular demand, which equals 100.
+
+71
+00:03:37,500 --> 00:03:39,640
+The discount demand should be the number
+
+72
+00:03:39,640 --> 00:03:41,770
+of discount seats, which should be
+
+73
+00:03:41,770 --> 00:03:47,430
+less than or equal to the demand, which is equal to 150.
+
+74
+00:03:47,430 --> 00:03:50,720
+Note here that whenever I pick the seats or the demand,
+
+75
+00:03:50,720 --> 00:03:53,170
+I pick those cells up on the top.
+
+76
+00:03:53,170 --> 00:03:55,480
+That's because if we want to change our demand,
+
+77
+00:03:55,480 --> 00:03:57,430
+we could easily change it up at the top,
+
+78
+00:03:57,430 --> 00:04:01,010
+and all of our constraints will change too.
+
+79
+00:04:01,010 --> 00:04:04,300
+Now, let's add in our non-negativity constraints.
+
+80
+00:04:04,300 --> 00:04:06,980
+So the number of regular seats should
+
+81
+00:04:06,980 --> 00:04:10,760
+be greater than or equal to 0, and the number
+
+82
+00:04:10,760 --> 00:04:13,785
+of discount seats should be greater than or equal to 0.
+
+83
+00:04:13,785 --> 00:04:16,990
+
+
+84
+00:04:16,990 --> 00:04:19,459
+Now we're ready to solve our problem.
+
+85
+00:04:19,459 --> 00:04:22,100
+To do this, we just go to the Tools menu
+
+86
+00:04:22,100 --> 00:04:25,800
+in LibreOffice and select Solver.
+
+87
+00:04:25,800 --> 00:04:29,080
+Now we need to fill in the information about our problem.
+
+88
+00:04:29,080 --> 00:04:31,840
+The "Target cell" should be the objective.
+
+89
+00:04:31,840 --> 00:04:34,550
+So with the blinking cursor in the target cell,
+
+90
+00:04:34,550 --> 00:04:37,590
+select the objective cell.
+
+91
+00:04:37,590 --> 00:04:39,650
+We should also be selecting "Maximum",
+
+92
+00:04:39,650 --> 00:04:42,692
+since we're trying to maximize the total revenue.
+
+93
+00:04:42,692 --> 00:04:45,320
+The area called "By changing cells"
+
+94
+00:04:45,320 --> 00:04:47,190
+should be our decision variables,
+
+95
+00:04:47,190 --> 00:04:50,240
+so go ahead and select that blank area,
+
+96
+00:04:50,240 --> 00:04:53,860
+and select the decision variables.
+
+97
+00:04:53,860 --> 00:04:57,020
+The "Limiting conditions" are our constraints.
+
+98
+00:04:57,020 --> 00:04:59,560
+The "Cell reference" should be the left-hand side
+
+99
+00:04:59,560 --> 00:05:02,880
+of the constraint, the "Operator" is the sign,
+
+100
+00:05:02,880 --> 00:05:06,010
+and the "Value" is the right-hand side.
+
+101
+00:05:06,010 --> 00:05:08,640
+For constraints with the same sign, if they're in a row,
+
+102
+00:05:08,640 --> 00:05:11,730
+we could select them at once to be more efficient.
+
+103
+00:05:11,730 --> 00:05:14,600
+So first, let's select the first three less than
+
+104
+00:05:14,600 --> 00:05:16,140
+or equal to constraints.
+
+105
+00:05:16,140 --> 00:05:18,410
+We want to make sure the operator is less than
+
+106
+00:05:18,410 --> 00:05:22,390
+or equal to, the integer and binary options you see here,
+
+107
+00:05:22,390 --> 00:05:25,840
+we'll explain next week, and the value
+
+108
+00:05:25,840 --> 00:05:29,400
+should be the right-hand side of these constraints.
+
+109
+00:05:29,400 --> 00:05:31,550
+Then we need to add in the greater than or equal to
+
+110
+00:05:31,550 --> 00:05:32,550
+constraints.
+
+111
+00:05:32,550 --> 00:05:35,520
+So select the two left-hand sides.
+
+112
+00:05:35,520 --> 00:05:38,600
+The operator should be greater than or equal to,
+
+113
+00:05:38,600 --> 00:05:42,580
+and the value should be the two right-hand sides.
+
+114
+00:05:42,580 --> 00:05:45,550
+The last thing we want to do is in Options,
+
+115
+00:05:45,550 --> 00:05:49,930
+make sure that the LibreOffice Linear Solver is selected.
+
+116
+00:05:49,930 --> 00:05:53,870
+Click OK, and then hit Solve.
+
+117
+00:05:53,870 --> 00:05:58,130
+The solving result should say: "Solving successfully finished.
+
+118
+00:05:58,130 --> 00:06:01,740
+Result: 77,408".
+
+119
+00:06:01,740 --> 00:06:04,720
+This is the objective of our optimal solution,
+
+120
+00:06:04,720 --> 00:06:07,440
+and is the total revenue we get.
+
+121
+00:06:07,440 --> 00:06:09,770
+Go ahead and click Keep Result.
+
+122
+00:06:09,770 --> 00:06:11,800
+And now back in our spreadsheet, we
+
+123
+00:06:11,800 --> 00:06:17,410
+can see that our solution is to sell 100 regular seats and 66
+
+124
+00:06:17,410 --> 00:06:19,509
+discount seats.
+
+125
+00:06:19,509 --> 00:06:21,550
+You may be thinking that you could have done this
+
+126
+00:06:21,550 --> 00:06:22,940
+without the Solver.
+
+127
+00:06:22,940 --> 00:06:25,560
+But when the problems become more complicated,
+
+128
+00:06:25,560 --> 00:06:28,000
+it's very difficult and often impossible
+
+129
+00:06:28,000 --> 00:06:30,010
+to solve them by hand.
+
+130
+00:06:30,010 --> 00:06:31,910
+We'll make our problem more complicated
+
+131
+00:06:31,910 --> 00:06:35,250
+later in the lecture, and solve it in LibreOffice.
+
+132
+00:06:35,250 --> 00:06:35,876
+
+

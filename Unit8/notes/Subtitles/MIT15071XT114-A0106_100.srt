@@ -1,0 +1,436 @@
+0
+00:00:00,000 --> 00:00:01,270
+
+
+1
+00:00:01,270 --> 00:00:04,110
+Often, in linear optimization problems,
+
+2
+00:00:04,110 --> 00:00:07,260
+we've estimated the data we're using in the problem,
+
+3
+00:00:07,260 --> 00:00:09,640
+but it's subject to change.
+
+4
+00:00:09,640 --> 00:00:13,290
+Understanding how the solution changes when the data changes
+
+5
+00:00:13,290 --> 00:00:16,290
+is called sensitivity analysis.
+
+6
+00:00:16,290 --> 00:00:18,540
+One way that the data could change
+
+7
+00:00:18,540 --> 00:00:20,740
+is through marketing decisions.
+
+8
+00:00:20,740 --> 00:00:23,300
+Suppose that American Airlines' management
+
+9
+00:00:23,300 --> 00:00:25,360
+is trying to figure out whether or not
+
+10
+00:00:25,360 --> 00:00:29,850
+it would be beneficial to invest in marketing its fares.
+
+11
+00:00:29,850 --> 00:00:32,299
+They forecast that the marketing effort
+
+12
+00:00:32,299 --> 00:00:36,560
+is likely to attract one more unit of demand, of each type,
+
+13
+00:00:36,560 --> 00:00:38,940
+for every $200 spent.
+
+14
+00:00:38,940 --> 00:00:43,370
+So for the discount fare, the marketing cost per unit
+
+15
+00:00:43,370 --> 00:00:46,670
+is $200, and for the regular fare,
+
+16
+00:00:46,670 --> 00:00:50,690
+the marketing cost per unit is also $200.
+
+17
+00:00:50,690 --> 00:00:53,250
+We want to know how much this will increase
+
+18
+00:00:53,250 --> 00:00:58,590
+our marginal revenue for each type of fare.
+
+19
+00:00:58,590 --> 00:01:01,950
+This graph shows our current feasible space and optimal
+
+20
+00:01:01,950 --> 00:01:03,240
+solution.
+
+21
+00:01:03,240 --> 00:01:06,260
+What would happen if we increased the marketing
+
+22
+00:01:06,260 --> 00:01:08,210
+for discount fares?
+
+23
+00:01:08,210 --> 00:01:11,060
+The demand for discount fares would increase.
+
+24
+00:01:11,060 --> 00:01:14,120
+But since we're not even meeting the current demand for discount
+
+25
+00:01:14,120 --> 00:01:16,670
+fares with the optimal solution, this
+
+26
+00:01:16,670 --> 00:01:19,850
+doesn't give us any extra revenue.
+
+27
+00:01:19,850 --> 00:01:24,070
+So we shouldn't add any marketing for discount fares.
+
+28
+00:01:24,070 --> 00:01:28,240
+Actually, American Airlines could decrease their budget
+
+29
+00:01:28,240 --> 00:01:31,810
+to market discount fares, and even if the demand decreases,
+
+30
+00:01:31,810 --> 00:01:34,020
+it wouldn't change our revenue.
+
+31
+00:01:34,020 --> 00:01:36,880
+The demand could go all the way down to 66
+
+32
+00:01:36,880 --> 00:01:39,780
+without affecting our decisions.
+
+33
+00:01:39,780 --> 00:01:42,280
+In sensitivity analysis like this,
+
+34
+00:01:42,280 --> 00:01:46,710
+we're often concerned with the shadow price of a constraint.
+
+35
+00:01:46,710 --> 00:01:48,950
+For a discount demand constraint,
+
+36
+00:01:48,950 --> 00:01:51,620
+this is the marginal revenue gained
+
+37
+00:01:51,620 --> 00:01:54,630
+by increasing the demand by one unit.
+
+38
+00:01:54,630 --> 00:01:57,940
+In this case, the shadow price is 0 for demand
+
+39
+00:01:57,940 --> 00:02:01,670
+greater than or equal to 66.
+
+40
+00:02:01,670 --> 00:02:06,230
+Now, let's look at what happens when we market regular fares.
+
+41
+00:02:06,230 --> 00:02:09,120
+If we increase the demand for regular fares,
+
+42
+00:02:09,120 --> 00:02:12,020
+our revenue increases.
+
+43
+00:02:12,020 --> 00:02:15,050
+If we increase by 25 units of demand,
+
+44
+00:02:15,050 --> 00:02:20,380
+our revenue increases to $86,883.
+
+45
+00:02:20,380 --> 00:02:23,930
+If we increase by another 25 units of demand,
+
+46
+00:02:23,930 --> 00:02:29,440
+our revenue increases to $96,358.
+
+47
+00:02:29,440 --> 00:02:32,650
+So what's the shadow price in this case?
+
+48
+00:02:32,650 --> 00:02:34,700
+Remember that the shadow price is
+
+49
+00:02:34,700 --> 00:02:38,550
+the marginal revenue for a unit increase in demand,
+
+50
+00:02:38,550 --> 00:02:41,440
+in this case, of regular seats.
+
+51
+00:02:41,440 --> 00:02:45,790
+From 100 to 125, the revenue increased
+
+52
+00:02:45,790 --> 00:02:59,480
+by $86,883 minus $77,408, which is equal to $9,475.
+
+53
+00:02:59,480 --> 00:03:03,250
+Since this was an increase of 25 units of demand,
+
+54
+00:03:03,250 --> 00:03:08,040
+the shadow price is 9,475 divided
+
+55
+00:03:08,040 --> 00:03:12,540
+by 25, which equals 379.
+
+56
+00:03:12,540 --> 00:03:14,990
+We can calculate that this is the same shadow
+
+57
+00:03:14,990 --> 00:03:19,220
+price from 125 to 150.
+
+58
+00:03:19,220 --> 00:03:21,990
+So the marginal revenue for every extra unit
+
+59
+00:03:21,990 --> 00:03:29,670
+of regular demand from 100 to 166 is $379.
+
+60
+00:03:29,670 --> 00:03:32,120
+So given this analysis, how can we
+
+61
+00:03:32,120 --> 00:03:35,420
+help the marketing department make their decisions?
+
+62
+00:03:35,420 --> 00:03:41,020
+The forecast was an extra unit of demand for every $200 spent.
+
+63
+00:03:41,020 --> 00:03:44,040
+For discount fares, this isn't worth it, since the shadow
+
+64
+00:03:44,040 --> 00:03:47,510
+price, or marginal revenue, is 0.
+
+65
+00:03:47,510 --> 00:03:50,340
+But for the regular fares, this is worth it,
+
+66
+00:03:50,340 --> 00:03:54,180
+since the shadow price is $379.
+
+67
+00:03:54,180 --> 00:03:56,020
+So the marketing department should
+
+68
+00:03:56,020 --> 00:03:58,590
+invest in marketing regular fares
+
+69
+00:03:58,590 --> 00:04:01,010
+to increase the demand by 66 units.
+
+70
+00:04:01,010 --> 00:04:03,850
+
+
+71
+00:04:03,850 --> 00:04:07,410
+Another sensitivity analysis question in our problem
+
+72
+00:04:07,410 --> 00:04:10,760
+is whether or not it would be beneficial to allocate a bigger
+
+73
+00:04:10,760 --> 00:04:13,050
+aircraft for this flight.
+
+74
+00:04:13,050 --> 00:04:15,290
+This would change the capacity constraint,
+
+75
+00:04:15,290 --> 00:04:19,390
+which currently limits the capacity to 166.
+
+76
+00:04:19,390 --> 00:04:21,860
+With our current aircraft, the management
+
+77
+00:04:21,860 --> 00:04:26,950
+knows that the cost per hour is $12,067.
+
+78
+00:04:26,950 --> 00:04:33,680
+So the total cost of the six-hour flight is $72,402.
+
+79
+00:04:33,680 --> 00:04:37,450
+With the 166 seats filled, we get a revenue
+
+80
+00:04:37,450 --> 00:04:42,530
+of $77,408 from our optimal solution.
+
+81
+00:04:42,530 --> 00:04:47,490
+If we increase the capacity of the aircraft to 176 seats,
+
+82
+00:04:47,490 --> 00:04:53,030
+the total cost would increase to $76,590.
+
+83
+00:04:53,030 --> 00:04:56,310
+But how much would this increase our revenue?
+
+84
+00:04:56,310 --> 00:05:01,080
+And if we increase the capacity of the aircraft to $218,
+
+85
+00:05:01,080 --> 00:05:06,230
+the total cost would increase to $87,342.
+
+86
+00:05:06,230 --> 00:05:09,680
+But how much would this increase our revenue?
+
+87
+00:05:09,680 --> 00:05:13,080
+For our analysis, let's assume that the demand does not
+
+88
+00:05:13,080 --> 00:05:14,590
+change.
+
+89
+00:05:14,590 --> 00:05:18,520
+If we increase our capacity to 176,
+
+90
+00:05:18,520 --> 00:05:21,170
+the capacity constraint will move right.
+
+91
+00:05:21,170 --> 00:05:23,900
+And our optimal solution will move right too.
+
+92
+00:05:23,900 --> 00:05:29,520
+We now get a revenue of $79,788.
+
+93
+00:05:29,520 --> 00:05:33,480
+If we then increase the capacity to 218 seats,
+
+94
+00:05:33,480 --> 00:05:36,140
+the capacity constraint will move right again,
+
+95
+00:05:36,140 --> 00:05:41,890
+and our revenue will increase to $89,784.
+
+96
+00:05:41,890 --> 00:05:43,900
+So let's look at our extra profit
+
+97
+00:05:43,900 --> 00:05:47,630
+from increasing the capacity to see if it's worth it.
+
+98
+00:05:47,630 --> 00:05:53,940
+With our current costs and revenue, the profit is $5,006.
+
+99
+00:05:53,940 --> 00:05:57,700
+If we increase the capacity to 176 seats,
+
+100
+00:05:57,700 --> 00:06:03,350
+our profit actually decreases to $3,198.
+
+101
+00:06:03,350 --> 00:06:07,390
+And if we increase the capacity to 218 seats,
+
+102
+00:06:07,390 --> 00:06:12,580
+our profit decreases even more to $2,442.
+
+103
+00:06:12,580 --> 00:06:15,470
+So even though our revenue is increasing,
+
+104
+00:06:15,470 --> 00:06:17,210
+the cost increases too.
+
+105
+00:06:17,210 --> 00:06:19,820
+So it's not profitable for us to increase
+
+106
+00:06:19,820 --> 00:06:22,610
+the capacity of our aircraft.
+
+107
+00:06:22,610 --> 00:06:26,170
+You can also see this by using LibreOffice, which we'll
+
+108
+00:06:26,170 --> 00:06:29,390
+ask you to do in the next quick question.
+

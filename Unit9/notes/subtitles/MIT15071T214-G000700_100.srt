@@ -1,0 +1,296 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,490
+In this video, we'll design the optimization problem
+
+2
+00:00:03,490 --> 00:00:07,520
+that the operating room manager would need to solve.
+
+3
+00:00:07,520 --> 00:00:13,090
+The decision to be made is how many operating rooms
+
+4
+00:00:13,090 --> 00:00:17,760
+to assign each department on each day.
+
+5
+00:00:17,760 --> 00:00:20,120
+This means that we need to define integer decision
+
+6
+00:00:20,120 --> 00:00:22,818
+variables x_jk.
+
+7
+00:00:22,818 --> 00:00:26,430
+x_jk will represent the number of operating rooms
+
+8
+00:00:26,430 --> 00:00:30,040
+department j is allocated on day k.
+
+9
+00:00:30,040 --> 00:00:35,780
+So here j can take values such as ophthalmology, gynecology,
+
+10
+00:00:35,780 --> 00:00:38,460
+general surgery, and so on.
+
+11
+00:00:38,460 --> 00:00:42,010
+Whereas k would take values like Monday, Tuesday, Wednesday,
+
+12
+00:00:42,010 --> 00:00:45,020
+and so on.
+
+13
+00:00:45,020 --> 00:00:46,650
+The objective of this problem will
+
+14
+00:00:46,650 --> 00:00:49,930
+be to maximize the percent of target allocation hours
+
+15
+00:00:49,930 --> 00:00:52,890
+that each department is actually allocated.
+
+16
+00:00:52,890 --> 00:00:57,830
+So if target allocation hours are t_j for department j,
+
+17
+00:00:57,830 --> 00:01:04,685
+then we want to maximize the sum of 8*x_jk divided by t_j over
+
+18
+00:01:04,685 --> 00:01:07,660
+all departments and days of the week.
+
+19
+00:01:07,660 --> 00:01:10,050
+Let's break this down.
+
+20
+00:01:10,050 --> 00:01:13,070
+For example, if otolaryngology has
+
+21
+00:01:13,070 --> 00:01:16,640
+a target of 37.3 hours per week--
+
+22
+00:01:16,640 --> 00:01:21,760
+that means t_j equals to 37.3-- and we allocate them
+
+23
+00:01:21,760 --> 00:01:25,930
+4 operating rooms, then their percent of target allocation
+
+24
+00:01:25,930 --> 00:01:29,160
+hours is equal to 8 times 4, that
+
+25
+00:01:29,160 --> 00:01:33,230
+is, they got 32 hours, divided by the 37.3 hours
+
+26
+00:01:33,230 --> 00:01:34,560
+they asked for.
+
+27
+00:01:34,560 --> 00:01:38,230
+So they got 85.8% of what they wanted.
+
+28
+00:01:38,230 --> 00:01:41,700
+
+
+29
+00:01:41,700 --> 00:01:44,150
+And we try to maximize this percentage value
+
+30
+00:01:44,150 --> 00:01:46,150
+for every department.
+
+31
+00:01:46,150 --> 00:01:48,450
+So that's why we sum over all departments
+
+32
+00:01:48,450 --> 00:01:49,640
+and all days of the week.
+
+33
+00:01:49,640 --> 00:01:54,560
+
+
+34
+00:01:54,560 --> 00:01:57,880
+Let's continue on to the constraints.
+
+35
+00:01:57,880 --> 00:02:01,390
+Remember that Mount Sinai has 10 operating rooms.
+
+36
+00:02:01,390 --> 00:02:03,380
+Therefore, at most 10 operating rooms
+
+37
+00:02:03,380 --> 00:02:07,080
+can be assigned on any given day.
+
+38
+00:02:07,080 --> 00:02:10,220
+Also, the number of operating rooms allocated to a department
+
+39
+00:02:10,220 --> 00:02:13,440
+on a given day cannot exceed the number of surgery teams that
+
+40
+00:02:13,440 --> 00:02:16,860
+the department has available that day.
+
+41
+00:02:16,860 --> 00:02:20,420
+And as we said before, we must meet department daily minimums
+
+42
+00:02:20,420 --> 00:02:25,060
+and maximums as well as weekly minimums and maximums.
+
+43
+00:02:25,060 --> 00:02:28,160
+Let's turn these constraints into math.
+
+44
+00:02:28,160 --> 00:02:31,510
+So the first constraint is that at most 10 operating rooms
+
+45
+00:02:31,510 --> 00:02:34,540
+can be assigned on any given day.
+
+46
+00:02:34,540 --> 00:02:37,100
+Let's consider Monday for example.
+
+47
+00:02:37,100 --> 00:02:40,220
+That means that x for ophthalmology
+
+48
+00:02:40,220 --> 00:02:43,090
+on Monday plus x for gynecology on Monday
+
+49
+00:02:43,090 --> 00:02:45,010
+plus x for oral surgery on Monday
+
+50
+00:02:45,010 --> 00:02:48,000
+plus x for otolaryngology on Monday
+
+51
+00:02:48,000 --> 00:02:50,850
+plus x for general surgery on Monday
+
+52
+00:02:50,850 --> 00:02:55,114
+must add up to something less than or equal to 10.
+
+53
+00:02:55,114 --> 00:02:56,530
+We would have a similar constraint
+
+54
+00:02:56,530 --> 00:03:00,700
+for Tuesday, Wednesday, Thursday and Friday.
+
+55
+00:03:00,700 --> 00:03:03,710
+The next set of constraints is that the number of operating
+
+56
+00:03:03,710 --> 00:03:07,500
+rooms allocated to a department on a given day cannot exceed
+
+57
+00:03:07,500 --> 00:03:12,610
+the number of surgery teams that are available that day.
+
+58
+00:03:12,610 --> 00:03:18,930
+So for example, for gynecology on Friday
+
+59
+00:03:18,930 --> 00:03:21,080
+there are 3 teams available.
+
+60
+00:03:21,080 --> 00:03:26,750
+That means that x gynecology Friday must be between 0 and 3.
+
+61
+00:03:26,750 --> 00:03:31,540
+For oral surgery on Wednesday it must be between 0 and 0
+
+62
+00:03:31,540 --> 00:03:34,780
+because the oral surgeon is only in on Tuesdays and Thursdays.
+
+63
+00:03:34,780 --> 00:03:37,700
+
+
+64
+00:03:37,700 --> 00:03:39,530
+The next set of constraints is that we
+
+65
+00:03:39,530 --> 00:03:44,390
+must meet department daily minimums and maximums.
+
+66
+00:03:44,390 --> 00:03:48,060
+For example, the general surgery department on Tuesday
+
+67
+00:03:48,060 --> 00:03:51,570
+requires between 0 and 6 operating rooms.
+
+68
+00:03:51,570 --> 00:03:54,160
+We would have a similar constraint for every department
+
+69
+00:03:54,160 --> 00:03:56,910
+and for every day of the week.
+
+70
+00:03:56,910 --> 00:04:00,810
+We also need to meet department weekly minimums and maximums.
+
+71
+00:04:00,810 --> 00:04:04,150
+So for example, the ophthalmology department
+
+72
+00:04:04,150 --> 00:04:07,970
+has a minimum of 3 and a maximum of 6 operating rooms
+
+73
+00:04:07,970 --> 00:04:10,960
+that it needs in any given week.
+

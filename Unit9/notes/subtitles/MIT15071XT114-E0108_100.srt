@@ -1,0 +1,268 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,350
+In the optimization problem, we assumed
+
+2
+00:00:02,350 --> 00:00:04,480
+the compatibility scores were data
+
+3
+00:00:04,480 --> 00:00:07,890
+that we could input directly into the optimization model.
+
+4
+00:00:07,890 --> 00:00:10,150
+But where do these scores come from?
+
+5
+00:00:10,150 --> 00:00:14,240
+In the words of the founder-- Neil Clark Warren --opposites
+
+6
+00:00:14,240 --> 00:00:16,320
+attract, then they attack.
+
+7
+00:00:16,320 --> 00:00:18,180
+eHarmony's compatibility match score
+
+8
+00:00:18,180 --> 00:00:21,070
+is based on similarity between users' answers
+
+9
+00:00:21,070 --> 00:00:23,340
+to the questionnaire.
+
+10
+00:00:23,340 --> 00:00:26,370
+Let us attempt to demonstrate an approach
+
+11
+00:00:26,370 --> 00:00:28,750
+to develop compatibility scores.
+
+12
+00:00:28,750 --> 00:00:32,320
+We utilize public data from eHarmony containing features
+
+13
+00:00:32,320 --> 00:00:37,060
+for 275,000 users and binary compatibility.
+
+14
+00:00:37,060 --> 00:00:39,070
+Feature names and exact values are
+
+15
+00:00:39,070 --> 00:00:41,920
+masked to protect users' privacy.
+
+16
+00:00:41,920 --> 00:00:45,260
+Correspondingly we won't be able to directly interpret
+
+17
+00:00:45,260 --> 00:00:47,400
+which features are important as we do not
+
+18
+00:00:47,400 --> 00:00:50,250
+know the identity of these features.
+
+19
+00:00:50,250 --> 00:00:55,039
+We used logistic regression on pairs of users' differences
+
+20
+00:00:55,039 --> 00:00:56,080
+to predict compatibility.
+
+21
+00:00:56,080 --> 00:00:58,840
+
+
+22
+00:00:58,840 --> 00:01:00,520
+To reduce the size of the problem,
+
+23
+00:01:00,520 --> 00:01:05,260
+we filtered the data to include only users in the Boston area
+
+24
+00:01:05,260 --> 00:01:08,710
+who have compatibility scores listed in the data set.
+
+25
+00:01:08,710 --> 00:01:15,020
+We computed absolute difference in features for these 1,475
+
+26
+00:01:15,020 --> 00:01:17,930
+pairs and trained a logistic regression model
+
+27
+00:01:17,930 --> 00:01:20,456
+on these differences.
+
+28
+00:01:20,456 --> 00:01:24,200
+Let us observe the results of this experiment.
+
+29
+00:01:24,200 --> 00:01:27,340
+If we use a low threshold in the logistic regression model,
+
+30
+00:01:27,340 --> 00:01:30,930
+we predict more false positives but also get
+
+31
+00:01:30,930 --> 00:01:32,140
+more true positives.
+
+32
+00:01:32,140 --> 00:01:34,100
+For example, the classification matrix
+
+33
+00:01:34,100 --> 00:01:37,760
+for threshold equal to 0.2 is as follows.
+
+34
+00:01:37,760 --> 00:01:41,820
+
+
+35
+00:01:41,820 --> 00:01:47,580
+Note that we found 1,030 pairs that are not compatible
+
+36
+00:01:47,580 --> 00:01:51,090
+and 92 pairs that are compatible correctly.
+
+37
+00:01:51,090 --> 00:01:58,900
+Note that 92 out of 319-- which is 227 plus 92 --of these
+
+38
+00:01:58,900 --> 00:02:01,780
+were correctly identified.
+
+39
+00:02:01,780 --> 00:02:05,480
+That is, 29% percent of the matches we recommend
+
+40
+00:02:05,480 --> 00:02:10,440
+would be successful, a very high success rate for online dating.
+
+41
+00:02:10,440 --> 00:02:18,310
+
+
+42
+00:02:18,310 --> 00:02:20,160
+Clearly, there is a potential for using
+
+43
+00:02:20,160 --> 00:02:22,170
+many other analytic methods.
+
+44
+00:02:22,170 --> 00:02:25,080
+Specifically trees, which are especially
+
+45
+00:02:25,080 --> 00:02:26,890
+useful for predicting compatibility
+
+46
+00:02:26,890 --> 00:02:28,730
+if there are nonlinear relationships
+
+47
+00:02:28,730 --> 00:02:31,090
+between variables.
+
+48
+00:02:31,090 --> 00:02:33,160
+Clustering is another potential approach
+
+49
+00:02:33,160 --> 00:02:35,390
+with the idea of segmenting the users.
+
+50
+00:02:35,390 --> 00:02:38,660
+Finally, text analytics is yet another approach
+
+51
+00:02:38,660 --> 00:02:43,100
+with the idea of analyzing the text of users' profiles.
+
+52
+00:02:43,100 --> 00:02:47,150
+Of course, many other techniques are possible.
+
+53
+00:02:47,150 --> 00:02:49,630
+To give some intuition of various features,
+
+54
+00:02:49,630 --> 00:02:52,220
+let us see how the probability of a match
+
+55
+00:02:52,220 --> 00:02:56,000
+changes with the distance between the two adults.
+
+56
+00:02:56,000 --> 00:03:00,430
+It is interesting to note that the probability drops
+
+57
+00:03:00,430 --> 00:03:02,770
+with distance, and then for a very long distance,
+
+58
+00:03:02,770 --> 00:03:06,900
+the probability increases again.
+
+59
+00:03:06,900 --> 00:03:09,190
+Also interesting is this graph that
+
+60
+00:03:09,190 --> 00:03:12,890
+shows that if the attractiveness is too high or too low,
+
+61
+00:03:12,890 --> 00:03:15,160
+the probability of a successful match decreases.
+
+62
+00:03:15,160 --> 00:03:17,990
+
+
+63
+00:03:17,990 --> 00:03:22,530
+Finally, if the difference in height is too high or too low,
+
+64
+00:03:22,530 --> 00:03:26,000
+the probability of the match also drops.
+
+65
+00:03:26,000 --> 00:03:29,480
+It seems the sweet spot is a difference in height
+
+66
+00:03:29,480 --> 00:03:32,370
+between four and eight inches.
+

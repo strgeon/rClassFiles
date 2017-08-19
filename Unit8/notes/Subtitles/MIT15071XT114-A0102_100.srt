@@ -1,0 +1,148 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,960
+To illustrate how linear optimization works in revenue
+
+2
+00:00:02,960 --> 00:00:05,290
+management, let us consider a simple example --
+
+3
+00:00:05,290 --> 00:00:08,620
+a flight from New York to Los Angeles.
+
+4
+00:00:08,620 --> 00:00:11,980
+In this flight, there are two types of economy fares,
+
+5
+00:00:11,980 --> 00:00:16,930
+Early Bird fares that cost $238, and Last Minute fares
+
+6
+00:00:16,930 --> 00:00:20,170
+that cost $617.
+
+7
+00:00:20,170 --> 00:00:23,320
+In this flight, a Boeing 757 is used
+
+8
+00:00:23,320 --> 00:00:27,720
+that has 166 economy seats.
+
+9
+00:00:27,720 --> 00:00:30,300
+Demand for these prices has been forecasted
+
+10
+00:00:30,300 --> 00:00:33,390
+using analytics tools, looking at historical data
+
+11
+00:00:33,390 --> 00:00:35,220
+and incorporating models like time
+
+12
+00:00:35,220 --> 00:00:37,520
+series or linear regression.
+
+13
+00:00:37,520 --> 00:00:40,920
+Clearly, forecasts have errors, and therefore, we
+
+14
+00:00:40,920 --> 00:00:44,200
+need to assess the sensitivity of our decisions
+
+15
+00:00:44,200 --> 00:00:45,980
+to these errors.
+
+16
+00:00:45,980 --> 00:00:48,060
+To illustrate the use of linear optimization,
+
+17
+00:00:48,060 --> 00:00:50,475
+we assume that demand has already been forecasted.
+
+18
+00:00:50,475 --> 00:00:53,220
+
+
+19
+00:00:53,220 --> 00:00:56,650
+We'll illustrate how our decisions on how many discount
+
+20
+00:00:56,650 --> 00:01:02,860
+seats to sell vary as the demand forecasts vary.
+
+21
+00:01:02,860 --> 00:01:05,340
+If the demand for regular seats is
+
+22
+00:01:05,340 --> 00:01:10,500
+50, and for discounted fares is 150,
+
+23
+00:01:10,500 --> 00:01:15,250
+and the capacity is 166 seats, then the optimal allocation
+
+24
+00:01:15,250 --> 00:01:19,800
+is going to be to sell the 50 seats to satisfy
+
+25
+00:01:19,800 --> 00:01:24,610
+the regular demand, and then we allocate the remaining 116
+
+26
+00:01:24,610 --> 00:01:28,770
+seats to the discounted fare class.
+
+27
+00:01:28,770 --> 00:01:31,700
+If the regular demand increases to 100 seats,
+
+28
+00:01:31,700 --> 00:01:37,080
+then we allocate these 100 seats to these customers, and only
+
+29
+00:01:37,080 --> 00:01:40,910
+66 seats to discounted fare customers.
+
+30
+00:01:40,910 --> 00:01:44,710
+Finally, if the regular demand increases to 200,
+
+31
+00:01:44,710 --> 00:01:49,130
+then we allocate all of our capacity, 166 seats,
+
+32
+00:01:49,130 --> 00:01:51,260
+to these customers.
+
+33
+00:01:51,260 --> 00:01:54,200
+While this seems simple, what happens
+
+34
+00:01:54,200 --> 00:02:00,830
+if we have 100 flights with connections in tens of fares?
+
+35
+00:02:00,830 --> 00:02:04,480
+We'll next see how to formulate the problem mathematically
+
+36
+00:02:04,480 --> 00:02:08,920
+and solve it in a systematic way, using linear optimization.
+

@@ -1,0 +1,380 @@
+0
+00:00:00,000 --> 00:00:00,580
+
+
+1
+00:00:00,580 --> 00:00:04,110
+In this video, we'll discuss how radiation therapy can
+
+2
+00:00:04,110 --> 00:00:07,310
+be framed as an optimization problem.
+
+3
+00:00:07,310 --> 00:00:10,610
+The data's collected in the treatment planning process,
+
+4
+00:00:10,610 --> 00:00:13,980
+which starts from a CT scan, like the one you see here,
+
+5
+00:00:13,980 --> 00:00:15,690
+on the right.
+
+6
+00:00:15,690 --> 00:00:19,190
+Using a CT scan, a radiation oncologist
+
+7
+00:00:19,190 --> 00:00:22,790
+contours, or draws outlines around the tumor
+
+8
+00:00:22,790 --> 00:00:25,260
+and various critical structures.
+
+9
+00:00:25,260 --> 00:00:27,310
+In this image, the oncologist would
+
+10
+00:00:27,310 --> 00:00:30,780
+contour structures like the parotid glands,
+
+11
+00:00:30,780 --> 00:00:34,430
+the largest of the saliva glands, and the brain.
+
+12
+00:00:34,430 --> 00:00:39,610
+
+
+13
+00:00:39,610 --> 00:00:42,360
+Then, each structure is discretized
+
+14
+00:00:42,360 --> 00:00:45,910
+into voxels, or volume elements, which are typically
+
+15
+00:00:45,910 --> 00:00:48,770
+four millimeters in dimension.
+
+16
+00:00:48,770 --> 00:00:52,630
+The second image here shows a closer view of the brain.
+
+17
+00:00:52,630 --> 00:00:55,900
+You can see the small squares, or voxels.
+
+18
+00:00:55,900 --> 00:00:58,710
+Here, they're two-dimensional, but in reality they
+
+19
+00:00:58,710 --> 00:01:01,110
+would be three-dimensional.
+
+20
+00:01:01,110 --> 00:01:04,319
+Now, we can compute how much dose each beamlet,
+
+21
+00:01:04,319 --> 00:01:08,600
+or piece of the beam, delivers to each voxel.
+
+22
+00:01:08,600 --> 00:01:11,200
+We'll start with a small example.
+
+23
+00:01:11,200 --> 00:01:15,700
+Suppose we have nine voxels and six beamlets.
+
+24
+00:01:15,700 --> 00:01:19,110
+Our voxels can be categorized into three types:
+
+25
+00:01:19,110 --> 00:01:22,210
+the tumor voxels, which are colored pink here;
+
+26
+00:01:22,210 --> 00:01:25,290
+the spinal cord voxel, colored dark green;
+
+27
+00:01:25,290 --> 00:01:28,890
+and other healthy tissue voxels, colored light green.
+
+28
+00:01:28,890 --> 00:01:33,600
+So we have four tumor voxels, one spinal cord voxel,
+
+29
+00:01:33,600 --> 00:01:37,010
+and four other healthy tissue voxels.
+
+30
+00:01:37,010 --> 00:01:41,630
+We have two beams that are each split into three beamlets.
+
+31
+00:01:41,630 --> 00:01:46,610
+Beam 1 is composed of beamlets 1, 2, and 3,
+
+32
+00:01:46,610 --> 00:01:48,800
+and comes in from the right.
+
+33
+00:01:48,800 --> 00:01:53,090
+Beam 2 is composed of beamlets 4, 5, and 6,
+
+34
+00:01:53,090 --> 00:01:55,400
+and comes in from the top.
+
+35
+00:01:55,400 --> 00:02:00,170
+Our objective is to minimize the total dose to healthy tissue,
+
+36
+00:02:00,170 --> 00:02:05,060
+both to the spinal cord and to the other healthy tissue.
+
+37
+00:02:05,060 --> 00:02:07,410
+We have two types of constraints.
+
+38
+00:02:07,410 --> 00:02:10,810
+The first is that the dose to the tumor voxels
+
+39
+00:02:10,810 --> 00:02:13,660
+must be at least 7 Gray, which is
+
+40
+00:02:13,660 --> 00:02:16,390
+the unit of measure for radiation.
+
+41
+00:02:16,390 --> 00:02:20,030
+Our second constraint is that the dose to the spinal cord
+
+42
+00:02:20,030 --> 00:02:23,420
+voxel can't be more than 5 Gray, since we
+
+43
+00:02:23,420 --> 00:02:28,080
+want to be careful to protect the spinal cord.
+
+44
+00:02:28,080 --> 00:02:30,520
+We know the dose that each beamlet
+
+45
+00:02:30,520 --> 00:02:34,180
+gives to each voxel at unit intensity.
+
+46
+00:02:34,180 --> 00:02:38,260
+This table shows the dose that each beamlet in Beam 1
+
+47
+00:02:38,260 --> 00:02:39,870
+gives to the voxels.
+
+48
+00:02:39,870 --> 00:02:42,350
+Remember that this is at unit intensity.
+
+49
+00:02:42,350 --> 00:02:44,850
+If we double the intensity of the beamlet,
+
+50
+00:02:44,850 --> 00:02:47,340
+we double the doses.
+
+51
+00:02:47,340 --> 00:02:49,480
+The dose to each voxel can depend
+
+52
+00:02:49,480 --> 00:02:53,290
+on how far the beamlet has to travel, or the type of tissue
+
+53
+00:02:53,290 --> 00:02:56,660
+that the beamlet has to travel through.
+
+54
+00:02:56,660 --> 00:03:00,440
+Similarly, we know the dose that each beamlet in Beam 2
+
+55
+00:03:00,440 --> 00:03:04,460
+gives to each voxel, again at unit intensity.
+
+56
+00:03:04,460 --> 00:03:06,890
+The dose depends on the direction of the beam
+
+57
+00:03:06,890 --> 00:03:10,092
+and what it travels through.
+
+58
+00:03:10,092 --> 00:03:12,050
+Putting these tables together, we
+
+59
+00:03:12,050 --> 00:03:15,210
+can write out our optimization problem.
+
+60
+00:03:15,210 --> 00:03:20,210
+Our decision variables are the intensities of each beamlet.
+
+61
+00:03:20,210 --> 00:03:25,760
+We'll call them x_1, the intensity for beamlet 1, x_2,
+
+62
+00:03:25,760 --> 00:03:29,830
+the intensity for beamlet 2, x_3,
+
+63
+00:03:29,830 --> 00:03:32,880
+the intensity for beamlet 3, etc.,
+
+64
+00:03:32,880 --> 00:03:36,290
+all the way up through x_6.
+
+65
+00:03:36,290 --> 00:03:39,550
+As we mentioned before, our objective
+
+66
+00:03:39,550 --> 00:03:44,860
+is to minimize the total dose to the healthy tissue, including
+
+67
+00:03:44,860 --> 00:03:46,600
+the spinal cord.
+
+68
+00:03:46,600 --> 00:03:50,660
+So we want to minimize the total dose beamlet 1 gives to healthy
+
+69
+00:03:50,660 --> 00:03:58,840
+tissue, which is (1 + 2)*x_1, plus the total dose beamlet 2
+
+70
+00:03:58,840 --> 00:04:04,880
+gives to healthy tissue, which is (2 + 2.5)*x_2,
+
+71
+00:04:04,880 --> 00:04:07,530
+plus the total dose beamlet 3 gives to healthy tissue,
+
+72
+00:04:07,530 --> 00:04:10,420
+which is 2.5*x_3.
+
+73
+00:04:10,420 --> 00:04:15,360
+Now for beamlets 4, 5, and 6, beamlet 4 just gives one dose
+
+74
+00:04:15,360 --> 00:04:21,330
+to healthy tissue, beamlet 5, 2*x_5, and then beamlet 6,
+
+75
+00:04:21,330 --> 00:04:22,330
+we have (1 + 2 + 1)*x_6.
+
+76
+00:04:22,330 --> 00:04:27,400
+
+
+77
+00:04:27,400 --> 00:04:29,650
+Now for our constraints.
+
+78
+00:04:29,650 --> 00:04:33,160
+First, we need to make sure that each voxel of the tumor
+
+79
+00:04:33,160 --> 00:04:35,960
+gets a dose of at least 7.
+
+80
+00:04:35,960 --> 00:04:39,560
+Let's start with the first tumor voxel in the top row.
+
+81
+00:04:39,560 --> 00:04:48,750
+So 2*x_1 + x_5 needs to be greater than or equal to 7.
+
+82
+00:04:48,750 --> 00:04:51,330
+Now the tumor voxel in the second row,
+
+83
+00:04:51,330 --> 00:04:58,480
+we have x_2 + 2*x_4, also greater than or equal to 7.
+
+84
+00:04:58,480 --> 00:05:01,570
+Now for the two tumor voxels in the bottom row,
+
+85
+00:05:01,570 --> 00:05:07,610
+we have 1.5*x_3 + x_4, greater than or equal to 7.
+
+86
+00:05:07,610 --> 00:05:13,680
+And 1.5*x_3 + x_5, greater than or equal to 7.
+
+87
+00:05:13,680 --> 00:05:18,900
+Then for the spinal cord, we need to make sure that 2*x_2 +
+
+88
+00:05:18,900 --> 00:05:23,460
+2*x_5 is less than or equal to 5.
+
+89
+00:05:23,460 --> 00:05:25,260
+And lastly, we just need to make sure
+
+90
+00:05:25,260 --> 00:05:28,303
+that all of our decision variables are non-negative.
+
+91
+00:05:28,303 --> 00:05:32,620
+
+
+92
+00:05:32,620 --> 00:05:36,150
+So they should all be greater than or equal to 0.
+
+93
+00:05:36,150 --> 00:05:39,040
+Now that we've set up our optimization problem,
+
+94
+00:05:39,040 --> 00:05:42,960
+we'll solve it in LibreOffice in the next video.
+

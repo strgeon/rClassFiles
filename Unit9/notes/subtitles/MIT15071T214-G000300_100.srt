@@ -1,0 +1,1168 @@
+0
+00:00:00,000 --> 00:00:00,720
+
+
+1
+00:00:00,720 --> 00:00:03,190
+Here we are in LibreOffice, and you'll
+
+2
+00:00:03,190 --> 00:00:05,350
+see that we have all the data we discussed
+
+3
+00:00:05,350 --> 00:00:09,450
+in the previous videos loaded into the spreadsheet here.
+
+4
+00:00:09,450 --> 00:00:11,710
+Let's take a minute to familiarize ourselves
+
+5
+00:00:11,710 --> 00:00:14,240
+with how the data is set up.
+
+6
+00:00:14,240 --> 00:00:17,250
+So here we see we've got the number of surgical teams
+
+7
+00:00:17,250 --> 00:00:20,260
+per department per day, and we've
+
+8
+00:00:20,260 --> 00:00:24,140
+got it listed by department-- all five of them are here--
+
+9
+00:00:24,140 --> 00:00:26,820
+and by day of the week-- Monday, Tuesday, Wednesday, Thursday,
+
+10
+00:00:26,820 --> 00:00:28,676
+and Friday.
+
+11
+00:00:28,676 --> 00:00:30,050
+Remember, for all departments, we
+
+12
+00:00:30,050 --> 00:00:33,100
+have the same number of teams in per day,
+
+13
+00:00:33,100 --> 00:00:35,690
+except for oral surgery, because the oral surgeon is
+
+14
+00:00:35,690 --> 00:00:37,855
+only present on Tuesdays and Thursdays.
+
+15
+00:00:37,855 --> 00:00:40,760
+
+
+16
+00:00:40,760 --> 00:00:44,030
+Scrolling across, we see that for all five departments,
+
+17
+00:00:44,030 --> 00:00:46,650
+again, we've got the minimum number of operating rooms
+
+18
+00:00:46,650 --> 00:00:49,630
+that each one requires each day.
+
+19
+00:00:49,630 --> 00:00:52,470
+This is simply 0.
+
+20
+00:00:52,470 --> 00:00:54,670
+As we keep going, we see the maximum number
+
+21
+00:00:54,670 --> 00:00:57,260
+of operating rooms that each department requires each day.
+
+22
+00:00:57,260 --> 00:01:00,260
+
+
+23
+00:01:00,260 --> 00:01:02,580
+Going down to the next set of data,
+
+24
+00:01:02,580 --> 00:01:05,620
+we've got the weekly department requirements.
+
+25
+00:01:05,620 --> 00:01:08,040
+We've got the minimum and maximum number
+
+26
+00:01:08,040 --> 00:01:12,570
+of operating rooms that each department requires each week.
+
+27
+00:01:12,570 --> 00:01:15,120
+We also have the weekly targets.
+
+28
+00:01:15,120 --> 00:01:18,140
+This is data, because it is set by the departments
+
+29
+00:01:18,140 --> 00:01:20,650
+before the operating room manager has a chance
+
+30
+00:01:20,650 --> 00:01:24,210
+to schedule the operating rooms.
+
+31
+00:01:24,210 --> 00:01:26,269
+So this is our problem data, and now let's
+
+32
+00:01:26,269 --> 00:01:27,685
+go down to our decision variables.
+
+33
+00:01:27,685 --> 00:01:32,264
+
+
+34
+00:01:32,264 --> 00:01:34,180
+All right, so here are our decision variables.
+
+35
+00:01:34,180 --> 00:01:36,900
+
+
+36
+00:01:36,900 --> 00:01:38,810
+You see that we've set up a decision variable
+
+37
+00:01:38,810 --> 00:01:41,770
+for each department, and for each day of the week.
+
+38
+00:01:41,770 --> 00:01:44,200
+Right now, they're simply set to 0,
+
+39
+00:01:44,200 --> 00:01:48,730
+but we've colored them yellow, so they'll be easy to see.
+
+40
+00:01:48,730 --> 00:01:51,920
+Let's now set up a column for weekly totals.
+
+41
+00:01:51,920 --> 00:01:52,760
+Let's put that here.
+
+42
+00:01:52,760 --> 00:01:57,250
+
+
+43
+00:01:57,250 --> 00:01:57,825
+All right.
+
+44
+00:01:57,825 --> 00:02:01,820
+
+
+45
+00:02:01,820 --> 00:02:03,360
+So let's fill this in.
+
+46
+00:02:03,360 --> 00:02:05,510
+The weekly total for ophthalmology
+
+47
+00:02:05,510 --> 00:02:09,610
+should just be the sum of all of the number of operating
+
+48
+00:02:09,610 --> 00:02:12,190
+rooms assigned to ophthalmology from Monday through Friday,
+
+49
+00:02:12,190 --> 00:02:13,820
+so that's this entire row.
+
+50
+00:02:13,820 --> 00:02:18,190
+
+
+51
+00:02:18,190 --> 00:02:19,740
+Just like that.
+
+52
+00:02:19,740 --> 00:02:22,950
+And we can drag this formula down for every department.
+
+53
+00:02:22,950 --> 00:02:28,110
+
+
+54
+00:02:28,110 --> 00:02:29,930
+OK.
+
+55
+00:02:29,930 --> 00:02:32,940
+So now, if you actually go through each one of these,
+
+56
+00:02:32,940 --> 00:02:35,450
+you can see up in the Formula tab
+
+57
+00:02:35,450 --> 00:02:40,170
+that we've got the formula for the weekly totals here.
+
+58
+00:02:40,170 --> 00:02:42,750
+So let's get started by putting in our objectives
+
+59
+00:02:42,750 --> 00:02:45,000
+and our constraints.
+
+60
+00:02:45,000 --> 00:02:48,565
+So down here, I've set up a box for the objective,
+
+61
+00:02:48,565 --> 00:02:51,810
+but I haven't yet put in a formula for it.
+
+62
+00:02:51,810 --> 00:02:56,230
+So let's remind ourselves what the objective is here.
+
+63
+00:02:56,230 --> 00:03:00,170
+The objective is to maximize the percent of target allocation
+
+64
+00:03:00,170 --> 00:03:05,040
+hours that each department is actually allocated.
+
+65
+00:03:05,040 --> 00:03:07,940
+So how can we calculate that?
+
+66
+00:03:07,940 --> 00:03:11,830
+Our decision variables up here represent the number
+
+67
+00:03:11,830 --> 00:03:14,040
+of operating room hours that each department
+
+68
+00:03:14,040 --> 00:03:17,850
+is assigned on each day.
+
+69
+00:03:17,850 --> 00:03:20,290
+We calculated the total over here,
+
+70
+00:03:20,290 --> 00:03:22,410
+as the number of operating rooms that a department
+
+71
+00:03:22,410 --> 00:03:25,980
+is assigned over the course of the week.
+
+72
+00:03:25,980 --> 00:03:28,680
+To turn that into hours, we need to multiply it by 8,
+
+73
+00:03:28,680 --> 00:03:32,200
+because operating rooms are staffed for eight hours.
+
+74
+00:03:32,200 --> 00:03:35,482
+So let's create a column that turns this into hours.
+
+75
+00:03:35,482 --> 00:03:38,680
+We'll put it over here, and we'll call it weekly hours.
+
+76
+00:03:38,680 --> 00:03:42,710
+
+
+77
+00:03:42,710 --> 00:03:44,680
+OK?
+
+78
+00:03:44,680 --> 00:03:49,450
+And this will just be equal to 8 times the weekly totals.
+
+79
+00:03:49,450 --> 00:03:53,630
+
+
+80
+00:03:53,630 --> 00:03:54,590
+Great.
+
+81
+00:03:54,590 --> 00:03:56,749
+And we'll do this for all departments.
+
+82
+00:03:56,749 --> 00:03:58,540
+Here, this time I'll actually write it out.
+
+83
+00:03:58,540 --> 00:04:05,800
+
+
+84
+00:04:05,800 --> 00:04:06,300
+OK.
+
+85
+00:04:06,300 --> 00:04:18,870
+
+
+86
+00:04:18,870 --> 00:04:21,000
+Great.
+
+87
+00:04:21,000 --> 00:04:23,090
+So now we've got the weekly hours here,
+
+88
+00:04:23,090 --> 00:04:26,500
+but to calculate what fraction of the weekly target,
+
+89
+00:04:26,500 --> 00:04:29,370
+we've got to divide it by the total weekly target.
+
+90
+00:04:29,370 --> 00:04:32,140
+And the total weekly target, we see, is up here.
+
+91
+00:04:32,140 --> 00:04:34,690
+
+
+92
+00:04:34,690 --> 00:04:39,140
+So let's set this up for every department in a column
+
+93
+00:04:39,140 --> 00:04:41,520
+called "Percent of Target".
+
+94
+00:04:41,520 --> 00:04:49,550
+
+
+95
+00:04:49,550 --> 00:04:54,820
+OK, so this will just be equal to the weekly number of hours,
+
+96
+00:04:54,820 --> 00:04:58,400
+divided by the weekly target.
+
+97
+00:04:58,400 --> 00:05:01,630
+
+
+98
+00:05:01,630 --> 00:05:04,600
+OK, so we'll just set that up for each department.
+
+99
+00:05:04,600 --> 00:05:21,560
+
+
+100
+00:05:21,560 --> 00:05:23,740
+Certainly there are faster ways of doing this,
+
+101
+00:05:23,740 --> 00:05:27,550
+but I don't want to speed ahead if you guys aren't yet
+
+102
+00:05:27,550 --> 00:05:28,595
+LibreOffice wizards.
+
+103
+00:05:28,595 --> 00:05:42,030
+
+
+104
+00:05:42,030 --> 00:05:42,530
+OK.
+
+105
+00:05:42,530 --> 00:05:46,342
+
+
+106
+00:05:46,342 --> 00:05:47,800
+All right, so we've got the percent
+
+107
+00:05:47,800 --> 00:05:50,380
+of target reached for every department.
+
+108
+00:05:50,380 --> 00:05:54,020
+So our objective-- we can go back to it now--
+
+109
+00:05:54,020 --> 00:05:58,050
+it'll just be the sum of all of these percent of targets.
+
+110
+00:05:58,050 --> 00:06:02,430
+So let's add that in-- equals sum,
+
+111
+00:06:02,430 --> 00:06:06,720
+and then we'll add in all of these percent of targets.
+
+112
+00:06:06,720 --> 00:06:09,696
+
+
+113
+00:06:09,696 --> 00:06:10,252
+Great.
+
+114
+00:06:10,252 --> 00:06:12,710
+So right now, of course, we haven't solved the problem yet,
+
+115
+00:06:12,710 --> 00:06:16,080
+so we've just got 0 in our objective.
+
+116
+00:06:16,080 --> 00:06:17,990
+But before we go ahead and solve it,
+
+117
+00:06:17,990 --> 00:06:20,650
+we need to add in our constraints.
+
+118
+00:06:20,650 --> 00:06:23,840
+So down here in green, we have a list
+
+119
+00:06:23,840 --> 00:06:25,480
+of all the constraints we outlined
+
+120
+00:06:25,480 --> 00:06:27,700
+in the previous videos.
+
+121
+00:06:27,700 --> 00:06:30,990
+Let's review them quickly.
+
+122
+00:06:30,990 --> 00:06:33,120
+So the first one is just that the number
+
+123
+00:06:33,120 --> 00:06:36,880
+of operating rooms assigned each day is integer.
+
+124
+00:06:36,880 --> 00:06:39,320
+We can't assign ophthalmology 3/4
+
+125
+00:06:39,320 --> 00:06:41,300
+of an operating room on Thursday,
+
+126
+00:06:41,300 --> 00:06:45,740
+or general surgery 6.5 operating rooms on Monday.
+
+127
+00:06:45,740 --> 00:06:49,450
+We need to make sure that these take integer values.
+
+128
+00:06:49,450 --> 00:06:52,060
+The next constraint is just that the total number
+
+129
+00:06:52,060 --> 00:06:57,130
+of operating rooms each day has to be less than or equal to 10.
+
+130
+00:06:57,130 --> 00:06:58,790
+So while we're here, let's just add
+
+131
+00:06:58,790 --> 00:07:00,960
+in a line underneath our decision variables,
+
+132
+00:07:00,960 --> 00:07:02,980
+which calculates the total number of operating
+
+133
+00:07:02,980 --> 00:07:04,990
+rooms each day.
+
+134
+00:07:04,990 --> 00:07:07,470
+Over here we'll call it total number
+
+135
+00:07:07,470 --> 00:07:12,280
+of operating rooms each day, and this will just take
+
+136
+00:07:12,280 --> 00:07:18,670
+the sum over all the operating rooms we assign on Monday.
+
+137
+00:07:18,670 --> 00:07:21,540
+Just like that.
+
+138
+00:07:21,540 --> 00:07:23,410
+Great.
+
+139
+00:07:23,410 --> 00:07:25,920
+And let's drag this formula across
+
+140
+00:07:25,920 --> 00:07:27,460
+to use it for the entire week.
+
+141
+00:07:27,460 --> 00:07:34,960
+
+
+142
+00:07:34,960 --> 00:07:36,570
+OK, so now we've got that set up,
+
+143
+00:07:36,570 --> 00:07:40,510
+so we'll be able to do the second constraint.
+
+144
+00:07:40,510 --> 00:07:44,200
+The third set of constraints is the upper bound--
+
+145
+00:07:44,200 --> 00:07:46,740
+that is, the upper bound on the number of surgical teams
+
+146
+00:07:46,740 --> 00:07:50,190
+that are available each day.
+
+147
+00:07:50,190 --> 00:07:53,080
+We also have an upper bound on the daily department operating
+
+148
+00:07:53,080 --> 00:07:56,520
+room requirement, and a lower bound on the daily department
+
+149
+00:07:56,520 --> 00:07:59,180
+operating room requirement.
+
+150
+00:07:59,180 --> 00:08:02,320
+Similarly, we have an upper bound and a lower bound
+
+151
+00:08:02,320 --> 00:08:04,540
+on the weekly department operating room requirements.
+
+152
+00:08:04,540 --> 00:08:07,140
+
+
+153
+00:08:07,140 --> 00:08:09,140
+Our last set of constraints has to do
+
+154
+00:08:09,140 --> 00:08:11,560
+with departmental targets.
+
+155
+00:08:11,560 --> 00:08:14,140
+We want to make sure we don't give any department more
+
+156
+00:08:14,140 --> 00:08:17,570
+operating room hours than they actually want.
+
+157
+00:08:17,570 --> 00:08:19,090
+So that means we want to make sure
+
+158
+00:08:19,090 --> 00:08:21,760
+that the number of hours given to each department
+
+159
+00:08:21,760 --> 00:08:23,660
+is less than or equal to the targeted number
+
+160
+00:08:23,660 --> 00:08:26,340
+that they asked for.
+
+161
+00:08:26,340 --> 00:08:29,190
+All right, so let's go ahead and add these constraints
+
+162
+00:08:29,190 --> 00:08:31,070
+into the Solver.
+
+163
+00:08:31,070 --> 00:08:33,730
+So we'll start by putting our cursor
+
+164
+00:08:33,730 --> 00:08:38,450
+on the objective function, and going up to the Tools menu.
+
+165
+00:08:38,450 --> 00:08:39,690
+And here we select Solver.
+
+166
+00:08:39,690 --> 00:08:42,650
+
+
+167
+00:08:42,650 --> 00:08:45,260
+OK.
+
+168
+00:08:45,260 --> 00:08:48,830
+So because we started our cursor on the objective function cell,
+
+169
+00:08:48,830 --> 00:08:52,750
+it comes up properly with the "Target cell" already labeled.
+
+170
+00:08:52,750 --> 00:08:57,110
+We do want a maximum, so we keep that the way it is.
+
+171
+00:08:57,110 --> 00:08:59,720
+And then here, where it says "By changing cells",
+
+172
+00:08:59,720 --> 00:09:02,120
+we put in our decision variables.
+
+173
+00:09:02,120 --> 00:09:05,360
+So we just select them all, like this.
+
+174
+00:09:05,360 --> 00:09:06,530
+All right.
+
+175
+00:09:06,530 --> 00:09:08,570
+Now, before we start putting in our constraints,
+
+176
+00:09:08,570 --> 00:09:12,910
+I want to remind you to go into Options,
+
+177
+00:09:12,910 --> 00:09:16,380
+and you'll need to change this from DEPS Evolutionary
+
+178
+00:09:16,380 --> 00:09:21,760
+Algorithm to LibreOffice Linear Solver.
+
+179
+00:09:21,760 --> 00:09:24,300
+OK.
+
+180
+00:09:24,300 --> 00:09:25,850
+So you notice that the settings--
+
+181
+00:09:25,850 --> 00:09:29,700
+you can choose to assume variables are integer,
+
+182
+00:09:29,700 --> 00:09:32,780
+and assume variables are non-negative.
+
+183
+00:09:32,780 --> 00:09:34,640
+We'll do that here.
+
+184
+00:09:34,640 --> 00:09:37,510
+In fact, this takes care of our first constraint, which
+
+185
+00:09:37,510 --> 00:09:39,770
+was to assume that the variables are integer.
+
+186
+00:09:39,770 --> 00:09:43,510
+
+
+187
+00:09:43,510 --> 00:09:45,770
+OK.
+
+188
+00:09:45,770 --> 00:09:47,430
+So we've got this set up.
+
+189
+00:09:47,430 --> 00:09:51,410
+Now let's put in the rest of our constraints.
+
+190
+00:09:51,410 --> 00:09:52,900
+OK.
+
+191
+00:09:52,900 --> 00:09:55,260
+So we've already taken care of this first constraint,
+
+192
+00:09:55,260 --> 00:09:57,430
+that the daily number of operating rooms assigned
+
+193
+00:09:57,430 --> 00:10:01,084
+is integer, and we've taken care of that with our options.
+
+194
+00:10:01,084 --> 00:10:02,500
+So we'll go down to the next one--
+
+195
+00:10:02,500 --> 00:10:06,850
+the total number of operating rooms each day.
+
+196
+00:10:06,850 --> 00:10:10,960
+Remember that we can't assign more than 10,
+
+197
+00:10:10,960 --> 00:10:16,160
+so we'll select this whole row, which
+
+198
+00:10:16,160 --> 00:10:18,190
+has the total number of operating rooms assigned
+
+199
+00:10:18,190 --> 00:10:22,460
+each day, and we'll say that each element in this row
+
+200
+00:10:22,460 --> 00:10:26,470
+has to be less than or equal to 10.
+
+201
+00:10:26,470 --> 00:10:28,360
+Great.
+
+202
+00:10:28,360 --> 00:10:31,610
+So on to the upper bound of surgical teams per day.
+
+203
+00:10:31,610 --> 00:10:37,091
+Let's select our decision variables, all of them at once.
+
+204
+00:10:37,091 --> 00:10:37,590
+OK.
+
+205
+00:10:37,590 --> 00:10:41,165
+
+
+206
+00:10:41,165 --> 00:10:43,040
+And then we'll need to scroll up to our data.
+
+207
+00:10:43,040 --> 00:10:46,541
+
+
+208
+00:10:46,541 --> 00:10:47,040
+OK.
+
+209
+00:10:47,040 --> 00:10:49,964
+
+
+210
+00:10:49,964 --> 00:10:52,380
+You'll notice here how I'm inputting all these constraints
+
+211
+00:10:52,380 --> 00:10:52,970
+all at once.
+
+212
+00:10:52,970 --> 00:10:56,710
+We're actually putting in 25 different constraints, one
+
+213
+00:10:56,710 --> 00:10:59,357
+for each day of the week, and one for each surgical team.
+
+214
+00:10:59,357 --> 00:11:01,440
+And we're just putting them in with a single line,
+
+215
+00:11:01,440 --> 00:11:04,620
+by saying that all our decision variables need to be less than
+
+216
+00:11:04,620 --> 00:11:07,285
+or equal to this box of constraints.
+
+217
+00:11:07,285 --> 00:11:10,200
+
+
+218
+00:11:10,200 --> 00:11:10,890
+Just like that.
+
+219
+00:11:10,890 --> 00:11:14,243
+
+
+220
+00:11:14,243 --> 00:11:16,640
+OK.
+
+221
+00:11:16,640 --> 00:11:18,520
+So our next set of constraints is
+
+222
+00:11:18,520 --> 00:11:21,400
+on the upper bound and lower bound of the daily department
+
+223
+00:11:21,400 --> 00:11:22,815
+OR requirements.
+
+224
+00:11:22,815 --> 00:11:25,680
+So we'll put in our decision variables again.
+
+225
+00:11:25,680 --> 00:11:26,705
+Scroll down to those.
+
+226
+00:11:26,705 --> 00:11:33,920
+
+
+227
+00:11:33,920 --> 00:11:36,560
+And let's say that these are less than
+
+228
+00:11:36,560 --> 00:11:41,000
+or equal to-- sometimes we've got
+
+229
+00:11:41,000 --> 00:11:44,160
+to move the solver around-- the maximum number of ORs
+
+230
+00:11:44,160 --> 00:11:45,335
+per day per department.
+
+231
+00:11:45,335 --> 00:11:48,390
+
+
+232
+00:11:48,390 --> 00:11:49,530
+OK.
+
+233
+00:11:49,530 --> 00:11:52,150
+And we'll do that again for the lower-bound.
+
+234
+00:11:52,150 --> 00:12:00,880
+
+
+235
+00:12:00,880 --> 00:12:03,410
+This time we need to change the operator to greater than.
+
+236
+00:12:03,410 --> 00:12:10,900
+
+
+237
+00:12:10,900 --> 00:12:22,230
+Greater than the minimum number of operating rooms
+
+238
+00:12:22,230 --> 00:12:23,520
+per department per day.
+
+239
+00:12:23,520 --> 00:12:27,540
+
+
+240
+00:12:27,540 --> 00:12:30,290
+You see here that we've got 0's in for the minimum number
+
+241
+00:12:30,290 --> 00:12:33,880
+of operating rooms per day, but you could conceivably
+
+242
+00:12:33,880 --> 00:12:35,690
+expect that one department might actually
+
+243
+00:12:35,690 --> 00:12:38,820
+want a minimum number of operating rooms per day.
+
+244
+00:12:38,820 --> 00:12:40,800
+For example, general surgery, which
+
+245
+00:12:40,800 --> 00:12:45,090
+we see here has a weekly target of 189 hours,
+
+246
+00:12:45,090 --> 00:12:49,360
+might actually want to have more than 0 operating rooms per day.
+
+247
+00:12:49,360 --> 00:12:53,204
+They might want to guarantee they've got at least one.
+
+248
+00:12:53,204 --> 00:12:55,820
+We'll experiment with changing some of these numbers
+
+249
+00:12:55,820 --> 00:12:58,090
+after we solve the initial problem.
+
+250
+00:12:58,090 --> 00:13:01,280
+For now, let's get our remaining constraints in.
+
+251
+00:13:01,280 --> 00:13:04,040
+The next ones we have are the weekly department
+
+252
+00:13:04,040 --> 00:13:05,820
+OR requirements-- the upper-bound
+
+253
+00:13:05,820 --> 00:13:08,170
+and the lower-bound.
+
+254
+00:13:08,170 --> 00:13:10,119
+So let's just scroll down here in the solver
+
+255
+00:13:10,119 --> 00:13:11,535
+to give ourselves a few more rows.
+
+256
+00:13:11,535 --> 00:13:16,090
+
+
+257
+00:13:16,090 --> 00:13:18,000
+OK.
+
+258
+00:13:18,000 --> 00:13:21,580
+So here we'll put in our weekly totals.
+
+259
+00:13:21,580 --> 00:13:24,420
+Good thing we've already got this set up.
+
+260
+00:13:24,420 --> 00:13:29,060
+OK, so weekly totals-- this will have
+
+261
+00:13:29,060 --> 00:13:31,860
+to be less than the maximum required by any department
+
+262
+00:13:31,860 --> 00:13:34,090
+in a given week.
+
+263
+00:13:34,090 --> 00:13:38,410
+So in the Value column, we go over here,
+
+264
+00:13:38,410 --> 00:13:41,310
+and we put in the maximum required each week.
+
+265
+00:13:41,310 --> 00:13:44,620
+
+
+266
+00:13:44,620 --> 00:13:49,740
+We'll do the same for the lower-bound,
+
+267
+00:13:49,740 --> 00:13:52,480
+again, changing the operator to a greater-than or equal-to
+
+268
+00:13:52,480 --> 00:13:52,980
+sign.
+
+269
+00:13:52,980 --> 00:14:01,140
+
+
+270
+00:14:01,140 --> 00:14:02,500
+OK.
+
+271
+00:14:02,500 --> 00:14:08,400
+And we're on to our very last set of constraints, which
+
+272
+00:14:08,400 --> 00:14:14,520
+is the departmental targets down here.
+
+273
+00:14:14,520 --> 00:14:17,120
+So remember, we can't assign a department more hours than they
+
+274
+00:14:17,120 --> 00:14:19,840
+actually wanted to have, because operating-room time is
+
+275
+00:14:19,840 --> 00:14:22,050
+so expensive.
+
+276
+00:14:22,050 --> 00:14:23,850
+So we'll select there the weekly number
+
+277
+00:14:23,850 --> 00:14:29,300
+of hours, which we already have a column set up to calculate.
+
+278
+00:14:29,300 --> 00:14:33,760
+So we'll put this in here that the weekly number of hours
+
+279
+00:14:33,760 --> 00:14:38,184
+must be less than or equal to the target allocation hours.
+
+280
+00:14:38,184 --> 00:14:44,160
+So scroll back up here to the target allocation hours.
+
+281
+00:14:44,160 --> 00:14:49,710
+
+
+282
+00:14:49,710 --> 00:14:50,970
+OK, great.
+
+283
+00:14:50,970 --> 00:14:52,690
+Now we've got all our constraints in,
+
+284
+00:14:52,690 --> 00:14:54,720
+and we're ready to go.
+
+285
+00:14:54,720 --> 00:14:55,575
+So let's hit Solve.
+
+286
+00:14:55,575 --> 00:14:59,690
+
+
+287
+00:14:59,690 --> 00:15:06,510
+It may take a few seconds-- up to 100.
+
+288
+00:15:06,510 --> 00:15:09,780
+In the next video, we'll look at the results that we get,
+
+289
+00:15:09,780 --> 00:15:11,120
+and interpret them.
+
+290
+00:15:11,120 --> 00:15:14,290
+We'll also see how they change, if we experiment with changing
+
+291
+00:15:14,290 --> 00:15:16,880
+some of the numbers in the problem.
+

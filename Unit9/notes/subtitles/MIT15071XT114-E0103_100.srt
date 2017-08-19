@@ -1,0 +1,524 @@
+0
+00:00:00,000 --> 00:00:00,770
+
+
+1
+00:00:00,770 --> 00:00:03,050
+In this video, we'll solve our sports
+
+2
+00:00:03,050 --> 00:00:06,250
+scheduling problem in LibreOffice.
+
+3
+00:00:06,250 --> 00:00:10,500
+We can use the solver to solve integer optimization problems
+
+4
+00:00:10,500 --> 00:00:15,140
+using the same process as for linear optimization problems.
+
+5
+00:00:15,140 --> 00:00:17,010
+The only difference is that we need
+
+6
+00:00:17,010 --> 00:00:19,820
+to add extra constraints to define variables
+
+7
+00:00:19,820 --> 00:00:22,640
+as integer or binary.
+
+8
+00:00:22,640 --> 00:00:25,460
+Let's go ahead and solve our small tournament scheduling
+
+9
+00:00:25,460 --> 00:00:26,830
+problem.
+
+10
+00:00:26,830 --> 00:00:29,630
+In LibreOffice, or in the spreadsheet software
+
+11
+00:00:29,630 --> 00:00:32,225
+you're using, go ahead and open the spreadsheet
+
+12
+00:00:32,225 --> 00:00:33,100
+SportsScheduling.ods.
+
+13
+00:00:33,100 --> 00:00:35,940
+
+
+14
+00:00:35,940 --> 00:00:37,740
+At the top of the spreadsheet, I've
+
+15
+00:00:37,740 --> 00:00:41,070
+created a spot for our decision variables.
+
+16
+00:00:41,070 --> 00:00:44,150
+We have a decision variable for each week,
+
+17
+00:00:44,150 --> 00:00:47,490
+weeks one through four, and for each team pair:
+
+18
+00:00:47,490 --> 00:00:53,410
+A and B, A and C, A and D, B and C, B and D,
+
+19
+00:00:53,410 --> 00:00:57,730
+and C and D. This gives us a total of 24 decision
+
+20
+00:00:57,730 --> 00:01:00,770
+variables highlighted in yellow.
+
+21
+00:01:00,770 --> 00:01:02,790
+Below the decision variables, there's
+
+22
+00:01:02,790 --> 00:01:06,570
+a spot for our objective, highlighted in blue.
+
+23
+00:01:06,570 --> 00:01:10,430
+Let's go ahead and construct our objective.
+
+24
+00:01:10,430 --> 00:01:13,690
+Start by typing an equals sign, and then we
+
+25
+00:01:13,690 --> 00:01:18,490
+want it to be equal to 1 times the decision variable for A
+
+26
+00:01:18,490 --> 00:01:23,890
+and B in week 1, plus 2 times the decision variable for A
+
+27
+00:01:23,890 --> 00:01:30,995
+and B in week 2, plus 4 times the decision variable for A
+
+28
+00:01:30,995 --> 00:01:35,220
+and B in week 3, plus 8 times the decision
+
+29
+00:01:35,220 --> 00:01:37,880
+variable for A and B in week 4.
+
+30
+00:01:37,880 --> 00:01:41,170
+Now we want to repeat this for teams C and D.
+
+31
+00:01:41,170 --> 00:01:46,320
+So now we have 1 times the decision variable for C and D
+
+32
+00:01:46,320 --> 00:01:51,520
+in week 1, plus 2 times the decision variable for C and D
+
+33
+00:01:51,520 --> 00:01:57,170
+in week 2, plus 4 times the decision variable for C and D
+
+34
+00:01:57,170 --> 00:02:02,740
+in week 3, plus 8 times the decision variable for C and D
+
+35
+00:02:02,740 --> 00:02:04,440
+in week 4.
+
+36
+00:02:04,440 --> 00:02:06,420
+Go ahead and hit Enter.
+
+37
+00:02:06,420 --> 00:02:08,580
+Our objective has value 0 for now
+
+38
+00:02:08,580 --> 00:02:12,370
+because we haven't filled in our decision variables yet.
+
+39
+00:02:12,370 --> 00:02:15,280
+Now, let's construct our constraints.
+
+40
+00:02:15,280 --> 00:02:19,690
+The first constraint is teams A and B should play twice.
+
+41
+00:02:19,690 --> 00:02:23,970
+So our left hand side should be equal to the sum-- we'll
+
+42
+00:02:23,970 --> 00:02:26,980
+use the sum function here, which just adds up
+
+43
+00:02:26,980 --> 00:02:29,200
+everything inside the parentheses.
+
+44
+00:02:29,200 --> 00:02:32,850
+So type =sum, and then in parentheses,
+
+45
+00:02:32,850 --> 00:02:37,230
+select the four A and B decision variables.
+
+46
+00:02:37,230 --> 00:02:39,990
+The sign should be equals and the right hand side
+
+47
+00:02:39,990 --> 00:02:41,580
+should be 2.
+
+48
+00:02:41,580 --> 00:02:44,810
+Now let's just repeat this for teams C and D.
+
+49
+00:02:44,810 --> 00:02:49,050
+So the left hand side is the sum of the C and D decision
+
+50
+00:02:49,050 --> 00:02:55,480
+variables, the sign is equals, and the right hand side is 2.
+
+51
+00:02:55,480 --> 00:02:58,105
+Now we want to add the constraint that teams A
+
+52
+00:02:58,105 --> 00:03:03,350
+and C should play once, so this left hand side is very similar.
+
+53
+00:03:03,350 --> 00:03:08,360
+It should be the sum of the A and C decision variables,
+
+54
+00:03:08,360 --> 00:03:11,390
+the sign should be equals, and the right hand side here
+
+55
+00:03:11,390 --> 00:03:13,490
+should be 1.
+
+56
+00:03:13,490 --> 00:03:16,550
+Now let's repeat this for teams A and D.
+
+57
+00:03:16,550 --> 00:03:21,650
+The left hand side is the sum of the A and D decision variables,
+
+58
+00:03:21,650 --> 00:03:25,660
+the sign is equals, and the right hand side is 1.
+
+59
+00:03:25,660 --> 00:03:28,600
+We'll repeat it again for teams B and C.
+
+60
+00:03:28,600 --> 00:03:32,150
+So the left hand side is the sum of the B and C decision
+
+61
+00:03:32,150 --> 00:03:37,440
+variables, the sign is equals, and the right hand side is 1.
+
+62
+00:03:37,440 --> 00:03:39,410
+The last of this type of constraint
+
+63
+00:03:39,410 --> 00:03:42,760
+is that teams B and D should play once,
+
+64
+00:03:42,760 --> 00:03:46,430
+so the left hand side is the sum of the B and D decision
+
+65
+00:03:46,430 --> 00:03:52,170
+variables, the sign is equals, and the right hand side is 1.
+
+66
+00:03:52,170 --> 00:03:53,880
+Now we want to add the constraints
+
+67
+00:03:53,880 --> 00:03:57,500
+that each team should only play once in each week.
+
+68
+00:03:57,500 --> 00:04:01,780
+So the first is that team A should play once in week one.
+
+69
+00:04:01,780 --> 00:04:05,740
+So the left hand side should be the sum of all of the decision
+
+70
+00:04:05,740 --> 00:04:08,800
+variables where A plays in week one.
+
+71
+00:04:08,800 --> 00:04:13,540
+So this should be equal to A playing B in week one,
+
+72
+00:04:13,540 --> 00:04:20,310
+plus A playing C in week one, plus A playing D in week one.
+
+73
+00:04:20,310 --> 00:04:24,770
+The sign is equals, and the right hand side is again 1.
+
+74
+00:04:24,770 --> 00:04:26,906
+Now let's repeat this for week two.
+
+75
+00:04:26,906 --> 00:04:30,720
+So the left hand side is equal to A playing B in week two,
+
+76
+00:04:30,720 --> 00:04:37,310
+plus A playing C in week two, plus A playing D in week two.
+
+77
+00:04:37,310 --> 00:04:41,360
+The sign is equals and the right hand side is 1.
+
+78
+00:04:41,360 --> 00:04:43,930
+Now let's repeat this for weeks three and four.
+
+79
+00:04:43,930 --> 00:04:46,870
+So for week three, the left hand side
+
+80
+00:04:46,870 --> 00:04:52,270
+is just equal to the variables of A playing with week three:
+
+81
+00:04:52,270 --> 00:04:57,920
+A and B, A and C, A and D. The sign is equals
+
+82
+00:04:57,920 --> 00:05:00,400
+and the right hand side is 1.
+
+83
+00:05:00,400 --> 00:05:03,010
+For week four, the left hand side
+
+84
+00:05:03,010 --> 00:05:08,690
+is just the A variables in week four, A and B, A and C,
+
+85
+00:05:08,690 --> 00:05:12,330
+and A and D. The sign should be equals
+
+86
+00:05:12,330 --> 00:05:15,010
+and the right hand side is 1.
+
+87
+00:05:15,010 --> 00:05:18,400
+I went ahead and filled in the rest of the constraints for you
+
+88
+00:05:18,400 --> 00:05:22,390
+since they're just repeating the same thing for team B,
+
+89
+00:05:22,390 --> 00:05:26,000
+team C, and team D.
+
+90
+00:05:26,000 --> 00:05:28,600
+Now we're ready to solve our problem.
+
+91
+00:05:28,600 --> 00:05:34,070
+So let's go to the "Tools" menu and select "Solver".
+
+92
+00:05:34,070 --> 00:05:38,010
+In the Solver window, let's first pick our target cell.
+
+93
+00:05:38,010 --> 00:05:41,550
+So with the cursor in the "Target cell" box,
+
+94
+00:05:41,550 --> 00:05:43,760
+go ahead and select the objective cell,
+
+95
+00:05:43,760 --> 00:05:45,600
+or the blue cell.
+
+96
+00:05:45,600 --> 00:05:47,820
+Make sure that "Maximum" is selected,
+
+97
+00:05:47,820 --> 00:05:51,250
+since we're trying to maximize preferences.
+
+98
+00:05:51,250 --> 00:05:55,100
+Then, with the cursor in the "By changing cells" box,
+
+99
+00:05:55,100 --> 00:06:00,190
+go ahead and select all 24 decision variables.
+
+100
+00:06:00,190 --> 00:06:02,650
+Now, let's add in our constraints.
+
+101
+00:06:02,650 --> 00:06:05,630
+Since all of our constraints have an equals sign,
+
+102
+00:06:05,630 --> 00:06:08,100
+we can add them all in together.
+
+103
+00:06:08,100 --> 00:06:10,740
+So in the first Cell Reference box,
+
+104
+00:06:10,740 --> 00:06:13,386
+go ahead and select all of the left hand sides.
+
+105
+00:06:13,386 --> 00:06:19,560
+
+
+106
+00:06:19,560 --> 00:06:24,150
+In the Operator box, select equals.
+
+107
+00:06:24,150 --> 00:06:28,005
+Then, in the Value box, select all of the right hand sides.
+
+108
+00:06:28,005 --> 00:06:36,590
+
+
+109
+00:06:36,590 --> 00:06:39,290
+Since this is an integer optimization problem,
+
+110
+00:06:39,290 --> 00:06:42,710
+there's one more thing we need to do in the constraint area.
+
+111
+00:06:42,710 --> 00:06:45,300
+In the Cell Reference box, go ahead
+
+112
+00:06:45,300 --> 00:06:47,440
+and select all of the decision variables.
+
+113
+00:06:47,440 --> 00:06:51,530
+
+
+114
+00:06:51,530 --> 00:06:55,720
+Then, in the operator pull down menu, select Binary.
+
+115
+00:06:55,720 --> 00:06:58,850
+This will make all of our decision variables binary.
+
+116
+00:06:58,850 --> 00:07:02,420
+We don't need to put anything in the Value column.
+
+117
+00:07:02,420 --> 00:07:05,460
+The last thing we need to do is in Options,
+
+118
+00:07:05,460 --> 00:07:10,640
+make sure that we're using the linear solver, and click OK.
+
+119
+00:07:10,640 --> 00:07:14,000
+Now, go ahead and hit Solve.
+
+120
+00:07:14,000 --> 00:07:16,140
+The solving results says: solving successfully
+
+121
+00:07:16,140 --> 00:07:18,400
+finished, result 24.
+
+122
+00:07:18,400 --> 00:07:21,130
+Go ahead and pick Keep Result, and now let's
+
+123
+00:07:21,130 --> 00:07:22,900
+look at our solution.
+
+124
+00:07:22,900 --> 00:07:27,820
+We can see that teams A and B and teams C and D
+
+125
+00:07:27,820 --> 00:07:30,800
+both play during weeks 3 and 4.
+
+126
+00:07:30,800 --> 00:07:34,860
+This makes sense, since we're trying to maximize preferences,
+
+127
+00:07:34,860 --> 00:07:37,060
+and the preference for teams in the same division
+
+128
+00:07:37,060 --> 00:07:40,000
+is to play later on.
+
+129
+00:07:40,000 --> 00:07:43,550
+In the next video, we'll see the different types of constraints
+
+130
+00:07:43,550 --> 00:07:47,700
+that we can add to an integer optimization model.
+

@@ -1,0 +1,200 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:04,780
+Now, let's take a look at a full example of a case.
+
+2
+00:00:04,780 --> 00:00:08,160
+This is a head and neck example, and the CT scans
+
+3
+00:00:08,160 --> 00:00:09,980
+are shown on the right.
+
+4
+00:00:09,980 --> 00:00:16,280
+There are a total of 132,878 voxels.
+
+5
+00:00:16,280 --> 00:00:23,680
+The target, or tumor, has 9,777 voxels.
+
+6
+00:00:23,680 --> 00:00:25,680
+There are five critical structures
+
+7
+00:00:25,680 --> 00:00:31,400
+that we want to minimize the dose to-- the spinal cord,
+
+8
+00:00:31,400 --> 00:00:36,540
+the brain, the brain stem, the parotid glands,
+
+9
+00:00:36,540 --> 00:00:39,350
+and the mandible or jaw.
+
+10
+00:00:39,350 --> 00:00:42,130
+We're using five beams, and each beam
+
+11
+00:00:42,130 --> 00:00:45,110
+is composed of about 60 beamlets.
+
+12
+00:00:45,110 --> 00:00:49,990
+In total, there are 328 beamlets.
+
+13
+00:00:49,990 --> 00:00:53,660
+In this example, we want the dose to the whole tumor
+
+14
+00:00:53,660 --> 00:00:57,310
+to be between 70 and 77 gray.
+
+15
+00:00:57,310 --> 00:01:01,400
+The spinal cord dose should be no more than 45 gray,
+
+16
+00:01:01,400 --> 00:01:05,200
+since significant damage to any voxel in the spinal cord
+
+17
+00:01:05,200 --> 00:01:08,100
+will result in loss of function.
+
+18
+00:01:08,100 --> 00:01:12,240
+The brain stem dose should be no more than 54 gray,
+
+19
+00:01:12,240 --> 00:01:16,150
+and the mandible dose should be no more than 70 gray.
+
+20
+00:01:16,150 --> 00:01:21,160
+The average parotid gland dose should be at most 26 gray.
+
+21
+00:01:21,160 --> 00:01:22,940
+This constraint is a little different,
+
+22
+00:01:22,940 --> 00:01:25,960
+since the parotid gland is a parallel structure.
+
+23
+00:01:25,960 --> 00:01:28,920
+Significant damage to any one voxel
+
+24
+00:01:28,920 --> 00:01:33,730
+does not jeopardize function of the entire organ.
+
+25
+00:01:33,730 --> 00:01:36,700
+So what is our optimization problem now?
+
+26
+00:01:36,700 --> 00:01:41,080
+Again, our decisions are the intensities of the beamlets.
+
+27
+00:01:41,080 --> 00:01:46,100
+Our objective is to minimize the total dose to healthy tissue.
+
+28
+00:01:46,100 --> 00:01:49,260
+Our constraints are limits on the tumor dose
+
+29
+00:01:49,260 --> 00:01:53,690
+and upper bounds for the spinal cord, brain stem, and mandible.
+
+30
+00:01:53,690 --> 00:01:57,420
+We also have a constraint to limit the average parotid dose
+
+31
+00:01:57,420 --> 00:01:59,470
+to 26 gray.
+
+32
+00:01:59,470 --> 00:02:03,220
+Lastly, all of our intensities, or decision variables,
+
+33
+00:02:03,220 --> 00:02:05,640
+should be non-negative.
+
+34
+00:02:05,640 --> 00:02:08,330
+We solved this optimization problem,
+
+35
+00:02:08,330 --> 00:02:10,800
+and this plot shows the results.
+
+36
+00:02:10,800 --> 00:02:14,270
+On the x-axis is the dose, in gray, and on
+
+37
+00:02:14,270 --> 00:02:17,010
+the y-axis is the fraction of voxels
+
+38
+00:02:17,010 --> 00:02:20,070
+that received that dose or higher.
+
+39
+00:02:20,070 --> 00:02:23,730
+Each line corresponds to a different structure.
+
+40
+00:02:23,730 --> 00:02:28,080
+We can see that for the tumor, which is shown as the red line,
+
+41
+00:02:28,080 --> 00:02:34,270
+100% of the voxels get a dose of 70 gray, and 0% of the voxels
+
+42
+00:02:34,270 --> 00:02:37,460
+get a dose of more than 77 gray.
+
+43
+00:02:37,460 --> 00:02:40,410
+This is what our constraint specified.
+
+44
+00:02:40,410 --> 00:02:42,400
+While none of the critical structures
+
+45
+00:02:42,400 --> 00:02:44,840
+are getting very high doses, it looks
+
+46
+00:02:44,840 --> 00:02:47,710
+like the mandible, which is shown as the blue line,
+
+47
+00:02:47,710 --> 00:02:51,420
+is receiving the highest dose of the healthy organs.
+
+48
+00:02:51,420 --> 00:02:54,950
+In the next video, we'll explore different solutions
+
+49
+00:02:54,950 --> 00:02:58,200
+and the shadow prices of our constraints.
+

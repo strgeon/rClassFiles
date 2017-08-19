@@ -1,0 +1,568 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,240
+In this video, we're going to explore our linear optimization
+
+2
+00:00:03,240 --> 00:00:04,717
+model further.
+
+3
+00:00:04,717 --> 00:00:07,050
+We're going to use it to answer some "what if" questions
+
+4
+00:00:07,050 --> 00:00:09,930
+and to conduct some sensitivity analysis.
+
+5
+00:00:09,930 --> 00:00:11,690
+So here, we have a spreadsheet that
+
+6
+00:00:11,690 --> 00:00:13,890
+is formatted very similarly to the spreadsheets
+
+7
+00:00:13,890 --> 00:00:16,466
+that we've used in Video 5 and Video 6.
+
+8
+00:00:16,466 --> 00:00:18,840
+So we have the data up here, we have the price-per-click,
+
+9
+00:00:18,840 --> 00:00:21,160
+the click-through-rate, the average price per display,
+
+10
+00:00:21,160 --> 00:00:23,640
+the budgets, the query estimates.
+
+11
+00:00:23,640 --> 00:00:25,314
+Below those, we have the variables.
+
+12
+00:00:25,314 --> 00:00:26,730
+So we have the cells corresponding
+
+13
+00:00:26,730 --> 00:00:28,110
+to the decision variables.
+
+14
+00:00:28,110 --> 00:00:30,410
+We have the cell corresponding to the objective.
+
+15
+00:00:30,410 --> 00:00:32,130
+And to the right of these, we have
+
+16
+00:00:32,130 --> 00:00:35,670
+cells that contain the values of the decision variables
+
+17
+00:00:35,670 --> 00:00:38,810
+and a cell that contains the value of the revenue
+
+18
+00:00:38,810 --> 00:00:41,929
+from our original solution from Video 5.
+
+19
+00:00:41,929 --> 00:00:44,470
+So what we're going to do is, we're going to change our data,
+
+20
+00:00:44,470 --> 00:00:46,495
+and we're going to see how the solution changes
+
+21
+00:00:46,495 --> 00:00:49,170
+and how the objective value changes and compare it
+
+22
+00:00:49,170 --> 00:00:51,130
+to our original solution.
+
+23
+00:00:51,130 --> 00:00:54,150
+So as one of the questions that we might consider, let's
+
+24
+00:00:54,150 --> 00:00:56,080
+consider the following question.
+
+25
+00:00:56,080 --> 00:00:59,390
+What would happen if the click-through-rate of AT&T with
+
+26
+00:00:59,390 --> 00:01:04,100
+query one increased from 0.10 to 0.5?
+
+27
+00:01:04,100 --> 00:01:05,850
+So to answer this question, let's crawl up
+
+28
+00:01:05,850 --> 00:01:09,726
+in the spreadsheet until we hit the click-through-rate.
+
+29
+00:01:09,726 --> 00:01:11,350
+And let's change the click-through-rate
+
+30
+00:01:11,350 --> 00:01:13,960
+from 0.1 to 0.5.
+
+31
+00:01:13,960 --> 00:01:15,870
+Now, if we do this, you may have noticed
+
+32
+00:01:15,870 --> 00:01:19,000
+that the average price per display for AT&T in query one
+
+33
+00:01:19,000 --> 00:01:20,000
+also changed.
+
+34
+00:01:20,000 --> 00:01:22,470
+So of course, this makes sense, because the average price
+
+35
+00:01:22,470 --> 00:01:24,765
+per display is just the click-through-rate multiplied
+
+36
+00:01:24,765 --> 00:01:26,210
+by the price-per-click.
+
+37
+00:01:26,210 --> 00:01:28,980
+And here, the way we've set up the spreadsheet
+
+38
+00:01:28,980 --> 00:01:31,410
+is so that these cells are exactly
+
+39
+00:01:31,410 --> 00:01:34,490
+the product of the corresponding cells.
+
+40
+00:01:34,490 --> 00:01:36,920
+So the cells that correspond to the click-through-rate
+
+41
+00:01:36,920 --> 00:01:41,140
+and the price-per-click for that respective query and advertiser
+
+42
+00:01:41,140 --> 00:01:42,760
+combination.
+
+43
+00:01:42,760 --> 00:01:46,500
+So our average price per display has changed appropriately.
+
+44
+00:01:46,500 --> 00:01:49,960
+And so now, we just scroll down until we see our variables
+
+45
+00:01:49,960 --> 00:01:51,820
+and we see our objective.
+
+46
+00:01:51,820 --> 00:01:54,280
+And let's click on Tools.
+
+47
+00:01:54,280 --> 00:01:56,370
+Let's open up the Solver.
+
+48
+00:01:56,370 --> 00:01:59,906
+And we have the Solver configured the exact same way
+
+49
+00:01:59,906 --> 00:02:00,530
+from last time.
+
+50
+00:02:00,530 --> 00:02:02,530
+So we don't need to do anything here.
+
+51
+00:02:02,530 --> 00:02:04,250
+And so now, all we have to do is just
+
+52
+00:02:04,250 --> 00:02:09,150
+hit Solve and click on Keep Result, and voila.
+
+53
+00:02:09,150 --> 00:02:11,290
+We have a new solution.
+
+54
+00:02:11,290 --> 00:02:13,540
+So now, several things have changed with the solution,
+
+55
+00:02:13,540 --> 00:02:15,390
+if you can see.
+
+56
+00:02:15,390 --> 00:02:18,980
+So the first thing is that the allocations have changed.
+
+57
+00:02:18,980 --> 00:02:23,970
+So for instance, we allocate query one and AT&T 68 times.
+
+58
+00:02:23,970 --> 00:02:27,950
+So we decide to show AT&T's ad with query one 68 times,
+
+59
+00:02:27,950 --> 00:02:29,700
+as opposed to the original solution, where
+
+60
+00:02:29,700 --> 00:02:31,630
+we did it 40 times.
+
+61
+00:02:31,630 --> 00:02:35,835
+And we can also see that AT&T is never shown in query two
+
+62
+00:02:35,835 --> 00:02:38,040
+or query three in our new solution,
+
+63
+00:02:38,040 --> 00:02:41,030
+whereas before, it was shown 40 times for query two and 80
+
+64
+00:02:41,030 --> 00:02:43,550
+times for query three.
+
+65
+00:02:43,550 --> 00:02:46,980
+Similarly, we show T-Mobile 72 times with query one,
+
+66
+00:02:46,980 --> 00:02:49,720
+whereas before, we only showed it 100 times.
+
+67
+00:02:49,720 --> 00:02:52,107
+And we also showed T-Mobile with query three
+
+68
+00:02:52,107 --> 00:02:55,600
+14 times, whereas before, we didn't show it
+
+69
+00:02:55,600 --> 00:02:57,300
+at all with query three.
+
+70
+00:02:57,300 --> 00:03:00,750
+And Verizon's allocations say the same as before.
+
+71
+00:03:00,750 --> 00:03:02,800
+In terms of the revenue, our revenue
+
+72
+00:03:02,800 --> 00:03:06,750
+has gone up slightly from $428 in the original solution
+
+73
+00:03:06,750 --> 00:03:09,890
+to $430 in the new solution.
+
+74
+00:03:09,890 --> 00:03:12,220
+Now, this may seem like a small amount.
+
+75
+00:03:12,220 --> 00:03:15,660
+But actually, this is the most that we can hope to achieve.
+
+76
+00:03:15,660 --> 00:03:17,770
+And the reason for this is, if we scroll down,
+
+77
+00:03:17,770 --> 00:03:20,860
+if we look at our budgets, so the budget for AT&T
+
+78
+00:03:20,860 --> 00:03:26,280
+is 170, for T-Mobile, 100, and for Verizon, it's 160.
+
+79
+00:03:26,280 --> 00:03:28,340
+If we add up these values, you can
+
+80
+00:03:28,340 --> 00:03:31,430
+see that actually the sum of these values is 430.
+
+81
+00:03:31,430 --> 00:03:33,220
+Now, this isn't a coincidence.
+
+82
+00:03:33,220 --> 00:03:35,240
+In fact, if you think about it, this
+
+83
+00:03:35,240 --> 00:03:39,650
+makes sense, because what Google earns from each advertiser
+
+84
+00:03:39,650 --> 00:03:42,440
+is exactly how much that advertiser spends.
+
+85
+00:03:42,440 --> 00:03:44,850
+And if the most that each advertiser spends
+
+86
+00:03:44,850 --> 00:03:47,710
+is that advertiser's budget, then the most
+
+87
+00:03:47,710 --> 00:03:50,000
+that Google could hope to earn is in fact
+
+88
+00:03:50,000 --> 00:03:51,600
+the sum of these budgets.
+
+89
+00:03:51,600 --> 00:03:54,850
+So in fact, we are attaining the highest possible revenue
+
+90
+00:03:54,850 --> 00:03:58,540
+that we can hope to attain in this case.
+
+91
+00:03:58,540 --> 00:04:00,480
+So that was rather interesting.
+
+92
+00:04:00,480 --> 00:04:03,330
+And now, let's change back the click-through-rate
+
+93
+00:04:03,330 --> 00:04:06,860
+from 0.5 back to the original value of 0.1.
+
+94
+00:04:06,860 --> 00:04:08,860
+And let's answer another question.
+
+95
+00:04:08,860 --> 00:04:11,620
+So the question that we'd now like to answer
+
+96
+00:04:11,620 --> 00:04:14,910
+is, what would happen if AT&T's budget increased
+
+97
+00:04:14,910 --> 00:04:16,290
+from 170 to 200?
+
+98
+00:04:16,290 --> 00:04:19,829
+So for example, AT&T calls us and tells us that actually they
+
+99
+00:04:19,829 --> 00:04:22,040
+can afford more advertisements.
+
+100
+00:04:22,040 --> 00:04:24,130
+So how would that change our solution?
+
+101
+00:04:24,130 --> 00:04:28,740
+Well, in this case, let's just find AT&T's budget data.
+
+102
+00:04:28,740 --> 00:04:31,260
+So in this case, it is the cell here.
+
+103
+00:04:31,260 --> 00:04:35,290
+And let's change it from 170 to 200.
+
+104
+00:04:35,290 --> 00:04:39,450
+Now, let's scroll down to our variables and our objective.
+
+105
+00:04:39,450 --> 00:04:41,500
+And let's just set them back to zero.
+
+106
+00:04:41,500 --> 00:04:44,200
+
+
+107
+00:04:44,200 --> 00:04:46,700
+And now, let's go to Tools again, let's open up
+
+108
+00:04:46,700 --> 00:04:52,460
+the Solver, and let's hit Solve.
+
+109
+00:04:52,460 --> 00:04:55,270
+We get 428, which is actually the same objective
+
+110
+00:04:55,270 --> 00:04:56,810
+that we got from before.
+
+111
+00:04:56,810 --> 00:04:58,510
+And let's just click on Keep Result
+
+112
+00:04:58,510 --> 00:05:01,790
+and take a look at the solution.
+
+113
+00:05:01,790 --> 00:05:05,170
+Now, interestingly, this new solution
+
+114
+00:05:05,170 --> 00:05:08,590
+is actually exactly the same as the old solution.
+
+115
+00:05:08,590 --> 00:05:11,790
+So what happened here?
+
+116
+00:05:11,790 --> 00:05:14,640
+Why didn't this change anything?
+
+117
+00:05:14,640 --> 00:05:17,930
+Well, actually, if you recall from the previous solution,
+
+118
+00:05:17,930 --> 00:05:19,600
+in the previous solution, we actually
+
+119
+00:05:19,600 --> 00:05:23,210
+only used $168 of AT&T's budget.
+
+120
+00:05:23,210 --> 00:05:27,820
+And in the previous solution, AT&T's budget was $170.
+
+121
+00:05:27,820 --> 00:05:30,120
+So in the previous solution, we didn't actually
+
+122
+00:05:30,120 --> 00:05:32,740
+use up all of AT&T's budget.
+
+123
+00:05:32,740 --> 00:05:34,980
+And since this constraint was not binding,
+
+124
+00:05:34,980 --> 00:05:38,620
+then increasing this constraint beyond 170--
+
+125
+00:05:38,620 --> 00:05:42,100
+so increasing the budget from 170 to 200--
+
+126
+00:05:42,100 --> 00:05:45,290
+won't actually have an effect on the solution.
+
+127
+00:05:45,290 --> 00:05:47,179
+So this is why the solution didn't change.
+
+128
+00:05:47,179 --> 00:05:48,970
+And in fact, in this case, we didn't really
+
+129
+00:05:48,970 --> 00:05:52,610
+need to change the data and to solve the problem again,
+
+130
+00:05:52,610 --> 00:05:54,390
+we could've deduced this from actually
+
+131
+00:05:54,390 --> 00:05:57,110
+looking at the budget values.
+
+132
+00:05:57,110 --> 00:05:59,260
+So these are examples of two questions
+
+133
+00:05:59,260 --> 00:06:02,009
+that we might consider in this setting.
+
+134
+00:06:02,009 --> 00:06:03,550
+And so this concludes our exploration
+
+135
+00:06:03,550 --> 00:06:06,190
+of this problem in LibreOffice.
+
+136
+00:06:06,190 --> 00:06:09,007
+In the next video, we'll return to the slides,
+
+137
+00:06:09,007 --> 00:06:10,465
+and we'll discuss some ways that we
+
+138
+00:06:10,465 --> 00:06:13,310
+can extend the problem beyond the formulation
+
+139
+00:06:13,310 --> 00:06:15,220
+that we've been thinking about here.
+
+140
+00:06:15,220 --> 00:06:18,080
+And we'll also summarize what we've discussed so far.
+
+141
+00:06:18,080 --> 00:06:20,660
+So see you in PowerPoint.
+

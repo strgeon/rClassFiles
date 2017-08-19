@@ -1,0 +1,60 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,900
+Welcome to the linear optimization recitation.
+
+2
+00:00:02,900 --> 00:00:06,020
+My name is Velibor, and I'll be guiding you through it.
+
+3
+00:00:06,020 --> 00:00:08,010
+This week, we'll learn the core techniques
+
+4
+00:00:08,010 --> 00:00:10,030
+in applying linear optimization.
+
+5
+00:00:10,030 --> 00:00:12,272
+We'll learn how to model a problem, how to solve it,
+
+6
+00:00:12,272 --> 00:00:14,480
+how to compare the solution to alternative solutions,
+
+7
+00:00:14,480 --> 00:00:18,680
+and how to perform sensitivity analysis using the model.
+
+8
+00:00:18,680 --> 00:00:21,140
+The problem we will use to guide this whole process
+
+9
+00:00:21,140 --> 00:00:23,580
+will be the online advertising allocation problem
+
+10
+00:00:23,580 --> 00:00:26,080
+that is at the heart of Google's online advertising
+
+11
+00:00:26,080 --> 00:00:28,611
+system, which is also known as AdWords.
+
+12
+00:00:28,611 --> 00:00:30,860
+Whenever you're ready, let's move on to the next video
+
+13
+00:00:30,860 --> 00:00:32,640
+and get started.
+
+14
+00:00:32,640 --> 00:00:33,174
+
+

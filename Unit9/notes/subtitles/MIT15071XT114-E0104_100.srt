@@ -1,0 +1,400 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:02,165
+One of the most powerful properties
+
+2
+00:00:02,165 --> 00:00:05,280
+of integer optimization is the ability
+
+3
+00:00:05,280 --> 00:00:09,240
+to add what we call logical constraints.
+
+4
+00:00:09,240 --> 00:00:11,990
+These use binary variables to implement
+
+5
+00:00:11,990 --> 00:00:13,700
+different restrictions.
+
+6
+00:00:13,700 --> 00:00:16,149
+Let's look at a few examples.
+
+7
+00:00:16,149 --> 00:00:19,730
+Suppose we want to add the constraint that A and B can't
+
+8
+00:00:19,730 --> 00:00:23,140
+play in both weeks 3 and 4.
+
+9
+00:00:23,140 --> 00:00:29,940
+We can do this by adding the constraint x_AB3 + x_AB4 less
+
+10
+00:00:29,940 --> 00:00:31,710
+than or equal to 1.
+
+11
+00:00:31,710 --> 00:00:35,090
+What are feasible values for these two variables,
+
+12
+00:00:35,090 --> 00:00:37,600
+given this constraint?
+
+13
+00:00:37,600 --> 00:00:42,910
+Both variables can be 0, or one or the other can be 1.
+
+14
+00:00:42,910 --> 00:00:47,620
+A solution with both variables equal to 1 would be infeasible.
+
+15
+00:00:47,620 --> 00:00:50,340
+So this constraint models the restriction
+
+16
+00:00:50,340 --> 00:00:55,310
+that teams A and B can't play in both weeks 3 and 4.
+
+17
+00:00:55,310 --> 00:00:58,260
+Note that this only works because the variables only
+
+18
+00:00:58,260 --> 00:01:01,310
+take values 0 or 1.
+
+19
+00:01:01,310 --> 00:01:03,930
+Let's look at another example.
+
+20
+00:01:03,930 --> 00:01:06,310
+Suppose we want to add the restriction
+
+21
+00:01:06,310 --> 00:01:09,340
+that if A and B play in week 4, then
+
+22
+00:01:09,340 --> 00:01:12,140
+they must also play in week 2.
+
+23
+00:01:12,140 --> 00:01:17,390
+We can do this by adding the constraint x_AB2 greater than
+
+24
+00:01:17,390 --> 00:01:20,140
+or equal to x_AB4.
+
+25
+00:01:20,140 --> 00:01:24,132
+Let's consider feasible solutions to this constraint.
+
+26
+00:01:24,132 --> 00:01:31,440
+If x_AB4 equals 1, then x_AB2 must also equal 1.
+
+27
+00:01:31,440 --> 00:01:35,970
+But if x_AB4 equals 0, then x_AB2
+
+28
+00:01:35,970 --> 00:01:38,590
+can be equal to either 0 or 1.
+
+29
+00:01:38,590 --> 00:01:41,435
+So this constraint exactly models the restriction
+
+30
+00:01:41,435 --> 00:01:43,610
+we wanted.
+
+31
+00:01:43,610 --> 00:01:49,530
+Lastly, suppose that teams C and D must play in week 1 or 2 --
+
+32
+00:01:49,530 --> 00:01:52,960
+they can't play both games in weeks 3 and 4.
+
+33
+00:01:52,960 --> 00:02:00,130
+We can model this constraint with x_CD1 + x_CD2 greater than
+
+34
+00:02:00,130 --> 00:02:01,890
+or equal to 1.
+
+35
+00:02:01,890 --> 00:02:05,540
+Feasible solutions are both variables equal to 1,
+
+36
+00:02:05,540 --> 00:02:08,340
+or one variable equal to 1.
+
+37
+00:02:08,340 --> 00:02:11,820
+Both variables can't equal 0.
+
+38
+00:02:11,820 --> 00:02:15,000
+These are just a few examples of logical constraints
+
+39
+00:02:15,000 --> 00:02:18,750
+that we can implement using binary variables.
+
+40
+00:02:18,750 --> 00:02:21,990
+Let's go into LibreOffice now and add these constraints
+
+41
+00:02:21,990 --> 00:02:24,030
+to our model.
+
+42
+00:02:24,030 --> 00:02:26,210
+In our spreadsheet, let's scroll down
+
+43
+00:02:26,210 --> 00:02:29,410
+to the bottom of our constraints list.
+
+44
+00:02:29,410 --> 00:02:32,180
+We wand to add in three new constraints.
+
+45
+00:02:32,180 --> 00:02:38,010
+The first is that teams A and B can't play in both weeks
+
+46
+00:02:38,010 --> 00:02:40,870
+3 and 4.
+
+47
+00:02:40,870 --> 00:02:46,020
+The second is that if teams A and B play in week 4,
+
+48
+00:02:46,020 --> 00:02:48,970
+then they have to play in week 2.
+
+49
+00:02:48,970 --> 00:02:51,860
+And the third is that team C and D
+
+50
+00:02:51,860 --> 00:02:57,420
+have to play in weeks 1 and/or 2.
+
+51
+00:02:57,420 --> 00:03:01,080
+So, to add the first constraint, our left hand side
+
+52
+00:03:01,080 --> 00:03:05,510
+should be equal to the sum of the variables for A and B
+
+53
+00:03:05,510 --> 00:03:10,050
+in weeks 3 and 4.
+
+54
+00:03:10,050 --> 00:03:12,880
+Our sign is less than or equal to
+
+55
+00:03:12,880 --> 00:03:16,110
+and our right hand side is 1.
+
+56
+00:03:16,110 --> 00:03:19,110
+Our second constraint, the left hand side,
+
+57
+00:03:19,110 --> 00:03:22,920
+is equal to the decision variable for teams A and B
+
+58
+00:03:22,920 --> 00:03:25,210
+in week 2.
+
+59
+00:03:25,210 --> 00:03:28,100
+The sign is greater than or equal to,
+
+60
+00:03:28,100 --> 00:03:31,410
+and the right hand side is equal to the decision variable
+
+61
+00:03:31,410 --> 00:03:35,410
+for teams A and B in week 4.
+
+62
+00:03:35,410 --> 00:03:38,240
+For our third constraint, the left hand side
+
+63
+00:03:38,240 --> 00:03:42,190
+is equal to the decision variables for teams C and D
+
+64
+00:03:42,190 --> 00:03:48,130
+in weeks 1 and 2, the sign is greater than or equal to,
+
+65
+00:03:48,130 --> 00:03:50,230
+and the right hand side is 1.
+
+66
+00:03:50,230 --> 00:03:53,160
+
+
+67
+00:03:53,160 --> 00:03:56,740
+We can see here that our current optimal solution violates
+
+68
+00:03:56,740 --> 00:03:59,410
+every single one of these constraints.
+
+69
+00:03:59,410 --> 00:04:01,470
+So, let's go ahead and resolve our model
+
+70
+00:04:01,470 --> 00:04:03,260
+to get a new solution.
+
+71
+00:04:03,260 --> 00:04:07,810
+So go to the Tools menu and select Solver.
+
+72
+00:04:07,810 --> 00:04:10,520
+Now, let's add in our new constraints.
+
+73
+00:04:10,520 --> 00:04:13,230
+So in the third cell reference box,
+
+74
+00:04:13,230 --> 00:04:14,890
+go ahead and select the left hand side
+
+75
+00:04:14,890 --> 00:04:16,720
+for the first constraint.
+
+76
+00:04:16,720 --> 00:04:19,510
+Make sure the operator is less than or equal to,
+
+77
+00:04:19,510 --> 00:04:22,740
+and select the right hand side for the value.
+
+78
+00:04:22,740 --> 00:04:25,050
+Then in the fourth cell reference box,
+
+79
+00:04:25,050 --> 00:04:28,310
+select both of the left hand sides for the other constraints
+
+80
+00:04:28,310 --> 00:04:31,340
+because they're both greater than or equal to constraints,
+
+81
+00:04:31,340 --> 00:04:34,100
+change the operator to greater than or equal to,
+
+82
+00:04:34,100 --> 00:04:37,670
+and for the value select the two right hand sides.
+
+83
+00:04:37,670 --> 00:04:40,490
+And go ahead and click Solve.
+
+84
+00:04:40,490 --> 00:04:43,470
+The solving result says "Solving successfully finished.
+
+85
+00:04:43,470 --> 00:04:44,810
+Result 20."
+
+86
+00:04:44,810 --> 00:04:47,370
+Select Keep Result.
+
+87
+00:04:47,370 --> 00:04:49,920
+Let's look at our new solution.
+
+88
+00:04:49,920 --> 00:04:52,580
+The objective value is now 20 which
+
+89
+00:04:52,580 --> 00:04:54,950
+is less than it was before.
+
+90
+00:04:54,950 --> 00:04:59,200
+But now we have teams A and B playing in weeks 2 and 4
+
+91
+00:04:59,200 --> 00:05:02,960
+and teams C and D playing in weeks 2 and 4.
+
+92
+00:05:02,960 --> 00:05:04,540
+So, depending on your preferences
+
+93
+00:05:04,540 --> 00:05:08,610
+as a decision-maker, you might prefer the previous solution
+
+94
+00:05:08,610 --> 00:05:11,920
+which had a slightly higher objective or this solution
+
+95
+00:05:11,920 --> 00:05:14,350
+which is a little more balanced.
+
+96
+00:05:14,350 --> 00:05:18,260
+In the next video, we'll discuss how additional constraints
+
+97
+00:05:18,260 --> 00:05:20,870
+often make the problems harder to solve
+
+98
+00:05:20,870 --> 00:05:22,830
+and how large integer optimization
+
+99
+00:05:22,830 --> 00:05:25,680
+problems are solved in practice.
+

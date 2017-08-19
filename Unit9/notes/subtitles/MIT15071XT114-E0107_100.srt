@@ -1,0 +1,248 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:02,050
+Let us demonstrate the fundamentals
+
+2
+00:00:02,050 --> 00:00:05,730
+of the approach that is called integer optimization that
+
+3
+00:00:05,730 --> 00:00:08,930
+is used in the eHarmony matching algorithm.
+
+4
+00:00:08,930 --> 00:00:11,980
+Suppose we have three men and three women.
+
+5
+00:00:11,980 --> 00:00:15,950
+
+
+6
+00:00:15,950 --> 00:00:20,680
+Their compatibility scores range between 1 and 5 for all pairs,
+
+7
+00:00:20,680 --> 00:00:22,700
+and they are shown in the figure.
+
+8
+00:00:22,700 --> 00:00:25,210
+For example, the first man and the first woman
+
+9
+00:00:25,210 --> 00:00:27,600
+have a compatibility score of 1.
+
+10
+00:00:27,600 --> 00:00:29,305
+The first man and the second woman
+
+11
+00:00:29,305 --> 00:00:32,170
+have a compatibility score of 3, and so forth.
+
+12
+00:00:32,170 --> 00:00:35,370
+
+
+13
+00:00:35,370 --> 00:00:37,850
+So how should we match pairs together
+
+14
+00:00:37,850 --> 00:00:39,135
+to maximize compatibility?
+
+15
+00:00:39,135 --> 00:00:42,730
+
+
+16
+00:00:42,730 --> 00:00:45,370
+The red line indicates a match.
+
+17
+00:00:45,370 --> 00:00:48,290
+In this case man one is matched to the third woman
+
+18
+00:00:48,290 --> 00:00:50,870
+with a compatibility score of 5.
+
+19
+00:00:50,870 --> 00:00:53,020
+The second man to the first woman
+
+20
+00:00:53,020 --> 00:00:54,860
+with a compatibility score of 4.
+
+21
+00:00:54,860 --> 00:00:57,450
+And the third man to the second woman with a compatibility
+
+22
+00:00:57,450 --> 00:00:58,650
+score of 5.
+
+23
+00:00:58,650 --> 00:01:00,870
+And a total compatibility score of 14.
+
+24
+00:01:00,870 --> 00:01:03,740
+
+
+25
+00:01:03,740 --> 00:01:06,490
+Let us now formulate this matching problem
+
+26
+00:01:06,490 --> 00:01:09,960
+in the language of integer optimization.
+
+27
+00:01:09,960 --> 00:01:15,410
+We denote the data for the matching problem as w_ij.
+
+28
+00:01:15,410 --> 00:01:18,210
+These numbers represent the compatibility score
+
+29
+00:01:18,210 --> 00:01:21,770
+between user i and user j.
+
+30
+00:01:21,770 --> 00:01:28,670
+In the example shown in the figure, w_13 is 5.
+
+31
+00:01:28,670 --> 00:01:32,980
+We first define decision variables x_ij.
+
+32
+00:01:32,980 --> 00:01:34,550
+These are binary variables taking
+
+33
+00:01:34,550 --> 00:01:39,760
+value 1 if we match user i and user j together, and value 0
+
+34
+00:01:39,760 --> 00:01:41,950
+otherwise.
+
+35
+00:01:41,950 --> 00:01:44,380
+We next define the objective function,
+
+36
+00:01:44,380 --> 00:01:47,410
+which is to maximize compatibility between matches.
+
+37
+00:01:47,410 --> 00:01:52,970
+In this case, we maximize the sum of (w_11*x_11) +
+
+38
+00:01:52,970 --> 00:01:56,400
+(w_12*x_12) and so forth, up to (w_33*x_33).
+
+39
+00:01:56,400 --> 00:01:59,960
+
+
+40
+00:01:59,960 --> 00:02:03,530
+We next define the constraints for the decision variables
+
+41
+00:02:03,530 --> 00:02:05,420
+x_ij.
+
+42
+00:02:05,420 --> 00:02:10,639
+Each man-- say, man one --should match to exactly one woman.
+
+43
+00:02:10,639 --> 00:02:15,060
+And we represent this by the mathematical constraint
+
+44
+00:02:15,060 --> 00:02:19,780
+as follows-- x_11 + x_12 + x_13 = 1.
+
+45
+00:02:19,780 --> 00:02:24,260
+Similarly, each woman-- say, woman one
+
+46
+00:02:24,260 --> 00:02:26,760
+--should match to exactly one man.
+
+47
+00:02:26,760 --> 00:02:29,580
+And we represent this constraint mathematically
+
+48
+00:02:29,580 --> 00:02:35,830
+as x_11 + x_21 + x_31 = 1.
+
+49
+00:02:35,830 --> 00:02:41,060
+The full optimization problem is indicated next.
+
+50
+00:02:41,060 --> 00:02:45,620
+First we have the objective function we indicated earlier.
+
+51
+00:02:45,620 --> 00:02:47,990
+Next we have the set of constraints
+
+52
+00:02:47,990 --> 00:02:51,660
+that indicate that every man should match with exactly one
+
+53
+00:02:51,660 --> 00:02:52,650
+woman.
+
+54
+00:02:52,650 --> 00:02:56,170
+Next we have the constraints that every woman
+
+55
+00:02:56,170 --> 00:02:57,360
+should match with one man.
+
+56
+00:02:57,360 --> 00:03:02,310
+And finally that the variables are binary.
+
+57
+00:03:02,310 --> 00:03:06,790
+Let us now extend the methodology to other areas.
+
+58
+00:03:06,790 --> 00:03:10,090
+Suppose, for example, we want to show each woman her top two
+
+59
+00:03:10,090 --> 00:03:11,170
+matches.
+
+60
+00:03:11,170 --> 00:03:14,450
+This is represented by the constraint x_11
+
+61
+00:03:14,450 --> 00:03:18,780
++ x_21 + x_31 = 2.
+
