@@ -75,7 +75,7 @@ library(e1071)
 
 # Define cross-validation experiment
 numFolds = trainControl( method = "cv", number = 10 )
-cpGrid = expand.grid( .cp = seq(0.01,0.5,0.01)) 
+cpGrid = expand.grid( .cp = seq(0.001,0.05,0.001)) 
 
 # Perform the cross validation
 train(Reverse ~ Circuit + Issue + Petitioner + Respondent + LowerCourt + Unconst, data = Train, method = "rpart", trControl = numFolds, tuneGrid = cpGrid )
